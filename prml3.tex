@@ -1,0 +1,107 @@
+\documentclass[a4paper]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+
+\include{notation}
+
+\begin{document}
+
+\title{PRMLの3章のための数学}
+\author{サイボウズ・ラボ 光成滋生}
+
+\maketitle
+
+\section{概要}
+この文章は『パターン認識と機械学習』（以下PRML）の3章を理解するために必要な数学をまとめてみたものです.
+
+いくつかの定理は証明せずに認めますが, 可能な限りself-containedであることを目指してみました.
+概ねPRMLに従ってますが, 違う方法をとっているところもあります.
+
+間違い, 質問などございましたら, {\tt herumi@nifty.com}または{\tt twitterID:herumi}までご連絡ください.
+
+\section{最小二乗法}
+
+\subsection{微分の復習}
+
+$\bm{x}$, $\bm{y}$を縦ベクトルとして
+$$\diff{\bm{x}} (\trans{\bm{x}}\bm{y}) = \bm{y}.$$
+$$\diff{\bm{y}} (\trans{\bm{x}}\bm{y}) = \bm{x}.$$
+
+ここで$\diff{\bm{x}}$は$\diff{x_i}$を縦に並べた縦ベクトルとする.
+2章でも述べたが$\diff{\bm{x}}$を$\nabla$と書くこともあるがPRMLでは場所によって縦ベクトル（3.22）だったり,
+横ベクトル（3.13）だったりする. 常に縦ベクトルとしたほうが混乱は少ない.
+
+\subsection{誤差関数の最小化}
+
+$$f(\bm{w})=\sum_{n=1}^N\{t_n - \trans{\bm{w}}\phi(\bm{x}_n)\}^2+\lambda \trans{\bm{w}}\bm{w}$$
+
+とする. ここで$\bm{w}$と$\phi(\bm{x}_n)$は$M$次元縦ベクトルである.
+
+$$\trans{\Phi}=(\phi(\bm{x}_1) \cdots \phi(\bm{x}_N))$$
+とおく. $\Phi$は$N$行$M$列の行列である. $f(\bm{w})$を$w$で微分しよう.
+
+$$\diff{\bm{w}}f(\bm{w})
+= 2\sum_{n=1}^N\{t_n - \trans{\bm{w}}\phi(\bm{x}_n)\}(-\phi(\bm{x}_n)) +2\lambda \bm{w}.$$
+
+一般に縦ベクトル$\bm{x}$, $\bm{y}$に対して
+$$(\trans{\bm{x}}\bm{y})\bm{y}
+ =(\trans{\bm{y}}{\bm{x}})\bm{y}
+ =\bm{y}(\trans{\bm{y}}\bm{x})
+ =(\bm{y}\trans{\bm{y}})\bm{x}
+$$だから$\bm{t}=\trans{(t_1, \ldots, t_N)}$とおくと
+
+\begin{eqnarray*}
+\frac{1}{2}\diff{\bm{w}}f(\bm{w})
+ &=& -\sum_n t_n \phi(\bm{x}_n) + \sum_n (\phi(\bm{x}_n)\trans{\phi(\bm{x}_n)})\bm{w} + \lambda \bm{w}\\
+ &=& -\trans{\Phi} \bm{t} + \trans{\Phi}\Phi \bm{w} + \lambda \bm{w}\\
+ &=& -\trans{\Phi} \bm{t} + (\trans{\Phi}\Phi + \lambda I)\bm{w}=0.	
+\end{eqnarray*}
+
+よって$\det(\lambda I + \trans{\Phi}\Phi)\ne0$のとき
+
+$$\bm{w}_{\text{ML}}=(\lambda I + \trans{\Phi}\Phi)^{-1}\trans{\Phi}\bm{t}$$
+が最尤解. $\bm{y}=\Phi \bm{w}$が予測値である.
+
+\subsection{正射影}
+
+前節で$\lambda = 0$のときを考える.
+$$\bm{y}=\Phi(\trans{\Phi}\Phi)^{-1}\trans{\Phi}\bm{t}$$
+となる. ここでこの式の幾何学的な解釈を考えてみよう.
+
+$\Phi=(a_1 \cdots a_M)$と縦ベクトルの集まりで表す.
+$N-M$個のベクトル$b_1$, $\ldots$, $b_{N-M}$を追加して,
+$\{a_1, \ldots, a_N, b_1, \ldots, b_{N-M}\}$全体で$N$次元ベクトル空間の基底であるようにとる.
+その際$b_i$を$a_j$と直交するようにとれる.
+$$\trans{a_i}b_j=0.$$
+
+さて$X=\Phi(\trans{\Phi}\Phi)^{-1}\trans{\Phi}$とおくと, $X\Phi = \Phi$.
+これは$Xa_i = a_i$を意味する.
+つまり$X$は$a_1, \ldots, a_M$で生成される部分空間$V$=$\langle a_1, \ldots, a_M \rangle$の点を動かさない.
+また$b_j$のとりかたから$Xb_j=0$も成り立つ.
+つまり$X$は部分空間$\langle b_1, \ldots, b_{N-M} \rangle$の点を0につぶす.
+
+二つ合わせると, $X$は任意の点を部分空間$V$方向につぶす写像, つまり$V$への正射影写像と解釈できる.
+
+式で書くと任意の点$\bm{t}$を$\bm{t} = \sum_i s_i a_i + \sum_i t_i b_j$と表したとすると,
+$$\bm{y}=X\bm{t}=\sum_i s_i a_i$$
+となる. 係数だけを取り出してみると
+$$X:(s_1, \ldots, s_N, t_1, \ldots, t_{N-M}) \rightarrow (s_1, \ldots, s_N, 0, \ldots, 0).$$
+
+\subsection{行列での微分}
+
+$x$を$n$次元ベクトル, $A$を$m$行$n$列として$y=Ax$とおく.
+$$f(A) = ||y||^2=\trans{(Ax)}Ax$$
+を$A$で微分してみよう.
+$$\trans{(Ax)}Ax=\sum_s (Ax)_s (Ax)_s = \sum_s (\sum_t a_{st}x_t) (\sum_u a_{su}x_u) = \sum_{s,t,u} x_t x_u a_{st}a_{su}.$$
+よって
+\begin{eqnarray*}
+\diff{a_{ij}}f(A) &=& \sum_{s,t,u} x_t x_u ((\diff{a_{ij}}a_{st}) a_{su} + a_{st} \diff{a_{ij}}a_{su})\\
+ &=& \sum_{s,t,u}x_t x_u(\delta_{is}\delta_{jt}a_{su} + a_{st} \delta_{is}\delta_{ju})\\
+ &=& (\sum_u x_j x_u a_{iu}) + (\sum_t x_t x_j a_{it})\\
+ &=& 2\sum_u x_j x_u a_{iu}\\
+ &=& 2x_j (Ax)_i\\
+ &=& 2(Ax\trans{x})_{ij}.
+\end{eqnarray*}
+よって
+$$\diff{A}||Ax||^2 = 2Ax\trans{x}.$$
+\end{document}
