@@ -104,4 +104,87 @@ $$\trans{(Ax)}Ax=\sum_s (Ax)_s (Ax)_s = \sum_s (\sum_t a_{st}x_t) (\sum_u a_{su}
 \end{eqnarray*}
 よって
 $$\diff{A}||Ax||^2 = 2Ax\trans{x}.$$
+
+\subsection{Woodburyの逆行列の公式}
+
+行列$A$, $B$, $C$, $D$について
+$$(A+BD^{-1}C)^{-1}=A^{-1}-A^{-1}B(D+CA^{-1}B)^{-1}CA^{-1}$$
+が成り立つ.
+
+（証明）
+\begin{eqnarray*}
+A^{-1}B(D+CA^{-1}B)^{-1}CA^{-1} &=& A^{-1}B((DB^{-1}A+C)A^{-1}B)^{-1}CA^{-1}\\
+ &=&(DB^{-1}A+C)^{-1}CA^{-1}\\
+ &=&(DB^{-1}(A+BD^{-1}C))^{-1}CA^{-1}\\
+ &=&(A+BD^{-1}C)^{-1}BD^{-1}CA^{-1}
+\end{eqnarray*}
+よって
+\begin{eqnarray*}
+\text{左辺} &=& (I-(A+BD^{-1}C)^{-1}BD^{-1}C)A^{-1}\\
+ &=& (A+BD^{-1}C)^{-1}((A+BD^{-1}C)-BD^{-1}C)A^{-1}\\
+ &=& \text{右辺}.
+\end{eqnarray*}
+
+特に, $A$が$n$次正方行列で$B$を$n$次縦ベクトル$\bm{x}$, $C=\trans{\bm{x}}$, $D$を$n$次単位行列とすると
+\begin{equation}\label{inv_A_xx}
+(A+\bm{x}\trans{\bm{x}})^{-1}=A^{-1}-\frac{(A^{-1}\bm{x})(\trans{\bm{x}}A^{-1})}{1+\trans{\bm{x}}A^{-1}\bm{x}}
+\end{equation}
+が成り立つ.
+
+\subsection{正定値対称行列}
+$n$次元実対称行列$A$はある直行行列$P$を用いて常に対角化可能であった.
+$$P^{-1}AP=\diag(\lambda_1, \cdots, \lambda_n).$$
+全ての固有値が正であるとき$A$を正定値といい, $A > 0$とかく.
+全ての固有値が正または0であるとき, 半正定値といい, $A \ge 0$とかく.
+
+
+任意の実ベクトル$\bm{x}$について$\bm{y}=P\bm{x}$とおくと$\bm{x}$が$\RR^n$の全ての点をとるとき$\bm{y}$も全ての点を渡る.
+$$\quadf{A}{x}=\sum_i \lambda_i y_i^2$$
+なので$A \ge 0$ならば$\quadf{A}{x} \ge 0$. $A>0$のときは等号が成り立つのは$\bm{x}=0$のときのみである.
+
+逆に任意の$\bm{x}$について$\quadf{A}{x} \ge 0$とすると,
+$\bm{y}$として単位ベクトル$\bm{e_i}$を考えれば$\lambda_i \ge 0$. つまり$A \ge 0$.
+
+更に等号は$\bm{x}=0$のときに限るためには$\lambda_i > 0$. つまり$A>0$であることが分かる.
+まとめると
+$$ A \ge 0 \iff \quadf{A}{x} \ge 0. \mbox{ for } \forall \bm{x} \in \RR$$
+$$ A>0 \iff \mbox{上記不等式が成り立ち, 更に等号は }\bm{x}=0\mbox{ のときに限る.}$$
+
+この同値性から$A>0$, $B>0$のとき$A+B>0$. また$A^{-1}>0$も分かる.
+
+また実ベクトル$\bm{v}$に対して$A=\bm{v}\trans{\bm{v}}$とおくと,
+$A$は実対称であり, 任意の$\bm{x}$に対して
+$$\quadf{A}{x}=(\trans{\bm{v}}\bm{x})^2 \ge 0$$
+なので$A \ge 0$.
+
+\subsection{予測分布の分散}
+$S_N^{-1}=S_0^{-1} + \beta \trans{\Phi_N}\Phi_N$としたときの予測分布の分散
+$$\sigma_N^2=\frac{1}{\beta}+\trans{\phi} S_N \phi$$
+を考える. $\beta>0$であり, $S_0$は共分散行列なので実正定値であることに注意する.
+まず計画行列$\Phi_N$は$N$が一つ増える毎に1行増える. $v$を$M$次元縦ベクトルとして
+$$\trans{\Phi_{N+1}}=\bigl(\trans{\Phi_N}\text{ } v\bigr)$$
+としよう.
+すると
+$$
+S_{N+1}^{-1}
+ =S_0^{-1} + \beta(\trans{\Phi_N}\Phi_N + v\trans{v})
+ = S_N^{-1} + \beta v\trans{v}.
+$$
+行列$A=\beta v\trans{v}$は正定値であり, $S_N$に関して帰納法を使うと全ての$S_N$は正定値であることが分かる.
+
+公式\ref{inv_A_xx}を使って
+\begin{eqnarray*}
+\sigma_{N+1}^2&=&\frac{1}{\beta} + \trans{\phi}(S_N^{-1} + \beta v\trans{v})^{-1}\phi\\
+ &=& \frac{1}{\beta} + \trans{\phi}(S_N - \frac{(S_N v)(\trans{v} S_N)}{1+\trans{v}S_Nv})\phi\\
+ &=& \sigma_N^2 - z
+\end{eqnarray*}
+ここで$S_N$は対称なので
+\begin{eqnarray*}
+z &=& \trans{\phi}\frac{(S_N v)(\trans{v} S_N)}{1+\trans{v}S_Nv}\phi\\
+  &=& \frac{1}{1+\trans{v}S_Nv} (\trans{v}S_N\phi)^2.
+\end{eqnarray*}
+$S_N$は正定値なので任意の$v$に対して$\trans{v}S_Nv \ge 0$.
+よって $z \ge 0$となり
+$$\sigma_{N+1}^2 \le \sigma_N^2.$$
+
 \end{document}
