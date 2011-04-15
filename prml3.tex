@@ -84,8 +84,9 @@ $$\trans{a_i}b_j=0.$$
 
 式で書くと任意の点$\bm{t}$を$\bm{t} = \sum_i s_i a_i + \sum_i t_i b_j$と表したとすると,
 $$\bm{y}=X\bm{t}=\sum_i s_i a_i$$
-となる. 係数だけを取り出してみると
+となる. $\bm{t}$から$\bm{y}$への変換を係数だけを使って書いてみると
 $$X:(s_1, \ldots, s_N, t_1, \ldots, t_{N-M}) \rightarrow (s_1, \ldots, s_N, 0, \ldots, 0).$$
+これを見ると正射影のニュアンスがより明確になる.
 
 \subsection{行列での微分}
 
@@ -147,10 +148,10 @@ $\bm{y}$として単位ベクトル$\bm{e_i}$を考えれば$\lambda_i \ge 0$. つまり$A \ge 0$
 
 更に等号は$\bm{x}=0$のときに限るためには$\lambda_i > 0$. つまり$A>0$であることが分かる.
 まとめると
-$$ A \ge 0 \iff \quadf{A}{x} \ge 0. \mbox{ for } \forall \bm{x} \in \RR$$
-$$ A>0 \iff \mbox{上記不等式が成り立ち, 更に等号は }\bm{x}=0\mbox{ のときに限る.}$$
+$$ A \ge 0 \iff \lambda_i \ge 0 \mbox{ for } \forall i.$$
+$$ A>0 \iff \lambda_i > 0 \mbox{ for } \forall i.$$
 
-この同値性から$A>0$, $B>0$のとき$A+B>0$. また$A^{-1}>0$も分かる.
+この同値性から$A>0$のとき$A^{-1}>0$も分かる.
 
 また実ベクトル$\bm{v}$に対して$A=\bm{v}\trans{\bm{v}}$とおくと,
 $A$は実対称であり, 任意の$\bm{x}$に対して
@@ -187,4 +188,13 @@ $S_N$は正定値なので任意の$v$に対して$\trans{v}S_Nv \ge 0$.
 よって $z \ge 0$となり
 $$\sigma_{N+1}^2 \le \sigma_N^2.$$
 
+帰納法の流れを見ると,
+$$
+\trans{\Phi_N} = \bigl(\phi(x_1) \cdots \phi(x_N) \bigr)
+$$
+とおくと
+$$
+S_N^{-1}=S_0^{-1}+\beta \sum_{i=1}^N \phi(x_i)\trans{\phi(x_i)}
+$$
+となることがわかる.
 \end{document}
