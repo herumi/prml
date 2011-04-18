@@ -162,7 +162,7 @@ $$\quadf{A}{x}=(\trans{\bm{v}}\bm{x})^2 \ge 0$$
 $S_N^{-1}=S_0^{-1} + \beta \trans{\Phi_N}\Phi_N$としたときの予測分布の分散
 $$\sigma_N^2=\frac{1}{\beta}+\trans{\phi} S_N \phi$$
 を考える. $\beta>0$であり, $S_0$は共分散行列なので実正定値であることに注意する.
-まず計画行列$\Phi_N$は$N$が一つ増える毎に1行増える. $v$を$M$次元縦ベクトルとして
+まず計画行列$\Phi_N$は$N$が一つ増える毎に1行増える. $\bm{v}_N$（煩雑なので$v$と略記する）を$M$次元縦ベクトルとして
 $$\trans{\Phi_{N+1}}=\bigl(\trans{\Phi_N}\text{ } v\bigr)$$
 としよう.
 すると
@@ -171,7 +171,7 @@ S_{N+1}^{-1}
  =S_0^{-1} + \beta(\trans{\Phi_N}\Phi_N + v\trans{v})
  = S_N^{-1} + \beta v\trans{v}.
 $$
-行列$A=\beta v\trans{v}$は正定値であり, $S_N$に関して帰納法を使うと全ての$S_N$は正定値であることが分かる.
+行列$\beta v\trans{v}$は正定値であり, $S_N$に関して帰納法を使うと全ての$S_N$は正定値であることが分かる.
 
 公式\ref{inv_A_xx}を使って
 \begin{eqnarray*}
@@ -190,11 +190,15 @@ $$\sigma_{N+1}^2 \le \sigma_N^2.$$
 
 帰納法の流れを見ると,
 $$
-\trans{\Phi_N} = \bigl(\phi(x_1) \cdots \phi(x_N) \bigr)
+\trans{\Phi_N} = \bigl(\bm{v}_1 \cdots \bm{v}_N \bigr)
 $$
 とおくと
 $$
-S_N^{-1}=S_0^{-1}+\beta \sum_{i=1}^N \phi(x_i)\trans{\phi(x_i)}
+S_N^{-1}=S_0^{-1}+\beta \sum_{i=1}^N \bm{v}_i\trans{\bm{v}_i}
 $$
 となることがわかる.
+$\bm{v}_i$が基底関数のベクトルに訓練データの値を代入したものであることを考えると, 通常非負で限りなく0に近づくわけではない.
+つまりそれらの和はどんどん大きくなる. そういう状況の元では$\trans{\phi}S_N\phi$は0に近づき,
+$$\sigma_N^2 \rightarrow \frac{1}{\beta}$$
+となる.
 \end{document}
