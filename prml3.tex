@@ -1,6 +1,7 @@
 \documentclass[a4paper]{jsarticle}
 \usepackage{amsmath,amssymb}
 \usepackage{bm}
+\usepackage[dvips]{graphicx}
 
 \include{notation}
 
@@ -13,10 +14,6 @@
 
 \section{概要}
 この文章は『パターン認識と機械学習』（以下PRML）の3章を理解するために必要な数学をまとめてみたものです.
-
-いくつかの定理は証明せずに認めますが, 可能な限りself-containedであることを目指してみました.
-概ねPRMLに従ってますが, 違う方法をとっているところもあります.
-
 間違い, 質問などございましたら, {\tt herumi@nifty.com}または{\tt twitterID:herumi}までご連絡ください.
 
 \section{最小二乗法}
@@ -239,4 +236,134 @@ $S(x)=0$となる$x$は0のときだけだから,
 
 真のモデル$p(D|M)$があったときに, モデルエビデンス$p(D|M')$との
 カルバック距離$\mathrm{KL}(p(D|M)||p(D|M'))$は0に近いほど真のモデルに近そうだということにする.
+
+\subsection{エビデンス関数の評価の式変形}
+$A=\alpha I + \beta \trans{\Phi}\Phi$とおくと
+\begin{eqnarray*}
+E(w) &=& \frac{\beta}{2}||t-\Phi w||^2+\frac{\alpha}{2}\trans{w}w\\
+     &=& \frac{1}{2}\trans{w}(\alpha I + \beta \trans{\Phi}\Phi)w-\beta \trans{t}\Phi w+\frac{\beta}{2}||t||^2\\
+     &=& \frac{1}{2}\trans{w}Aw-\beta \trans{w}\trans{\Phi} t+\frac{\beta}{2}||t||^2.
+\end{eqnarray*}
+ここで一般に対称行列$A$とベクトル$w$, $m$について
+$$
+\frac{1}{2}\trans{(w-m)}A(w-m)=\frac{1}{2}\trans{w}Aw-\trans{w}Am+\frac{1}{2}\trans{m}Am.
+$$
+この関数は$w=m$のとき最小値0をとる.
+
+二つを比較することで$E(w)$は$\beta\trans{\Phi}t=Am$, つまり
+$$
+w=m_N=\beta A^{-1}\trans{\Phi}t
+$$
+のとき最小となる. 最小値は元の$E(w)$の式に$w=m_N$を代入すれば得られ,
+$$
+E(m_N)=\frac{\beta}{2}||t-\Phi m_N||^2+\frac{\alpha}{2}\trans{m_N} m_N.
+$$
+つまり
+$$
+E(w)=\frac{1}{2}\trans{(w-m_N)}A{(w-m_N)} + E(m_N)
+$$
+と平方完成できる.
+
+よって
+\begin{eqnarray*}
+E(w) &=& \int \exp(-E(w))\,dw \\
+     &=& \exp(-E(m_N)) \int \exp(-\frac{1}{2}\trans{(w-m_N)}A{(w-m_N)})\,dw\\
+     &=& \exp(-E(m_N)) (2\pi)^{M/2} |A|^{-1/2}.
+\end{eqnarray*}
+
+従って
+\begin{eqnarray}\label{log_evidence}
+\log p(\bm{t}|\alpha,\beta)
+ &=& (N/2) \log(\frac{\beta}{2\pi}) + (M/2) \log(\frac{\alpha}{2\pi}) \log (\int \exp(-E(w))\,dw)\\
+ &=& (M/2)\log \alpha + \frac{N}{2} \log \beta - E(m_N) - \frac{1}{2}\log |A| - \frac{N}{2} \log (2\pi).
+\end{eqnarray}
+
+
+\subsection{ヘッセ行列}
+$x$が$n$次縦ベクトルのとき, $y=f(x)$における2階微分の$n$次正方行列
+$$
+H(f)=(\frac{\partial^2}{\partial x_i x_j}f(x))
+$$
+をヘッセ行列という.
+通常偏微分は可換なので, これは対称行列である.
+
+1階微分の行列（ヤコビ行列）の行列式はその点の付近の拡大率を表していた.
+ヘッセ行列はその点の付近の関数の形を表す.
+たとえば正定値な場合は極小, 固有値が全て負の場合は極大, 固有値が正と負の両方の場合は鞍点となる.
+
+$f=x^2-y^2$, $g=x^2+y^2$というグラフを見てみよう.
+図\ref{x2my2}は原点で鞍点, 図\ref{x2py2}は原点で極小である.
+それぞれヘッセ行列は
+$$
+H(f)=\matt{2}{0}{0}{-2},
+$$
+$$
+H(g)=\matt{2}{0}{0}{2}
+$$
+となり, ヘッセ行列が原点での形に対応していることが分かる.
+
+\begin{figure}[ht]
+ \begin{minipage}{0.5\hsize}
+  \begin{center}
+   \includegraphics[scale=0.3]{x2my2.ps}
+  \end{center}
+  \caption{$f=x^2-y^2$}
+  \label{x2my2}
+ \end{minipage}
+ \begin{minipage}{0.5\hsize}
+  \begin{center}
+   \includegraphics[scale=0.3]{x2py2.ps}
+  \end{center}
+  \caption{$g=x^2+y^2$}
+  \label{x2py2}
+ \end{minipage}
+\end{figure}
+
+\subsection{エビデンス関数の最大化の式変形}
+行列$\beta\trans{\Phi}\Phi$をある行列$P$で対角化する.
+$$
+P^{-1} (\beta\trans{\Phi}\Phi) P = \diag(\lambda_1, \ldots, \lambda_M).
+$$
+すると行列$A=\alpha I + \beta\trans{\Phi}\Phi$も同じ$P$で対角化できて
+$$
+P^{-1} A P = \diag(\alpha + \lambda_1, \ldots, \alpha + \lambda_M).
+$$
+よって
+$$
+|A|=\prod_{i=1}^M(\lambda_i + \alpha)
+$$
+となる. $\alpha$で微分すると
+$$
+\diff{\alpha}\log |A|=\sum_{i=1}^M \frac{1}{\lambda_i + \alpha}.
+$$
+式\ref{log_evidence}を$\alpha$で微分すると
+$$
+\diff{\alpha} \log p(\bm{t}|\alpha,\beta)=\frac{M}{2\alpha}-\frac{1}{2}\trans{m_N}m_N - \frac{1}{2}\sum \frac{1}{\lambda_i + \alpha}=0.
+$$
+よって
+$$
+\alpha \trans{m_N}m_N = M-\sum_{i=1}^M \frac{\alpha}{\lambda_i + \alpha}=\sum_{i=1}^M \frac{\lambda_i}{\lambda_i + \alpha}.
+$$
+これを$\gamma$とおくと
+$$
+\alpha=\frac{\gamma}{\trans{m_N}m_N}.
+$$
+
+$\beta$についても同様にしてみる. $\beta\trans{\Phi}\Phi$の固有値が$\lambda_i$だから$\lambda_i$は$\beta$に比例する.
+比例係数は
+$$
+\diff{\beta} \lambda_i = \frac{\lambda_i}{\beta}.
+$$
+よって
+$$
+\diff{\beta} \log |A| = \sum \frac{\lambda_i/\beta}{\lambda_i + \alpha}=\frac{\gamma}{\beta}.
+$$
+式\ref{log_evidence}を$\beta$で微分すると
+$$
+\frac{N}{2\beta} - \frac{1}{2}||\bm{t}-\Phi m_N||^2-\frac{\gamma}{2\beta}=0.
+$$
+よって
+$$
+\frac{1}{\beta}=\frac{1}{N-\gamma}||\bm{t}-\Phi m_N||^2.
+$$
 \end{document}
