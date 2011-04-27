@@ -14,12 +14,11 @@
 
 \section{概要}
 この文章は『パターン認識と機械学習』（以下PRML）の3章を理解するために必要な数学をまとめてみたものです.
-間違い, 質問などございましたら, {\tt herumi@nifty.com}または{\tt twitterID:herumi}までご連絡ください.
+間違い, 質問などございましたら{\tt herumi@nifty.com}または{\tt twitterID:herumi}までご連絡ください.
 
 \section{最小二乗法}
 
 \subsection{微分の復習}
-
 $\bm{x}$, $\bm{y}$を縦ベクトルとして
 $$\diff{\bm{x}} (\trans{\bm{x}}\bm{y}) = \bm{y}.$$
 $$\diff{\bm{y}} (\trans{\bm{x}}\bm{y}) = \bm{x}.$$
@@ -31,31 +30,24 @@ $$\diff{\bm{y}} (\trans{\bm{x}}\bm{y}) = \bm{x}.$$
 \subsection{誤差関数の最小化}
 
 $$f(\bm{w})=\sum_{n=1}^N\{t_n - \trans{\bm{w}}\phi(\bm{x}_n)\}^2+\lambda \trans{\bm{w}}\bm{w}$$
-
 とする. ここで$\bm{w}$と$\phi(\bm{x}_n)$は$M$次元縦ベクトルである.
-
 $$\trans{\Phi}=(\phi(\bm{x}_1) \cdots \phi(\bm{x}_N))$$
 とおく. $\Phi$は$N$行$M$列の行列である. $f(\bm{w})$を$w$で微分しよう.
-
 $$\diff{\bm{w}}f(\bm{w})
 = 2\sum_{n=1}^N\{t_n - \trans{\bm{w}}\phi(\bm{x}_n)\}(-\phi(\bm{x}_n)) +2\lambda \bm{w}.$$
-
 一般に縦ベクトル$\bm{x}$, $\bm{y}$に対して
 $$(\trans{\bm{x}}\bm{y})\bm{y}
  =(\trans{\bm{y}}{\bm{x}})\bm{y}
  =\bm{y}(\trans{\bm{y}}\bm{x})
  =(\bm{y}\trans{\bm{y}})\bm{x}
 $$だから$\bm{t}=\trans{(t_1, \ldots, t_N)}$とおくと
-
 \begin{eqnarray*}
 \frac{1}{2}\diff{\bm{w}}f(\bm{w})
  &=& -\sum_n t_n \phi(\bm{x}_n) + \sum_n (\phi(\bm{x}_n)\trans{\phi(\bm{x}_n)})\bm{w} + \lambda \bm{w}\\
  &=& -\trans{\Phi} \bm{t} + \trans{\Phi}\Phi \bm{w} + \lambda \bm{w}\\
  &=& -\trans{\Phi} \bm{t} + (\trans{\Phi}\Phi + \lambda I)\bm{w}=0.	
 \end{eqnarray*}
-
 よって$\det(\lambda I + \trans{\Phi}\Phi)\ne0$のとき
-
 $$\bm{w}_{\text{ML}}=(\lambda I + \trans{\Phi}\Phi)^{-1}\trans{\Phi}\bm{t}$$
 が最尤解. $\bm{y}=\Phi \bm{w}$が予測値である.
 
@@ -78,7 +70,6 @@ $$\trans{a_i}b_j=0.$$
 つまり$X$は部分空間$\langle b_1, \ldots, b_{N-M} \rangle$の点を0につぶす.
 
 二つ合わせると, $X$は任意の点を部分空間$V$方向につぶす写像, つまり$V$への正射影写像と解釈できる.
-
 式で書くと任意の点$\bm{t}$を$\bm{t} = \sum_i s_i a_i + \sum_i t_i b_j$と表したとすると,
 $$\bm{y}=X\bm{t}=\sum_i s_i a_i$$
 となる. $\bm{t}$から$\bm{y}$への変換を係数だけを使って書いてみると
@@ -135,14 +126,12 @@ $$P^{-1}AP=\diag(\lambda_1, \cdots, \lambda_n).$$
 全ての固有値が正であるとき$A$を正定値といい, $A > 0$とかく.
 全ての固有値が正または0であるとき, 半正定値といい, $A \ge 0$とかく.
 
-
 任意の実ベクトル$\bm{x}$について$\bm{y}=P\bm{x}$とおくと$\bm{x}$が$\RR^n$の全ての点をとるとき$\bm{y}$も全ての点を渡る.
 $$\quadf{A}{x}=\sum_i \lambda_i y_i^2$$
 なので$A \ge 0$ならば$\quadf{A}{x} \ge 0$. $A>0$のときは等号が成り立つのは$\bm{x}=0$のときのみである.
 
 逆に任意の$\bm{x}$について$\quadf{A}{x} \ge 0$とすると,
 $\bm{y}$として単位ベクトル$\bm{e_i}$を考えれば$\lambda_i \ge 0$. つまり$A \ge 0$.
-
 更に等号は$\bm{x}=0$のときに限るためには$\lambda_i > 0$. つまり$A>0$であることが分かる.
 まとめると
 $$ A \ge 0 \iff \lambda_i \ge 0 \mbox{ for } \forall i.$$
@@ -250,7 +239,6 @@ $$
 \frac{1}{2}\trans{(w-m)}A(w-m)=\frac{1}{2}\trans{w}Aw-\trans{w}Am+\frac{1}{2}\trans{m}Am.
 $$
 この関数は$w=m$のとき最小値0をとる.
-
 二つを比較することで$E(w)$は$\beta\trans{\Phi}t=Am$, つまり
 $$
 w=m_N=\beta A^{-1}\trans{\Phi}t
@@ -302,7 +290,6 @@ $$
 H(g)=\matt{2}{0}{0}{2}
 $$
 となり, ヘッセ行列が原点での形に対応していることが分かる.
-
 \begin{figure}[ht]
  \begin{minipage}{0.5\hsize}
   \begin{center}
@@ -352,9 +339,9 @@ $$
 ただし, $m_N$は陰に$\alpha$に依存しているのでこれは実は$\alpha$を含む方程式である.
 
 $\beta$についても同様にしてみる. $\beta\trans{\Phi}\Phi$の固有値が$\lambda_i$だから$\lambda_i$は$\beta$に比例する.
-比例係数は
+つまり微分が比例係数に等しい.
 $$
-\diff{\beta} \lambda_i = \frac{\lambda_i}{\beta}.
+\diff{\beta} \lambda_i = \lambda_i/\beta.
 $$
 よって
 $$
@@ -371,8 +358,6 @@ $$
 
 \subsection{パラメータの関係}
 パラメータがたくさんでてきたのでそれらの関係を見直してみよう.
-この節は数学的な厳密さを問わない.
-
 まず線形基底モデルを考えた. $\phi(x)$を$M$個の基底関数からなるベクトルとする.
 $x$は観測値であり,
 $$
@@ -410,11 +395,11 @@ p(t|\bm{t}) \sim \int p(t|w,\hat{\beta})p(w|\bm{t},\hat{\alpha},\hat{\beta})\,dw
 $$
 となり予測分布は$\hat{\alpha}$, $\hat{\beta}$を求めればよいということになる.
 
-次に$\alpha$, $\beta$を求める方法を考える.
+次に$\alpha$, $\beta$を求める方法を考える. ベイズの定理から
 $$
 p(\alpha,\beta|\bm{t}) \propto p(\bm{t}|\alpha,\beta)p(\alpha,\beta)
 $$
-である. ここで$p(\alpha,\beta)$はほぼ平坦, つまり$\alpha$, $\beta$の値によって変動しないという仮定を置く.
+となる. ここで$p(\alpha,\beta)$はほぼ平坦, つまり$\alpha$, $\beta$の値によって変動しないという仮定を置く.
 
 そうすると事後分布を最大化する$\alpha$, $\beta$を求める最尤推定の問題は, 尤度関数を最大化する問題に近似できる.
 この尤度関数をエビデンスといい, この手法をエビデンス近似という.
@@ -422,12 +407,11 @@ $$
 
 以上のパラメータの関係を図\ref{para-dep}に示した.
 実際には, 初期値$\alpha$, $\beta$を適当に決め, この図に従って計算して新しい$\alpha$, $\beta$を求めたあと再度繰り返す.
-それが収束すればその値を採用する.
-
+それが収束すればその値を採用する. ここではその収束性については議論しない.
 \begin{figure}[ht]
  \begin{minipage}{1\hsize}
   \begin{center}
-   \includegraphics[bb=0 0 300 250]{para-dep.pdf}
+   \includegraphics[bb=0 0 260 215]{para-dep.pdf}
   \end{center}
   \caption{$\alpha$,$x$,$\phi$,$t$,$\beta$の関係図}
   \label{para-dep}
