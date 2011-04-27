@@ -367,8 +367,8 @@ $$
 $$
 p(\bm{t}|w,\beta)=N(t|y(x,w),\beta^{-1}).
 $$
-ベイズ的に扱うために$w$に関して事前確率分布を与えたいのだが, 上式が$w$に関する2次関数なので,
-共役事前分布としてパラメータ$\alpha$を導入し,
+ベイズ的に扱うために$w$に関して事前確率分布を与えたい. 上式が$w$に関する2次関数なので,
+共役事前分布としてハイパーバラメータ$\alpha$を導入し,
 $$
 p(w|\alpha)=N(w|0, \alpha^{-1}I)
 $$
@@ -378,8 +378,8 @@ p(w|t)=N(w|m_N,S_N)
 $$
 の形（ただし, $m_N=\beta S_N\trans{\Phi}t$, $S_N^{-1}=\alpha I + \beta \trans{\Phi}\Phi$）になった.
 
-さて, ここで$\alpha$, $\beta$を単なるパラメータとして扱うのではなく, 事前分布を入れて確率的に扱いたい.
-そういうときはハイパーパラメータと呼ぶ. そしてパラメータを実際のデータから決めるという枠組みを経験ベイズという.
+さて, ここで$\alpha$, $\beta$はハイパーパラメータではあるが, 事前分布を入れて確率変数的に扱いたい.
+その上で最尤推定の手法を用いて実際のデータから値を決めるという枠組みを経験ベイズという.
 そのとき$t$の予測分布は
 $$
 p(t|\bm{t})=\int p(t|w,\beta)p(w|\bm{t},\alpha,\beta)p(\alpha,\beta|\bm{t})\,dwd\alpha d\beta
@@ -411,7 +411,8 @@ $$
 \begin{figure}[ht]
  \begin{minipage}{1\hsize}
   \begin{center}
-   \includegraphics[bb=0 0 260 215]{para-dep.pdf}
+%   \includegraphics[bb=0 0 360 270]{para-dep.pdf}
+   \includegraphics[bb=0 0 260 220]{para-dep.pdf}
   \end{center}
   \caption{$\alpha$,$x$,$\phi$,$t$,$\beta$の関係図}
   \label{para-dep}
