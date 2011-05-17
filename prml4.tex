@@ -4,6 +4,8 @@
 
 \include{notation}
 
+\newcommand{\bmm}{\bm {m}}
+
 \begin{document}
 
 \title{PRMLの4章のための数学}
@@ -109,4 +111,143 @@ $$\diff{W}E_D(W)=\trans{X}(XW-T).$$
 $=0$とおいて
 $\trans{X}XW = \trans{X}T$より
 $$W=(\trans{X}X)^{-1}\trans{X}T.$$
+
+\section{フィッシャーの線形判別}
+まず$D$次元のベクトル$x$の入力に対して$y=\trans{w}x$で1次元に射影する.
+$y \ge w_0$なら$C_1$, そうでないなら$C_2$に分類する.
+$C_1$の点が$N_1$個, $C_2$の点が$N_2$個とする.
+$C_i$の点の平均は
+$$\bmm_i=\frac{1}{N_i}\sum_{n \in C_i} x_n.$$
+
+$m_i=\trans{w}\bm{m_i}$として, $|w|^2=\sum_i w_i^2=1$の制約下で
+$$
+m_2 - m_1=\trans{w}(\bmm_2-\bmm_1)
+$$
+を最大化してみよう.
+$$
+f(w)=\trans{w}(\bmm_2-\bmm_1)+\lambda(1-|w|^2)
+$$
+とおくと
+$$
+\diff{w}f=\bmm_2-\bmm_1-2\lambda w = 0.
+$$
+よって
+$$
+w=\frac{1}{2\lambda}(\bmm_2-\bmm_1) \propto (\bmm_2-\bmm_1).
+$$
+$$
+\diff{\lambda}f=1-|w|^2=0
+$$
+より$|w|=1$. ただしこの手法ではそれぞれのクラスの重心$\bmm_1$と$\bmm_2$とだけで$w$の向きが決まってしまい,
+場合によっては二つのクラスの射影が大きく重なってうまく分離できないことがある.
+そこでクラス間の重なりを最小にするように分散も加味してみる.
+
+クラス$C_k$から射影されたデータのクラス内の分散を
+$$
+y_n=\trans{w}x_n, s_k^2=\sum_{n\in C_k}(y_n-m_k)^2
+$$
+で定義し, 全データに対する分散を$s_1^2+s_2^2$とする.
+
+フィッシャーの判別基準は
+$$
+J(w)=\frac{(m_2-m_1)^2}{s_1^2+s_2^2}
+$$
+で定義される. この定義を書き直してみよう.
+$$
+S_B=(\bmm_2-\bmm_1)\trans{(\bmm_2-\bmm_1)},
+$$
+$$
+S_W=\sum_{n \in C_1}(x_n-\bmm_1)\trans{(x_n-\bmm_1)}+\sum_{n \in C_2}(x_n-\bmm_2)\trans{(x_n-\bmm_2)}
+$$
+とする. $S_B$をクラス間共分散行列, $S_W$を総クラス内共分散行列という.
+
+$\trans{w}S_B w=\trans{w}(\bmm_2-\bmm_1)\trans{(\bmm_2-\bmm_1)}w=(m_2-m_1)^2$.
+$$
+\trans{w}S_W w=\trans{w}\sum_{n \in C_1}(x_n-\bmm_1)\trans{(x_n-\bmm_1)}w+\trans{w}\sum_{n \in C_2}(x_n-\bmm_2)\trans{(x_n-\bmm_2)}w
+=\sum_{n\in C_1} (y_n-m_1)^2+\sum_{n\in C_2}(y_n-m_2)^2
+$$
+より
+$$
+J(w)=\frac{\trans{w}S_B w}{\trans{w} S_W w}.
+$$
+これが最大となる$w$の値を求めてみよう. 大きさはどうでもよくて向きが重要である.
+$$
+\diff{w}J(w)=(2 (S_B w)(\trans{w} S_W w) - 2 (\trans{w} S_B w) (S_W w))/(\trans{w}S_W w)^2=0.
+$$
+よって
+$$
+(\trans{w}S_B w)S_w w = (\trans{w} S_W w)S_B w.
+$$
+$S_B w = (\bmm_2-\bmm_1)(\trans{(\bmm_2-\bmm_1)}w)\propto (\bmm_2-\bmm_1)$だから
+$$
+w \propto S_W^{-1}S_B w \propto S_W^{-1}(\bmm_2-\bmm_1)
+$$
+のときに$J(w)$が最大となる. これをフィッシャーの線形判別（linear discriminant）という.
+
+\section{最小二乗との関連}
+\begin{itemize}
+\item 最小二乗法：目的変数の値の集合にできるだけ近いように
+\item フィッシャーの判別基準：クラスの分離を最大化するように
+\end{itemize}
+2クラスの分類のときは最小二乗の特別な場合がフィッシャーの判別基準であることをみる.
+フィッシャーの判別基準が, 最小二乗と関係があることが分かるとそちらの議論が使えていろいろ便利なことがある.
+
+クラス$C_i$に属するパターンの個数を$N_i$として全体を$N=N_1+N_2$とする.
+クラス$C_1$に対する目的変数値を$N/N_1$, クラス$C_2$に対する目的変数値を$-N/N_2$とする.
+
+この条件下で二乗和誤差
+$$E=\frac{1}{2}\sum_{n=1}^N(\trans{w}x_n+w_0-t_n)^2$$
+を最大化してみよう.
+$$
+\diff{w_0}E=\sum(\trans{w}x_n+w_0-t_0)=0
+$$
+より$\bmm=(1/N)\sum x_n$とおくと$N \trans{w}m+N w_0 - \sum t_n=0$.
+$$\sum t_n=N1(N/N_1) + N_2(-N/N_2)=0$$
+より$w_0=-\trans{w}\bmm$. また
+$$
+\sum(\trans{w}x_n)x_n=\sum(\trans{x_n}w)x_n=\sum(x_n \trans{x_n})w.
+$$
+$$
+\sum w_0 x_n = N w_0 \bmm = -N(\trans{w}\bmm)\bmm=-N(\bmm \trans{\bmm})w.
+$$
+$$
+\sum t_n x_n = \sum_{n\in C_1} t_n x_n + \sum_{n\in C_2} t_n x_n
+= N/N_1(N_1 \bmm_1)+(-N/N_2)(N2 \bmm_2)=N(\bmm_1-\bmm_2).
+$$
+よって
+$$
+\diff{w}E=\sum(\trans{w}x_n + w_0-t_n)x_n=0
+$$
+を使うと
+$$
+\sum(x_n \trans{x_n})w=N(\bmm \trans{\bmm})w+N(\bmm_1-\bmm_2).
+$$
+これらの式を使って$S_w$を計算する.
+\begin{eqnarray*}
+S_W &=& \sum_{n\in C_1} x_n\trans{x_n}-2\sum_{C_1} x_n \trans{\bmm_1}+\sum_{C_1} \bmm_1\trans{\bmm_1} + \sum_{C_2} x_n\trans{x_n} - 2\sum_{C_2} x_n\trans{\bmm_2} + \sum_{C_2} \bmm_2 \trans{\bmm_2}\\
+ &=&\sum x_n\trans{x_n}-N_1 \bmm_1 \trans{\bmm_1}-N_2 \bmm_2\trans{\bmm_2}\\
+ &=&N(\bmm \trans{\bmm})w+N(\bmm_1-\bmm_2)-N_1 \bmm_1 \trans{\bmm_1}-N_2 \bmm_2\trans{\bmm_2}.
+\end{eqnarray*}
+よって
+$$
+(S_W+\frac{N_1 N_2}{N}S_B)w=N(\bmm_1-\bmm_2)+\{N\bmm \trans{\bmm}-N_1\bmm_1 \trans{\bmm_1}-N_2 \bmm_2 \trans{\bmm_2}+\frac{N_1 N_2}{N} (\bmm_1 -\bmm_2)\trans{(\bmm_1-\bmm_2)}\}w.
+$$
+
+$\{\}$内が0であることを示す（めんどうなので$\bmm_i$を$m_i$と略する）.
+\begin{eqnarray*}
+\{\}
+&=& \frac{1}{N}(N_1 m_1+N_2 m_2)\trans{(N_1 m_1+N_2 m_2)}-N_1 m_1\trans{m_1}-N_2 m_2\trans{m_2}+\frac{N_1 N_2}{N}(m_1 \trans{m_2}+m_2 \trans{m_2})\\
+&=& (\frac{N_1^2}{N}-N_1+\frac{N_1 N_2}{N})m_1\trans{m_1}+(\frac{2}{N} N_1 N_2 - \frac{2}{N}N_1 N_2)m_1\trans{m_2}+(\frac{N_2^2}{N}-N_2+\frac{N_1 N_2}{N})m_2 \trans{m_2}.
+\end{eqnarray*}
+$$
+\frac{N_1^2}{N}-N_1+\frac{N_1 N_2}{N}=\frac{N_1}{N}(N_1-N+N_2)=0,
+$$
+$$
+\frac{N_2^2}{N}-N_2+\frac{N_1 N_2}{N}=\frac{N_2}{N}(N_2-N+N_1)=0.
+$$
+よって
+$$
+(S_W+\frac{N_1 N_2}{N}S_B)w=N(\bmm_1-\bmm_2).
+$$
+$S_Bw\propto(\bmm_2 -\bmm_1)$なので$w \propto S_W^{-1}(\bmm_2 - \bmm_1)$.
 \end{document}
