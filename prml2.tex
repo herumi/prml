@@ -120,21 +120,21 @@ $a=1/(2\sigma^2)$と置き換えることで
 
 式(\ref{int_exp})は正規化項が$\sqrt{2\pi}\sigma$であることを示している.
 つまりガウス分布を
-$$N(x|\mu, \sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}\exp(-\frac{1}{2\sigma^2}(x-\mu)^2)$$
+$${\cal N}(x|\mu, \sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}\exp(-\frac{1}{2\sigma^2}(x-\mu)^2)$$
 とすると
-$$\int_{-\infty}^\infty N(x|\mu, \sigma^2) \,dx=1.$$
+$$\int_{-\infty}^\infty {\cal N}(x|\mu, \sigma^2) \,dx=1.$$
 
 平均は
-$$x N(x|\mu, \sigma^2) = (x-\mu) N(x|\mu, \sigma^2) + \mu N(x|\mu, \sigma^2)$$
+$$x {\cal N}(x|\mu, \sigma^2) = (x-\mu) {\cal N}(x|\mu, \sigma^2) + \mu {\cal N}(x|\mu, \sigma^2)$$
 
 とわけると, 第1項は$(x-\mu)$に関して奇関数なので積分すると消えて
-$$\EE[x]=\int_{-\infty}^\infty x N(x|\mu, \sigma^2) \,dx=\mu.$$
+$$\EE[x]=\int_{-\infty}^\infty x {\cal N}(x|\mu, \sigma^2) \,dx=\mu.$$
 
 分散は$x^2=(x-\mu)^2+2\mu(x-\mu)+\mu^2$なので積分すると第1項は式(\ref{int_xx})より$\sigma^2$.
 第2項は0. 第3項は$\mu^2$.
 
 よって
-$$\EE[x^2]=\int_{-\infty}^\infty x^2 N(x|\mu, \sigma^2) \,dx=\sigma^2 + \mu^2.$$
+$$\EE[x^2]=\int_{-\infty}^\infty x^2 {\cal N}(x|\mu, \sigma^2) \,dx=\sigma^2 + \mu^2.$$
 
 \section{線形代数}
 
@@ -416,7 +416,7 @@ $$f(\bm{z})
 $$\int f(\bm{z})\,d\bm{z}
 =\prod_{i=1}^n \sqrt{2\pi\lambda_i} = \sqrt{2\pi}^n \sqrt{|A|}.$$
 よって
-$$N(\bm{x}|\bm{\mu}, A)
+$${\cal N}(\bm{x}|\bm{\mu}, A)
   =\frac{1}{\sqrt{2\pi}^n} \frac{1}{\sqrt{|A|}}\exp(-\frac{1}{2}\trans{(\bm{x-\mu})}A^{-1}(\bm{x-\mu}))$$
 とすると正規化されている.
 これが多変量版のガウス分布である.
@@ -436,7 +436,7 @@ $$\bm{x}\trans{\bm{x}}
  +\bm{\mu}\trans{\bm{y}}\trans{P}
  +\bm{\mu}\trans{\bm{\mu}}.$$
 
-これに$N(\bm{x}|\bm{\mu}, A)$をかけた値を積分するわけだが, 第2項, 第3項は奇関数になるので0.
+これに${\cal N}(\bm{x}|\bm{\mu}, A)$をかけた値を積分するわけだが, 第2項, 第3項は奇関数になるので0.
 第4項は$\bm{\mu}\trans{\bm{\mu}}$が定数に出る.
 
 第1項を考えよう: $P=(\bm{p_1}, \cdots, \bm{p_n})$とすると
