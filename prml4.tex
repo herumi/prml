@@ -416,5 +416,73 @@ $$
 \mu_2=\frac{1}{N_2}\sum (1-t_n)x_n.
 $$
 
-最後に$A$に関する最尤解を求める.
+最後に$A$に関する最尤解を求める. $A$に関する部分の対数は
+
+\begin{eqnarray*}
+ && -\frac{1}{2}\sum_{n=1}^N(t_n \log |A|+t_n \trans{(x_n-\mu_1)}A^{-1}(x_n-\mu_1)+(1-t_n) \log |A|+(1-t_n)\trans{(x_n-\mu_2)}A^{-1}(x_n-\mu_2))\\
+ &=& -\frac{N}{2}\log |A| - \frac{1}{2} \tr(\sum_{n=1}^N(t_n A^{-1}(x_n -\mu_1)\trans{(x_n-\mu_1)}+(1-t_n)A^{-1}(x_n-\mu_2)\trans{(x_n-\mu_2)}))\\
+ &=& -\frac{N}{2}\log |A| -\frac{1}{2} \tr(A^{-1}(\sum_{n\in C_1}(x_n-\mu_1)\trans{(x_n-\mu_1)}+\sum_{n\in C_2}(x_n-\mu_2)\trans{(x_n-\mu_2)}))\\
+ &=& -\frac{N}{2}\log |A| -\frac{1}{2} \tr(A^{-1}(N_1 S_1 + N_2 S_2))\\
+ &=& -\frac{N}{2}\log |A| -\frac{N}{2} \tr(A^{-1}S)
+\end{eqnarray*}
+ここで最後の式変形に
+$$
+S_i=\frac{1}{N_i}\sum_{n\in C_i}(x_n-\mu_i)\trans{(x_n-\mu_i)}, S=\frac{N_1}{N}S_1+\frac{N_2}{N} S_2
+$$
+を用いた. これを$A$で微分する.
+{\tt prml2.pdf}で示した行列式の対数の微分の公式（2）：
+$$
+\diff{A}\log|A|=\trans{(A^{-1})}
+$$
+と13ページで示した式：
+$$
+\diff{A}\tr(A^{-1}B)=-\trans{(A^{-1}BA^{-1})}
+$$
+を使うと
+$$
+-\frac{N}{2}(\trans{(A^{-1})}-\trans{(A^{-1}SA^{-1})})=0.
+$$
+よって$A=S$となる. これは2クラスの各クラスの共分散行列の重みつき平均である.
+
+\section{ロジスティック回帰}
+2クラス分類問題において, ある程度一般的な仮定の元で$C_1$の事後確率を
+$$
+p(C_1|\phi)=y(\phi)=\sigma(\trans{w}\phi)
+$$
+とかけた. もちろん$p(C_2|\phi)=1-p(C_1|\phi)$である.
+この関数を使うモデルをロジスティック回帰（logistic regression）という.
+このモデルにおけるパラメータを最尤法で求める.
+$$
+\sigma(x)=\frac{1}{1+e^{-x}}
+$$
+としたとき
+$$
+\sigma'(x)
+=-\frac{e^{-x}}{(1+e^{-x})^2}
+=\frac{e^{-x}}{(1+e^{-x})^2}
+=\frac{1}{1+e^{-x}}(1-\frac{1}{1+e^{-x}})
+=\sigma(x)(1-\sigma(x)).
+$$
+データ集合$\{\phi_n, t_n\}$, $t_n\in \{0,1\}$, $\phi_n=\phi(x_n)$, $n=1, \ldots, N$,
+$t=\trans{(t_1, \ldots, t_N)}$, $y_n=p(C_1|\phi_n)=\sigma(a_n)$, $a_n=\trans{w}\phi_n$とする.
+尤度関数は
+$$
+p(t|w)=\prod_{n=1}^N y_n^{t_n}(1-y_n)^{1-t_n}.
+$$
+誤差関数は
+$$
+E(w)=-\log p(t|w)=-\sum(t_n \log y_n + (1-t_n) \log (1-y_n)).
+$$
+$w$で微分してみよう.
+まず
+$$
+\diff{w}y_n=\sigma'(a_n) \phi_n=y_n(1-y_n) \phi_n.
+$$
+よって
+\begin{eqnarray*}
+\diff{w}E &=&-\sum(t_n (1-y_n)\phi_n + (1-t_n)(-y_n)\phi_n)\\
+ &=& \sum(-t_n+t_n y_n+y_n-y_n t_n)\phi\\
+ &=& \sum(y_n-t_n)\phi_n.
+\end{eqnarray*}
+$y_n-t_n$は目的値とモデルの予測値の誤差なので, 線形回帰モデルのときと同じ形.
 \end{document}
