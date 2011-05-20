@@ -553,6 +553,43 @@ $$
 $$
 つまり重み付け対角行列$R$の対角成分は分散である.
 
+\section{Jensenの不等式}
+実数上の実数値関数$f(x)$が凸関数であるとする.
+すなわち任意の$x$, $y$, $0 \le t \le 1$に対して
+$$
+tf(x) + (1-t)f(y) \ge f(tx+(1-t)y)
+$$
+である.
+
+$p_1, \ldots, p_n$を足して1になる非負の数, すなわち$\sum_{i=1}^n p_i=1$, $p_i \ge 0$とする.
+
+このとき$n$個の任意の実数$x_1, \ldots, x_n$に対して
+$$
+\sum_{i=1}^n p_i f(x_i) \ge f(\sum_{i=1}^n p_i x_i).
+$$
+これをJensenの不等式という.
+
+証明は数学的帰納法を使う.
+$n=1$のときは自明. $n$のとき成り立つとし,
+$$
+\sum_{i=1}^{n+1} p_i=1
+$$
+とする.
+$q=\sum_{i=1}^n p_i$とおくと$q + p_{n+1}=1$.
+$q=0$のときは$p_{n+1}=1$となり上記不等式は自明になりたつ.
+よって$q \ne 0$とすると
+$$
+\sum_{i=1}^n (p_i/q) = 1
+$$
+\begin{eqnarray*}
+\sum_{i=1}^{n+1} p_i f(x_i) &=& q \sum_{i=1}^n (p_i/q) f(x_i) + p_{n+1} f(x_{n+1})\\
+ &&{\text 帰納法の仮定を用いて}\\
+ &\ge& q f(\sum_{i=1}^n (p_i/q) x_i) + p_{n+1} f(x_{n+1})\\
+ &&f{\text が凸関数であることを用いて}\\
+ &\ge& f(q (\sum_{i=1}^n (p_i/q) x_i) + p_{n+1}x_{n+1})\\
+ &=& f(\sum_{i=1}^{n+1} p_i x_i).
+\end{eqnarray*}
+
 \section{多クラスロジスティック回帰}
 多クラス分類の事後確率を
 $$
@@ -560,7 +597,7 @@ p(C_k|\phi)=y_k(\phi)=\frac{\exp(a_k)}{\sum_j \exp(a_j)}, a_k=\trans{w_k}\phi
 $$
 で与えたときに最尤法を用いて直接$w_k$を求めよう.
 $$
-\diff{a_k}y_k=\frac{\exp(a_k)(\sum \exp(a_j))-exp(a_k)exp(a_k)}{(\sum \exp(a_j))^2}=y_k-y_k^2.
+\diff{a_k}y_k=\frac{\exp(a_k)(\sum \exp(a_j))-\exp(a_k)\exp(a_k)}{(\sum \exp(a_j))^2}=y_k-y_k^2.
 $$
 $k\ne j$として
 $$
@@ -606,9 +643,9 @@ $v_{nk}=\trans{u_k}\phi_n$, $f(x)=x^2$とおく. $f(x)$は下に凸.
  &=& \sum_n(\sum_{k,j} y_{nk}\delta_{kj} v_{nk} v_{nj} - \sum_{k,j} y_{nk} y_{nj} v_{nk} v_{nj})\\
  &=& \sum_n \{\sum_k y_{nk}v_{nk}^2 - (\sum_k y_{nk} v_{nk})^2 \}.
 \end{eqnarray*}
-ここで$\sum_k y_{nk}=1$, $0 < y_{nk} < 1$より$\{\}$内は正. よって
+ここで$\sum_k y_{nk}=1$, $0 < y_{nk} < 1$より$\{\}$内は正. よってJensenの不等式より
 $$
-\trans{u}H u > 0.
+\trans{u}H u \ge 0.
 $$
 
 \end{document}
