@@ -14,7 +14,7 @@
 \maketitle
 
 \section{概要}
-この文章は『パターン認識と機械学習』（以下PRML）の4章を理解するために必要な数学の一部です.
+この文章は『パターン認識と機械学習』（以下PRML）の4章の式変形を一部埋めたものです.
 間違い, 質問などございましたら{\tt herumi@nifty.com}または{\tt twitterID:herumi}までご連絡ください.
 
 \section{クラス分類問題}
@@ -430,7 +430,7 @@ $$
 S_i=\frac{1}{N_i}\sum_{n\in C_i}(x_n-\mu_i)\trans{(x_n-\mu_i)}, S=\frac{N_1}{N}S_1+\frac{N_2}{N} S_2
 $$
 を用いた. これを$A$で微分する.
-{\tt prml2.pdf}で示した行列式の対数の微分の公式（2）：
+{\tt https://github.com/herumi/prml/raw/master/prml2.pdf}で示した行列式の対数の微分の公式（2）：
 $$
 \diff{A}\log|A|=\trans{(A^{-1})}
 $$
@@ -485,4 +485,129 @@ $$
  &=& \sum(y_n-t_n)\phi_n.
 \end{eqnarray*}
 $y_n-t_n$は目的値とモデルの予測値の誤差なので, 線形回帰モデルのときと同じ形.
+
+\section{反復再重み付け最小二乗}
+ニュートン・ラフラソン法
+
+関数$E(w)$を最小化するためのベクトル$w$を与える更新式：
+$$
+w'=w-H(w)^{-1}\diff{w}E(w).
+$$
+$w$は古い値, $w'$は新しい値. $H(w)$はヘッシアン.
+
+この式を線形回帰モデルに適用してみる.
+$$
+E(w)=\frac{1}{2}\sum(t_n-\trans{w}\phi(x_n))^2, \phi_n=\phi(x_n)
+$$
+を$w$で微分して$\Phi=\trans{(\phi_1, \ldots)}$とおくと
+$$
+\diff{w}E(w)=\sum(t_n-\trans{w}\phi_n)\phi_n=\sum \phi_n \trans{\phi_n}w-\sum \phi_n t_n=\PhiT \Phi w-\PhiT t.
+$$
+$$
+H=H(w)=\difff{w_i}{w_j}E(w)=\PhiT \Phi.
+$$
+更新式に代入すると
+$$
+w'=w-(\PhiT \Phi)^{-1}(\PhiT \Phi w-\PhiT t)=(\PhiT \Phi)^{-1}\PhiT t.
+$$
+これは最小二乗解である. つまり1回の更新で厳密解に到達した.
+
+次にロジスティック回帰に適用してみる.
+$$
+E(w)=-\sum(t_n \log y_n + (1-t_n)\log (1-y_n)), y_n=\sigma(a_n)=\sigma(\trans{w}\phi_n).
+$$
+$$
+\diff{w}E(w)=\sum (y_n-t_n)\phi_n.
+$$
+$y_n'=y_n(1-y_n)\phi_n$だったので
+$$
+H=\sum \phi_n y_n(1-y_n)\trans{\phi_n}=\PhiT R\Phi.
+$$
+ここで$R=\diag(R_n)=\diag(y_n(1-y_n))$.
+
+$H>0$を確認する.
+任意の縦ベクトル$u$に対して$v=\Phi u$とおくと
+$$
+\trans{u}H u=\trans{v}R v=\sum y_n(1-y_n)v_n^2 > 0.
+$$
+最後の不等号では$0<y_n<1$を用いた. ヘッシアンが正定値であることが分かったので交差エントロピー誤差関数は唯一の最小解を持つ.
+
+$w$の更新式を見てみよう.
+\begin{eqnarray*}
+w' &=& w-(\PhiT R\Phi)^{-1}\PhiT(y-t)\\
+ &=& (\PhiT R\Phi)^{-1}(\PhiT R\Phi w - \PhiT(y-t))\\
+ &=& (\PhiT R\Phi)^{-1}\PhiT R(\Phi w - R^{-1}(y-t))\\
+ &=& (\PhiT R\Phi)^{-1}\PhiT Rz.
+\end{eqnarray*}
+ここで$z=\Phi w - R^{-1}(y-t)$である.
+$R$は$y_n$つまり$w$に依存しているので正規方程式は更新式ごとに計算し直す必要がある.
+反復最重み付き最小二乗法（IRLS:iterative reweighted least squares method）という.
+
+$t=1$をクラス$C_1$, $t=0$をクラス$C_2$に割り当てて, それぞれの確率は$y$, $1-y$だから
+$$
+E[t]=y=\sigma(x),
+$$
+$$
+\text{var}[t]=E[t^2]-E[t]^2=E[t]-E[t]^2=y-y^2=y(1-y).
+$$
+つまり重み付け対角行列$R$の対角成分は分散である.
+
+\section{多クラスロジスティック回帰}
+多クラス分類の事後確率を
+$$
+p(C_k|\phi)=y_k(\phi)=\frac{\exp(a_k)}{\sum_j \exp(a_j)}, a_k=\trans{w_k}\phi
+$$
+で与えたときに最尤法を用いて直接$w_k$を求めよう.
+$$
+\diff{a_k}y_k=\frac{\exp(a_k)(\sum \exp(a_j))-exp(a_k)exp(a_k)}{(\sum \exp(a_j))^2}=y_k-y_k^2.
+$$
+$k\ne j$として
+$$
+\diff{a_j}y_k=-\frac{\exp(a_k) \exp(a_j)}{(\sum \exp(a_j))^2}=-y_k y_j.
+$$
+よってこの二つをまとめて
+$$
+\diff{a_j}y_k=y_k(\delta_{kj}-y_j).
+$$
+目的変数ベクトル$t_n$を$k$番目の要素だけが1であるものとする. つまり$t_n=(t_{nk})$.
+$y_{nk}=y_k(\phi_n)$, $T=(t_nk)$とすると
+$$
+p(T|w_1, \ldots, w_k)=\prod_{n=1}^N \prod_{k=1}^K p(C_k|\phi_n)^{t_{nk}}=\prod_{n,k} y_{nk}^{t_{nk}}.
+$$
+交差エントロピー誤差関数は
+$$
+E=-\log p(T|w_1, \ldots, w_k)=-\sum_{n,k} t_{nk} \log y_{nk}.
+$$
+よって
+\begin{eqnarray*}
+\diff{w_j}E &=& -\sum_{n,k} t_{nk} \frac{y_k(\phi_n)(\delta_{kj}-y_j(\phi_n))}{y_k(\phi_n)}\phi_n\\
+ &=& -\sum_{n,k} t_{nk}(\delta_{kj} -y_{nj})\phi_n=-\sum_n ((\sum_k t_{nk} \delta_{kj})-(\sum_k t_{nk})y_{nj})\phi_n\\
+ &=& -\sum_n (t_{nj}-y_{nj})\phi_n\\
+ &=& \sum(y_{nj}-t_{nj})\phi_n.
+\end{eqnarray*}
+やはり誤差$y_{nj}-t_{nj}$と基底関数$\phi_n$の積となる.
+
+ヘッシアンをみる.
+$$
+\diff{w_k}y_{nj}=\diff{w_k}y_j(\phi_n)=y_k(\phi_n)(\delta_{kj}-y_j(\phi_n))\phi_n=y_{nk}(\delta_{kj}-y_{nj})\phi_n
+$$
+より
+$$
+H = \difff{w_k}{w_j}E
+  = \sum_n y_{nk}(\delta_{kj}-y_{nj})\phi_n \trans{\phi_n}.
+$$
+
+Hの正定値であることを示そう.\\
+任意の$M\times K$次元ベクトルを$u=\trans{(\trans{u_1}, \ldots, \trans{u_K})}$, $u_k$は$M$次元ベクトルとする.
+$v_{nk}=\trans{u_k}\phi_n$, $f(x)=x^2$とおく. $f(x)$は下に凸.
+\begin{eqnarray*}
+\trans{u}H u &=& \sum_{n,k,j} y_{nk}(\delta_{kj}-y_{nj})(\trans{u_k}\phi_n)(\trans{\phi_n}u_j)\\
+ &=& \sum_n(\sum_{k,j} y_{nk}\delta_{kj} v_{nk} v_{nj} - \sum_{k,j} y_{nk} y_{nj} v_{nk} v_{nj})\\
+ &=& \sum_n \{\sum_k y_{nk}v_{nk}^2 - (\sum_k y_{nk} v_{nk})^2 \}.
+\end{eqnarray*}
+ここで$\sum_k y_{nk}=1$, $0 < y_{nk} < 1$より$\{\}$内は正. よって
+$$
+\trans{u}H u > 0.
+$$
+
 \end{document}
