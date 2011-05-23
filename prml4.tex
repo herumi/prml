@@ -458,7 +458,7 @@ $$
 としたとき
 $$
 \sigma'(x)
-=-\frac{e^{-x}}{(1+e^{-x})^2}
+=-\frac{-e^{-x}}{(1+e^{-x})^2}
 =\frac{e^{-x}}{(1+e^{-x})^2}
 =\frac{1}{1+e^{-x}}(1-\frac{1}{1+e^{-x}})
 =\sigma(x)(1-\sigma(x)).
@@ -643,7 +643,7 @@ $v_{nk}=\trans{u_k}\phi_n$, $f(x)=x^2$とおく. $f(x)$は下に凸.
  &=& \sum_n(\sum_{k,j} y_{nk}\delta_{kj} v_{nk} v_{nj} - \sum_{k,j} y_{nk} y_{nj} v_{nk} v_{nj})\\
  &=& \sum_n \{\sum_k y_{nk}v_{nk}^2 - (\sum_k y_{nk} v_{nk})^2 \}.
 \end{eqnarray*}
-ここで$\sum_k y_{nk}=1$, $0 < y_{nk} < 1$より$\{\}$内は正. よってJensenの不等式より
+ここで$\sum_k y_{nk}=1$, $0 < y_{nk} < 1$よりJensenの不等式を適用すると
 $$
 \trans{u}H u \ge 0.
 $$
