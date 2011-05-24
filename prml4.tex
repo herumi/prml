@@ -384,18 +384,18 @@ $$
 つまり$p$に関する最尤推定は$C_1$内の個数になる.
 
 $K$クラスのときを考えてみよう.
-$\sum p_k=1$. 尤度関数は
+$\sum p_i=1$. 尤度関数は
 $$
-p(t,X|p_k,\mu_k,A)=\prod^N(p_k {\cal N}(x_n|\mu_k,A))^{t_k}.
+p(t,X|p_1, \ldots, p_K, \mu_1, \ldots, \mu_K, A)=\prod_{n=1}^N \prod_{i=1}^K p_i {\cal N}(x_n|\mu_i,A))^{t_{ni}}.
 $$
-対数尤度関数の$p_i$に関する部分の未定乗数法を使うことで
+この対数に未定乗数法の$\lambda (\sum p_i - 1)$の項を加え, $p_i$に関する部分を抜き出すと
 $$
-\sum t_{ij} \log p_j+\lambda (\sum p_i - 1).
+\sum_n t_{ni} \log p_i+\lambda p_i.
 $$
-$p_i$で微分して0とおくと$\sum_j (t_{ij}/p_i) + \lambda=0$.
+$p_i$で微分して0とおくと$\sum_n (t_{ni}/p_i) + \lambda=0$.
 よって
 $$
--p_i \lambda = \sum_j t_{ij}=N_i
+-p_i \lambda = \sum_n t_{ni}=N_i
 $$
 また
 $-\sum_i p_i \lambda = -\lambda = \sum_i N_i = N$より$p_i=-N_i/\lambda=N_i/N$.
