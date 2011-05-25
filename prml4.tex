@@ -363,14 +363,14 @@ $$
 さらに$p(C_1)=p$, $p(C_2)=1-p$という事前確率を割り当てる. $N_i$をクラス$C_i$のデータの個数, $N=N_1+N_2$を総数とする.
 
 $$
-p(x_n, C_1)=p(C_1)p(x_n|C_1)=p {\cal N}(x_n|\mu_1, A).
+p(x_n, C_1)=p(C_1)p(x_n|C_1)=p \calN(x_n|\mu_1, A).
 $$
 $$
-p(x_n, C_2)=p(C_2)p(x_n|C_2)=p (1-p) {\cal N}(x_n|\mu_2, A).
+p(x_n, C_2)=p(C_2)p(x_n|C_2)=p (1-p) \calN(x_n|\mu_2, A).
 $$
 尤度関数は
 $$
-p(t,X|p, \mu_1, \mu_2, A)= \prod^N(p {\cal N}(x_n|\mu_1, A))^{t_n} ((1-p){\cal N}(x_n|\mu_2,A))^{1-t_n}.
+p(t,X|p, \mu_1, \mu_2, A)= \prod^N(p \calN(x_n|\mu_1, A))^{t_n} ((1-p)\calN(x_n|\mu_2,A))^{1-t_n}.
 $$
 このうち$p$に関する部分の対数は
 $$
@@ -386,7 +386,7 @@ $$
 $K$クラスのときを考えてみよう.
 $\sum p_i=1$. 尤度関数は
 $$
-p(t,X|p_1, \ldots, p_K, \mu_1, \ldots, \mu_K, A)=\prod_{n=1}^N \prod_{i=1}^K p_i {\cal N}(x_n|\mu_i,A))^{t_{ni}}.
+p(t,X|p_1, \ldots, p_K, \mu_1, \ldots, \mu_K, A)=\prod_{n=1}^N \prod_{i=1}^K p_i \calN(x_n|\mu_i,A))^{t_{ni}}.
 $$
 この対数に未定乗数法の$\lambda (\sum p_i - 1)$の項を加え, $p_i$に関する部分を抜き出すと
 $$
@@ -402,7 +402,7 @@ $-\sum_i p_i \lambda = -\lambda = \sum_i N_i = N$より$p_i=-N_i/\lambda=N_i/N$.
 
 さて2クラスの問題に戻って$\mu_i$について最大化してみよう. $\mu_1$についての部分は
 $$
-\sum t_n \log {\cal N}(x_n|\mu_1,A)=-\frac{1}{2}\sum t_n \quads{A^{-1}}{(x_n-\mu_1)} + \text{const}.
+\sum t_n \log \calN(x_n|\mu_1,A)=-\frac{1}{2}\sum t_n \quads{A^{-1}}{(x_n-\mu_1)} + \text{const}.
 $$
 $\mu_1$で微分して0とおくと
 $$
@@ -411,7 +411,7 @@ $$
 よって
 $$\mu_1=\frac{1}{N_1}\sum t_n x_n.
 $$
-$\mu_2$については$\sum (1-t_n) \log {\cal N}(x_n|\mu_2,A)$を考えて
+$\mu_2$については$\sum (1-t_n) \log \calN(x_n|\mu_2,A)$を考えて
 $$
 \mu_2=\frac{1}{N_2}\sum (1-t_n)x_n.
 $$
@@ -443,6 +443,7 @@ $$
 -\frac{N}{2}(\trans{(A^{-1})}-\trans{(A^{-1}SA^{-1})})=0.
 $$
 よって$A=S$となる. これは2クラスの各クラスの共分散行列の重みつき平均である.
+またフィッシャーの判別基準で求めた総クラス内共分散行列$S_W$を$N$で割ったものに等しいことにも注意する.
 
 \section{ロジスティック回帰}
 2クラス分類問題において, ある程度一般的な仮定の元で$C_1$の事後確率を
@@ -526,7 +527,7 @@ $$
 ここで$R=\diag(R_n)=\diag(y_n(1-y_n))$.
 
 $H>0$を確認する.
-任意の縦ベクトル$u$に対して$v=\Phi u$とおくと
+任意の縦ベクトル$u$に対して$v=\Phi u$とおくと$v\ne 0$ならば
 $$
 \trans{u}H u=\trans{v}R v=\sum y_n(1-y_n)v_n^2 > 0.
 $$
@@ -552,6 +553,17 @@ $$
 \text{var}[t]=E[t^2]-E[t]^2=E[t]-E[t]^2=y-y^2=y(1-y).
 $$
 つまり重み付け対角行列$R$の対角成分は分散である.
+
+IRLSを線形近似の解として解釈することも出来る. すなわち$a=\trans{w}\phi$, $y=\sigma(a)$という関係を通じて
+$a$を$y$の関数とみなし,
+$a_n$を目標値$t_n$の変数とみなして近次解$y_n=\sigma(\trans{w_{\text {old}}}\phi)$のまわりで一次近似を行うと
+
+\begin{eqnarray*}
+a_n &\sim& a_n(y_n)+\diff{y_n} a_n \Bigr|_{t_n=y_n}(t_n-y_n)\\
+ &=& \trans{w_{\text {old}}}\phi - \frac{y_n-t_n}{y_n(1-y_n)}\\
+ &=& z_n.
+\end{eqnarray*}
+つまり$z_n$は線形近似したときの目標変数値と解釈できる.
 
 \section{Jensenの不等式}
 実数上の実数値関数$f(x)$が凸関数であるとする.
@@ -648,4 +660,95 @@ $$
 \trans{u}H u \ge 0.
 $$
 
+\section{プロビット回帰}
+指数型分布族で表される条件付き確率分布に対して, クラスの事後確率はある線形関数とロジスティック（またはソフトマックス）関数の合成で表された.
+
+$a=\trans{w}\phi$, $f(a)$を活性化関数として
+$$
+p(t=1|a)=f(a).
+$$
+とかける範囲でもう少し考察する. $f(a)$がある確率密度$p(\theta)$の累積分布関数で表されるとする.
+とくに$p(\theta)=\calN(\theta|0,1)$のとき累積分布関数は
+$$
+\Phi(a)=\int_{-\infty}^a \calN(\theta|0,1)\,d\theta.
+$$
+この逆関数をプロビット関数（probit）という. 誤差関数を
+$$
+\makeop{erf}(a)=\frac{2}{\sqrt{\pi}}\int_0^a \exp(-\theta^2)\,d\theta
+$$
+で定義する.
+
+$x=\theta/\sqrt{2}$とおくと$dx=d\theta/\sqrt{2}$.
+\begin{eqnarray*}
+\Phi(a) &=& \int_{-\infty}^a = \int_{-\infty}^0 + \int_0^a=\frac{1}{2}+\int_0^a \frac{1}{\sqrt{2\pi}}\exp(-\frac{\theta^2}{2})\,d\theta\\
+ &=&\frac{1}{2}+\int_0^{a/\sqrt{2}}\frac{1}{\sqrt{2\pi}}\exp(-x^2)\sqrt{2}\,dx\\
+ &=&\frac{1}{2}(1+\frac{2}{\sqrt{\pi}}\int_0^{a/\sqrt{2}} \exp(-x^2)\,dx)\\
+ &=&\frac{1}{2}\{1+\makeop{erf}(\frac{a}{\sqrt{2}})\}.
+\end{eqnarray*}
+プロビット活性化関数を用いた一般化線形もデルをプロビット回帰という.
+
+$x\rightarrow\infty$でロジスティック回帰の微分は$\sigma'(x)=\exp(-x)/(1+\exp(-x))^2 \sim \exp(-x)$.
+プロビット回帰の微分は$\Phi'(x) \sim \exp(-x^2)$. つまりプロビット関数の逆関数はロジスティック関数よりも急速に1に近づき平らになる. プロビット回帰が外れ値に敏感.
+
+\section{正準連結関数}
+活性化関数として正準連結関数（canonical link function）と呼ばれるものを使い, 条件付き確率分布に指数型分布族を選んだときに誤差関数の微分が
+「誤差」$\times$「特徴ベクトル」という形でかけることを示そう.
+
+$$
+p(t|\eta,s)=\frac{1}{s}h(t/s)g(\eta)\exp(\frac{\eta t}{s})
+$$
+とする. 確率なので$\int p(t|\eta,s)\,dt=1$.
+つまり
+$$
+g(\eta)\int h(t/s) \exp(\frac{\eta t}{s})\,dt=s.
+$$
+$\eta$で微分して
+\begin{eqnarray*}
+&& (\diff{\eta}g(\eta)) \int h(t/s)\exp(\frac{\eta t}{s})\,dt+g(\eta)\int (t/s) h(t/s) \exp(\frac{\eta t}{s})\,dt\\
+&=& (\diff{\eta}g(\eta))(\frac{s}{g(\eta)})+\int t p(t|\eta,s)\,dt\\
+&=& s\diff{\eta}\log g(\eta) + E[t].
+\end{eqnarray*}
+よって
+$$
+y=E[t]=-s\diff{\eta} \log g(\eta).
+$$
+$y$が$\eta$の関数として表せた.
+この逆関数が存在するとしてそれを$\eta=\psi(y)$と書くことにする.
+
+$y$を連結関数$f(a)$と$w$の線形関数の合成,
+$$
+y=f(\trans{w}\phi)
+$$
+とかけるモデルを考える. 対数尤度関数は
+$$
+\log p(t|\eta,s)=\sum_{n=1}^N \log p(t_n|\eta,s)=\sum_{n=1}^N (\log g(\eta_n) + \frac{\eta_n t_n}{s}) + \text{const}
+$$
+を考える. ここで$s$と$\eta$は独立, $\eta_n=\phi(y_n)$, $y_n=f(a_n)$, $a_n=\trans{w}\phi_n$.
+
+パラメータが多いので依存関係に注意して微分する.
+$$
+\diff{w}\eta_n=\psi'(y_n)f'(a_n)\phi_n.
+$$
+$$
+\diff{w}\log g(\eta_n)=\frac{g'(\eta_n)}{g(\eta_n)}\psi'(y_n)f'(a_n)\phi_n=-\frac{y_n}{s}\phi'(y_n)f'(a_n)\phi_n.
+$$
+よって
+$$
+\diff{w} \log p(t|\eta,s)=\sum_n \frac{1}{s}(t_n-y_n)\psi'(y_n)f'(a_n)\phi_n.
+$$
+連結関数として$f^{-1}(y)=\psi(y)$となるものを使ってみよう. $f(\psi(y))=y$を$y$で微分して
+$$
+f'(\psi(y))\psi'(y)=1.
+$$
+同じことだが$a=f^{-1}(y)=\psi(y)$を使って
+$$
+f'(a)\psi'(y)=1.
+$$
+よって
+$$
+\diff{w}E(w)=-\diff{w} \log p(t|\eta,s)=\frac{1}{s}\sum_n (y_n - t_n)\phi_n.
+$$
+「誤差」$\times$「特徴ベクトル」という形でかけることが分かった.
+
+\section{ラプラス近似}
 \end{document}

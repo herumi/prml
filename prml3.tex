@@ -365,16 +365,16 @@ y(x,w)=\trans{w}\phi(x)
 $$
 とした. $\bm{t}$を観測値に対する目標値で, それは$x$によらずに精度パラメータ$\beta$に従うガウス分布とした.
 $$
-p(\bm{t}|w,\beta)={\cal N}(t|y(x,w),\beta^{-1}).
+p(\bm{t}|w,\beta)=\calN(t|y(x,w),\beta^{-1}).
 $$
 ベイズ的に扱うために$w$に関して事前確率分布を与えたい. 上式が$w$に関する2次関数なので,
 共役事前分布としてハイパーパラメータ$\alpha$を導入し,
 $$
-p(w|\alpha)={\cal N}(w|0, \alpha^{-1}I)
+p(w|\alpha)=\calN(w|0, \alpha^{-1}I)
 $$
 を仮定した. そうすることで事後分布は
 $$
-p(w|t)={\cal N}(w|m_N,S_N)
+p(w|t)=\calN(w|m_N,S_N)
 $$
 の形（ただし, $m_N=\beta S_N\trans{\Phi}t$, $S_N^{-1}=\alpha I + \beta \trans{\Phi}\Phi$）になった.
 
