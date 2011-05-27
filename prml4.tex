@@ -451,7 +451,7 @@ $$
 p(C_1|\phi)=y(\phi)=\sigma(\trans{w}\phi)
 $$
 とかけた. もちろん$p(C_2|\phi)=1-p(C_1|\phi)$である.
-この関数を使うモデルをロジスティック回帰（logistic regression）という.
+この形の関数を使うモデルをロジスティック回帰（logistic regression）という.
 このモデルにおけるパラメータを最尤法で求める.
 $$
 \sigma(x)=\frac{1}{1+e^{-x}}
@@ -488,13 +488,24 @@ $$
 $y_n-t_n$は目的値とモデルの予測値の誤差なので, 線形回帰モデルのときと同じ形.
 
 \section{反復再重み付け最小二乗}
-ニュートン・ラフラソン法
+いわゆるニュートン・ラフラソン法は関数$f(x)$の零点を求める方法：
 
-関数$E(w)$を最小化するためのベクトル$w$を与える更新式：
+$x_n$が与えられたときにより近い値$x_{n+1}$を見つける. $x_n$における接線の方程式
+$$
+f'(x_n)(x-x_n)+f(x_n)=0
+$$
+の解を$x_{n+1}$とすると
+$$
+x_{n+1}=x_n - (f'(x_n))^{-1} f(x_n).
+$$
+
+関数$E(w)$を最小化するためのベクトル$w$を与える更新式を考えてみると, 最小化を与える$w$は$\diff{w}E(w)$の零点.
+$\diff{w}E(w)$の零点を求める問題にニュートン・ラフラソン法を適用する.
+$w$を古い値, $w'$を新しい値, $H(w)$を$E(w)$のヘッシアンとする.
+$f \longleftrightarrow \diff{w}E(w)$, $f' \longleftrightarrow H(w)$という対応により
 $$
 w'=w-H(w)^{-1}\diff{w}E(w).
 $$
-$w$は古い値, $w'$は新しい値. $H(w)$はヘッシアン.
 
 この式を線形回帰モデルに適用してみる.
 $$
@@ -511,7 +522,7 @@ $$
 $$
 w'=w-(\PhiT \Phi)^{-1}(\PhiT \Phi w-\PhiT t)=(\PhiT \Phi)^{-1}\PhiT t.
 $$
-これは最小二乗解である. つまり1回の更新で厳密解に到達した.
+これは最小二乗解である. つまり1回の更新で厳密解に到達した. 線形回帰モデルは$w$に関して2次なので$\diff{w}E(w)$に関しては1次だからである.
 
 次にロジスティック回帰に適用してみる.
 $$
@@ -559,7 +570,7 @@ $a$を$y$の関数とみなし,
 $a_n$を目標値$t_n$の変数とみなして近次解$y_n=\sigma(\trans{w_{\text {old}}}\phi)$のまわりで一次近似を行うと
 
 \begin{eqnarray*}
-a_n &\sim& a_n(y_n)+\diff{y_n} a_n \Bigr|_{t_n=y_n}(t_n-y_n)\\
+a_n &\approx& a_n(y_n)+\diff{y_n} a_n \Bigr|_{t_n=y_n}(t_n-y_n)\\
  &=& \trans{w_{\text {old}}}\phi + \frac{1}{y_n(1-y_n)}(t_n-y_n)\\
  &=& \trans{w_{\text {old}}}\phi - \frac{y_n-t_n}{y_n(1-y_n)}\\
  &=& z_n.
@@ -752,4 +763,198 @@ $$
 「誤差」$\times$「特徴ベクトル」という形でかけることが分かった.
 
 \section{ラプラス近似}
+ロジスティック回帰のベイズ的な扱いは解析的に難しい.
+ここではラプラス近似というものを紹介する. これは連続変数上の確率密度分布をあるガウス分布で近似することである(当然複数の山があると辛い).
+$$
+p(z)=\frac{1}{Z}f(z)
+$$
+$Z=\int f(z)\,dz$は正規化係数で未知とする. $p(z)$のモード, つまり最大値を与える$z_0$を探そう.
+暗に山形を仮定しているので$f(z_0)>0$, $f''(z)<0$とする.
+$f'(z_0)=0$だから$\log f(z)$を$z=z_0$の付近でテイラー展開すると
+\begin{eqnarray*}
+\log f(z) &\approx& \log f(z_0) + \frac{f'(z_0)}{f(z_0)}(z-z_0)+\frac{1}{2}\frac{d^2}{dz^2} \log f(z_0) (z-z_0)^2\\
+ &=& \log f(z_0) + \frac{1}{2}\frac{d^2}{dz^2} \log f(z_0) (z-z_0)^2.
+\end{eqnarray*}
+$$
+A=-\frac{d^2}{dz^2}\log f(z) \Bigl|_{z=z_0}
+$$
+とおくと
+$$
+\log f(z) \approx \log f(z) - \frac{1}{2}A(z-z_0)^2.
+$$
+つまり
+$$
+f(z) \approx f(z_0) \exp(-\frac{1}{2}A(z-z_0)^2).
+$$
+よって正規分布で近似すると
+$$
+q(z)=(\frac{A}{2\pi})^{1/2} \exp(-\frac{1}{2}A(z-z_0)^2).
+$$
+
+$M$次元の場合を考える. $p(z)=(1/Z)f(z)$. $z=z_0$が最大値を与えるなら$p(z_0)>0$, $\diff{z}f(z_0)=0$.
+1次元と同様に
+$$
+A=-\difff{z_i}{z_j} \log f(z) \Bigl|_{z=z_0}
+$$
+とすると$A>0$（正定値）で
+$$
+f(z) \approx f(z_0) \exp (-\frac{1}{2}\trans{(z-z_0)}A(z-z_0)).
+$$
+よって
+$$
+q(z)=\calN(z|z_0,A^{-1})=\sqrt{\frac{|A|}{(2\pi)^M}} \exp (-\frac{1}{2}\trans{(z-z_0)}A(z-z_0)).
+$$
+山が複数ある多峰的なときはどのモードを選ぶかでラプラス近似は異なる.
+総的的にデータ数が多くなるとガウス分布に近づくので近似はよくなるが, ある点での近傍の情報しか利用していないため大域的な特徴がとらえられるとは限らない.
+
+\section{モデルの比較とBIC}
+前節のラプラス近似を行うと正規化係数$Z$の近似も分かる. ガウス分布の特性から
+$$
+Z=\int f(z)\,dx \approx \int f(z_0) \exp(-\frac{1}{2}\trans{(z-z_0)}A(z-z_0))\,dx=f(z_0)\sqrt{\frac{(2\pi)^M}{|A}}.
+$$
+
+データ集合$D$, パラメータ$\{\theta_i\}$の集合$\{M_i\}$を考えて各モデルに対して$p(D|\theta_i, M_i)$を定義する.
+事前確率$p(\theta_i|M_i)$を決めてモデルエビデンス$p(D|M_i)$を計算してみよう. 以下$M_i$を略す.
+また$\difff{\theta_i}{\theta_j}$を$\nabla^2$と書くことにする.
+$$
+p(D)=\int p(D|\theta)p(\theta)\,d\theta.
+$$
+$f(\theta)=p(D|\theta)p(\theta)$, $Z=p(D)$とすると$\theta=\theta_{\text{MAP}}$のときのラプラス近似を用いて
+$$
+A=-\nabla^2 \log p(D|\theta_{\text{MAP}})p(\theta_{\text{MAP}}).
+$$
+$$
+\log p(D)=\log Z \approx \log f(\theta_{\text{MAP}}) + \log \sqrt{\frac{(2\pi)^M}{|A|}}=\log p(D|\theta_{\text{MAP}})+(\log p(\theta_{\text{MAP}})+\frac{M}{2} \log (2\pi) - \frac{1}{2} \log |A|).
+$$
+括弧内の後ろ三項をOccam係数という.
+
+この値をごくごく荒く近似してみる.
+$$
+p(\theta)=\calN(\theta|m,B^{-1}),
+$$
+$$
+H=-\nabla^2\log p(D|\theta_{\text{MAP}})
+$$
+とすると
+$$
+A=H-\nabla^2\log p(\theta_{\text{MAP}})=H+B.
+$$
+$$
+\log p(\theta)=\log|B|^{1/2}-(M/2)\log(2\pi)-(1/2)\trans{\theta-m}B{\theta-m}
+$$
+を使って
+$$
+\log p(D) \approx \log p(D|\theta_{\text{MAP}})-\frac{1}{2}\trans{(\theta_{\text{MAP}}-m)}B(\theta_{\text{MAP}}-m)-\frac{1}{2}\log |H+B|+\frac{1}{2}\log |B|.
+$$
+データ集合$D$の点の個数を$N$とし, それぞれが独立であると考えると$H$の各要素は$O(N)$. $B$は$N$や次元の数$M$には依存しないので$M$, $N$を大きくしたとき無視できるとすると
+$$
+\log |H| \approx \log \prod^M (N C) = M \log N + M \log C \approx M \log N.
+$$
+よって
+$$
+\log p(D) \approx \log p(D|\theta_{\text{MAP}}) - \frac{1}{2} M \log N.
+$$
+これをベイズ情報量基準（Bayesian Information Criterion, BIC）という.
+
+\section{ディラックのデルタ関数}
+気持ち的にはデルタ関数は$\RR$から$\RR$への関数で
+$$
+\delta(x)=
+\begin{cases}
+1 & (x=0) \\
+0 & (x \neq 0)
+\end{cases}
+$$
+である. ただ実際にはデルタ関数は積分を通してしか扱われない.
+
+任意の実連続関数$f(x)$に対して
+$$
+\int_{-\infty}^\infty f(x) \delta(x)\,dx = f(0)
+$$
+とうい性質を満たす超関数（ここでは定義しない）として解釈する.
+(加筆するかも)
+
+\section{ベイズロジスティック回帰}
+ベイズロジスティック回帰にラプラス近似を行ってみよう.
+
+事前確率分布：$y_n=\sigma(\trans{w}\phi_n)$とおいて
+$$
+p(t|w)=\prod_{n=1}^N y_n^{t_n}(1-y_n)^{1-t_n}.
+$$
+
+事前ガウス分布：ハイパーパラメータ$m_0$, $S_0$を用いて
+$$
+p(w)=\calN (w|m_0, S_0).
+$$
+
+事後分布は$N$次元縦ベクトル$t=\trans{(t_0, \ldots, t_N)}$を用いて
+$$
+p(w|t) \propto p(w)p(t|w).
+$$
+よって
+$$
+\log p(w|t)=-\frac{1}{2}\trans{(w-m_0)}S_0^{-1}(w-m_0)+\sum_{n=1}^N (t_n \log y_n + (1-t_n)\log (1-y_n)) + \text{const}.
+$$
+これを最大化する最大事後確率（MAP）の解$w_{\text MAP}$を何らかの方法で求める.
+ラプラス近似をするために$w_{\text MAP}$を平均とするガウス分布で近似しよう. $w_{\text MAP}=m_N$と置く.
+共分散は今まで何度もやった通り
+$$
+S_N^{-1}=-\nabla^2 \log p(w|t) = S_0^{-1} + \sum_{n=1}^N y_n(1-y_n)\phi_n \trans{\phi_n}.
+$$
+よって事後確率分布をガウス分布で近似すると
+$$
+q(w)=\calN(w|m_N, S_N)
+$$
+となる.
+
+次に$C_1$についての予測分布を求める.
+$$
+p(C_1|\phi,t)=\int p(C_1|\phi,w)p(w|t)\,dt \approx \int \sigma(\trans{w}\phi)q(w)\,dw.
+$$
+デルタ関数の性質から$a=\trans{w}\phi$とおくと
+$$
+\sigma(a)=\sigma(\trans{w}\phi)=\int \delta(x-\trans{w}\phi)\sigma(x)\,dx.
+$$
+よって
+\begin{eqnarray*}
+p(C_1|\phi,t) &\approx& \int \Bigl(\int \delta(x-\trans{w}\phi)\sigma(x)q(w)\,dx\Bigr) dw\\
+ &=&\int \Bigl(\int \delta(x-\trans{w}\phi)q(w)\,dw\Bigr) \sigma(x)\,dx\\
+ &=&\int p(x)\sigma(x)\,dx.
+\end{eqnarray*}
+ただし
+$$
+p(x)=\int \delta(x-\trans{w}\phi)q(w)\,dw
+$$
+とおいた.
+
+$p(x)$の平均を求める. $q(w)$の平均が$m_N$であることに注意すると,
+\begin{eqnarray*}
+\mu_a &=& E[a]=\int p(a)a\,da=\int \delta(a-\trans{w}\phi)q(w)a\,dw da=\int q(w)(\trans{w}\phi)\,dw\\
+ &=& \trans{(\int q(w)w\,dw)}\phi = \trans{E[w]}\phi = \trans{(m_N)}\phi.
+\end{eqnarray*}
+分散は
+\begin{eqnarray*}
+\sigma(a)^2 &=& \int p(a)(a^2-E[a]^2)\,da = \int (\delta(a-\trans{w}\phi)a^2\,da)q(w)\,dw - \int (\delta(a-\trans{w}\phi)E[a]^2\,da)q(w)\,dw\\
+ &=&\int q(w)(\trans{w}\phi)^2\,dw - \int q(w) (\trans{m_N}\phi)^2\,dw\\
+ &=&\trans{\phi}\Bigl( \int q(w)(w\trans{w}-m_N \trans{m_N})\,dw \Bigr)\phi.
+\end{eqnarray*}
+括弧内は
+$$
+E[w\trans{w}]-m_N\trans{m_N}\int q(w)\,dw=(m_N\trans{m_N}+S_N)-m_N \trans{m_N}=S_N
+$$
+より
+$$
+\sigma_a^2=\trans{\phi}S_N\phi.
+$$
+
+これは{\tt https://github.com/herumi/prml/raw/master/prml3.pdf}で求めた線形回帰モデルの予測分布の分散
+$$
+\sigma_N^2(x)=\frac{1}{\beta}+\trans{\phi(x)}S_N\phi(x)
+$$
+でノイズを消したもの（$\beta \rightarrow \infty$）$\sigma_a^2$に一致する.
+
+よって予測分布の近似は
+$$
+p(C_1|t)=\int \sigma(a)p(a)\,da=\int \sigma(a) \calN(a|\mu_a,\sigma_a^2)\,da.
+$$
 \end{document}

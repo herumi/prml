@@ -387,11 +387,11 @@ $$
 となる. とはいえ, そのまま扱うのは難しいのでまずデータが十分たくさんあるとき, $\alpha$, $\beta$は殆ど固定値,
 つまり$\alpha$,$\beta$の分布はある特定の値$\hat{\alpha}$, $\hat{\beta}$にデルタ関数的に近づくと仮定しよう.
 $$
-p(\alpha,\beta|\bm{t}) \sim \delta_{\alpha,\hat{\alpha}} \delta_{\beta,\hat{\beta}}.
+p(\alpha,\beta|\bm{t}) \approx \delta_{\alpha,\hat{\alpha}} \delta_{\beta,\hat{\beta}}.
 $$
 そうすると
 $$
-p(t|\bm{t}) \sim \int p(t|w,\hat{\beta})p(w|\bm{t},\hat{\alpha},\hat{\beta})\,dw
+p(t|\bm{t}) \approx \int p(t|w,\hat{\beta})p(w|\bm{t},\hat{\alpha},\hat{\beta})\,dw
 $$
 となり予測分布は$\hat{\alpha}$, $\hat{\beta}$を求めればよいということになる.
 
