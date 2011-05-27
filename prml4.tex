@@ -151,7 +151,7 @@ $m_i=\trans{w}\bm{m_i}$として, $|w|^2=\sum_i w_i^2=1$の制約下で
 $$
 m_2 - m_1=\trans{w}(\bmm_2-\bmm_1)
 $$
-を最大化してみよう.
+を最大化してみよう. ラグランジュの未定乗数法を用いて
 $$
 f(w)=\trans{w}(\bmm_2-\bmm_1)+\lambda(1-|w|^2)
 $$
@@ -352,7 +352,9 @@ a_k
 
 よって
 $$
-p(C_k|x)=\frac{\exp(a_k')\exp(-(1/2)\quads{A^{-1}}{x}+\text{const})}{\sum_j \exp(a_j')\exp(-(1/2)\quads{A^{-1}}{x}+\text{const})}
+p(C_k|x)
+=\frac{\exp(a_k)}{\sum_j \exp(a_j)}
+=\frac{\exp(a_k')\exp(-(1/2)\quads{A^{-1}}{x}+\text{const})}{\sum_j \exp(a_j')\exp(-(1/2)\quads{A^{-1}}{x}+\text{const})}
 =\frac{\exp(a_k')}{\sum_j \exp(a_j')}.
 $$
 
@@ -451,7 +453,7 @@ $$
 p(C_1|\phi)=y(\phi)=\sigma(\trans{w}\phi)
 $$
 とかけた. もちろん$p(C_2|\phi)=1-p(C_1|\phi)$である.
-この形の関数を使うモデルをロジスティック回帰（logistic regression）という.
+この式の導出に使った仮定を忘れ, これを出発点としこの形の関数を使うモデルをロジスティック回帰（logistic regression）という.
 このモデルにおけるパラメータを最尤法で求める.
 $$
 \sigma(x)=\frac{1}{1+e^{-x}}
@@ -490,7 +492,7 @@ $y_n-t_n$は目的値とモデルの予測値の誤差なので, 線形回帰モデルのときと同じ形.
 \section{反復再重み付け最小二乗}
 いわゆるニュートン・ラフラソン法は関数$f(x)$の零点を求める方法：
 
-$x_n$が与えられたときにより近い値$x_{n+1}$を見つける. $x_n$における接線の方程式
+零点の近似解$x_n$が与えられたときにより近い値$x_{n+1}$を見つける. $x_n$における接線の方程式
 $$
 f'(x_n)(x-x_n)+f(x_n)=0
 $$
@@ -697,10 +699,10 @@ $x=\theta/\sqrt{2}$とおくと$dx=d\theta/\sqrt{2}$.
  &=&\frac{1}{2}(1+\frac{2}{\sqrt{\pi}}\int_0^{a/\sqrt{2}} \exp(-x^2)\,dx)\\
  &=&\frac{1}{2}\{1+\makeop{erf}(\frac{a}{\sqrt{2}})\}.
 \end{eqnarray*}
-プロビット活性化関数を用いた一般化線形もデルをプロビット回帰という.
+プロビット活性化関数を用いた一般化線形モデルをプロビット回帰という.
 
 $x\rightarrow\infty$でロジスティック回帰の微分は$\sigma'(x)=\exp(-x)/(1+\exp(-x))^2 \sim \exp(-x)$.
-プロビット回帰の微分は$\Phi'(x) \sim \exp(-x^2)$. つまりプロビット関数の逆関数はロジスティック関数よりも急速に1に近づき平らになる. プロビット回帰が外れ値に敏感.
+プロビット回帰の微分は$\Phi'(x) \sim \exp(-x^2)$. つまりプロビット関数の逆関数はロジスティック関数よりも急速に1に近づき平らになる. プロビット回帰の方が外れ値に敏感.
 
 \section{正準連結関数}
 活性化関数として正準連結関数（canonical link function）と呼ばれるものを使い, 条件付き確率分布に指数型分布族を選んだときに誤差関数の微分が
@@ -718,7 +720,7 @@ $\eta$で微分して
 \begin{eqnarray*}
 && (\diff{\eta}g(\eta)) \int h(t/s)\exp(\frac{\eta t}{s})\,dt+g(\eta)\int (t/s) h(t/s) \exp(\frac{\eta t}{s})\,dt\\
 &=& (\diff{\eta}g(\eta))(\frac{s}{g(\eta)})+\int t p(t|\eta,s)\,dt\\
-&=& s\diff{\eta}\log g(\eta) + E[t].
+&=& s\diff{\eta}\log g(\eta) + E[t] = 0.
 \end{eqnarray*}
 よって
 $$
@@ -840,7 +842,7 @@ $$
 A=H-\nabla^2\log p(\theta_{\text{MAP}})=H+B.
 $$
 $$
-\log p(\theta)=\log|B|^{1/2}-(M/2)\log(2\pi)-(1/2)\trans{\theta-m}B{\theta-m}
+\log p(\theta)=\log|B|^{1/2}-(M/2)\log(2\pi)-(1/2)\trans{(\theta-m)}B{(\theta-m)}
 $$
 を使って
 $$
@@ -872,7 +874,91 @@ $$
 \int_{-\infty}^\infty f(x) \delta(x)\,dx = f(0)
 $$
 とうい性質を満たす超関数（ここでは定義しない）として解釈する.
+
 (加筆するかも)
+
+\section{ロジスティックシグモイド関数とプロビット関数の逆関数}
+
+\begin{itemize}
+\item[] ロジスティックシグモイド
+$$\sigma(a) = \frac{1}{1+e^{-a}}.$$
+\item[] プロビット関数の逆関数
+$$\Phi(a) = \int_{-\infty}^a \calN(\theta|0,1)\,d\theta.$$
+\end{itemize}
+$\Phi(\lambda a)$と$\sigma(a)$を近似するように$\lambda$を調節する. 原点で同じ向きになるようにしよう.
+$$
+\sigma'(0)=\sigma(a)(1-\sigma(a))\Bigr|_{a=0}=\frac{1}{2}(1-\frac{1}{2})=\frac{1}{4}.
+$$
+$$
+\Phi'(\lambda a)=\frac{1}{\sqrt{2\pi}}\lambda \exp(-\frac{1}{2}(\lambda a)^2)
+$$
+より$\Phi'(0)=\lambda/\sqrt{2\pi}$. この二つが等しいので
+$$
+\frac{\lambda}{\sqrt{2\pi}}=\frac{1}{4}.
+$$
+よって$\lambda=\sqrt{\pi/8}$.
+
+$\Phi$と$\calN$に関する畳み込み計算の関係式：$\lambda>0$として
+\begin{equation}\label{inv_probit}
+\int_{-\infty}^\infty \Phi(\lambda a)\calN(a|\mu,\sigma^2)\,da=\Phi(\frac{\lambda \mu}{\sqrt{1+\lambda^2\sigma^2}}).
+\end{equation}
+これを示そう. 左辺を$L$, 右辺を$R$とおく.
+まずガウス分布に関する積分を簡単にする.
+$$
+\calN(a|\mu,\sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}\exp(-\frac{1}{2\sigma^2}(x-\mu)^2).
+$$
+$$
+f(x)=\calN(x|0,1)=\frac{1}{2\pi}\exp(-\frac{1}{2}x^2)
+$$
+とおく.
+$$
+\Phi(x)=\int_{-\infty}^x f(y)\,dy.
+$$
+$a=\mu+\sigma x$とおくと$da=\sigma dx$で
+$$
+\calN(a|\mu,\sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}\exp(-\frac{1}{2\sigma^2}(\mu+\sigma x-\mu)^2)=\frac{1}{\sigma}\frac{1}{\sqrt{2\pi}}\exp(-\frac{1}{2}x^2)=\frac{f(x)}{\sigma}.
+$$
+よって
+$$
+L=\int_{-\infty}^\infty \Phi(\lambda \mu+\lambda\sigma x)\frac{f(x)}{\sigma}\sigma\,dx=\int_{-\infty}^\infty\Phi(\lambda \mu + \lambda \sigma x)f(x)\,dx.
+$$
+まず$L$と$R$の$\mu$に関する微分が等しいことを示す. $\Phi'(x)=f(x)$なので
+$$
+\diff{\mu}R=f(\frac{\lambda \mu}{\sqrt{1+\lambda^2\sigma^2}}) \frac{\lambda}{\sqrt{1+\lambda^2\sigma^2}}.
+$$
+$$
+\diff{\mu}L=\int_{-\infty}^\infty \lambda f(\lambda \mu + \lambda \sigma x)f(x)\,dx=\lambda \int_{-\infty}^\infty \Bigl(\frac{1}{\sqrt{2\pi}}\Bigr)^2\exp(-\frac{1}{2}(\lambda\mu+\lambda \sigma x)^2-\frac{1}{2}x^2)\,dx.
+$$
+$\exp()$の内側を$x$について平方完成しよう：
+$$
+-\frac{1}{2}((\lambda\sigma)^2+1)x^2+2\lambda^2\mu \sigma x + \lambda^2 \mu^2)=-\frac{1}{2}\Bigl((\sqrt{1+\lambda^2\sigma^2}x+\frac{\lambda^2\mu \sigma}{\sqrt{1+\lambda^2\sigma^2}})^2+\lambda^2 \mu^2-\frac{\lambda^4 \mu^2 \sigma^2}{1+\lambda^2 \sigma^2} \Bigr).
+$$
+定数項は
+$$
+\lambda^2\mu^2-\frac{\lambda^4 \mu^2 \sigma^2}{1+\lambda^2 \sigma^2}=\frac{\lambda^2\mu^2+\lambda^4\mu^2\sigma^2-\lambda^4\mu^2\sigma^2}{1+\lambda^2 \sigma^2}=\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2}.
+$$
+$$
+\int_{-\infty}^\infty\exp(-\frac{1}{2\sigma^2}x^2)\,dx=\sqrt{2\pi}\sigma
+$$
+より
+$$
+I:=\int_{-\infty}^\infty \exp(-\frac{1}{2}(\sqrt{1+\lambda^2\sigma^2}x+\frac{\lambda^2\mu\sigma}{\sqrt{1+\lambda^2\sigma^2}})^2)\,dx=\frac{\sqrt{2\pi}}{\sqrt{1+\lambda^2\sigma^2}}.
+$$
+よって
+\begin{eqnarray*}
+\diff{\mu}L &=& \frac{\lambda}{2\pi} \exp(-\frac{1}{2}\Bigl(\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2}\Bigr)) I\\
+ &=& \frac{\lambda}{2\pi} \exp(-\frac{1}{2}\Bigl(\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2}\Bigr)) \frac{\sqrt{2\pi}}{\sqrt{1+\lambda^2\sigma^2}}\\
+ &=& \frac{\lambda}{\sqrt{1+\lambda^2\sigma^2}}f(\frac{\lambda\mu}{\sqrt{1+\lambda^2\sigma^2}})\\
+ &=& \diff{\mu}R.
+\end{eqnarray*}
+つまり$L$と$R$は定数の差を除いて等しいことが分かった. 定数項が0であることを示す. $\mu \rightarrow \infty$で
+$$
+L \rightarrow \int_{-\infty}^\infty \Phi(\infty)f(x)\,dx=\int_{-\infty}^\infty f(x)\,dx=1.
+$$
+$$
+R  \rightarrow \int_{-\infty}^\infty f(y)\,dy=1.
+$$
+よって$L=R$が示された.
 
 \section{ベイズロジスティック回帰}
 ベイズロジスティック回帰にラプラス近似を行ってみよう.
@@ -896,7 +982,7 @@ $$
 \log p(w|t)=-\frac{1}{2}\trans{(w-m_0)}S_0^{-1}(w-m_0)+\sum_{n=1}^N (t_n \log y_n + (1-t_n)\log (1-y_n)) + \text{const}.
 $$
 これを最大化する最大事後確率（MAP）の解$w_{\text MAP}$を何らかの方法で求める.
-ラプラス近似をするために$w_{\text MAP}$を平均とするガウス分布で近似しよう. $w_{\text MAP}=m_N$と置く.
+ラプラス近似をするために$w_{\text MAP}$を平均とするガウス分布で近似しよう. 以後$w_{\text MAP}$を$m_N$と書く.
 共分散は今まで何度もやった通り
 $$
 S_N^{-1}=-\nabla^2 \log p(w|t) = S_0^{-1} + \sum_{n=1}^N y_n(1-y_n)\phi_n \trans{\phi_n}.
@@ -911,26 +997,27 @@ $$
 $$
 p(C_1|\phi,t)=\int p(C_1|\phi,w)p(w|t)\,dt \approx \int \sigma(\trans{w}\phi)q(w)\,dw.
 $$
-デルタ関数の性質から$a=\trans{w}\phi$とおくと
+デルタ関数の性質から
 $$
-\sigma(a)=\sigma(\trans{w}\phi)=\int \delta(x-\trans{w}\phi)\sigma(x)\,dx.
+\sigma(\trans{w}\phi)=\int \delta(a-\trans{w}\phi)\sigma(a)\,da.
 $$
 よって
 \begin{eqnarray*}
-p(C_1|\phi,t) &\approx& \int \Bigl(\int \delta(x-\trans{w}\phi)\sigma(x)q(w)\,dx\Bigr) dw\\
- &=&\int \Bigl(\int \delta(x-\trans{w}\phi)q(w)\,dw\Bigr) \sigma(x)\,dx\\
- &=&\int p(x)\sigma(x)\,dx.
+p(C_1|\phi,t) &\approx& \int \Bigl(\int \delta(a-\trans{w}\phi)\sigma(a)q(w)\,da\Bigr) dw\\
+ &=&\int \Bigl(\int \delta(a-\trans{w}\phi)q(w)\,dw\Bigr) \sigma(a)\,da\\
+ &=&\int p(a)\sigma(a)\,da.
 \end{eqnarray*}
 ただし
 $$
-p(x)=\int \delta(x-\trans{w}\phi)q(w)\,dw
+p(a)=\int \delta(a-\trans{w}\phi)q(w)\,dw
 $$
 とおいた.
 
-$p(x)$の平均を求める. $q(w)$の平均が$m_N$であることに注意すると,
+$p(a)$の平均を求める. $q(w)$の平均が$m_N$であることに注意すると,
 \begin{eqnarray*}
-\mu_a &=& E[a]=\int p(a)a\,da=\int \delta(a-\trans{w}\phi)q(w)a\,dw da=\int q(w)(\trans{w}\phi)\,dw\\
- &=& \trans{(\int q(w)w\,dw)}\phi = \trans{E[w]}\phi = \trans{(m_N)}\phi.
+\mu_a &=& E[a]=\int p(a)a\,da=\int \int \delta(a-\trans{w}\phi)q(w)a\,dw da\\
+ &=& \int \Bigl(\int \delta(a-\trans{w}\phi)a\, da\Bigr)q(w)\,dw = \int q(w)(\trans{w}\phi)\,dw\\
+ &=& \trans{(\int q(w)w\,dw)}\phi = \trans{E[w]}\phi = \trans{m_N}\phi.
 \end{eqnarray*}
 分散は
 \begin{eqnarray*}
@@ -947,14 +1034,57 @@ $$
 \sigma_a^2=\trans{\phi}S_N\phi.
 $$
 
-これは{\tt https://github.com/herumi/prml/raw/master/prml3.pdf}で求めた線形回帰モデルの予測分布の分散
+これは線形回帰モデルの予測分布の分散（PRML 式3.59）
 $$
 \sigma_N^2(x)=\frac{1}{\beta}+\trans{\phi(x)}S_N\phi(x)
 $$
-でノイズを消したもの（$\beta \rightarrow \infty$）$\sigma_a^2$に一致する.
+でノイズを消したもの（$(1/\beta) \rightarrow 0$）は$\sigma_a^2$に一致する.
 
 よって予測分布の近似は
 $$
 p(C_1|t)=\int \sigma(a)p(a)\,da=\int \sigma(a) \calN(a|\mu_a,\sigma_a^2)\,da.
 $$
+
+別の方法でも求めてみる：\\
+$w$の座標を座標変換して第一成分の単位基底ベクトル$e$が$\phi$と同じ向きになるようにとり, 残りは$\phi$と直交するようにとる.
+つまり
+$$
+e=\phi/||\phi||.
+$$
+それに関する$w$の係数を$w=\trans{(w_1,w_2)}$と書く.
+$w_1$は1次元ベクトルの係数で非負, $w_2$は$M-1$次元である.
+すると$w$と$\phi$の内積は$e$の方向のみが残るので
+$$
+\trans{w}\phi=w_1||\phi||.
+$$
+$q(w)=q(w_1,w_2)=q(w_2|w_1)q(w_1)$より
+\begin{eqnarray*}
+p &=& \int \sigma(\trans{w}\phi)q(w)\,dw=\int \sigma(w_1||\phi||) \int q(w_2|w_1)\,dw_2 dw_1\\
+ &=& \int \sigma(w_1||\phi||) \Bigr( \int q(w_2|w_1)\,dw_2 \Bigr) q(w_1) dw_1\\
+ && {\text 括弧内は}1{\text なので}\\
+ &=& \int \sigma(w_1||\phi||)q(w_1)\,dw_1.
+\end{eqnarray*}
+$q(w)\calN(w|m_N,S_N)$で$w=\trans{(w_1,w_2)}$と書いたときの$w_1$に関する周辺分布は$e$方向への射影化になる：
+$$
+q(w_1)=\calN(w_1|\trans{e}m_N,\trans{e}S_N e).
+$$
+$a=w_1||\phi||$と書くと$a$に関しては平均は$||\phi||$倍, 分散は$||\phi||^2$倍されるので
+$$
+q(a)=\calN(a|\trans{(||\phi||e)}m_N,\trans{||\phi||e}S_N ||\phi||e) = \calN(a|\trans{\phi}m_N,\trans{\phi}S_N \phi).
+$$
+
+ロジスティックシグモイド関数でのガウス分布のたたみこみ積分は解析的には難しい.
+ここではロジスティックシグモイド関数をプロビット関数の逆関数で近似することでたたみ込み積分を解析的に扱おう.
+
+前節の結果から$\lambda = \sqrt{\pi/8}$として$\sigma(a) \approx \Phi(\lambda a)$と近似すると
+\begin{eqnarray*}
+\int \sigma(a)\calN(a|\mu,\sigma^2)\,da &\approx& \sigma(\frac{\mu}{\sqrt{1+\lambda^2 \sigma^2}})\\
+&& \kappa(\sigma^2)=1/\sqrt{1+(\pi/8)\sigma^2}{\text とおくと}\\
+&=&\sigma(\kappa(\sigma^2)\mu).
+\end{eqnarray*}
+よって
+$$
+p(C_1|\phi,t) \approx \sigma(\kappa(\sigma_a^2)\mu_a)
+$$
+という近似予測分布が得られた.
 \end{document}
