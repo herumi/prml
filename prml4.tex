@@ -667,6 +667,7 @@ $v_{nk}=\trans{u_k}\phi_n$, $f(x)=x^2$とおく. $f(x)$は下に凸.
 \begin{eqnarray*}
 \trans{u}H u &=& \sum_{n,k,j} y_{nk}(\delta_{kj}-y_{nj})(\trans{u_k}\phi_n)(\trans{\phi_n}u_j)\\
  &=& \sum_n(\sum_{k,j} y_{nk}\delta_{kj} v_{nk} v_{nj} - \sum_{k,j} y_{nk} y_{nj} v_{nk} v_{nj})\\
+ && {\text 一般に}(\sum_k x_k)^2=(\sum_k x_k)(\sum_j x_j) = \sum_{k,j} x_k x_j{\text より}\\
  &=& \sum_n \{\sum_k y_{nk}v_{nk}^2 - (\sum_k y_{nk} v_{nk})^2 \}.
 \end{eqnarray*}
 ここで$\sum_k y_{nk}=1$, $0 < y_{nk} < 1$よりJensenの不等式を適用すると
@@ -859,23 +860,39 @@ $$
 これをベイズ情報量基準（Bayesian Information Criterion, BIC）という.
 
 \section{ディラックのデルタ関数}
-気持ち的にはデルタ関数は$\RR$から$\RR$への関数で
+ヘヴィサイド関数$H(x)$を$\RR$から$\RR$への関数で
+$$
+H(x)=
+\begin{cases}
+1 & (x>0) \\
+0 & (x \le 0)
+\end{cases}
+$$
+と定義する. 気持ち的にはデルタ関数はヘヴィサイド関数の微分である.
+$$
+H'(x) = \delta(x).
+$$
+$x=0$以外では微分すると0で, $x=0$では無限大になるので
 $$
 \delta(x)=
 \begin{cases}
-1 & (x=0) \\
+\infty & (x=0) \\
 0 & (x \neq 0)
 \end{cases}
 $$
-である. ただ実際にはデルタ関数は積分を通してしか扱われない.
-
-任意の実連続関数$f(x)$に対して
+という感じである.
+ただ, 実際にはデルタ関数は積分を通してしか扱われない. 厳密には測度論や関数解析の理論を用いて正当化されなければならないが
+次のような関係式が成り立つ.
 $$
-\int_{-\infty}^\infty f(x) \delta(x)\,dx = f(0)
+\int_{-\infty}^\infty \delta(x)\,dx = \Bigl[H(x)\Bigr]_{-\infty}^\infty = H(\infty) - H(-\infty) = 1.
 $$
-とうい性質を満たす超関数（ここでは定義しない）として解釈する.
-
-(加筆するかも)
+実数値関数$f(x)$に対して部分積分を適用すると
+\begin{eqnarray*}
+\int_{-\infty}^\infty f(x) \delta(x)\,dx &=& \Bigl[H(x)f(x)\Bigr]_{-\infty}^\infty - \int_{-\infty}^\infty H(x) f'(x)\,dx\\
+ &=& f(\infty) - \int_0^\infty f'(x)\,dx\\
+ &=& f(\infty) - (f(\infty) - f(0))\\
+ &=& f(0).
+\end{eqnarray*}
 
 \section{ロジスティックシグモイド関数とプロビット関数の逆関数}
 
