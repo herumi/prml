@@ -813,12 +813,12 @@ $$
 \section{モデルの比較とBIC}
 前節のラプラス近似を行うと正規化係数$Z$の近似も分かる. ガウス分布の特性から
 $$
-Z=\int f(z)\,dx \approx \int f(z_0) \exp(-\frac{1}{2}\trans{(z-z_0)}A(z-z_0))\,dx=f(z_0)\sqrt{\frac{(2\pi)^M}{|A}}.
+Z=\int f(z)\,dx \approx \int f(z_0) \exp(-\frac{1}{2}\trans{(z-z_0)}A(z-z_0))\,dx=f(z_0)\sqrt{\frac{(2\pi)^M}{|A|}}.
 $$
 
 データ集合$D$, パラメータ$\{\theta_i\}$の集合$\{M_i\}$を考えて各モデルに対して$p(D|\theta_i, M_i)$を定義する.
 事前確率$p(\theta_i|M_i)$を決めてモデルエビデンス$p(D|M_i)$を計算してみよう. 以下$M_i$を略す.
-また$\difff{\theta_i}{\theta_j}$を$\nabla^2$と書くことにする.
+また行列作用素$(\difff{\theta_i}{\theta_j})$を$\nabla^2$と書くことにする.
 $$
 p(D)=\int p(D|\theta)p(\theta)\,d\theta.
 $$
