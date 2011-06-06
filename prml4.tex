@@ -999,8 +999,8 @@ $$
 $$
 \log p(w|t)=-\frac{1}{2}\trans{(w-m_0)}S_0^{-1}(w-m_0)+\sum_{n=1}^N (t_n \log y_n + (1-t_n)\log (1-y_n)) + \text{const}.
 $$
-これを最大化する最大事後確率（MAP）の解$w_{\text MAP}$を何らかの方法で求める.
-ラプラス近似をするために$w_{\text MAP}$を平均とするガウス分布で近似しよう. 以後$w_{\text MAP}$を$m_N$と書く.
+これを最大化する最大事後確率（MAP）の解$w_\text{MAP}$を何らかの方法で求める.
+ラプラス近似をするために$w_\text{MAP}$を平均とするガウス分布で近似しよう. 以後$w_\text{MAP}$を$m_N$と書く.
 共分散は今まで何度もやった通り
 $$
 S_N^{-1}=-\nabla^2 \log p(w|t) = S_0^{-1} + \sum_{n=1}^N y_n(1-y_n)\phi_n \trans{\phi_n}.
