@@ -849,7 +849,7 @@ $$
 $$
 \log p(D) \approx \log p(D|\theta_{\text{MAP}})-\frac{1}{2}\trans{(\theta_{\text{MAP}}-m)}B(\theta_{\text{MAP}}-m)-\frac{1}{2}\log |H+B|+\frac{1}{2}\log |B|.
 $$
-データ集合$D$の点の個数を$N$とし, それぞれが独立であると考えると$H$の各要素は$O(N)$. $B$は$N$や次元の数$M$には依存しないので$M$, $N$を大きくしたとき無視できるとすると
+データ集合$D$の点の個数を$N$とし, それぞれが独立であると考えると$H$の各要素は$O(N)$. $B$は$N$や次元の数$M$には依存しないので$M$, $N$を大きくしたとき無視できるとすると$C$を定数として
 $$
 \log |H| \approx \log \prod^M (N C) = M \log N + M \log C \approx M \log N.
 $$
@@ -858,6 +858,7 @@ $$
 \log p(D) \approx \log p(D|\theta_{\text{MAP}}) - \frac{1}{2} M \log N.
 $$
 これをベイズ情報量基準（Bayesian Information Criterion, BIC）という.
+かなり無理筋な近似ではあるが, ラプラス近似が（別の方法で導出される）BICと関連があることを暗示している.
 
 \section{ディラックのデルタ関数}
 ヘヴィサイド関数$H(x)$を$\RR$から$\RR$への関数で
@@ -1012,7 +1013,7 @@ $$
 
 次に$C_1$についての予測分布を求める.
 $$
-p(C_1|\phi,t)=\int p(C_1|\phi,w)p(w|t)\,dt \approx \int \sigma(\trans{w}\phi)q(w)\,dw.
+p(C_1|\phi,t)=\int p(C_1|\phi,w)p(w|t)\,dw \approx \int \sigma(\trans{w}\phi)q(w)\,dw.
 $$
 デルタ関数の性質から
 $$
