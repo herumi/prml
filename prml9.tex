@@ -1,0 +1,53 @@
+\documentclass[a4paper]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+
+\include{notation}
+
+\newcommand{\wji}{w_{ji}^{(1)}}
+\newcommand{\wkj}{w_{kj}^{(2)}}
+
+\begin{document}
+
+\ignore{
+\title{PRMLの5章の数式の補足}
+\author{サイボウズ・ラボ 光成滋生}
+
+\maketitle
+
+\section{概要}
+この文章は『パターン認識と機械学習』（以下PRML）の5章の式変形を一部埋めたものです.
+間違い, 質問などございましたら{\tt herumi@nifty.com}または{\tt twitterID:herumi}までご連絡ください.
+
+}
+
+\section{9.43式}
+9.40式を$E$とおく.
+$$
+E=\sum_{n,k} \gamma(z_{nk})(\log \pi_k + \log \calN(x_n|\mu_k,\Sigma_k)).
+$$
+$\epsilon E$に
+$$
+\calN(x|\mu_k,\Sigma_k)=\frac{1}{(2\pi \epsilon)^{D/2}}\exp(-\frac{1}{2\epsilon}||x-\mu_k||^2)
+$$
+を代入する.
+$$
+\epsilon E = \sum_{n,k} \gamma(z_{nk})(\epsilon \log \pi_k - \frac{D}{2}\epsilon \log (2\pi \epsilon) - \frac{1}{2}||x_n-\mu_k||^2).
+$$
+$\epsilon \rightarrow 0$で
+$$
+\gamma(z_{nk}) \rightarrow r_{nk}.
+$$
+$$
+\epsilon \log \pi_k \rightarrow 0.
+$$
+$$
+\epsilon \log (2\pi \epsilon) \rightarrow 0
+$$
+より
+$$
+\epsilon E \rightarrow -\frac{1}{2}\sum_{n,k} r_{nk} ||x_n-\mu_k||^2 = J.
+$$
+よって期待完全データ対数尤度の最大化は$J$の最大化と同等.
+
+\end{document}
