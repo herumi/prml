@@ -9,20 +9,153 @@
 
 \begin{document}
 
-\ignore{
-\title{PRMLの5章の数式の補足}
+\title{PRMLの9章の数式の補足}
 \author{サイボウズ・ラボ 光成滋生}
 
 \maketitle
 
 \section{概要}
-この文章は『パターン認識と機械学習』（以下PRML）の5章の式変形を一部埋めたものです.
+この文章は『パターン認識と機械学習』（以下PRML）の9章の式変形を一部埋めたものです.
 間違い, 質問などございましたら{\tt herumi@nifty.com}または{\tt twitterID:herumi}までご連絡ください.
+面倒なので特に紛らわしいと思わない限り$\bm{x}$を$x$と書いたりします.
 
-}
+\section{復習}
+よく使ういくつかの式を書いておく. どれも今までに既に示したものである.\\
+{\tt https://github.com/herumi/prml/raw/master/prml2.pdf},\\
+{\tt https://github.com/herumi/prml/raw/master/prml3.pdf}
+を参照.
 
-\section{9.43式}
-9.40式を$E$とおく.
+行列について
+\begin{eqnarray*}
+&& \quads{A}{x}=\tr(Ax\trans{x})\\
+&& \diff{A}\log|A|=\trans{(A^{-1})}\\
+&& \diff{x}\log|A|=\tr(A^{-1}\diff{x}A)\\
+&& \diff{A}\tr(A^{-1}B) = -\trans{(A^{-1}BA^{-1})}
+\end{eqnarray*}
+
+\section{混合ガウス分布}
+離散的な潜在変数を用いた混合ガウス分布の定式化.
+$K$次元2値確率変数$z$を考える（どれか一つの成分のみが1であとは0）.
+つまり
+$$
+\sum_k z_k = 1.
+$$
+$z$の種類は$K$個である. $0 \le \pi_k \le 1$という係数を用いて
+$$
+p(z_k=1)=\pi_k
+$$
+という確率分布を与える.
+$$
+p(z)=\prod_k \pi_k^{z_k}.
+$$
+$$
+p(x|z_k=1)=\calN(x|\mu_k,\Sigma_k)
+$$
+なので
+$$
+P(x|z)=\prod_k \calN(x|\mu_k,\Sigma_k)^{z_k}.
+$$
+これらを合わせて
+\begin{eqnarray*}
+p(x) &=& \sum_z p(z)p(x|z) \\
+ &=& \sum_z \prod_k (\pi_k \calN(x|\mu_k,\Sigma_k))^{z_k}\\
+ && \text{$z_k$はどれか一つのみが1（そのとき$\pi_k$）であとは0なので}\\
+ &=& \sum_{k} \pi_k \calN(x|\mu_k,\Sigma_k).
+\end{eqnarray*}
+
+$x$が与えられたときの$z$の条件付き確率$p(z_k=1|x)$を$\gamma(z_k)$とする.
+$$
+\gamma(z_k)=\frac{p(z_k=1)p(x|z_k=1)}{\sum_j p(z_j=1)p(x|z_j=1)}
+ = \frac{\pi_k \calN(x|\mu_k,\Sigma_k)}{\sum_j \pi_j \calN(x|\mu_j,\Sigma_j)}.
+$$
+これを混合要素$k$が観測値$x$に対する負担率という.
+
+\section{混合ガウス分布のEMアルゴリズム}
+混合ガウス分布において観測したデータ集合を$\trans{X}=\{x_1,\ldots, x_N\}$,
+対応する潜在変数を$\trans{Z}=\{z_1,\ldots, z_N\}$とする.
+$X$は$N \times D$行列で$Z$は$N \times K$行列.
+
+対数尤度関数の最大点の条件をもとめる.
+$$
+F=\log p(X|\vpi,\mu,\Sigma)=\sum_{n=1}^N \log (\sum_{j=1}^K \pi_j \calN(x_n|\mu_j,\Sigma_j))
+$$
+とする.
+$$
+\diff{\mu}\log \calN(x|\mu,\Sigma)
+=\diff{\mu} (-\frac{1}{2}\quads{{\Sigma^{-1}}}{{(x-\mu)}})
+=\Sigma^{-1}(x-\mu)
+$$
+を使うと
+\begin{eqnarray*}
+\diff{\mu_k}F &=& \sum_n \frac{\pi_k\calN(x_n|\mu_k,\Sigma_k)}{\sum_j \pi_j \calN(x_n|\mu_j,\Sigma_j)} \Sigma_k^{-1}(x_n-\mu_k)\\
+ &=& \Sigma_k^{-1}(\sum_n \gamma(z_{nk})(x_n-\mu_k))=0.
+\end{eqnarray*}
+よって
+$$
+\sum_n \gamma(z_{nk})x_n - (\sum_n \gamma(z_{nk}))\mu_k=0.
+$$
+$$
+N_k=\sum_n \gamma(z_{nk})
+$$
+とおくと
+$$
+\mu_k=\frac{1}{N_k}\sum_n \gamma(z_{nk})x_n.
+$$
+これは$\mu_k$が$X$の重みつき平均であることを示している.
+
+次に$\Sigma_k$に関する微分を考える.
+$$
+\calN = \calN(x|\mu,\Sigma)
+$$
+のとき
+$$
+\log \calN = -\frac{D}{2}\log(2\pi)-\frac{1}{2}\log |\Sigma| - \frac{1}{2}\tr(\Sigma^{-1}\outp{(x-\mu)})
+$$
+なので
+$$
+\diff{\Sigma} (\log \calN)
+= -\frac{1}{2}\trans{(\Sigma^{-1})}
+  +\frac{1}{2}\trans{(\Sigma^{-1}(x-\mu)\trans{(x-\mu)}\Sigma^{-1})}.
+$$
+よって
+\begin{eqnarray*}
+\diff{\Sigma_k}F
+ &=& \sum_n \gamma(z_{nk}) \diff{\Sigma_k} \calN(x_n|\mu_k,\Sigma_k)\\
+ &=&\sum_n \gamma(z_{nk})(-\frac{1}{2}(\Sigma_k^{-1})
+        + \frac{1}{2}\trans{(\Sigma_k^{-1}\outp{(x_n-\mu_k)}\Sigma_k^{-1})}) = 0.
+\end{eqnarray*}
+よって
+$$
+\sum_n \gamma(z_{nk})(I-\outp{(x_n-\mu_k)}\Sigma_k^{-1})=0.
+$$
+$$
+\Sigma_k=\frac{1}{N_k}\sum_n \gamma(z_{nk})\outp{(x_n-\mu_k)}.
+$$
+
+最後に$\pi_k$に関する微分を考える.
+$\sum_k \pi_k=1$の制約を入れる.
+$$
+G=F+\lambda(\sum_k \pi_k-1)
+$$
+とすると
+$$
+\diff{\pi_k}{F}
+=\sum_n \frac{\calN(x_n|\mu_k,\Sigma_k)}{\sum_j \pi_j\calN(x_n|\mu_j,\Sigma_j)}+\lambda=0.
+$$
+$\calN_{nk}=\calN(x_n|\mu_k,\Sigma_k)$とおくと
+$$
+N=\sum_k N_k=\sum_{n,k} \gamma(z_{nk})=\sum_k \pi_k(\sum_n \frac{\calN_{nk}}{\sum_j \pi_j \calN_{nj}})=-\sum_k \pi_k \lambda=-\lambda.
+$$
+よって
+$$
+\sum_n \frac{\pi_k \calN_{nk}}{\sum_j \pi_j \calN_{nj}} = \pi_k N.
+$$
+$$
+\pi_k=\frac{1}{N}\sum_n \gamma(z_{nk})=\frac{N_k}{N}.
+$$
+\section{$K$-meansとの関連}
+式(9.43)は不正確. $E$ではなく$\epsilon E$を考えないと(9.43)の右辺にはならない.
+式(9.40)を$E$とおく.
 $$
 E=\sum_{n,k} \gamma(z_{nk})(\log \pi_k + \log \calN(x_n|\mu_k,\Sigma_k)).
 $$

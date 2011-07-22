@@ -193,12 +193,12 @@ $$\sigma_N^2 \rightarrow \frac{1}{\beta}$$
 
 $p(x)$, $q(x)$を恒等的に0ではない確率密度関数とする. つまり$p(x)$, $q(x) \ge 0$.
 $$
-\mathrm{KL}(p||q)=\int p(x) \log \frac{p(x)}{q(x)}\,dx
+\KL(p||q)=\int p(x) \log \frac{p(x)}{q(x)}\,dx
 $$
 をカルバック距離（Kullback-Leibler距離, 相対エントロピー）という.
 
-距離といいつつ, $\mathrm{KL}(p||q)=\mathrm{KL}(q||p)$とは限らないので距離の公理は満たさない.
-しかし, $\mathrm{KL}(p||q) \ge 0$であり, $\mathrm{KL}(p||q)=0 \iff p = q$はいえる.
+距離といいつつ, $\KL(p||q)=\KL(q||p)$とは限らないので距離の公理は満たさない.
+しかし, $\KL(p||q) \ge 0$であり, $\KL(p||q)=0 \iff p = q$はいえる.
 これを示そう.
 
 まず$S(x)=e^{-x}+x-1$について$S(x) \ge 0$であり, $S(x)=0 \iff x = 0$である.
@@ -208,13 +208,13 @@ $$
 $$
 \int p(x) S(\log \frac{p(x)}{q(x)})\,dx
  = \int p(x) (\frac{q(x)}{p(x)} + \log \frac{p(x)}{q(x)} - 1)\,dx
- = \mathrm{KL}(p||q) + \int (q(x) - p(x))\,dx = \mathrm{KL}(p||q).
+ = \KL(p||q) + \int (q(x) - p(x))\,dx = \KL(p||q).
 $$
 ここで$p$, $q$が確率密度関数なので$\int p(x)\,dx = 1$, $\int q(x)\,dx=1$であることを使った.
 
-この式の左辺の被積分関数は常に0以上. よって$\mathrm{KL}(p||q) \ge 0$.
+この式の左辺の被積分関数は常に0以上. よって$\KL(p||q) \ge 0$.
 
-$\mathrm{KL}(p||q) = 0$ならば殆ど全ての$x$について
+$\KL(p||q) = 0$ならば殆ど全ての$x$について
 $$
 p(x) S(\log \frac{p(x)}{q(x)})=0.
 $$
@@ -224,7 +224,7 @@ $S(x)=0$となる$x$は0のときだけだから,
 殆ど全ての$x$について$p(x)=q(x)$.
 
 真のモデル$p(D|M)$があったときに, モデルエビデンス$p(D|M')$との
-カルバック距離$\mathrm{KL}(p(D|M)||p(D|M'))$は,
+カルバック距離$\KL(p(D|M)||p(D|M'))$は,
 0に近いほど真のモデルに近そうだということにする.
 
 \subsection{エビデンス関数の評価の式変形}
