@@ -111,18 +111,18 @@ $$
 $$
 \log \calN = -\frac{D}{2}\log(2\pi)-\frac{1}{2}\log |\Sigma| - \frac{1}{2}\tr(\Sigma^{-1}\outp{(x-\mu)})
 $$
-なので
+なので$\trans{\Sigma}=\Sigma$ならば
 $$
 \diff{\Sigma} (\log \calN)
-= -\frac{1}{2}\trans{(\Sigma^{-1})}
-  +\frac{1}{2}\trans{(\Sigma^{-1}(x-\mu)\trans{(x-\mu)}\Sigma^{-1})}.
+= -\frac{1}{2}(\Sigma^{-1})
+  +\frac{1}{2}(\Sigma^{-1}(x-\mu)\trans{(x-\mu)}\Sigma^{-1}).
 $$
 よって
 \begin{eqnarray*}
 \diff{\Sigma_k}F
  &=& \sum_n \gamma(z_{nk}) \diff{\Sigma_k} \calN(x_n|\mu_k,\Sigma_k)\\
  &=&\sum_n \gamma(z_{nk})(-\frac{1}{2}(\Sigma_k^{-1})
-        + \frac{1}{2}\trans{(\Sigma_k^{-1}\outp{(x_n-\mu_k)}\Sigma_k^{-1})}) = 0.
+        + \frac{1}{2}(\Sigma_k^{-1}\outp{(x_n-\mu_k)}\Sigma_k^{-1})) = 0.
 \end{eqnarray*}
 よって
 $$
