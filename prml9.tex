@@ -56,6 +56,14 @@ $$
 && E[\inp{x}]=\inp{\mu}+\tr(\Sigma).
 \end{eqnarray*}
 
+最後の式は3番目から出る.
+$$
+E[x_i^2]=(\outp{\mu})_{ii}+\Sigma_{ii}=\mu_i^2+\Sigma_{ii}.
+$$
+よって
+$$
+E[\inp{x}]=\sum_i E[x_i^2]=\inp{\mu}+\tr(\Sigma).
+$$
 
 \section{混合ガウス分布}
 離散的な潜在変数を用いた混合ガウス分布の定式化.
@@ -302,8 +310,8 @@ $E[x]=\mu$は容易に分かる.
 $$
 E[x_i x_j]=
 \begin{cases}
-\mu_i \mu_j (i \ne j)\\
-\mu_i (i = j).
+\mu_i \mu_j & (i \ne j)\\
+\mu_i & (i = j).
 \end{cases}
 $$
 よって
@@ -357,7 +365,152 @@ $$
  &=& \sum_{n,k} z_{nk}(\log \pi_k + \sum_i x_{ni} \log \mu_{ki}+(1-x_{ni})\log (1-\mu_{ki}))\\
  &=& \sum_{n,k} z_{nk} A_{nk} \text{とおく}.
 \end{eqnarray*}
+\begin{eqnarray*}
+E[z_{nk}]
+ &=& \frac{\sum_{z_n} z_{nk} \prod_j (\pi_j p(x_n|\mu_j))^{z_{nj}}}{\sum_{z_n} \prod_j (\pi_j p(x_n|\mu_j)^{z_{nj}}}\\
+ && (z_{nk}=1 \text{となるものだけとるので})\\
+ &=& \frac{\pi_k p(x_n|\mu_k)}{\sum_j \pi_j p(x_n|\mu_j)}
+\end{eqnarray*}
+を$\gamma(z_{nk})$とおく. すると
+$$
+E_Z[\log p(X,Z)|\mu,\vpi)]=\sum_{n,k} \gamma(z_{nk}) A.
+$$
+$$
+N_k=\sum_n \gamma(z_{nk}), \quad \bar{x}_k = \frac{1}{N_k}\sum_n \gamma(z_{nk})x_n
+$$
+とおく.
+\begin{eqnarray*}
+F
+ &=& E_Z[\log p(X,Z|\mu,\vpi)]\\
+ &=& \sum_k (\log \pi_k)(\sum_n \gamma(z_{nk}))+\sum_{k,i} \log \mu_{ki}(\sum_n \gamma(z_{nk})x_{ni})
+   + \sum_{k,i} \log (1-\mu_{ki})(\sum_n \gamma(z_{nk})(1-x_{ni}))\\
+ &=& \sum_k N_k \log \pi_k + \sum_{k,i} N_k \bar{x}_{ki} \log \mu_{ki}
+   + \sum_{k,i} \log (1-\mu_{ki}) N_k(1-\bar{x}_{ki}).
+\end{eqnarray*}
 
-続く
+$\mu_{ki}$に関する最大化.
+\begin{eqnarray*}
+\diff{\mu_{ki}}F
+ &=& N_k \bar{x}_{ki} \frac{1}{\mu_{ki}}+\frac{-1}{1-\mu_{ki}} N_k (1-\bar{x}_{ki})\\
+ &=& \frac{N_{k}}{\mu_{ki}(1-\mu_{ki})}(\bar{x}_{ki}(1-\mu_{ki})-(1-\bar{x}_{ki})\mu_{ki}) = 0.
+\end{eqnarray*}
+よって
+$$
+\bar{x}_{ki}-\bar{x}_{ki} \mu_{ki} - \mu_{ki}+\bar{x}_{ki} \mu_{ki}=\bar{x}_{ki}- \mu_{ki} = 0.
+$$
+よって
+$$
+\mu_k = \bar{x}_k.
+$$
 
+$\pi_k$に関する最適化.
+$G=F+\lambda(\sum_k \pi_k-1)$とすると
+$$
+\diff{\pi_k}G = \frac{N_k}{\pi_k}+\lambda=0.
+$$
+よって
+$$
+N_k=-\lambda \pi_k, \quad N=\sum_k N_k = -\lambda \sum_k \pi_k = -\lambda.
+$$
+つまり$\lambda=-N$となり
+$$
+\pi_k=\frac{N_k}{N}.
+$$
+
+$0 \le p(x_n|\mu_k) \le 1$より
+$$
+\log p(X|\mu,\vpi)=\sum_n \log (\sum_k \pi_k p(x_n|\mu_k)) \le \sum \log (\sum_k \pi_k)=0.
+$$
+よって尤度関数が発散することはない.
+
+\section{ベイズ線形回帰に関するEMアルゴリズム}
+EMアルゴリズムに基づいてベイズ線形回帰を考えてみる.
+$w$を潜在関数と見なしてそれを最大化する方針を採る.
+
+$$
+p(w|t)=\calN(w|m_N,S_N)
+$$
+で$w$の事後分布が求まっているとする.
+$$
+p(t|w,\beta)=\prod_n \calN(t_n|\trans{w}\phi(x_n), \beta^{-1}),
+$$
+$$
+p(w|\alpha)=\calN(w|0, \alpha^{-1}I)
+$$
+であった.
+このとき完全データ対数尤度関数は
+$$
+\log p(t,w|\alpha,\beta)=\log p(t|w,\beta) + \log p(w|\alpha).
+$$
+なので
+\begin{eqnarray*}
+F &=& E[\log p(t,w|\alpha,\beta)]\\
+ &=& E[\sum_n (\frac{1}{2} \log (\frac{\beta}{2\pi})
+     -\frac{\beta}{2}(t_n-\trans{w}\phi_n)^2)
+     +\frac{M}{2}\log (\frac{\alpha}{2\pi}) - \frac{\alpha}{2}\inp{w}]\\
+ &=& \frac{M}{2}\log (\frac{\alpha}{2\pi})-\frac{\alpha}{2}E[\inp{w}]
+     +\frac{N}{2}\log (\frac{\beta}{2\pi})-\frac{\beta}{2}\sum_n E[(t_n-\trans{w}\phi_n)^2].
+\end{eqnarray*}
+
+$\alpha$に関する最大化
+$$
+\diff{\alpha}F=\frac{M}{2}\frac{1}{\alpha}-\frac{1}{2}E[\inp{w}]=0.
+$$
+よって
+$$
+\alpha=\frac{M}{E[\inp{w}]}=\frac{M}{\inp{m_N}+\tr(S_N)}.
+$$
+
+$\beta$に関する最大化
+$$
+\diff{\beta}F=\frac{N}{2}\frac{1}{\beta}-\frac{1}{2}\sum_n E[(t_n-\trans{w}\phi_n)^2]=0.
+$$
+よって
+$$
+\frac{1}{\beta}=\frac{1}{N}\sum_n E[(t_n-\trans{w}\phi_n)^2].
+$$
+
+\section{一般のEMアルゴリズム}
+潜在変数をもつ確率モデルの最尤解を求めるための一般的手法.
+$X$を確率変数, $Z$を潜在変数, $\theta$をパラメータとする.
+完全データ対数尤度関数$\log p(X,Z|\theta)$の最適化は容易であるという仮定の元で
+目的は$p(X|\theta)=\sum_Z p(X,Z|\theta)$の最大化.
+
+$Z$に対する分布を$q(Z)$とする
+$$
+p(X,Z|\theta)=p(Z|X,\theta)p(X|\theta).
+$$
+$$
+\calL(q,\theta)=\sum_Z q(Z) \log \frac{p(X,Z|\theta)}{q(Z)},
+$$
+$$
+\KL(q||p)=-\sum_Z q(Z) \log \frac{p(Z|X,\theta)}{q(Z)}
+$$
+とおく.
+$\KL(q||p)$は$q(Z)$と事後分布$p(Z|X,\theta)$との距離なので常に0以上.
+\begin{eqnarray*}
+\calL(q,\theta)+\KL(q||p)
+ &=& \sum_Z q(Z) \log \frac{p(X,Z|\theta)}{p(Z|X,\theta)}\\
+ &=& \sum_Z q(Z) \log p(X|\theta)\\
+ &=& \log p(X|\theta).
+\end{eqnarray*}
+よって
+\begin{eqnarray*}
+\log p(X|\theta)
+ &=& \calL(q,\theta)+\KL(q||p)\\
+ &\ge& \calL(q,\theta).
+\end{eqnarray*}
+したがって$\calL(q,\theta)$は$\log p(X|\theta)$の下界.
+
+パラメータの現在の値が$\theta^o$だったときに
+\begin{itemize}
+\item[] Eステップでは$\theta^o$を固定して$\calL(q,\theta)$を$q(Z)$について最大化する.
+$\log p(X|\theta)$は$q$によらないのでそれは$\KL=0$のとき, つまり
+$$
+q(Z)=p(Z|X,\theta^o)
+$$
+のときである.
+\item[] Mステップでは$q(Z)$を固定して$\calL(q,\theta)$を$\theta$について最大化する.
+その$\theta$を$\theta^n$とする.
+\end{itemize}
 \end{document}
