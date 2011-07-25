@@ -6,16 +6,16 @@ chapter 2 : https://github.com/herumi/prml/raw/master/prml2.pdf
 
 elementary text for matrix and integral calculus and Gauss distribution.
 
-chapter 3 : https://github.com/herumi/prml/raw/master/prml2.pdf
+chapter 3 : https://github.com/herumi/prml/raw/master/prml3.pdf
 
 Woodbury formula, symmetric matrix and LK divergence.
 
-chapter 4 : https://github.com/herumi/prml/raw/master/prml2.pdf
+chapter 4 : https://github.com/herumi/prml/raw/master/prml4.pdf
 
 Jensen's inequality, Dirac delta function and the relation between
 logistic sigmoid function and inverse function of probit function.
 
-chapter 9 : https://github.com/herumi/prml/raw/master/prml2.pdf
+chapter 9 : https://github.com/herumi/prml/raw/master/prml9.pdf
 
 exercise 9.9
 
