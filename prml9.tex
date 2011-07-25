@@ -487,7 +487,8 @@ $$
 \KL(q||p)=-\sum_Z q(Z) \log \frac{p(Z|X,\theta)}{q(Z)}
 $$
 とおく.
-$\KL(q||p)$は$q(Z)$と事後分布$p(Z|X,\theta)$との距離なので常に0以上.
+$\KL(q||p)$は$q(Z)$と事後分布$p(Z|X,\theta)$との距離なので常に0以上\\
+（cf. {\tt https://github.com/herumi/prml/raw/master/prml3.pdf}）.
 \begin{eqnarray*}
 \calL(q,\theta)+\KL(q||p)
  &=& \sum_Z q(Z) \log \frac{p(X,Z|\theta)}{p(Z|X,\theta)}\\
@@ -512,5 +513,16 @@ $$
 のときである.
 \item[] Mステップでは$q(Z)$を固定して$\calL(q,\theta)$を$\theta$について最大化する.
 その$\theta$を$\theta^n$とする.
+最大値になっていなければ, 必ず$\calL$が増加し, $\log p(X|\theta)$も増える.
+このときの$\KL(q||p)$は$\theta^o$を使って計算されていた（そして値は0）ので新しい$\theta^n$を使って計算し直すと通常正となる.
 \end{itemize}
+$q(Z)=p(Z|X,\theta^o)$より
+
+\begin{eqnarray*}
+q(Z) &=& \sum_ Z q(Z) \log \frac{p(X,Z|\theta)}{q(Z)}\\
+     &=& \sum_Z p(Z|X,\theta^o) \log p(X,Z|\theta) - \sum_Z p(Z|X,\theta^o)\log p(Z|X,\theta^o)\\
+     && \calQ(\theta,\theta^o)=\sum_Z p(Z|X,\theta^o) \log p(X,Z|\theta){\text とおいて}\\
+     &=& \calQ(\theta,\theta^o) + \theta{\text {に非依存}}.
+\end{eqnarray*}
+つまり$\calL(q,\theta)$の最大化は$\calQ(\theta,\theta^o)$の最大化に等しい.
 \end{document}
