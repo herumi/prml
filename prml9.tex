@@ -121,7 +121,10 @@ $$
 $$
 \diff{\mu} \calN = \calN \cdot (\diff{\mu} \log \calN) = \calN \cdot \Sigma^{-1}(x-\mu).
 $$
-$\calN_{nk}=\calN(x_n|\mu_k,\Sigma_k)$とおいて
+もちろんガウス分布の微分は普通にそのまましてもよい.
+だが今回は対数をとってから微分をとった方が,
+微分してでてくる$\calN$が$\gamma(z_{nk})$の一部となることを見通しやすいのでそうしてみた.
+さて$\calN_{nk}=\calN(x_n|\mu_k,\Sigma_k)$とおいて
 \begin{eqnarray*}
 \diff{\mu_k}F
  &=& \sum_n \frac{\pi_k \diff{\mu_k}\calN_{nk}}{\sum_j \pi_j \calN_{nj}} \\
