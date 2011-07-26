@@ -66,7 +66,9 @@ E[x]=\mu.
 $$
 \subsection{ウィシャート分布}
 $$
-\calW(\Lambda,W,\nu)=B(W,\nu)|\Lambda|^{\frac{\nu-D-1}{2}}\exp(-\frac{1}{2}\tr (W^{-1}\Lambda), \quad
+\calW(\Lambda,W,\nu)=B(W,\nu)|\Lambda|^{\frac{\nu-D-1}{2}}\exp(-\frac{1}{2}\tr (W^{-1}\Lambda).
+$$
+$$
 B(W, \nu)=|W|^{\nu/2}(2^{\nu D/2} \pi ^{D(D-1)/4} \prod_{i=1}^D \Gamma(\frac{\nu+1-i}{2}))^{-1}.
 $$
 \begin{eqnarray*}
@@ -427,5 +429,196 @@ q^*(\Lambda_k)=\calW(\Lambda_k|W_k,\nu_k), \quad
   q^*(\mu_k,\Lambda_k)=\calN(\mu_k|m_k,(\beta_k \Lambda_k)^{-1}) \calW (\Lambda_k|W_k,\nu_k).
 $$
 
+$\calN(x|\mu,\Lambda^{-1})$について$E[\outp{x}]=\outp{\mu}+\Lambda^{-1}$, $\calW(\Lambda_k|W_k,\nu_k)$について$E[\Lambda_k]=\nu_k W_k$なので
+\begin{eqnarray}\label{eval_quad}
+E_{\mu_k,\Lambda_k}[\quads{\Lambda_k}{(x_n-\mu_k)}]
+ &=& \tr(E[\Lambda_k \outp{x_n}]-2E[\Lambda_k x_n \trans{\mu_k}]+E[\Lambda_k \outp{\mu_k}]) \nonumber \\
+ &=& \tr E[\nu_k W_k \outp{x_n}]-2\tr E[\nu_k W_k x_n \trans{m_k}] \nonumber \\
+ && +\tr E[\Lambda_k(\outp{m_k}+(\beta_k \Lambda_k)^{-1}]\nonumber \\
+ &=& \nu_k \tr(W_k \outp{x_n})-2\nu_k \tr(W_k x_n \trans{m_k})+\tr (\nu_k W_k \outp{m_k})+D\beta_k^{-1}\nonumber \\
+ &=& D\beta_k^{-1} + \nu_k \quads{W_k}{(x_n-m_k)}.
+\end{eqnarray}
+ウィシャート分布の公式から
+$$
+\log \tilde{\Lambda}_k := E[\log |\Lambda_k|]=\sum_i \phi(\frac{\nu_k+1-i}{2})+D \log 2+ \log |W_k|.
+$$
+ディリクレ分布の公式から
+$$
+\log \tilde{\pi}_k := E[\log \pi_k] = \phi(\alpha_k) - \phi(\hat{\alpha}), \quad \hat{\alpha}=\sum_k \alpha_k.
+$$
 
+\begin{eqnarray*}
+\log \rho_{nk}
+ &=& E[\log \pi_k] + \frac{1}{2}E[\log |\Lambda_k|]-\frac{D}{2}\log (2\pi)-\frac{1}{2}E[\quads{\Lambda_k}{(x_n-\mu_k)}]\\
+ &=& \log \tilde{\pi}_k + \frac{1}{2}\log \tilde{\Lambda}_k
+       - \frac{D}{2}\log (2\pi)-\frac{1}{2}(D\beta_k^{-1}+\nu_k\quads {W_k}{(x_n-m_k)}).
+\end{eqnarray*}
+よって
+$$
+r_{nk} \propto \rho_{nk} \propto \tilde{\pi}_k \Lambda_k^{1/2} \exp(-\frac{D}{2\beta_k} - \frac{\nu_k}{2}\quads{W_k}{(x_n-m_k)}).
+$$
+混合ガウス分布のEMアルゴリズムでの負担率は$\gamma(z_{nk}) \propto \pi_k \calN(x_n|\mu_k, \Lambda_k^{-1})$だったので
+$$
+r_{nk} \propto \pi_k|\lambda_k|^{1/2} \exp (-\frac{1}{2}\quads{\Lambda_k}{(x_n-\mu_k)}).
+$$
+これは上の式とよく似ている.
+
+ディリクレ分布の平均の式$E[\mu_k]=\alpha_k/\hat{\alpha}$より
+$$
+E[\pi_k]=\frac{\alpha_0 + N_k}{\sum_k \alpha_k}=\frac{\alpha_0 + N_k}{K\alpha_0 + \sum_k N_k} = \frac{\alpha_0 + N_k}{K \alpha_0 + N}.
+$$
+ある混合要素$k$について$r_{nk} \simeq 0$なら$N_k \simeq 0$（PRML p.193はかつとなってるけど片方の条件から出る）.
+このとき$\alpha_k \simeq \alpha_0$となる. PRML10章では分布が幅広いという状態を「なだらか」と表記しているようだ.
+ちょっとニュアンスが違う気もするけど.
+
+事前分布で$\alpha_0 \rightarrow 0$とすると$E[\pi_k] \rightarrow 0$.
+$\alpha_0 \rightarrow \infty$なら$E[\pi_k] \rightarrow 1/K$.
+
+\section{変分下限}
+$q(Z,\vpi,\mu,\Lambda)=q(Z)q(\vpi,\mu,\Lambda)$と分解できると仮定すると
+\begin{eqnarray*}
+\calL(q) &=& \int q(Z) \log \frac{p(X,Z)}{q(Z)}\,dZ\\
+ &=& \sum \int q(Z,\vpi,\mu,\Lambda) \log \frac{p(X,Z,\vpi,\mu,\Lambda)}{q(Z,\vpi,\mu,\Lambda)}\,d\vpi d\mu d\Lambda\\
+ &=& E[\log p(X,Z,\vpi,\mu,\Lambda)]-E[\log q(Z,\vpi,\mu,\Lambda)]\\
+ &=& E[\log p(X|Z,\mu,\Lambda)]+E[\log p(Z|\vpi)]+E[\log p(\vpi)]+E[\log p(\mu,\Lambda)]\\
+ && - E[\log q(Z)]-E[\log q(\vpi)]-E[\log q(\mu,\Lambda)].
+\end{eqnarray*}
+以下, ひたすら計算する.
+\begin{eqnarray*}
+E[\log p(X|Z,\mu,\Lambda)]
+ &=& E[\sum_{n,k} z_{nk} \log \calN(x_n|\mu_k,\Lambda_k^{-1})]\\
+ &=& \half E[\sum_{n,k} z_{nk}(-D \log (2\pi) + \log |\Lambda_k| - \quads{\Lambda_k}{(x_n-\mu_k)})]\\
+ &=& \half \sum_k E[-N_k D \log (2\pi)+N_k \log |\Lambda_k|-\sum_n z_{nk} \quads{\Lambda_k}{(x_n-\mu_k)}]\\
+ &=& \half \sum_k N_k (\log \tilde{\Lambda}_k - D \log (2\pi))-
+    \half \underbrace{\sum_{n,k} r_{nk} (D\beta_k^{-1}+\nu_k \quads{W_k}{(x_n-m_k)})}_{X \text とおく}.
+\end{eqnarray*}
+$$
+X = \sum_k N_k D\beta_k^{-1} + \sum_k \nu_k (\underbrace{\sum_n r_{nk} \quads{W_k}{(x_n-m_k)}}_{Y \text とおく}).
+$$
+$$
+\sum_n r_{nk} \outp{x_n}=N_k S_k + N_k \outp{\bar{x}_k}
+$$
+より
+\begin{eqnarray*}
+Y &=& \tr(W_k(\sum_n r_{nk} \outp{x_n}-2\sum_n r_{nk} x_n \trans{m_k} + \sum_n r_{nk} \outp{m_k}))\\
+ &=& \tr(W_k(N_k S_k + N_k \outp{\bar{x}_k} - 2N_k \bar{x}_k \trans{m_k} + N_k \outp{m_k}))\\
+ &=& N_k \tr(W_k(S_k+\outp{(\bar{x}_k-m_k)}))\\
+ &=& N_k (\tr (S_k W_k)+\quads{W_k}{(\bar{x}_k-m_k)}).
+\end{eqnarray*}
+よって
+\begin{eqnarray*}
+E[\log p(X|Z,\mu,\Lambda)]
+ &=& \half \sum_k N_k (\log \tilde{\Lambda}_k - D\beta_k^{-1} - \nu_k \tr(S_k W_k)\\
+ && -\nu_k \quads{W_k}{(\bar{x}_k-m_k)} - D\log (2\pi)).
+\end{eqnarray*}
+
+$$
+E[\log p(Z|\vpi)=E[\sum_{n,k} z_{nk} \log \pi_k] = \sum_{n,k} r_{nk} \log \tilde{\pi}_k.
+$$
+
+$$
+E[\log p(\vpi)]=E[\log C(\alpha_0)+\sum_k (\alpha_0-1)\log \pi_k]=\log C(\alpha_0)+(\alpha_0-1)\sum_k \log \tilde{\pi}_k.
+$$
+
+$$
+E[\log q(Z)]=E[\sum_{n,k} z_{nk} \log r_{nk}]=\sum_{n,k} \log r_{nk}.
+$$
+
+$$
+E[\log q(\vpi)]=E[\log C(\alpha)+\sum_k (\alpha_k-1)\log \pi_k]=\log C(\alpha)+\sum_k(\alpha_k-1)\log \tilde{\pi}_k.
+$$
+
+\begin{eqnarray*}
+E[\log q(\mu,\Lambda)]
+ &=& \sum_k E[\log \calN(\mu_k|m_k,(\beta_k \Lambda_k)^{-1})+\log \calW(\lambda_k|W_k,\nu_k)]\\
+ &=& \sum_k E[-\frac{D}{2} \log (2\pi)+\half \log |\beta_k \Lambda_k|
+       - \half \quads{(\beta_k \Lambda_k)}{(\mu_k-m_k)}]+E[\log W]\\
+ &=& \sum_k \half \log \tilde{\Lambda}_k + \frac{D}{2}\log (\frac{\beta_k}{2\pi}) -
+  \half \underbrace{\tr E[(\beta_k \Lambda_k)\outp{(\mu_k-m_k)}}_{X \text とおく}] + \underbrace{E[\log W]}_{Y \text とおく}\end{eqnarray*}
+\begin{eqnarray*}
+X &=& \tr (\beta_k \Lambda_k)(E[\outp{\mu_k}]-2E[\mu_k]\trans{m_k} + \outp{m_k})\\
+  &=& \tr (\beta_k \Lambda_k)(\outp{m_k} + (\beta_k \Lambda_k)^{-1}-\outp{m_k})\\
+  &=& \tr I = D.
+\end{eqnarray*}
+\begin{eqnarray*}
+Y &=& E[\log W(\Lambda_k|W_k,\nu_k)]\\
+  &=& \log B(W_k,\nu_k)+\frac{\nu_k-D-1}{2} E[\log |\Lambda_k|] - \half \tr (W_k^{-1} E[\Lambda_k])\\
+  &=& \log B(W_k,\nu_k)+\frac{\nu_k-D-1}{2} E[\log |\Lambda_k|] - \half \nu_k D = -H[\Lambda_k].
+\end{eqnarray*}
+よって
+$$
+E[\log q(\mu,\Lambda)]=\sum_k (\half \log \tilde{\Lambda_k}+\frac{D}{2} \log (\frac{\beta_k}{2\pi}) - \frac{D}{2}-H[\Lambda_k]).
+$$
+
+\begin{eqnarray*}
+E[\log p(\mu,\Lambda)]
+ &=& \sum_k \underbrace{E[\log \calN(\mu_k|m_0,(\beta_0 \Lambda_k)^{-1})]}_{A \text とおく}
+       + \underbrace{E[\log \calW(\Lambda_k|W_0,\nu_0)]}_{B \text とおく}.
+\end{eqnarray*}
+\begin{eqnarray*}
+A &=& E[-\frac{D}{2}\log (2\pi)+\half \log |\beta_0 \Lambda_k|-\half \quads{(\beta_0 \Lambda_k)}{(\mu_k - m_0)}]\\
+ &=& \frac{D}{2}\log(\frac{\beta_0}{2\pi})+\half \log \tilde{\Lambda}_k-\half \beta_0 E[\quads{\Lambda_k}{(m_0-\mu_k)}]\\
+ && {\text 2ページ前の式（\ref{eval_quad}）でx_n=m_0として使うと}\\
+ &=& \half(D\log (\frac{\beta_0}{2\pi})+\log \tilde{\Lambda}_k-\beta_0(D\beta_k^{-1}+\nu_k\quads{W_k}{(m_0-\mu_k)})\\
+ &=& \half(D\log (\frac{\beta_0}{2\pi})+\log \tilde{\Lambda}_k
+      -\frac{D\beta_0}{\beta_k}-\beta_0 \nu_k\quads{W_k}{(m_k-m_0)}).
+\end{eqnarray*}
+\begin{eqnarray*}
+B &=& E[\log B(W_0,\nu_0)+\frac{\nu_0-D-1}{2}\log |\Lambda_k|-\half \tr (W_0^{-1}\Lambda_k)]\\
+  &=& \log B(W_0,\nu_0)+\frac{\nu_0-D-1}{2} \log \tilde{\Lambda)}k - \half \tr (W_0^{-1}\underbrace{E[\Lambda_k]}_{=\nu_k W_k}).
+\end{eqnarray*}
+よって
+\begin{eqnarray*}
+E[\log p(\mu,\Lambda)]
+ &=&\half\sum_k (D\log (\frac{\beta_0}{2\pi}+\log \tilde{\Lambda}_k-\frac{D\beta_0}{\beta_k}-\beta_0\nu_k\quads{W_k}{(m_k-m_0)})\\
+ && + K\log B(W_0,\nu_0)+\frac{\nu_0-D-1}{2}\sum_k \log \tilde{\Lambda}_k - \half \sum_k \nu_k \tr(W_0^{-1}W_k).
+\end{eqnarray*}
+
+最後に$\calL$を求めよう.
+$$
+\sum_k N_k=N,
+$$
+$$
+H[q(\Lambda_k)]=-\log B(W_k,\nu_k)-\frac{\nu_k-D-1}{2}\log \tilde{\Lambda}_k+\frac{\nu_k D}{2}
+$$
+に注意する.
+\begin{eqnarray*}
+\calL
+ &=& \half \sum_k N_k \log \tilde{\Lambda}_k-\half \sum_k N_k \frac{D}{\beta_k}-\half \sum_k N_k \nu_k \tr(S_k W_k)
+    -\half \sum_k N_k \nu_k\quads{W_k}{(\bar{x}_k-m_k)}\\
+  && -\half\sum_k N_k D \log(2\pi)+\sum_k N_k \log \tilde{\pi}_k
+     + \log C(\alpha_0)+(\alpha_0-1)\sum_k \log \tilde{\pi}_k+\frac{DK}{2}\log (\frac{\beta_0}{2\pi})\\
+  && + \half \sum_k \log \tilde{\Lambda}_k - \half \sum_k \frac{D\beta_0}{\beta_k}-\half\sum_k \beta_0 \nu_k \quads{W_k}{(m_k-m_0)}+ K \log B(W_0,\nu_0)\\
+  && +\frac{\nu_0-D-1}{2}\sum_k \log \tilde{\Lambda}_k-\half \sum_k \nu_k\tr(W_0^{-1}W_k) - \sum_{n,k}r_{nk}\log r_{nk}\\
+  && -\sum_k (\alpha_k-1)\log \tilde{\pi}_k -\log C(\alpha) - \half \sum_k \log \tilde{\Lambda}_k - \frac{D}{2}\sum_k \log \frac{\beta_k}{2\pi} +\frac{DK}{2}\\
+  && + \sum_k (-\log B(W_k,\nu_k)-\frac{\nu_k-D-1}{2}\log \tilde{\Lambda}_k+\frac{\nu_k D}{2})\\
+ &=& \log \frac{C(\alpha_0)}{C(\alpha)} - \sum_{n,k}r_{nk} \log r_{nk} + \half \sum_k \log \tilde{\Lambda}(N_k+1-\nu_0-D-1-1-\nu_k+D+1)\\
+ && + \sum_k \log \tilde{\pi}_k(N_k+\alpha_0-1-\alpha_k+1)+K \log B(W_0,\nu_0)- \sum_k \log B(W_k,\nu_k)
+    -\frac{DN}{2}\log (2\pi)\\
+ && -\frac{D}{2}\underbrace{\sum_k(\frac{N_k}{\beta_k}+\frac{\beta_0}{\beta_k})}_{=K}
+    + \frac{DK}{2}(\log \beta_0-\log (2\pi))-\frac{D}{2}\sum_k \log \beta_k+\frac{DK}{2}\log (2\pi)+\frac{DK}{2}+ \frac{D}{2}\sum_k \nu_k\\
+ &&  - \half \sum_k \nu_k \tr(W_k(\underbrace{N_k S_k+N_k\outp{(\bar{x}_k-m_k)}+\beta_0\outp{(m_k-m_0)}+W_0^{-1}}_{=X \text とおく}))\\
+ &=& \log \frac{C(\alpha_0)}{C(\alpha)}-\sum_{n,k}r_{nk}\log r_{nk}+K \log B(W_0,\nu_0)-\sum_k \log B(W_k,\nu_k)+\frac{DK}{2}\log \beta_0 - \frac{D}{2}\sum_k \log \beta_k\\
+ && - \frac{DN}{2}\log (2\pi) + \frac{D}{2}\sum_k \nu_k -\half \sum_k \nu_k \tr (W_k X).
+\end{eqnarray*}
+$$
+\bar{x}_k-m_k=\bar{x}_k-\frac{1}{\beta_k}(\beta_0 m_0+N_k \bar{x}_k)=\frac{1}{\beta_k}(\beta_k \bar{x}_k-N_k \bar{x}_k - \beta_0 m0)=\frac{\beta_0}{\beta_k}(\bar{x}_k-m_0).
+$$
+$$
+m_k-m_0=\frac{1}{\beta_k}(\beta_0 m_0+N_k \bar{x}_k)-m_0=\frac{1}{\beta_k}(N_k \bar{x}_k+\beta_0 m_0-\beta_k m_0)=\frac{N_k}{\beta_k}(\bar{x}_k-m_0).
+$$
+よって
+\begin{eqnarray*}
+N_k \outp{(\bar{x}_k-m_k)}+\beta_0\outp{(m_k-m_0)}
+      &=& (\frac{N_k\beta_0^2}{\beta_k^2}+\frac{\beta_0 N_k^2}{\beta_k^2})\\
+      &=& \frac{\beta_0 N_k}{\beta_k}\outp{(\bar{x}_k-m_0)}.
+\end{eqnarray*}
+よって
+$$
+X=W_k^{-1}, \quad \sum_k \nu_k \tr(W_k W_k^{-1})=D\sum_k \nu_k.
+$$
+$$
+\calL = \log \frac{C(\alpha_0)}{C(\alpha)}-\sum_{n,k}r_{nk} \log r_{nk}+\sum_k \log \frac{B(W_0,\nu_0)}{B(W_k,\nu_k)}
+ + \frac{D}{2}\sum_k \log \frac{\beta_0}{\beta_k}-\frac{DN}{2}\log (2\pi).
+$$
 \end{document}
