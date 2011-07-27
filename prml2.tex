@@ -87,7 +87,7 @@ $$I^2=\int_0^{\infty} \int_0^{\infty} \exp(-(x^2 + y^2)) \,dxdy.$$
 積分範囲は$x$, $y$が$(x,y)$平面の第一象限全体なので$r$は0から$\infty$, $\theta$は0から$\pi/2$を渡る.
 よって
 
-$$I^2=\int_0^{\pi/2} \int_0^\infty \exp(-r^2)r \,drd\theta=\pi/2 \left[ -\frac{1}{2}\exp(-r^2)\right] _0^\infty=\pi/4.$$
+$$I^2=\int_0^{\pi/2} \int_0^\infty \exp(-r^2)r \,drd\theta=\pi/2 \left[ -\half\exp(-r^2)\right] _0^\infty=\pi/4.$$
 よって$I=\sqrt{\pi}/2$. $x^2$は偶関数なので積分範囲を$-\infty$から$\infty$にすると2倍になって
 
 $$\int_{-\infty}^\infty \exp(-x^2) \,dx = \sqrt{\pi}.$$
@@ -341,6 +341,17 @@ $$P'^{-1}AP'=I'(P^{-1}AP)I'=I'\diag(\lambda_1, \ldots, \lambda_n)I'
 =\diag(\lambda_2, \lambda_1, \lambda_3, \dots, \lambda_n).$$
 これはもとの対角成分の1番目と2番目を入れ換えたものである.
 $|I'|=-1$, $|P'|=|P||I'|=1$なのでもともと$|P|=1$だったとしてもよい.
+従ってより強く
+\begin{equation}\label{sym}
+\text{$n$次実対称行列$A$に対して, ある$P \in SO(n)$が存在して$P^{-1}AP$を実対角化できる.}
+\end{equation}
+がいえる.
+こう言っておけばPRML 式(2.54)で$|J|^2=1$から$|J|=1$を出しているが,
+$$
+|J|=|U|=1
+$$
+ですむ. 実際のところ, $|J|^2=1$だからといって$|J|=1$とは限らないことに注意（$|J|=-1$かもしれない）.
+PRMLではヤコビ行列の行列式が正であることを暗黙に仮定していて不親切.
 
 \subsection{2次形式}
 
@@ -406,7 +417,7 @@ $P^{-1}AP=\diag(\lambda_1, \ldots, \lambda_n)$より, $P^{-1}A^{-1}P=\diag(\lambda
 
 $\bm{y}=P^{-1}\bm{z}$と置いて前節の変形を行うと
 $$f(\bm{z})
-=\exp(-\frac{1}{2}\sum_{i=1}^n \frac{z_i^2}{\lambda_i})
+=\exp(-\half\sum_{i=1}^n \frac{z_i^2}{\lambda_i})
 =\prod_{i=1}^n\exp(-\frac{z_i^2}{2\lambda_i}).$$
 ここで区間$(-\infty,\infty)$の積分を考えるが, そうすると積分値が発散しないためには
 全ての$\lambda_i>0$である必要がある. 以下この条件を仮定する.
@@ -417,7 +428,7 @@ $$\int f(\bm{z})\,d\bm{z}
 =\prod_{i=1}^n \sqrt{2\pi\lambda_i} = \sqrt{2\pi}^n \sqrt{|A|}.$$
 よって
 $$\calN(\bm{x}|\bm{\mu}, A)
-  =\frac{1}{\sqrt{2\pi}^n} \frac{1}{\sqrt{|A|}}\exp(-\frac{1}{2}\trans{(\bm{x-\mu})}A^{-1}(\bm{x-\mu}))$$
+  =\frac{1}{\sqrt{2\pi}^n} \frac{1}{\sqrt{|A|}}\exp(-\half\trans{(\bm{x-\mu})}A^{-1}(\bm{x-\mu}))$$
 とすると正規化されている.
 これが多変量版のガウス分布である.
 
@@ -463,20 +474,20 @@ $$\EE[\bm{x}\trans{\bm{x}}]=\bm{\mu}\trans{\bm{\mu}} + A.$$
 \subsection{行列の微分}
 
 ここではガウス分布の最尤推定で使ういくつかの公式を列挙する.
+PRMLの付録Cではたとえば(C.22)を(C.33)や(C.47)を使って示せとあるが,
+それだと対称行列や対角化ができる行列に対してしか示せていない中途半端なものである.
+これらはもっと一般的な行列で成り立つ.
+
 $A$を$n$次正方行列とする.
-
 \begin{enumerate}
-
 \item 2次形式の別の表現
 $\bm{x}$を$n$次縦ベクトルとするとき,
 \begin{equation}\label{quad}
 \quadf{A}{x}=\sum_{i,j} a_{ij} x_i x_j=\sum_i (\sum_j a_{ij} (\bm{x}\trans{\bm{x}})_{ji})=\sum_i (A \bm{x}\trans{\bm{x}})_{ii}=\tr(A \bm{x}\trans{\bm{x}}).
 \end{equation}
-
 この式は$A$が対称行列でなくても成り立つことに注意する.
 
 \item 内積の微分
-
 $\bm{x}$, $\bm{y}$を縦ベクトルとして
 $$\diff{\bm{x}} (\trans{\bm{x}}\bm{y}) = \bm{y}.$$
 $$\diff{\bm{y}} (\trans{\bm{x}}\bm{y}) = \bm{x}.$$
@@ -568,14 +579,13 @@ $$(P^{-1})'\tri(\lambda_i)P=-P^{-1}P'P^{-1}\tri(\lambda_i)P$$
 三角行列の逆行列はやはり三角行列であり,
 $*$の部分はもとの行列の部分とは異なる何かわからない値になる.
 しかし対角成分はもとの対角成分の逆数が並ぶ.
-
 つまり
 $$\tri(\lambda_i)^{-1}=\tri(\lambda_i^{-1}).$$
-
 よって
-$$\tr(A^{-1}A')
- =\tr(\tri(\lambda_i^{-1}\lambda_i'))=\sum \frac{\lambda_i'}{\lambda_i}.$$
-
+$$
+\tr(A^{-1}A')
+ =\tr(\tri(\lambda_i^{-1}\lambda_i'))=\sum \frac{\lambda_i'}{\lambda_i}.
+$$
 これで左辺$=$右辺が示された.
 
 \item 行列式の対数の微分の公式(2)
@@ -590,13 +600,11 @@ $|A|>0$となる行列に対して
 今示した対数の微分の公式(1)より
 $$\diff{a_{ij}}\log|A|=\tr(A^{-1}\diff{a_{ij}}A).$$
 $\diff{a_{ij}}A$は$ij$成分のみが1でそれ以外は0の行列になる.
-
 その行列を$I_{ij}$と書くと,
 $$\tr(A^{-1}I_{ij})=\sum_s (A^{-1}I_{ij})_{ss}
 =\sum_s (\sum_t (A^{-1})_{st} (I_{ij})_{ts})
 =\sum_s (\sum_t (A^{-1})_{st} \delta_{it} \delta_{js}) = (A^{-1})_{ji}.$$
 \end{enumerate}
-
 つまり$\log|A|$を$a_{ij}$成分で微分すると
 $A^{-1}$の$ji$成分になることが分かったので証明完了.
 
@@ -609,8 +617,8 @@ $$\text{左辺}=\frac{1}{|A|}\matt{d}{-c}{-b}{a}=\text{右辺}.$$
 
 一般のときは$|A|=\sum_{\sigma \in S_n} \sgn(\sigma) a_{1 \sigma(1)} \cdots a_{n \sigma(n)}$なので
 $$
-|A|(\text{左辺})_{ij}=\sum_{\sigma \in S_n} \sgn(\sigma) \diff{a_{ij}}(a_{1 \sigma(1)} \cdots a_{n \sigma(n)}).$$
-
+|A|(\text{左辺})_{ij}=\sum_{\sigma \in S_n} \sgn(\sigma) \diff{a_{ij}}(a_{1 \sigma(1)} \cdots a_{n \sigma(n)}).
+$$
 $a_{ij}$による微分を考えると, 掛け算の中に$a_{ij}$があれば（微分が1なので）それを取り除き,
 なければ0になってしまう.
 $a_{ij}$が現れるのは$j=\sigma(i)$を固定する$\sigma$についてのみである.
@@ -622,23 +630,21 @@ $$A\tilde{A}=|A|I$$
 つまり$\text{左辺}=\trans{{(A^{-1})}}$.
 
 \subsection{ガウス分布の最尤推定}
-
 多変量ガウス分布から, $N$個の観測値$\bm{X}=\{\bm{x_i}\}$が独立に得られたときに,
 対数尤度関数
 $$\log p(\bm{X}|\bm{\mu}, A)
-=-\frac{Nn}{2}\log(2\pi)-\frac{N}{2}\log|A|-\frac{1}{2}\sum_{i=1}^N \trans{(\bm{x_i-\mu})}A^{-1}(\bm{x_i-\mu})$$
-を$A$についての最大化を求めてみる. ここではPRMLでは式変形の途中で対称性を利用しているが,
+=-\frac{Nn}{2}\log(2\pi)-\frac{N}{2}\log|A|-\half\sum_{i=1}^N \trans{(\bm{x_i-\mu})}A^{-1}(\bm{x_i-\mu})$$
+を$A$についての最大化を求めてみる. ここではPRML（演習2.34）では対称性を仮定せずに解いた結果が対称であったという方針で解けとあるのに, 答えの式変形の途中で対称性を利用しているのはおかしい.
 せっかくなので$A$の対称性を仮定せずに話を進める.
 
 その前にまず$A$を固定したときの$\bm{\mu}$に関する最尤推定の解を求めておこう.
 式(\ref{diff_quad})より
 $$\diff{\bm{\mu}} \log p(\bm{X}|\bm{\mu}, A)
-=\frac{1}{2}\sum_{i=1}^N (A^{-1}+\trans{(A^{-1})})(\bm{x_i-\mu})=\frac{1}{2}(A^{-1}+\trans{(A^{-1})})((\sum_{i=1}^N \bm{x_i}) - N\bm{\mu}).$$
+=\half\sum_{i=1}^N (A^{-1}+\trans{(A^{-1})})(\bm{x_i-\mu})=\half(A^{-1}+\trans{(A^{-1})})((\sum_{i=1}^N \bm{x_i}) - N\bm{\mu}).$$
 これが$\bm{0}$なので
 $$\bm{\mu}_{\text{ML}}=\frac{1}{N}\sum_i \bm{x_i}.$$
 
 さて, 本題に戻る. 再び$A$が対称行列でないという仮定に注意して式を変形する.
-
 $\bm{y_i}=\bm{x_i}-\bm{\mu}$とおき
 $$F(A)=-N\log|A|-\sum_i \quadf{A^{-1}}{y_i}
 =-N\log|A|-\tr(A^{-1}\sum_i \bm{y_i}\trans{\bm{y_i}})$$
@@ -652,15 +658,14 @@ $B=\sum_i \bm{y_i}\trans{\bm{y_i}}$と置いて$A$で微分しよう.
 $$\diff{a_{ij}}\tr(A^{-1}B)
 =\tr((\diff{a_{ij}}A^{-1})B)
 =-\tr(A^{-1}(\diff{a_{ij}}A)A^{-1}B)
-=-\tr((\diff{a_{ij}}A)A^{-1}BA^{-1}).$$
-
+=-\tr((\diff{a_{ij}}A)A^{-1}BA^{-1}).
+$$
 最後の式変形では$\tr(XY)=\tr(YX)$を使った. $C=A^{-1}BA^{-1}$とおく.
 
 $$\tr((\diff{a_{ij}}A)C)
 =\sum_s ((\diff{a_{ij}}A)C)_{ss}
 = \sum_s (\sum_t (\diff{a_{ij}}A)_{st} c_{ts})
 =\sum_{s,t} \delta_{is} \delta_{jt} c_{ts}=c_{ji}.$$
-
 つまり
 $$\diff{A}\tr(A^{-1}B)=-\trans{C}=-\trans{(A^{-1}BA^{-1})}.$$
 よって
@@ -672,7 +677,6 @@ $$-NA^{-1}+A^{-1}BA^{-1}=0.$$
 $$A=\frac{1}{N}B
 =\frac{1}{N}\sum_i \bm{y_i}\trans{\bm{y_i}}
 =\frac{1}{N}\sum_i (\bm{x_i}-\bm{\mu})\trans{(\bm{x_i}-\bm{\mu})}.$$
-
 この$A$は明らかに対称行列である.
 つまり$A$に関する対称性を仮定せずに最尤解を求めると$A$が対称行列となることが分かった.
 

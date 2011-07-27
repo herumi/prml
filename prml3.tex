@@ -42,7 +42,7 @@ $$(\trans{\bm{x}}\bm{y})\bm{y}
  =(\bm{y}\trans{\bm{y}})\bm{x}
 $$だから$\bm{t}=\trans{(t_1, \ldots, t_N)}$とおくと
 \begin{eqnarray*}
-\frac{1}{2}\diff{\bm{w}}f(\bm{w})
+\half\diff{\bm{w}}f(\bm{w})
  &=& -\sum_n t_n \phi(\bm{x}_n) + \sum_n (\phi(\bm{x}_n)\trans{\phi(\bm{x}_n)})\bm{w} + \lambda \bm{w}\\
  &=& -\trans{\Phi} \bm{t} + \trans{\Phi}\Phi \bm{w} + \lambda \bm{w}\\
  &=& -\trans{\Phi} \bm{t} + (\trans{\Phi}\Phi + \lambda I)\bm{w}=0.	
@@ -231,12 +231,12 @@ $S(x)=0$となる$x$は0のときだけだから,
 $A=\alpha I + \beta \trans{\Phi}\Phi$とおくと
 \begin{eqnarray*}
 E(w) &=& \frac{\beta}{2}||t-\Phi w||^2+\frac{\alpha}{2}\trans{w}w\\
-     &=& \frac{1}{2}\trans{w}(\alpha I + \beta \trans{\Phi}\Phi)w-\beta \trans{t}\Phi w+\frac{\beta}{2}||t||^2\\
-     &=& \frac{1}{2}\trans{w}Aw-\beta \trans{w}\trans{\Phi} t+\frac{\beta}{2}||t||^2.
+     &=& \half\trans{w}(\alpha I + \beta \trans{\Phi}\Phi)w-\beta \trans{t}\Phi w+\frac{\beta}{2}||t||^2\\
+     &=& \half\trans{w}Aw-\beta \trans{w}\trans{\Phi} t+\frac{\beta}{2}||t||^2.
 \end{eqnarray*}
 ここで一般に対称行列$A$とベクトル$w$, $m$について
 $$
-\frac{1}{2}\trans{(w-m)}A(w-m)=\frac{1}{2}\trans{w}Aw-\trans{w}Am+\frac{1}{2}\trans{m}Am.
+\half\trans{(w-m)}A(w-m)=\half\trans{w}Aw-\trans{w}Am+\half\trans{m}Am.
 $$
 この関数は$w=m$のとき最小値0をとる.
 二つを比較することで$E(w)$は$\beta\trans{\Phi}t=Am$, つまり
@@ -249,14 +249,14 @@ E(m_N)=\frac{\beta}{2}||t-\Phi m_N||^2+\frac{\alpha}{2}\trans{m_N} m_N.
 $$
 つまり
 $$
-E(w)=\frac{1}{2}\trans{(w-m_N)}A{(w-m_N)} + E(m_N)
+E(w)=\half\trans{(w-m_N)}A{(w-m_N)} + E(m_N)
 $$
 と平方完成できる.
 
 よって
 \begin{eqnarray*}
 E(w) &=& \int \exp(-E(w))\,dw \\
-     &=& \exp(-E(m_N)) \int \exp(-\frac{1}{2}\trans{(w-m_N)}A{(w-m_N)})\,dw\\
+     &=& \exp(-E(m_N)) \int \exp(-\half\trans{(w-m_N)}A{(w-m_N)})\,dw\\
      &=& \exp(-E(m_N)) (2\pi)^{M/2} |A|^{-1/2}.
 \end{eqnarray*}
 
@@ -264,7 +264,7 @@ E(w) &=& \int \exp(-E(w))\,dw \\
 \begin{eqnarray}\label{log_evidence}
 \log p(\bm{t}|\alpha,\beta)
  &=& (N/2) \log(\frac{\beta}{2\pi}) + (M/2) \log(\frac{\alpha}{2\pi}) \log (\int \exp(-E(w))\,dw)\\
- &=& (M/2)\log \alpha + \frac{N}{2} \log \beta - E(m_N) - \frac{1}{2}\log |A| - \frac{N}{2} \log (2\pi).
+ &=& (M/2)\log \alpha + \frac{N}{2} \log \beta - E(m_N) - \half\log |A| - \frac{N}{2} \log (2\pi).
 \end{eqnarray}
 
 
@@ -326,7 +326,7 @@ $$
 $$
 式\ref{log_evidence}を$\alpha$で微分すると
 $$
-\diff{\alpha} \log p(\bm{t}|\alpha,\beta)=\frac{M}{2\alpha}-\frac{1}{2}\trans{m_N}m_N - \frac{1}{2}\sum \frac{1}{\lambda_i + \alpha}=0.
+\diff{\alpha} \log p(\bm{t}|\alpha,\beta)=\frac{M}{2\alpha}-\half\trans{m_N}m_N - \half\sum \frac{1}{\lambda_i + \alpha}=0.
 $$
 よって
 $$
@@ -349,7 +349,7 @@ $$
 $$
 式\ref{log_evidence}を$\beta$で微分すると
 $$
-\frac{N}{2\beta} - \frac{1}{2}||\bm{t}-\Phi m_N||^2-\frac{\gamma}{2\beta}=0.
+\frac{N}{2\beta} - \half||\bm{t}-\Phi m_N||^2-\frac{\gamma}{2\beta}=0.
 $$
 よって
 $$

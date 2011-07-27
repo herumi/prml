@@ -134,13 +134,13 @@ $y(x)=\trans{W}x$としよう. $x$, $y$はベクトル, $W$は行列である.
 
 二乗誤差関数
 $$
-E_D(W)=\frac{1}{2}\tr(\trans{(XW-T)}(XW-T))
+E_D(W)=\half\tr(\trans{(XW-T)}(XW-T))
 $$
 を最小化する$W$を求めよう.
 
 \begin{eqnarray*}
 \diff{w_{ij}}E_D(W)
- &=& \frac{1}{2}\diff{w_{ij}}\sum_{s,t} ((XW-T)_{st})^2\\
+ &=& \half\diff{w_{ij}}\sum_{s,t} ((XW-T)_{st})^2\\
  &=& \sum_{s,t} (XW-T)_{st} \diff{w_{ij}}(XW-T)_{st}\\
  &=& \sum_{s,t} (XW-T)_{st} \diff{w_{ij}}(\sum_u x_{su}w_{ut})\\
  &=& \sum_{s,t,u} (XW-T)_{st} x_{su}\delta_{iu}\delta_{jt}\\
@@ -238,7 +238,7 @@ $$
 クラス$C_1$に対する目的変数値を$N/N_1$, クラス$C_2$に対する目的変数値を$-N/N_2$とする.
 
 この条件下で二乗和誤差
-$$E=\frac{1}{2}\sum_{n=1}^N(\trans{w}x_n+w_0-t_n)^2$$
+$$E=\half\sum_{n=1}^N(\trans{w}x_n+w_0-t_n)^2$$
 を最大化してみよう.
 $$
 \diff{w_0}E=\sum(\trans{w}x_n+w_0-t_0)=0
@@ -338,16 +338,16 @@ $$
 仮定：条件付き確率密度がガウス分布, そのガウス分布の共分散行列（$\Sigma=A$）がすべてのクラスで共通
 
 $$
-p(x|C_k)=\frac{1}{(2\pi)^(D/2)}\frac{1}{|A|^{1/2}}\exp(-\frac{1}{2}\trans{(x-\mu_k)}A^{-1}(x-\mu_k))
+p(x|C_k)=\frac{1}{(2\pi)^(D/2)}\frac{1}{|A|^{1/2}}\exp(-\half\trans{(x-\mu_k)}A^{-1}(x-\mu_k))
 $$
 \begin{eqnarray*}
 a&=& \log \frac{p(x|C_1)p(C_1)}{p(x|C_2)p(C_2)}\\
- &=& \log \frac{p(C_1)}{p(C_2)}-\frac{1}{2}\trans{(x-\mu_1)}A^{-1}(x-\mu_1)+\frac{1}{2}\trans{(x-\mu_2)}A^{-1}(x-\mu_2)\\
- &=& \log \frac{p(C_1)}{p(C_2)}-\frac{1}{2}\quads{A^{-1}}{\mu_1}+\frac{1}{2}\quads{A^{-1}}{\mu_2}+\trans{(\mu_1-\mu_2)}Ax.
+ &=& \log \frac{p(C_1)}{p(C_2)}-\half\trans{(x-\mu_1)}A^{-1}(x-\mu_1)+\half\trans{(x-\mu_2)}A^{-1}(x-\mu_2)\\
+ &=& \log \frac{p(C_1)}{p(C_2)}-\half\quads{A^{-1}}{\mu_1}+\half\quads{A^{-1}}{\mu_2}+\trans{(\mu_1-\mu_2)}Ax.
 \end{eqnarray*}
 よって
 $$
-w_0=-\frac{1}{2}\quads{A^{-1}}{\mu_1}+\frac{1}{2}\quads{A^{-1}}{\mu_2}+\log \frac{p(C_1)}{p(C_2)},
+w_0=-\half\quads{A^{-1}}{\mu_1}+\half\quads{A^{-1}}{\mu_2}+\log \frac{p(C_1)}{p(C_2)},
 $$
 $$
 w=A^{-1}(\mu_1-\mu_2)
@@ -357,8 +357,8 @@ $$
 $K$クラスの場合, 上で定義した$a_k$を用いると
 \begin{eqnarray*}
 a_k
- &=&\log p(C_k)-\frac{1}{2}\quads{A^{-1}}{\mu_k}+\trans{\mu_k}A^{-1}x-\frac{1}{2}\trans{x}A^{-1}x+\text{const}\\
- &=& a_k'-\frac{1}{2}\trans{x}A^{-1}x+\text{const}.
+ &=&\log p(C_k)-\half\quads{A^{-1}}{\mu_k}+\trans{\mu_k}A^{-1}x-\half\trans{x}A^{-1}x+\text{const}\\
+ &=& a_k'-\half\trans{x}A^{-1}x+\text{const}.
 \end{eqnarray*}
 ここで$a_k'=\trans{w_k}x+w_{k0}$, $w_k=A^{-1}\mu_k$, $w_{k0}=-(1/2)\quads{A^{-1}}{\mu_k}+\log p(C_k)$.
 
@@ -418,7 +418,7 @@ $-\sum_i p_i \lambda = -\lambda = \sum_i N_i = N$より$p_i=-N_i/\lambda=N_i/N$.
 
 さて2クラスの問題に戻って$\mu_i$について最大化してみよう. $\mu_1$についての部分は
 $$
-\sum t_n \log \calN(x_n|\mu_1,A)=-\frac{1}{2}\sum t_n \quads{A^{-1}}{(x_n-\mu_1)} + \text{const}.
+\sum t_n \log \calN(x_n|\mu_1,A)=-\half\sum t_n \quads{A^{-1}}{(x_n-\mu_1)} + \text{const}.
 $$
 $\mu_1$で微分して0とおくと
 $$
@@ -435,10 +435,10 @@ $$
 最後に$A$に関する最尤解を求める. $A$に関する部分の対数は
 
 \begin{eqnarray*}
- && -\frac{1}{2}\sum_{n=1}^N(t_n \log |A|+t_n \trans{(x_n-\mu_1)}A^{-1}(x_n-\mu_1)+(1-t_n) \log |A|+(1-t_n)\trans{(x_n-\mu_2)}A^{-1}(x_n-\mu_2))\\
- &=& -\frac{N}{2}\log |A| - \frac{1}{2} \tr(\sum_{n=1}^N(t_n A^{-1}(x_n -\mu_1)\trans{(x_n-\mu_1)}+(1-t_n)A^{-1}(x_n-\mu_2)\trans{(x_n-\mu_2)}))\\
- &=& -\frac{N}{2}\log |A| -\frac{1}{2} \tr(A^{-1}(\sum_{n\in C_1}(x_n-\mu_1)\trans{(x_n-\mu_1)}+\sum_{n\in C_2}(x_n-\mu_2)\trans{(x_n-\mu_2)}))\\
- &=& -\frac{N}{2}\log |A| -\frac{1}{2} \tr(A^{-1}(N_1 S_1 + N_2 S_2))\\
+ && -\half\sum_{n=1}^N(t_n \log |A|+t_n \trans{(x_n-\mu_1)}A^{-1}(x_n-\mu_1)+(1-t_n) \log |A|+(1-t_n)\trans{(x_n-\mu_2)}A^{-1}(x_n-\mu_2))\\
+ &=& -\frac{N}{2}\log |A| - \half \tr(\sum_{n=1}^N(t_n A^{-1}(x_n -\mu_1)\trans{(x_n-\mu_1)}+(1-t_n)A^{-1}(x_n-\mu_2)\trans{(x_n-\mu_2)}))\\
+ &=& -\frac{N}{2}\log |A| -\half \tr(A^{-1}(\sum_{n\in C_1}(x_n-\mu_1)\trans{(x_n-\mu_1)}+\sum_{n\in C_2}(x_n-\mu_2)\trans{(x_n-\mu_2)}))\\
+ &=& -\frac{N}{2}\log |A| -\half \tr(A^{-1}(N_1 S_1 + N_2 S_2))\\
  &=& -\frac{N}{2}\log |A| -\frac{N}{2} \tr(A^{-1}S)
 \end{eqnarray*}
 ここで最後の式変形に
@@ -525,7 +525,7 @@ $$
 
 この式を線形回帰モデルに適用してみる.
 $$
-E(w)=\frac{1}{2}\sum(t_n-\trans{w}\phi(x_n))^2, \phi_n=\phi(x_n)
+E(w)=\half\sum(t_n-\trans{w}\phi(x_n))^2, \phi_n=\phi(x_n)
 $$
 を$w$で微分して$\Phi=\trans{(\phi_1, \ldots)}$とおくと
 $$
@@ -709,10 +709,10 @@ $$
 
 $x=\theta/\sqrt{2}$とおくと$dx=d\theta/\sqrt{2}$.
 \begin{eqnarray*}
-\Phi(a) &=& \int_{-\infty}^a = \int_{-\infty}^0 + \int_0^a=\frac{1}{2}+\int_0^a \frac{1}{\sqrt{2\pi}}\exp(-\frac{\theta^2}{2})\,d\theta\\
- &=&\frac{1}{2}+\int_0^{a/\sqrt{2}}\frac{1}{\sqrt{2\pi}}\exp(-x^2)\sqrt{2}\,dx\\
- &=&\frac{1}{2}(1+\frac{2}{\sqrt{\pi}}\int_0^{a/\sqrt{2}} \exp(-x^2)\,dx)\\
- &=&\frac{1}{2}\{1+\makeop{erf}(\frac{a}{\sqrt{2}})\}.
+\Phi(a) &=& \int_{-\infty}^a = \int_{-\infty}^0 + \int_0^a=\half+\int_0^a \frac{1}{\sqrt{2\pi}}\exp(-\frac{\theta^2}{2})\,d\theta\\
+ &=&\half+\int_0^{a/\sqrt{2}}\frac{1}{\sqrt{2\pi}}\exp(-x^2)\sqrt{2}\,dx\\
+ &=&\half(1+\frac{2}{\sqrt{\pi}}\int_0^{a/\sqrt{2}} \exp(-x^2)\,dx)\\
+ &=&\half\{1+\makeop{erf}(\frac{a}{\sqrt{2}})\}.
 \end{eqnarray*}
 プロビット活性化関数を用いた一般化線形モデルをプロビット回帰という.
 
@@ -789,23 +789,23 @@ $Z=\int f(z)\,dz$は正規化係数で未知とする. $p(z)$のモード, つまり最大値を与える$
 暗に山形を仮定しているので$f(z_0)>0$, $f''(z)<0$とする.
 $f'(z_0)=0$だから$\log f(z)$を$z=z_0$の付近でテイラー展開すると
 \begin{eqnarray*}
-\log f(z) &\approx& \log f(z_0) + \frac{f'(z_0)}{f(z_0)}(z-z_0)+\frac{1}{2}\frac{d^2}{dz^2} \log f(z_0) (z-z_0)^2\\
- &=& \log f(z_0) + \frac{1}{2}\frac{d^2}{dz^2} \log f(z_0) (z-z_0)^2.
+\log f(z) &\approx& \log f(z_0) + \frac{f'(z_0)}{f(z_0)}(z-z_0)+\half\frac{d^2}{dz^2} \log f(z_0) (z-z_0)^2\\
+ &=& \log f(z_0) + \half\frac{d^2}{dz^2} \log f(z_0) (z-z_0)^2.
 \end{eqnarray*}
 $$
 A=-\frac{d^2}{dz^2}\log f(z) \Bigl|_{z=z_0}
 $$
 とおくと
 $$
-\log f(z) \approx \log f(z) - \frac{1}{2}A(z-z_0)^2.
+\log f(z) \approx \log f(z) - \half A(z-z_0)^2.
 $$
 つまり
 $$
-f(z) \approx f(z_0) \exp(-\frac{1}{2}A(z-z_0)^2).
+f(z) \approx f(z_0) \exp(-\half A(z-z_0)^2).
 $$
 よって正規分布で近似すると
 $$
-q(z)=(\frac{A}{2\pi})^{1/2} \exp(-\frac{1}{2}A(z-z_0)^2).
+q(z)=(\frac{A}{2\pi})^{1/2} \exp(-\half A(z-z_0)^2).
 $$
 
 $M$次元の場合を考える. $p(z)=(1/Z)f(z)$. $z=z_0$が最大値を与えるなら$p(z_0)>0$, $\diff{z}f(z_0)=0$.
@@ -815,11 +815,11 @@ A=-\difff{z_i}{z_j} \log f(z) \Bigl|_{z=z_0}
 $$
 とすると$A>0$（正定値）で
 $$
-f(z) \approx f(z_0) \exp (-\frac{1}{2}\trans{(z-z_0)}A(z-z_0)).
+f(z) \approx f(z_0) \exp (-\half\trans{(z-z_0)}A(z-z_0)).
 $$
 よって
 $$
-q(z)=\calN(z|z_0,A^{-1})=\sqrt{\frac{|A|}{(2\pi)^M}} \exp (-\frac{1}{2}\trans{(z-z_0)}A(z-z_0)).
+q(z)=\calN(z|z_0,A^{-1})=\sqrt{\frac{|A|}{(2\pi)^M}} \exp (-\half\trans{(z-z_0)}A(z-z_0)).
 $$
 山が複数ある多峰的なときはどのモードを選ぶかでラプラス近似は異なる.
 総的的にデータ数が多くなるとガウス分布に近づくので近似はよくなるが, ある点での近傍の情報しか利用していないため大域的な特徴がとらえられるとは限らない.
@@ -827,7 +827,7 @@ $$
 \section{モデルの比較とBIC}
 前節のラプラス近似を行うと正規化係数$Z$の近似も分かる. ガウス分布の特性から
 $$
-Z=\int f(z)\,dx \approx \int f(z_0) \exp(-\frac{1}{2}\trans{(z-z_0)}A(z-z_0))\,dx=f(z_0)\sqrt{\frac{(2\pi)^M}{|A|}}.
+Z=\int f(z)\,dx \approx \int f(z_0) \exp(-\half\trans{(z-z_0)}A(z-z_0))\,dx=f(z_0)\sqrt{\frac{(2\pi)^M}{|A|}}.
 $$
 
 データ集合$D$, パラメータ$\{\theta_i\}$の集合$\{M_i\}$を考えて各モデルに対して$p(D|\theta_i, M_i)$を定義する.
@@ -841,7 +841,7 @@ $$
 A=-\nabla^2 \log p(D|\theta_{\text{MAP}})p(\theta_{\text{MAP}}).
 $$
 $$
-\log p(D)=\log Z \approx \log f(\theta_{\text{MAP}}) + \log \sqrt{\frac{(2\pi)^M}{|A|}}=\log p(D|\theta_{\text{MAP}})+(\log p(\theta_{\text{MAP}})+\frac{M}{2} \log (2\pi) - \frac{1}{2} \log |A|).
+\log p(D)=\log Z \approx \log f(\theta_{\text{MAP}}) + \log \sqrt{\frac{(2\pi)^M}{|A|}}=\log p(D|\theta_{\text{MAP}})+(\log p(\theta_{\text{MAP}})+\frac{M}{2} \log (2\pi) - \half \log |A|).
 $$
 括弧内の後ろ三項をOccam係数という.
 
@@ -861,7 +861,7 @@ $$
 $$
 を使って
 $$
-\log p(D) \approx \log p(D|\theta_{\text{MAP}})-\frac{1}{2}\trans{(\theta_{\text{MAP}}-m)}B(\theta_{\text{MAP}}-m)-\frac{1}{2}\log |H+B|+\frac{1}{2}\log |B|.
+\log p(D) \approx \log p(D|\theta_{\text{MAP}})-\half\trans{(\theta_{\text{MAP}}-m)}B(\theta_{\text{MAP}}-m)-\half\log |H+B|+\half\log |B|.
 $$
 データ集合$D$の点の個数を$N$とし, それぞれが独立であると考えると$H$の各要素は$O(N)$. $B$は$N$や次元の数$M$には依存しないので$M$, $N$を大きくしたとき無視できるとすると$C$を定数として
 $$
@@ -869,7 +869,7 @@ $$
 $$
 よって
 $$
-\log p(D) \approx \log p(D|\theta_{\text{MAP}}) - \frac{1}{2} M \log N.
+\log p(D) \approx \log p(D|\theta_{\text{MAP}}) - \half M \log N.
 $$
 これをベイズ情報量基準（Bayesian Information Criterion, BIC）と呼ばれるモデルの良さを評価するための指標に一致する.
 かなり無理筋な近似ではあるが, ラプラス近似が（別の方法で導出される）BICと関連があることを暗示している.
@@ -919,10 +919,10 @@ $$\Phi(a) = \int_{-\infty}^a \calN(\theta|0,1)\,d\theta.$$
 \end{itemize}
 $\Phi(\lambda a)$と$\sigma(a)$を近似するように$\lambda$を調節する. 原点で同じ向きになるようにしよう.
 $$
-\sigma'(0)=\sigma(a)(1-\sigma(a))\Bigr|_{a=0}=\frac{1}{2}(1-\frac{1}{2})=\frac{1}{4}.
+\sigma'(0)=\sigma(a)(1-\sigma(a))\Bigr|_{a=0}=\half(1-\half)=\frac{1}{4}.
 $$
 $$
-\Phi'(\lambda a)=\frac{1}{\sqrt{2\pi}}\lambda \exp(-\frac{1}{2}(\lambda a)^2)
+\Phi'(\lambda a)=\frac{1}{\sqrt{2\pi}}\lambda \exp(-\half(\lambda a)^2)
 $$
 より$\Phi'(0)=\lambda/\sqrt{2\pi}$. この二つが等しいので
 $$
@@ -940,7 +940,7 @@ $$
 \calN(a|\mu,\sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}\exp(-\frac{1}{2\sigma^2}(x-\mu)^2).
 $$
 $$
-f(x)=\calN(x|0,1)=\frac{1}{2\pi}\exp(-\frac{1}{2}x^2)
+f(x)=\calN(x|0,1)=\frac{1}{2\pi}\exp(-\half x^2)
 $$
 とおく.
 $$
@@ -948,7 +948,7 @@ $$
 $$
 $a=\mu+\sigma x$とおくと$da=\sigma dx$で
 $$
-\calN(a|\mu,\sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}\exp(-\frac{1}{2\sigma^2}(\mu+\sigma x-\mu)^2)=\frac{1}{\sigma}\frac{1}{\sqrt{2\pi}}\exp(-\frac{1}{2}x^2)=\frac{f(x)}{\sigma}.
+\calN(a|\mu,\sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}\exp(-\frac{1}{2\sigma^2}(\mu+\sigma x-\mu)^2)=\frac{1}{\sigma}\frac{1}{\sqrt{2\pi}}\exp(-\half x^2)=\frac{f(x)}{\sigma}.
 $$
 よって
 $$
@@ -959,11 +959,11 @@ $$
 \diff{\mu}R=f(\frac{\lambda \mu}{\sqrt{1+\lambda^2\sigma^2}}) \frac{\lambda}{\sqrt{1+\lambda^2\sigma^2}}.
 $$
 $$
-\diff{\mu}L=\int_{-\infty}^\infty \lambda f(\lambda \mu + \lambda \sigma x)f(x)\,dx=\lambda \int_{-\infty}^\infty \Bigl(\frac{1}{\sqrt{2\pi}}\Bigr)^2\exp(-\frac{1}{2}(\lambda\mu+\lambda \sigma x)^2-\frac{1}{2}x^2)\,dx.
+\diff{\mu}L=\int_{-\infty}^\infty \lambda f(\lambda \mu + \lambda \sigma x)f(x)\,dx=\lambda \int_{-\infty}^\infty \Bigl(\frac{1}{\sqrt{2\pi}}\Bigr)^2\exp(-\half(\lambda\mu+\lambda \sigma x)^2-\half x^2)\,dx.
 $$
 $\exp()$の内側を$x$について平方完成しよう：
 $$
--\frac{1}{2}((\lambda\sigma)^2+1)x^2+2\lambda^2\mu \sigma x + \lambda^2 \mu^2)=-\frac{1}{2}\Bigl((\sqrt{1+\lambda^2\sigma^2}x+\frac{\lambda^2\mu \sigma}{\sqrt{1+\lambda^2\sigma^2}})^2+\lambda^2 \mu^2-\frac{\lambda^4 \mu^2 \sigma^2}{1+\lambda^2 \sigma^2} \Bigr).
+-\half((\lambda\sigma)^2+1)x^2+2\lambda^2\mu \sigma x + \lambda^2 \mu^2)=-\half\Bigl((\sqrt{1+\lambda^2\sigma^2}x+\frac{\lambda^2\mu \sigma}{\sqrt{1+\lambda^2\sigma^2}})^2+\lambda^2 \mu^2-\frac{\lambda^4 \mu^2 \sigma^2}{1+\lambda^2 \sigma^2} \Bigr).
 $$
 定数項は
 $$
@@ -974,12 +974,12 @@ $$
 $$
 より
 $$
-I:=\int_{-\infty}^\infty \exp(-\frac{1}{2}(\sqrt{1+\lambda^2\sigma^2}x+\frac{\lambda^2\mu\sigma}{\sqrt{1+\lambda^2\sigma^2}})^2)\,dx=\frac{\sqrt{2\pi}}{\sqrt{1+\lambda^2\sigma^2}}.
+I:=\int_{-\infty}^\infty \exp(-\half(\sqrt{1+\lambda^2\sigma^2}x+\frac{\lambda^2\mu\sigma}{\sqrt{1+\lambda^2\sigma^2}})^2)\,dx=\frac{\sqrt{2\pi}}{\sqrt{1+\lambda^2\sigma^2}}.
 $$
 よって
 \begin{eqnarray*}
-\diff{\mu}L &=& \frac{\lambda}{2\pi} \exp(-\frac{1}{2}\Bigl(\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2}\Bigr)) I\\
- &=& \frac{\lambda}{2\pi} \exp(-\frac{1}{2}\Bigl(\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2}\Bigr)) \frac{\sqrt{2\pi}}{\sqrt{1+\lambda^2\sigma^2}}\\
+\diff{\mu}L &=& \frac{\lambda}{2\pi} \exp(-\half\Bigl(\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2}\Bigr)) I\\
+ &=& \frac{\lambda}{2\pi} \exp(-\half\Bigl(\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2}\Bigr)) \frac{\sqrt{2\pi}}{\sqrt{1+\lambda^2\sigma^2}}\\
  &=& \frac{\lambda}{\sqrt{1+\lambda^2\sigma^2}}f(\frac{\lambda\mu}{\sqrt{1+\lambda^2\sigma^2}})\\
  &=& \diff{\mu}R.
 \end{eqnarray*}
@@ -1009,7 +1009,7 @@ p(w|t) \propto p(w)p(t|w).
 $$
 よって
 $$
-\log p(w|t)=-\frac{1}{2}\trans{(w-m_0)}S_0^{-1}(w-m_0)+\sum_{n=1}^N (t_n \log y_n + (1-t_n)\log (1-y_n)) + \text{const}.
+\log p(w|t)=-\half\trans{(w-m_0)}S_0^{-1}(w-m_0)+\sum_{n=1}^N (t_n \log y_n + (1-t_n)\log (1-y_n)) + \text{const}.
 $$
 これを最大化する最大事後確率（MAP）の解$w_\text{MAP}$を何らかの方法で求める.
 ラプラス近似をするために$w_\text{MAP}$を平均とするガウス分布で近似しよう. 以後$w_\text{MAP}$を$m_N$と書く.

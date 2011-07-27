@@ -46,7 +46,7 @@ $$
 
 \subsection{ガウス分布}
 $$
-\calN = \calN(x|\mu,\Sigma)=\frac{1}{(2\pi)^{D/2}}|\Sigma|^{-1/2}\exp(-\frac{1}{2}\quads{{\Sigma^{-1}}}{(x-\mu)}).
+\calN = \calN(x|\mu,\Sigma)=\frac{1}{(2\pi)^{D/2}}|\Sigma|^{-1/2}\exp(-\half\quads{{\Sigma^{-1}}}{(x-\mu)}).
 $$
 期待値と分散について
 \begin{eqnarray*}
@@ -114,7 +114,7 @@ $$
 とする.
 $$
 \diff{\mu} \log \calN(x|\mu,\Sigma)
-= \diff{\mu} (-\frac{1}{2}\quads{{\Sigma^{-1}}}{{(x-\mu)}})
+= \diff{\mu} (-\half\quads{{\Sigma^{-1}}}{{(x-\mu)}})
 = \Sigma^{-1}(x-\mu)
 $$
 より
@@ -151,20 +151,20 @@ $$
 $$
 のとき
 $$
-\log \calN = -\frac{D}{2}\log(2\pi)-\frac{1}{2}\log |\Sigma| - \frac{1}{2}\tr(\Sigma^{-1}\outp{(x-\mu)})
+\log \calN = -\frac{D}{2}\log(2\pi)-\half\log |\Sigma| - \half\tr(\Sigma^{-1}\outp{(x-\mu)})
 $$
 なので$\trans{\Sigma}=\Sigma$だから
 $$
 \diff{\Sigma} (\log \calN)
-= -\frac{1}{2}(\Sigma^{-1})
-  +\frac{1}{2}(\Sigma^{-1}(x-\mu)\trans{(x-\mu)}\Sigma^{-1}).
+= -\half(\Sigma^{-1})
+  +\half(\Sigma^{-1}(x-\mu)\trans{(x-\mu)}\Sigma^{-1}).
 $$
 よって$\mu_k$の微分と同様にして
 \begin{eqnarray*}
 \diff{\Sigma_k}F
  &=& \sum_n \gamma(z_{nk}) \diff{\Sigma_k} \log \calN_{nk}\\
- &=&\sum_n \gamma(z_{nk})(-\frac{1}{2}(\Sigma_k^{-1})
-        + \frac{1}{2}(\Sigma_k^{-1}\outp{(x_n-\mu_k)}\Sigma_k^{-1})) = 0.
+ &=&\sum_n \gamma(z_{nk})(-\half(\Sigma_k^{-1})
+        + \half(\Sigma_k^{-1}\outp{(x_n-\mu_k)}\Sigma_k^{-1})) = 0.
 \end{eqnarray*}
 よって
 $$
@@ -286,7 +286,7 @@ $$
 $$
 を代入する.
 $$
-\epsilon E = \sum_{n,k} \gamma(z_{nk})(\epsilon \log \pi_k - \frac{D}{2}\epsilon \log (2\pi \epsilon) - \frac{1}{2}||x_n-\mu_k||^2).
+\epsilon E = \sum_{n,k} \gamma(z_{nk})(\epsilon \log \pi_k - \frac{D}{2}\epsilon \log (2\pi \epsilon) - \half||x_n-\mu_k||^2).
 $$
 $\epsilon \rightarrow 0$で
 $$
@@ -300,7 +300,7 @@ $$
 $$
 より
 $$
-\epsilon E \rightarrow -\frac{1}{2}\sum_{n,k} r_{nk} ||x_n-\mu_k||^2 = -J.
+\epsilon E \rightarrow -\half\sum_{n,k} r_{nk} ||x_n-\mu_k||^2 = -J.
 $$
 よって期待完全データ対数尤度の最大化は$J$の最小化と同等.
 
@@ -365,8 +365,8 @@ $$
 完全データ対数尤度関数は$X=\{x_n\}$, $Z=\{z_n\}$として
 \begin{eqnarray*}
 \log p(X,Z|\mu,\vpi)
- &=& \sum_{n,k} z_{nk}(\log \pi_k + \sum_i x_{ni} \log \mu_{ki}+(1-x_{ni})\log (1-\mu_{ki}))\\
- &=& \sum_{n,k} z_{nk} A_{nk} \text{とおく}.
+ &=& \sum_{n,k} z_{nk}(\underbrace{\log \pi_k + \sum_i x_{ni} \log \mu_{ki}+(1-x_{ni})\log (1-\mu_{ki})}_{=:A_{nk}})\\
+ &=& \sum_{n,k} z_{nk} A_{nk}.
 \end{eqnarray*}
 \begin{eqnarray*}
 E[z_{nk}]
@@ -376,7 +376,7 @@ E[z_{nk}]
 \end{eqnarray*}
 を$\gamma(z_{nk})$とおく. すると
 $$
-E_Z[\log p(X,Z)|\mu,\vpi)]=\sum_{n,k} \gamma(z_{nk}) A.
+E_Z[\log p(X,Z)|\mu,\vpi)]=\sum_{n,k} \gamma(z_{nk}) A_{nk}.
 $$
 $$
 N_k=\sum_n \gamma(z_{nk}), \quad \bar{x}_k = \frac{1}{N_k}\sum_n \gamma(z_{nk})x_n
@@ -448,7 +448,7 @@ $$
 なので
 \begin{eqnarray*}
 F &=& E[\log p(t,w|\alpha,\beta)]\\
- &=& E[\sum_n (\frac{1}{2} \log (\frac{\beta}{2\pi})
+ &=& E[\sum_n (\half \log (\frac{\beta}{2\pi})
      -\frac{\beta}{2}(t_n-\trans{w}\phi_n)^2)
      +\frac{M}{2}\log (\frac{\alpha}{2\pi}) - \frac{\alpha}{2}\inp{w}]\\
  &=& \frac{M}{2}\log (\frac{\alpha}{2\pi})-\frac{\alpha}{2}E[\inp{w}]
@@ -457,7 +457,7 @@ F &=& E[\log p(t,w|\alpha,\beta)]\\
 
 $\alpha$に関する最大化
 $$
-\diff{\alpha}F=\frac{M}{2}\frac{1}{\alpha}-\frac{1}{2}E[\inp{w}]=0.
+\diff{\alpha}F=\frac{M}{2}\frac{1}{\alpha}-\half E[\inp{w}]=0.
 $$
 よって
 $$
@@ -466,7 +466,7 @@ $$
 
 $\beta$に関する最大化
 $$
-\diff{\beta}F=\frac{N}{2}\frac{1}{\beta}-\frac{1}{2}\sum_n E[(t_n-\trans{w}\phi_n)^2]=0.
+\diff{\beta}F=\frac{N}{2}\frac{1}{\beta}-\half\sum_n E[(t_n-\trans{w}\phi_n)^2]=0.
 $$
 よって
 $$
