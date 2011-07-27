@@ -109,7 +109,11 @@ $A$が$\RR$の部分集合とする. ある$x$に対して$x$が$A$の下界であるとは, 全ての$a\in
 
 「確率変数の状態を送るために必要なビット数の下限がエントロピーである」
 
-とありこれは正しい. しかし, これを
+とありこれは正しい. あるいは
+
+「エントロピーは確率変数の状態を送るために必要なビット数の下限である」
+
+でもよい. しかし, これを
 
 「エントロピーは確率変数の状態を送るために必要なビット数の下界である」
 
@@ -436,8 +440,8 @@ W_k^{-1}
  && + \sum_n r_{nk} \outp{\mu_k} -(\beta_0 + N_k)(\outp{\mu_k}-2\mu_k \frac{1}{\beta_k}\trans{(\beta_0 m_0+N_k\bar{x}_k)}\\
  && + \frac{1}{\beta_k^2}\outp{(\beta_0 m_0 + N_k \bar{x}_k)}\\
  && \sum_n r_{nk} = N_k {\text に注意して}\\
- &=& W_0^{-1} + N_k S_k + \beta_\outp{m_0}+N_k \outp{\bar{x}_k}
-   - \frac{1}{\beta_k}(\beta_0^2 \outp{m_0}+2 \beta_0 N_k m_0 \trans{\bar{x}_k}+N_k^2 \outp{\bar{x}_k})\\
+ &=& W_0^{-1} + N_k S_k + \beta_0 \outp{m_0}+N_k \outp{\bar{x}_k}\\
+ && - \frac{1}{\beta_k}(\beta_0^2 \outp{m_0}+2 \beta_0 N_k m_0 \trans{\bar{x}_k}+N_k^2 \outp{\bar{x}_k})\\
  &=& W_0^{-1} + N_k S_k + \frac{(\beta_0 + N_k)\beta_0 - \beta_0^2}{\beta_k}\outp{m_0}
     + \frac{(\beta_0 + N_k)N_k-N_k^2}{\beta_k}\outp{\bar{x}_k} - \frac{2\beta_0 N_k}{\beta_k}m_0 \trans{\bar{x}_k}\\
  &=& W_0^{-1} + N_k S_k + \frac{\beta_0 N_k}{\beta_k}\outp{(m_0-\bar{x}_k)}.
@@ -497,7 +501,7 @@ $\alpha_0 \rightarrow \infty$なら$E[\pi_k] \rightarrow 1/K$.
 PRML下巻（3刷）ではこの章は変分下限である.
 しかしここで計算する$\calL$の値は$\log p(X)$の下界の中で一番大きいものになるとは限らない.
 $\KL(q||p)$は一般に0ではない.
-その意味で\ref{lower_bound}章で述べたように変分下界が正しいと思われる.
+その意味で\ref{lower_bound}章で述べたように変分下界が適切と思われる.
 
 それはさておき, $q(Z,\vpi,\mu,\Lambda)=q(Z)q(\vpi,\mu,\Lambda)$と分解できると仮定すると
 \begin{eqnarray*}
@@ -590,12 +594,12 @@ A &=& E[-\frac{D}{2}\log (2\pi)+\half \log |\beta_0 \Lambda_k|-\half \quads{(\be
 \end{eqnarray*}
 \begin{eqnarray*}
 B &=& E[\log B(W_0,\nu_0)+\frac{\nu_0-D-1}{2}\log |\Lambda_k|-\half \tr (W_0^{-1}\Lambda_k)]\\
-  &=& \log B(W_0,\nu_0)+\frac{\nu_0-D-1}{2} \log \tilde{\Lambda)}k - \half \tr (W_0^{-1}\underbrace{E[\Lambda_k]}_{=\nu_k W_k}).
+  &=& \log B(W_0,\nu_0)+\frac{\nu_0-D-1}{2} \log \tilde{\Lambda}_k - \half \tr (W_0^{-1}\underbrace{E[\Lambda_k]}_{=\nu_k W_k}).
 \end{eqnarray*}
 よって
 \begin{eqnarray*}
 E[\log p(\mu,\Lambda)]
- &=&\half\sum_k (D\log (\frac{\beta_0}{2\pi}+\log \tilde{\Lambda}_k-\frac{D\beta_0}{\beta_k}-\beta_0\nu_k\quads{W_k}{(m_k-m_0)})\\
+ &=&\half\sum_k (D\log (\frac{\beta_0}{2\pi})+\log \tilde{\Lambda}_k-\frac{D\beta_0}{\beta_k}-\beta_0\nu_k\quads{W_k}{(m_k-m_0)})\\
  && + K\log B(W_0,\nu_0)+\frac{\nu_0-D-1}{2}\sum_k \log \tilde{\Lambda}_k - \half \sum_k \nu_k \tr(W_0^{-1}W_k).
 \end{eqnarray*}
 
@@ -738,4 +742,10 @@ $$
 $$
 p(\hat{x}|X) \simeq \frac{1}{\hat{\alpha}}\sum_k \alpha_k \St(\hat{x}|m_k,L_k,\nu_k+1-D).
 $$
+だいたいこのあたりまで. あとはここよりは易しいので大丈夫だろう.
+
+PRML下巻p.215の下から5行目：
+「$\lambda'(\xi)$は$\xi \ge 0$のとき単調関数」とあるが間違い.
+$\lambda(\xi)$は$\xi \ge 0$のとき単調減少だが$\lambda'(\xi)$はそうではない.
+また$\lambda(\xi)$が単調減少だからといってそれだけで$\lambda'(\xi) \ne 0$が言えるわけでもない.
 \end{document}

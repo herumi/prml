@@ -19,6 +19,10 @@ chapter 9 : https://github.com/herumi/prml/raw/master/prml9.pdf
 
 exercise 9.9
 
+chapter 10 : https://github.com/herumi/prml/raw/master/prml10.pdf
+
+get L for mixing Guass distribution
+
 Author
 -------------
 
