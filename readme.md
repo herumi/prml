@@ -8,7 +8,7 @@ elementary text for matrix and integral calculus and Gauss distribution.
 
 chapter 3 : https://github.com/herumi/prml/raw/master/prml3.pdf
 
-Woodbury formula, symmetric matrix and LK divergence.
+Woodbury formula, symmetric matrix and KL divergence.
 
 chapter 4 : https://github.com/herumi/prml/raw/master/prml4.pdf
 
