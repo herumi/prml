@@ -209,7 +209,7 @@ $$
 まず$\mu$について
 \begin{eqnarray*}
 \log q_\mu^*(\mu)
- &=& E_\tau[\log p(D,\mu|\tau)]=E_\tau[\log p(D|\mu,\tau)+\log p(\mu|\tau)] + \mu{\text に依存しない部分}C{\text（以下略）}\\
+ &=& E_\tau[\log p(D,\mu,\tau)]=E_\tau[\log p(D|\mu,\tau)+\log p(\mu|\tau)] + \mu{\text に依存しない部分}C{\text（以下略）}\\
  &=& \frac{E[\tau]}{2}(\sum_n (x_n-\mu)^2)+E_\tau[-\frac{\lambda_0 \tau}{2}(\mu-\mu_0)^2] + C\\
  &=&-(E[\tau]/2)(\lambda_0(\mu-\mu_0)^2+\sum_n (x_n-\mu)^2) + C.
 \end{eqnarray*}
@@ -221,7 +221,7 @@ $\mu$について平方完成すると
 \end{eqnarray*}
 よってこの分布はガウス分布であることが分かり,
 $$
-\mu_N=\frac{\lambda_0 \mu_0 + N\bar{x}}{\lambda_0 + N}, \quad, \lambda_N=(\lambda_0+N)[E\tau]
+\mu_N=\frac{\lambda_0 \mu_0 + N\bar{x}}{\lambda_0 + N}, \quad, \lambda_N=(\lambda_0+N)E[\tau]
 $$
 と置くと$\calN(\mu|\mu_N,\lambda_N^{-1})$となることが分かる.
 $N\rightarrow \infty$のとき$\mu_N \rightarrow \bar{x}$で分散は0（精度は$\infty$）.
@@ -231,7 +231,7 @@ $\tau$について
 \log q_\tau^*(\tau)
  &=& E_\mu[\log p(D,\tau|\mu)]=E_\mu[\log p(D|\mu,\tau)+\log p(\mu|\tau)]+\log p(\tau)\\
  &=& E_\mu[(N/2)\log \tau - (\tau/2) \sum_n (x_n-\mu)^2]\\
- &+& E_\mu[(1/2)\log (\lambda_0 \pi) - (\lambda_0 \pi/2)(\mu-\mu_0)^2]\\
+ &+& E_\mu[(1/2)\log (\lambda_0 \tau) - (\lambda_0 \pi/2)(\mu-\mu_0)^2]\\
  &+& E_\mu[(a_0-1)\log \tau - b_0 \tau - \log \Gamma(a_0)+a_0 \log b_0] + C\\
  &=& (a_0-1)\log \tau - b_0 \tau + (N+1)/2 \log \tau - (\tau/2)E_\mu[\sum_n (x_n-\mu)^2+\lambda_0(\mu-\mu_0)^2] + C.
 \end{eqnarray*}

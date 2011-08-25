@@ -528,4 +528,68 @@ q(Z) &=& \sum_ Z q(Z) \log \frac{p(X,Z|\theta)}{q(Z)}\\
      &=& \calQ(\theta,\theta^o) + \theta{\text {に非依存}}.
 \end{eqnarray*}
 つまり$\calL(q,\theta)$の最大化は$\calQ(\theta,\theta^o)$の最大化に等しい.
+
+\section{混合ガウス分布のオンライン版EMアルゴリズム}
+各EMのステップで一つのデータ点のみの更新を行うことを考える. これは$m$番目のデータ以外を潜在変数とするEMアルゴリズムとみなすことができる.
+
+Eステップでは分布$p(Z|X,\theta^o)$を求める必要があるが, Mステップで必要な$\mu_k$,$\Sigma_k$, $\pi_k$の更新式の右辺を見ると必要なデータは$\gamma(z_{nk})$のみであることが分かる. つまりそれらの差分さえ分かればアルゴリズムを書き下すことができる.
+
+$$N_k=\sum_n \gamma(z_{nk})$$
+を$m$番目の値だけ更新する. 新しい値を$N_k'$とすると
+$$
+N_k'=\sum_{n \ne m} \gamma(z_{nk}) + \gamma'(z_{mk})=N_k + \gamma'(z_{mk})-\gamma(z_{mk}).
+$$
+$d:=\gamma'(z_{mk})-\gamma(z_{mk})$とおくと$N_k'=N_k + d$.
+$\pi_k=N_k/N$なので
+$$
+\pi_k'=\frac{N_k'}{N}=\frac{N_k+d}{N_k}=\pi_k + \frac{d}{N}.
+$$
+$\mu_k=(1/N_k)\sum_n \gamma(z_{nk})x_n$より
+$$
+\mu_k'=\frac{1}{N_k'}(\sum_{n \ne m}\gamma(z_{nk})x_n+\gamma'(z_{mk})x_m).
+$$
+よって
+$$
+N_k' \mu_k'=N_k \mu_k - \gamma(z_{mk})x_m + \gamma'(z_{mk})x_m=(N_k'-d)\mu_k+dx_m=N_k'\mu_k+d(x_m-\mu_k).
+$$
+よって
+$$
+\mu_k'=\mu_k+\frac{d}{N_k'}(x_m-\mu_k).
+$$
+$S:=\Sigma_k=(1/N_k)\sum_n \gamma(z_{nk})\outp{(x_n-\mu_k)}$より$S':=\Sigma_k'$とすると
+$$
+N_k'S'=\sum_{n \ne m}\gamma(z_{nk})\outp{(x_n-\mu_k')}+\gamma'(z_{mk})\outp{(x_m-\mu_k')}.
+$$
+いか式変形をひたすら行う.
+$$
+x_m-\mu_k'=x_m-\mu_k-\frac{d}{N_k'}(x_m-\mu_k)=(1-\frac{d}{N_k'})(x_m-\mu_k)=\frac{N_k}{N_k'}(x_m-\mu_k).
+$$
+$$
+x_n-\mu_k'=(x_n-\mu_k)-\frac{d}{N_k'}(x_m-\mu_k).
+$$
+$A:=\outp{(x_m-\mu_k)}$とおくと
+$$
+\outp{(x_n-\mu_k')}=\outp{(x_n-\mu_k)}-2\frac{d}{N_k'}(x_n-\mu_k)\trans{(x_m-\mu_k)}+\frac{d^2}{N_k'^2}A.
+$$
+$$
+\sum_{n \ne m}\gamma(z_{nk})\outp{(x_n-\mu_k)}=N_k S - \gamma(z_{mk})\outp{(x_m-\mu_k)}=N_k S -\gamma(z_{mk})A.
+$$
+\begin{eqnarray*}
+\sum_{n \ne m}\gamma(z_{nk})(x_n-\mu_k)
+ &=& \sum_{n \ne m}\gamma(z_{nk})x_n - \sum_{n \ne m}\gamma(z_{nk})\mu_k
+  = N_k \mu_k - \gamma(z_{mk})x_m-(N_k-\gamma(z_{mk}))\mu_k\\
+ &=& -\gamma(z_{mk})(x_m-\mu_k).
+\end{eqnarray*}
+よって$\gamma:=\gamma(z_{mk})$とおくと
+\begin{eqnarray*}
+N_k' S'
+ &=& N_k S - \gamma A + 2\frac{d}{N_k'}\gamma A + (N_k-\gamma)\frac{d^2}{N_k'^2}A + (\gamma+d)A \frac{N_k^2}{N_k'^2}\\
+ &=& N_k S + \frac{A}{N_k'^2}(-\gamma(N_k+d)^2+2d\gamma(N_k+d)+(N_k-\gamma)d^2+(\gamma+d)N_k^2)\\
+ &=& N_k S + \frac{A}{N_k'^2}(-\gamma N_k^2-2d\gamma N_k - \gamma d^2 + 2d \gamma N_k + 2d^2 \gamma + N_k d^2-\gamma d^2 + \gamma N_k^2 + d N_k^2)\\
+ &=& N_k S + \frac{A}{N_k'^2}N_k d(N_k+d) = N_k S + \frac{A N_k d}{N_k'}.
+\end{eqnarray*}
+よって
+$$
+S'=\frac{N_k}{N_k'}(S + \frac{d}{N_k'}\outp{(x_m-\mu_k)}).
+$$
 \end{document}
