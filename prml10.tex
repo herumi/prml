@@ -299,9 +299,10 @@ $\sum_Z q(Z|m)=1$に注意して
  &=& \sum_{m,Z} q(Z|m)q(m)(\log p(Z,X|m)+\log p(m)-\log q(Z|m)-\log q(m))\\
  &=& \sum_m q(m)\left\{(\log p(m)-\log q(m))
      + \underbrace{\sum_Z q(Z|m) \log \frac{p(Z,X|m)}{q(Z|m)}}_{=:\calL_m}\right\},\\
- &=&\sum_m q(m) \log \frac{p(m) \exp \calL_m}{q(m)}.
+ &=&\sum_m q(m) \log \frac{p(m) \exp \calL_m}{q(m)}
+  = -\sum_m \KL(q(m)||p(m) \exp \calL_m).
 \end{eqnarray*}
-よって$q(m) \propto p(m) \exp \calL_m$のとき$\calL$は最大値をとる.
+よって$\calL$が最大となるのは全てのカルバック距離が最小となるとき, $q(m) \propto p(m) \exp \calL_m$のときである（$p(m)\exp \calL_m$は正規化されているとは限らないので$=$ではなく$\propto$）.
 
 \subsection{変分混合ガウス分布}
 ガウス混合モデルに変分推論法を適用してみる.
