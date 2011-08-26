@@ -302,7 +302,7 @@ $\sum_Z q(Z|m)=1$に注意して
  &=&\sum_m q(m) \log \frac{p(m) \exp \calL_m}{q(m)}
   = -\sum_m \KL(q(m)||p(m) \exp \calL_m).
 \end{eqnarray*}
-よって$\calL$が最大となるのは全てのカルバック距離が最小となるとき, $q(m) \propto p(m) \exp \calL_m$のときである（$p(m)\exp \calL_m$は正規化されているとは限らないので$=$ではなく$\propto$）.
+よって$\calL$が最大となるのはカルバック距離が最小となるとき, つまり$q(m) \propto p(m) \exp \calL_m$のときである（$p(m)\exp \calL_m$は正規化されているとは限らないので$=$ではなく$\propto$）.
 
 \subsection{変分混合ガウス分布}
 ガウス混合モデルに変分推論法を適用してみる.
