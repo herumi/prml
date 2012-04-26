@@ -23,6 +23,10 @@ chapter 10 : https://github.com/herumi/prml/raw/master/prml10.pdf
 
 get L for mixing Guass distribution
 
+License
+-------------
+CC BY 3.0(http://creativecommons.org/licenses/by/3.0/)
+
 Author
 -------------
 
