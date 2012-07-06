@@ -1,27 +1,15 @@
-\documentclass[a4paper]{jsarticle}
-\usepackage{amsmath,amssymb}
-\usepackage{bm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 第2章
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{chapter}{1}
+\chapter{「確率分布」のための数学}
 
-\include{notation}
-
-\begin{document}
-
-\title{PRMLの2章のための数学}
-\author{サイボウズ・ラボ 光成滋生}
-
-\maketitle
-
-\section{概要}
-この文章は『パターン認識と機械学習』（以下PRML）の2章,
-ガウス分布のところを理解するために必要な数学をまとめてみたものです.
+この章は『パターン認識と機械学習』（PRML）の2章, ガウス分布のところを理解するために必要な数学をまとめてみたものです.
 目標はガウス分布の最尤推定の式変形をきちんと追えるようになることです.
-
 いくつかの定理は証明せずに認めますが, 可能な限りself-containedであることを目指してみました.
 概ねPRMLに従ってますが, 違う方法をとっているところもあります.
 
-間違い, 質問などございましたら, {\tt herumi@nifty.com}または{\tt twitterID:herumi}までご連絡ください.
-
-\section{微積分}
+\section{微積分の復習}
 
 \subsection{変数変換}
 
@@ -35,14 +23,17 @@ $x_i = g_i(y_1, \ldots, y_n) \mbox{ for $i=1, \ldots, n$}$とすると
 $$\det\left(\frac{\partial (x_1, \ldots, x_n)}{\partial (y_1, \ldots, y_n)}\right) = \det(\frac{\partial x_i}{\partial y_j}).$$
 
 ヤコビアンは変数変換したときのある点における微小区間の拡大率を意味する.
+
 適当な条件の下で
-$$
-\int \cdots \int f(x_1, \ldots, x_n)\,dx_1 \cdots \,dx_n
-= \int \cdots \int f\bigl(g_1(y_1, \ldots, y_n), \ldots, g_n(y_1, \ldots, y_n)\bigr)|\det(\frac{\partial x_i}{\partial y_j})|\,dy_1\cdots dy_n.
-$$
+\begin{eqnarray*}
+& & \int \cdots \int f(x_1, \ldots, x_n)\,dx_1 \cdots \,dx_n\\
+&=& \int \cdots \int f\bigl(g_1(y_1, \ldots, y_n), \ldots, g_n(y_1, \ldots, y_n)\bigr)|\det(\frac{\partial x_i}{\partial y_j})|\,dy_1\cdots dy_n.
+\end{eqnarray*}
+
 \subsection{奇関数の積分}
 
-全ての$x$について$f(-x)=-f(x)$のとき$f$を奇関数という. $f(-x)=f(x)$のときは偶関数という.
+全ての$x$について$f(-x)=-f(x)$のとき$f$を奇関数という. \\
+$f(-x)=f(x)$のときは偶関数という.
 
 奇関数$f$について
 $$I=\int_{-\infty}^\infty f(x) \,dx=0.$$
@@ -80,7 +71,7 @@ $$I^2=\int_0^{\infty} \int_0^{\infty} \exp(-(x^2 + y^2)) \,dxdy.$$
 ヤコビアンは
 
 \begin{equation*}
-\det(\frac{\partial (x, y)}{\partial (r, \theta)}) =
+\det(\frac{\partial (x, y)}{\partial (r, \theta)}) = 
   \begin{vmatrix}
     \cos \theta & -r\sin \theta \\
     \sin \theta & r\cos \theta
@@ -140,7 +131,7 @@ $$\EE[x]=\int_{-\infty}^\infty x \calN(x|\mu, \sigma^2) \,dx=\mu.$$
 よって
 $$\EE[x^2]=\int_{-\infty}^\infty x^2 \calN(x|\mu, \sigma^2) \,dx=\sigma^2 + \mu^2.$$
 
-\section{線形代数}
+\section{線形代数の復習}
 
 \subsection{行列の積}
 以下, 特に断らない限り行列の数値は複素数とする.
@@ -151,9 +142,9 @@ $A$を$l$行$m$列の行列, $B$を$m$行$n$列の行列とするとき, 積$AB$を$(AB)_{ij} = \su
 
 \begin{enumerate}
 \item $A$, $B$が正方行列だったとしても$AB=BA$とは限らない.
-\item $A$, $B$, $C$がその順序で掛け算できるとき$(AB)C=A(BC)$が成り立つ.
+\item $A$, $B$, $C$がその順序で掛け算できるとき$(AB)C=A(BC)$が成り立つ.\\
 なぜなら
-$((AB)C)_{ij}=\sum_k (AB)_{ik} c_{kj} = \sum_k (\sum_l a_{il}b_{lk}) c_{kj} = \sum_{k,l} a_{il}b_{lk}c_{kj}$.
+$((AB)C)_{ij}=\sum_k (AB)_{ik} c_{kj} = \sum_k (\sum_l a_{il}b_{lk}) c_{kj} = \sum_{k,l} a_{il}b_{lk}c_{kj}$.\\
 $A(BC)_{ij}=\sum_l a_{il} (BC)_{lj} = \sum_l a_{il} (\sum_k b_{lk}c_{kj}) = \sum_{k,l} a_{il}b_{lk}c_{kj}$だから.
 \end{enumerate}
 
@@ -184,7 +175,7 @@ $D=\prod_{i<j}(x_i - x_j)$とし, $S_n \ni \sigma$に対して$\sigma D = \prod_{i<j}(
 $\{\sigma(1), \ldots, \sigma(n)\}$を2個ずつ順序を入れ換えて$\{1, \ldots, n\}$に並び替えられたとき, 偶数回でできたら$\sgn(\sigma)=1$, 奇数回でできたら$\sgn(\sigma)=-1$である.
 これを使って行列式を定義する.
 
-$A$を$n$次正方行列（$n$行$n$列）とするとき,
+$A$を$n$次正方行列（$n$行$n$列）とするとき, 
 $$\det(A)=|A|=\sum_{\sigma \in S_n} \sgn(\sigma) a_{1 \sigma(1)} \cdots a_{n \sigma(n)}.$$
 
 $A$が2次正方行列のときを見直してみる. $S_2$は2個の要素しかもたなかった. 一つは何も動かさない操作でそれに対して$\sgn$は1.
@@ -200,23 +191,26 @@ $$
   B = \matt{x}{y}{z}{w}
 $$
 とするとき,
-$$
-  |AB| = \matt{ax+bz}{ay+bw}{cx+dz}{cy+dw}
-   = (ax+bz)(cy+dw)-(ay+bw)(cx+dz) = (ad-bc)(xw-yz) =
-   \dett{a}{b}{c}{d} \dett{x}{y}{z}{w} = |A||B|.
-$$
+\begin{eqnarray*}
+  |AB| &=& \matt{ax+bz}{ay+bw}{cx+dz}{cy+dw}\\
+       &=& (ax+bz)(cy+dw)-(ay+bw)(cx+dz) \\
+       &=& (ad-bc)(xw-yz) \\
+       &=& \dett{a}{b}{c}{d} \dett{x}{y}{z}{w} \\
+       &=& |A||B|.
+\end{eqnarray*}
 一般のときの証明は省略する.
 
 $|A|$は負の数にもなることに注意する（絶対値の記号と間違えないように）.
 
 \subsection{行列の種類}
 
-$A$を$m$行$n$列の行列とする. $A$に対して$\trans{A} = (a_{ji})$を$A$の転置行列という. これは$n$行$m$列の行列である.
+$A$を$m$行$n$列の行列とする. $A$に対して$\trans{A} = (a_{ji})$を$A$の\textgt{転置行列}という. これは$n$行$m$列の行列である.
 $|\trans{A}|=|A|$, $\trans{(AB)}=\trans{B}\trans{A}$である.
-$\overline{A}=(\overline{a_{ij}})$を$A$の複素共役行列, $A^*=\overline{\trans{A}}$を随伴行列という.
+
+$\overline{A}=(\overline{a_{ij}})$を$A$の\textgt{複素共役行列}, $A^*=\overline{\trans{A}}$を\textgt{随伴行列}という.
 $|A^*|=\overline{|A|}$, $(AB)^*=B^* A^*$である.
 
-$a_{ii}$を対角成分という. 対角成分以外の項が0である行列を対角行列といい $\diag(a_0, \ldots, a_n)$と書く.
+$a_{ii}$を\textgt{対角成分}という. 対角成分以外の項が0である行列を\textgt{対角行列}といい $\diag(a_0, \ldots, a_n)$と書く.
 
 $$
 \delta_{ij}=
@@ -225,12 +219,12 @@ $$
 0 & (i \neq j)
 \end{cases}
 $$
-をクロネッカーのδといい, $I_n=(\delta_{ij})$を$n$次単位行列という. $I$と略すこともあるし$E$と書くこともある.
+を\textgt{クロネッカーのδ}といい, $I_n=(\delta_{ij})$を\textgt{$n$次単位行列}という. $I$と略すこともあるし$E$と書くこともある.
 
-$A$を$n$次正方行列とすると$AI_n=I_nA=A$.
+$A$を\textgt{$n$次正方行列}とすると$AI_n=I_nA=A$.
 
-$A$が$n$次正方行列で, $|A|\neq0$のとき$A$を正則といい, $AB=BA=I$となる行列$B$が存在する.
-$B$を逆行列といい, $A^{-1}$と書く.
+$A$が$n$次正方行列で, $|A|\neq0$のとき$A$を\textgt{正則}といい, $AB=BA=I$となる行列$B$が存在する.
+$B$を\textgt{逆行列}といい, $A^{-1}$と書く.
 
 \begin{enumerate}
 \item 逆行列は存在すればただ一つである. なぜなら$B$, $B'$を逆行列とすると$B=BI=B(AB')=(BA)B'=IB'=B'$.
@@ -305,7 +299,8 @@ $$A=\lmatt{a_{11}}{*}{0}{a_{nn}}.$$
 さて次の定理を証明無しで認める:
 
 \begin{equation}\label{trigonal}
-\text{任意の$n$次正方行列$A$に対して, あるユニタリー行列$P$があって$P^{-1}AP$を三角化できる.}
+\text{任意の$n$次正方行列$A$に対して, }\\
+\text{あるユニタリー行列$P$があって$P^{-1}AP$を三角化できる}
 \end{equation}
 
 （注意）一般の行列が常に対角化できるとは限らないが三角化は常にできる．
@@ -413,6 +408,7 @@ $$\quadf{A}{x}
 
 つまり2次形式は対角化すれば単なる成分ごとの直和になる.
 
+\newpage
 \subsection{多変量ガウス分布}
 
 $A$を$n$次実対称行列, $\bm{z}$を$n$次元縦ベクトルとしてする.
@@ -610,9 +606,11 @@ $|A|>0$となる行列に対して
 $$\diff{a_{ij}}\log|A|=\tr(A^{-1}\diff{a_{ij}}A).$$
 $\diff{a_{ij}}A$は$ij$成分のみが1でそれ以外は0の行列になる.
 その行列を$I_{ij}$と書くと,
-$$\tr(A^{-1}I_{ij})=\sum_s (A^{-1}I_{ij})_{ss}
-=\sum_s (\sum_t (A^{-1})_{st} (I_{ij})_{ts})
-=\sum_s (\sum_t (A^{-1})_{st} \delta_{it} \delta_{js}) = (A^{-1})_{ji}.$$
+\begin{eqnarray*}
+\tr(A^{-1}I_{ij})&=&\sum_s (A^{-1}I_{ij})_{ss}\\
+&=&\sum_s (\sum_t (A^{-1})_{st} (I_{ij})_{ts})\\
+&=&\sum_s (\sum_t (A^{-1})_{st} \delta_{it} \delta_{js}) = (A^{-1})_{ji}.
+\end{eqnarray*}
 \end{enumerate}
 つまり$\log|A|$を$a_{ij}$成分で微分すると
 $A^{-1}$の$ji$成分になることが分かったので証明完了.
@@ -648,12 +646,15 @@ $$\log p(\bm{X}|\bm{\mu}, A)
 
 その前にまず$A$を固定したときの$\bm{\mu}$に関する最尤推定の解を求めておこう.
 式(\ref{diff_quad})より
-$$\diff{\bm{\mu}} \log p(\bm{X}|\bm{\mu}, A)
-=\half\sum_{i=1}^N (A^{-1}+\trans{(A^{-1})})(\bm{x_i-\mu})=\half(A^{-1}+\trans{(A^{-1})})((\sum_{i=1}^N \bm{x_i}) - N\bm{\mu}).$$
+\begin{eqnarray*}
+\diff{\bm{\mu}} \log p(\bm{X}|\bm{\mu}, A)&=&\half\sum_{i=1}^N(A^{-1}+\trans{(A^{-1})})(\bm{x_i-\mu})\\
+&=&\half(A^{-1}+\trans{(A^{-1})})((\sum_{i=1}^N \bm{x_i}) - N\bm{\mu}).
+\end{eqnarray*}
 これが$\bm{0}$なので
 $$\bm{\mu}_{\text{ML}}=\frac{1}{N}\sum_i \bm{x_i}.$$
 
 さて, 本題に戻る. 再び$A$が対称行列でないという仮定に注意して式を変形する.
+
 $\bm{y_i}=\bm{x_i}-\bm{\mu}$とおき
 $$F(A)=-N\log|A|-\sum_i \quadf{A^{-1}}{y_i}
 =-N\log|A|-\tr(A^{-1}\sum_i \bm{y_i}\trans{\bm{y_i}})$$
@@ -663,12 +664,13 @@ $$F(A)=-N\log|A|-\sum_i \quadf{A^{-1}}{y_i}
 $B=\sum_i \bm{y_i}\trans{\bm{y_i}}$と置いて$A$で微分しよう.
 
 第1項は式(\ref{diff_log_mat})を使って$-N\trans{{(A^{-1})}}$.
+
 第2項を求めるには式(\ref{diff_inv})を使って
-$$\diff{a_{ij}}\tr(A^{-1}B)
-=\tr((\diff{a_{ij}}A^{-1})B)
-=-\tr(A^{-1}(\diff{a_{ij}}A)A^{-1}B)
-=-\tr((\diff{a_{ij}}A)A^{-1}BA^{-1}).
-$$
+\begin{eqnarray*}
+\diff{a_{ij}}\tr(A^{-1}B)&=&\tr((\diff{a_{ij}}A^{-1})B)\\
+&=&-\tr(A^{-1}(\diff{a_{ij}}A)A^{-1}B)\\
+&=&-\tr((\diff{a_{ij}}A)A^{-1}BA^{-1}).
+\end{eqnarray*}
 最後の式変形では$\tr(XY)=\tr(YX)$を使った. $C=A^{-1}BA^{-1}$とおく.
 
 $$\tr((\diff{a_{ij}}A)C)
@@ -692,4 +694,3 @@ $$A=\frac{1}{N}B
 また, $\bm{\mu}$について特に条件も無いので,
 先に$\bm{\mu}$に関して最尤推定による解$\bm{\mu}_{\text{ML}}$を代入すれば
 $\bm{\mu}$と$A$を同時に最大化したものの解となることが分かる.
-\end{document}

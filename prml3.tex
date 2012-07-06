@@ -1,20 +1,9 @@
-\documentclass[a4paper]{jsarticle}
-\usepackage{amsmath,amssymb}
-\usepackage{bm}
-\usepackage[dvips]{graphicx}
-
-\include{notation}
-
-\begin{document}
-
-\title{PRMLの3章のための数学}
-\author{サイボウズ・ラボ 光成滋生}
-
-\maketitle
-
-\section{概要}
-この文章は『パターン認識と機械学習』（以下PRML）の3章を理解するために必要な数学をまとめてみたものです.
-間違い, 質問などございましたら{\tt herumi@nifty.com}または{\tt twitterID:herumi}までご連絡ください.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 第3章
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{chapter}{2}
+\chapter{「線形回帰モデル」のための数学}
+この文章は『パターン認識と機械学習』（PRML）の3章を理解するために必要な数学をまとめてみたものです.
 
 \section{最小二乗法}
 
@@ -45,7 +34,7 @@ $$だから$\bm{t}=\trans{(t_1, \ldots, t_N)}$とおくと
 \half\diff{\bm{w}}f(\bm{w})
  &=& -\sum_n t_n \phi(\bm{x}_n) + \sum_n (\phi(\bm{x}_n)\trans{\phi(\bm{x}_n)})\bm{w} + \lambda \bm{w}\\
  &=& -\trans{\Phi} \bm{t} + \trans{\Phi}\Phi \bm{w} + \lambda \bm{w}\\
- &=& -\trans{\Phi} \bm{t} + (\trans{\Phi}\Phi + \lambda I)\bm{w}=0.
+ &=& -\trans{\Phi} \bm{t} + (\trans{\Phi}\Phi + \lambda I)\bm{w}=0.	
 \end{eqnarray*}
 よって$\det(\lambda I + \trans{\Phi}\Phi)\ne0$のとき
 $$\bm{w}_{\text{ML}}=(\lambda I + \trans{\Phi}\Phi)^{-1}\trans{\Phi}\bm{t}$$
@@ -205,11 +194,11 @@ $$
 
 なぜなら$S'(x)=-e^{-x}+1$. $S''(x)=e^{-x} \ge 0$なので$S'(x)$は単調増加. $S'(0) = 0$より$x > 0$なら$S'(x) > 0$, $x<0$なら$S'(x)<0$. つまり$S(x)$は0で最小値0をとる.
 
-$$
-\int p(x) S(\log \frac{p(x)}{q(x)})\,dx
- = \int p(x) (\frac{q(x)}{p(x)} + \log \frac{p(x)}{q(x)} - 1)\,dx
- = \KL(p||q) + \int (q(x) - p(x))\,dx = \KL(p||q).
-$$
+\begin{eqnarray*}
+\int p(x) S(\log \frac{p(x)}{q(x)})\,dx &=& \int p(x) (\frac{q(x)}{p(x)} + \log \frac{p(x)}{q(x)} - 1)\,dx\\
+ &=& \KL(p||q) + \int (q(x) - p(x))\,dx\\
+ &=& \KL(p||q).
+\end{eqnarray*}
 ここで$p$, $q$が確率密度関数なので$\int p(x)\,dx = 1$, $\int q(x)\,dx=1$であることを使った.
 
 この式の左辺の被積分関数は常に0以上. よって$\KL(p||q) \ge 0$.
@@ -418,4 +407,3 @@ $$
   \label{para-dep}
  \end{minipage}
 \end{figure}
-\end{document}

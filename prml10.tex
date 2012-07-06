@@ -1,22 +1,9 @@
-\documentclass[a4paper]{jsarticle}
-\usepackage{amsmath,amssymb}
-\usepackage{bm}
-
-\include{notation}
-
-\newcommand{\wji}{w_{ji}^{(1)}}
-\newcommand{\wkj}{w_{kj}^{(2)}}
-
-\begin{document}
-
-\title{PRMLの10章の数式の補足}
-\author{サイボウズ・ラボ 光成滋生}
-
-\maketitle
-
-\section{概要}
-この文章は『パターン認識と機械学習』（以下PRML）の10章の式変形を一部埋めたものです.
-間違い, 質問などございましたら{\tt herumi@nifty.com}または{\tt twitterID:herumi}までご連絡ください.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 第10章
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{chapter}{9}
+\chapter{「近似推論法」の数式の補足}
+この文章は『パターン認識と機械学習』（PRML）の10章の式変形を一部埋めたものです.
 
 \section{この章でよく使われる公式}
 9章と同じようによく使う公式を列挙しておく.
@@ -502,7 +489,7 @@ $\alpha_0 \rightarrow \infty$なら$E[\pi_k] \rightarrow 1/K$.
 PRML下巻（3刷）ではこの章は変分下限である.
 しかしここで計算する$\calL$の値は$\log p(X)$の下界の中で一番大きいものになるとは限らない.
 $\KL(q||p)$は一般に0ではない.
-その意味で\ref{lower_bound}章で述べたように変分下界が適切と思われる.
+その意味で\ref{lower_bound}節で述べたように変分下界が適切と思われる.
 
 それはさておき, $q(Z,\vpi,\mu,\Lambda)=q(Z)q(\vpi,\mu,\Lambda)$と分解できると仮定すると
 \begin{eqnarray*}
@@ -518,8 +505,8 @@ E[\log p(X|Z,\mu,\Lambda)]
  &=& E[\sum_{n,k} z_{nk} \log \calN(x_n|\mu_k,\Lambda_k^{-1})]\\
  &=& \half E[\sum_{n,k} z_{nk}(-D \log (2\pi) + \log |\Lambda_k| - \quads{\Lambda_k}{(x_n-\mu_k)})]\\
  &=& \half \sum_k E[-N_k D \log (2\pi)+N_k \log |\Lambda_k|-\sum_n z_{nk} \quads{\Lambda_k}{(x_n-\mu_k)}]\\
- &=& \half \sum_k N_k (\log \tilde{\Lambda}_k - D \log (2\pi))-
-    \half \underbrace{\sum_{n,k} r_{nk} (D\beta_k^{-1}+\nu_k \quads{W_k}{(x_n-m_k)})}_{=:X}.
+ &=& \half \sum_k N_k (\log \tilde{\Lambda}_k - D \log (2\pi))\\
+ &-& \half \underbrace{\sum_{n,k} r_{nk} (D\beta_k^{-1}+\nu_k \quads{W_k}{(x_n-m_k)})}_{=:X}.
 \end{eqnarray*}
 $$
 X = \sum_k N_k D\beta_k^{-1} + \sum_k \nu_k (\underbrace{\sum_n r_{nk} \quads{W_k}{(x_n-m_k)}}_{=:Y}).
@@ -684,8 +671,8 @@ A
 \begin{eqnarray*}
 B
  &=& (\beta+1)\outp{\mu}-2\mu\trans{(x+\beta m)}+\outp{x}+\beta \outp{m}\\
- &=& (\beta+1)\outp{(\mu-\frac{1}{\beta+1}(x+\beta m))}
-      +\underbrace{\outp{x}+\beta \outp{m} - \frac{1}{\beta+1}\outp{(x+\beta m)}}_{=:C}
+ &=& (\beta+1)\outp{(\mu-\frac{1}{\beta+1}(x+\beta m))}\\
+ &+& \underbrace{\outp{x}+\beta \outp{m} - \frac{1}{\beta+1}\outp{(x+\beta m)}}_{=:C}
 \end{eqnarray*}
 $$
 C=\frac{\beta}{\beta+1}\outp{x}+\frac{\beta^2+\beta-\beta^2}{\beta+1}\outp{m}-\frac{2 \beta}{\beta+1}x\trans{m}
@@ -704,9 +691,9 @@ $$
 \begin{eqnarray*}
 D
  &:=& \calN(x|m,(\frac{\beta}{\beta+1}\Lambda)^{-1})W(\Lambda|W,\nu)\\
- &=& \frac{1}{(2\pi)^{D/2}}|\frac{\beta}{\beta+1}\Lambda|^{1/2}
-     \exp(-\half \tr(\Lambda \frac{\beta}{\beta+1}\outp{(x-m)}))
-     \cdot B(W,\nu)|\Lambda|^{\frac{\nu-D-1}{2}}\exp(-\half \tr(W^{-1}\Lambda)).
+ &=& \frac{1}{(2\pi)^{D/2}}|\frac{\beta}{\beta+1}\Lambda|^{1/2}\\
+  &&   \exp(-\half \tr(\Lambda \frac{\beta}{\beta+1}\outp{(x-m)}))\\
+  &&   \cdot B(W,\nu)|\Lambda|^{\frac{\nu-D-1}{2}}\exp(-\half \tr(W^{-1}\Lambda)).
 \end{eqnarray*}
 $$
 W'^{-1}:=W^{-1}+\frac{\beta}{\beta+1}\outp{(x-m)}
@@ -734,9 +721,9 @@ $$
  &=& (\frac{\beta}{\pi(\beta+1)})^{D/2}\frac{\Gamma((\nu+1)/2)}{\Gamma((\nu+1-D)/2)}(\frac{1}{1+\lambda})^{\nu/2}
       |W|^{1/2}(\frac{1}{1+\lambda})^{1/2}\\
  &=& \frac{\Gamma((\nu+1)/2)}{\Gamma((\nu+1-D)/2)} (\frac{\beta}{\pi(1+\beta)})^{D/2}|W|^{1/2}(1+\lambda)^{-(\nu+1)/2}\\
- &=& \frac{\Gamma((\nu+1)/2)}{\Gamma((\nu+1-D)/2)} \frac{(\frac{\beta(\nu+1-D)}{1+\beta})^{D/2}}
-       {(\nu+1-D)^{D/2}\pi^{D/2}} |W|^{1/2}
-       \left(1+\frac{\quads{(\frac{\beta(\nu+1-D)}{1+\beta}W)}{(x-m)}}{\nu+1-D}\right)^{-(\nu+1)/2}\\
+ &=& \frac{\Gamma(\frac{\nu+1}{2})}{\Gamma(\frac{\nu+1-D}{2})} \frac{(\frac{\beta(\nu+1-D)}{1+\beta})^{\frac{D}{2}}}
+       {(\nu+1-D)^{\frac{D}{2}}\pi^{\frac{D}{2}}} |W|^{\frac{1}{2}}
+       \left(1+\frac{\quads{(\frac{\beta(\nu+1-D)}{1+\beta}W)}{(x-m)}}{\nu+1-D}\right)^{\frac{-(\nu+1)}{2}}\\
  &=& \St(x|m,L,\nu+1-D), \quad L:=\frac{\beta(\nu+1-D)}{1+\beta}W.
 \end{eqnarray*}
 よって
@@ -749,4 +736,4 @@ PRML下巻p.215の下から5行目：
 「$\lambda'(\xi)$は$\xi \ge 0$のとき単調関数」とあるが間違い.
 $\lambda(\xi)$は$\xi \ge 0$のとき単調減少だが$\lambda'(\xi)$はそうではない.
 また$\lambda(\xi)$が単調減少だからといってそれだけで$\lambda'(\xi) \ne 0$が言えるわけでもない.
-\end{document}
+

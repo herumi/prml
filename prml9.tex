@@ -1,23 +1,13 @@
-\documentclass[a4paper]{jsarticle}
-\usepackage{amsmath,amssymb}
-\usepackage{bm}
-
-\include{notation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 第9章
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{chapter}{8}
+\chapter{「混合モデルとEM」の数式の補足}
+この文章は『パターン認識と機械学習』（PRML）の9章の式変形を一部埋めたものです.
+面倒なので特に紛らわしいと思わない限り$\bm{x}$を$x$と書いたりします. また対数尤度関数を$F$と書くことが多いです.
 
 \newcommand{\wji}{w_{ji}^{(1)}}
 \newcommand{\wkj}{w_{kj}^{(2)}}
-
-\begin{document}
-
-\title{PRMLの9章の数式の補足}
-\author{サイボウズ・ラボ 光成滋生}
-
-\maketitle
-
-\section{概要}
-この文章は『パターン認識と機械学習』（以下PRML）の9章の式変形を一部埋めたものです.
-間違い, 質問などございましたら{\tt herumi@nifty.com}または{\tt twitterID:herumi}までご連絡ください.
-面倒なので特に紛らわしいと思わない限り$\bm{x}$を$x$と書いたりします. また対数尤度関数を$F$と書くことが多いです.
 
 \section{復習}
 よく使ういくつかの式を書いておく. どれも今までに既に示したものである.\\
@@ -337,9 +327,11 @@ $$
 E_k[\outp{x}]=\cov_k[x]+\outp{\mu_k}=\Sigma_k+\outp{\mu_k}
 $$
 より
-$$
-\cov[x]=E[\outp{(x-E[x])}]=E[\outp{x}]-\outp{E[x]}=\sum_k \pi_k(\Sigma_k+\outp{\mu_k})-\outp{E[x]}.
-$$
+\begin{eqnarray*}
+\cov[x]&=&E[\outp{(x-E[x])}]\\
+       &=&E[\outp{x}]-\outp{E[x]}\\
+       &=&\sum_k \pi_k(\Sigma_k+\outp{\mu_k})-\outp{E[x]}.
+\end{eqnarray*}
 データ集合$X=\{x_1, \ldots, x_N\}$が与えられたとき, 対数尤度関数は
 $$
 \log p(X|\mu,\vpi)=\sum_n \log (\sum_k \pi_k p(x_n|\mu_k)).
@@ -576,8 +568,8 @@ $$
 $$
 \begin{eqnarray*}
 \sum_{n \ne m}\gamma(z_{nk})(x_n-\mu_k)
- &=& \sum_{n \ne m}\gamma(z_{nk})x_n - \sum_{n \ne m}\gamma(z_{nk})\mu_k
-  = N_k \mu_k - \gamma(z_{mk})x_m-(N_k-\gamma(z_{mk}))\mu_k\\
+ &=& \sum_{n \ne m}\gamma(z_{nk})x_n - \sum_{n \ne m}\gamma(z_{nk})\mu_k\\
+ &=& N_k \mu_k - \gamma(z_{mk})x_m-(N_k-\gamma(z_{mk}))\mu_k\\
  &=& -\gamma(z_{mk})(x_m-\mu_k).
 \end{eqnarray*}
 よって$\gamma:=\gamma(z_{mk})$とおくと
@@ -592,4 +584,3 @@ N_k' S'
 $$
 S'=\frac{N_k}{N_k'}(S + \frac{d}{N_k'}\outp{(x_m-\mu_k)}).
 $$
-\end{document}

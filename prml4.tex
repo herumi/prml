@@ -1,21 +1,9 @@
-\documentclass[a4paper]{jsarticle}
-\usepackage{amsmath,amssymb}
-\usepackage{bm}
-
-\include{notation}
-
-\newcommand{\bmm}{\bm {m}}
-
-\begin{document}
-
-\title{PRMLの4章のための数学}
-\author{サイボウズ・ラボ 光成滋生}
-
-\maketitle
-
-\section{概要}
-この文章は『パターン認識と機械学習』（以下PRML）の4章の式変形を一部埋めたものです.
-間違い, 質問などございましたら{\tt herumi@nifty.com}または{\tt twitterID:herumi}までご連絡ください.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 第4章
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{chapter}{3}
+\chapter{「線形識別モデル」のための数学}
+この文章は『パターン認識と機械学習』（PRML）の4章の式変形を一部埋めたものです.
 
 \section{クラス分類問題}
 いくつに分類したいかを決めて入力空間を相異なる空間に分割し, それぞれの空間をクラス$C_k$とすること.
@@ -56,7 +44,7 @@ $$\trans{A}=(a_{ji})$$
 $$
 \diff{A}\tr(AB)=\trans{B}
 $$
-なぜなら,
+なぜなら, 
 $$
 (\diff{A}\tr(AB))_{ij}=\diff{a_{ij}}\sum_{s,t} a_{st} b_{ts} = b_{ji}.
 $$
@@ -203,11 +191,13 @@ S_W=\sum_{n \in C_1}(x_n-\bmm_1)\trans{(x_n-\bmm_1)}+\sum_{n \in C_2}(x_n-\bmm_2
 $$
 とする. $S_B$をクラス間共分散行列, $S_W$を総クラス内共分散行列という.
 
-$\trans{w}S_B w=\trans{w}(\bmm_2-\bmm_1)\trans{(\bmm_2-\bmm_1)}w=(m_2-m_1)^2$.
-$$
-\trans{w}S_W w=\trans{w}\sum_{n \in C_1}(x_n-\bmm_1)\trans{(x_n-\bmm_1)}w+\trans{w}\sum_{n \in C_2}(x_n-\bmm_2)\trans{(x_n-\bmm_2)}w
-=\sum_{n\in C_1} (y_n-m_1)^2+\sum_{n\in C_2}(y_n-m_2)^2
-$$
+
+\begin{eqnarray*}
+\trans{w}S_B w&=&\trans{w}(\bmm_2-\bmm_1)\trans{(\bmm_2-\bmm_1)}w\\
+              &=&(m_2-m_1)^2.\\
+\trans{w}S_W w&=&\trans{w}\sum_{n \in C_1}(x_n-\bmm_1)\trans{(x_n-\bmm_1)}w+\trans{w}\sum_{n \in C_2}(x_n-\bmm_2)\trans{(x_n-\bmm_2)}w\\
+              &=&\sum_{n\in C_1} (y_n-m_1)^2+\sum_{n\in C_2}(y_n-m_2)^2
+\end{eqnarray*}
 より
 $$
 J(w)=\frac{\trans{w}S_B w}{\trans{w} S_W w}.
@@ -271,9 +261,10 @@ S_W &=& \sum_{n\in C_1} x_n\trans{x_n}-2\sum_{C_1} x_n \trans{\bmm_1}+\sum_{C_1}
  &=&N(\bmm \trans{\bmm})w+N(\bmm_1-\bmm_2)-N_1 \bmm_1 \trans{\bmm_1}-N_2 \bmm_2\trans{\bmm_2}.
 \end{eqnarray*}
 よって
-$$
-(S_W+\frac{N_1 N_2}{N}S_B)w=N(\bmm_1-\bmm_2)+\{N\bmm \trans{\bmm}-N_1\bmm_1 \trans{\bmm_1}-N_2 \bmm_2 \trans{\bmm_2}+\frac{N_1 N_2}{N} (\bmm_1 -\bmm_2)\trans{(\bmm_1-\bmm_2)}\}w.
-$$
+\begin{eqnarray*}
+(S_W+\frac{N_1 N_2}{N}S_B)w&=&N(\bmm_1-\bmm_2)\\
+                           &+&\{N\bmm \trans{\bmm}-N_1\bmm_1 \trans{\bmm_1}-N_2 \bmm_2 \trans{\bmm_2}+\frac{N_1 N_2}{N} (\bmm_1 -\bmm_2)\trans{(\bmm_1-\bmm_2)}\}w.
+\end{eqnarray*}
 
 $\{\}$内が0であることを示す（めんどうなので$\bmm_i$を$m_i$と略する）.
 \begin{eqnarray*}
@@ -435,7 +426,8 @@ $$
 最後に$A$に関する最尤解を求める. $A$に関する部分の対数は
 
 \begin{eqnarray*}
- && -\half\sum_{n=1}^N(t_n \log |A|+t_n \trans{(x_n-\mu_1)}A^{-1}(x_n-\mu_1)+(1-t_n) \log |A|+(1-t_n)\trans{(x_n-\mu_2)}A^{-1}(x_n-\mu_2))\\
+ && -\half\sum_{n=1}^N(t_n \log |A|+t_n \trans{(x_n-\mu_1)}A^{-1}(x_n-\mu_1)\\
+ &&+(1-t_n) \log |A|+(1-t_n)\trans{(x_n-\mu_2)}A^{-1}(x_n-\mu_2))\\
  &=& -\frac{N}{2}\log |A| - \half \tr(\sum_{n=1}^N(t_n A^{-1}(x_n -\mu_1)\trans{(x_n-\mu_1)}+(1-t_n)A^{-1}(x_n-\mu_2)\trans{(x_n-\mu_2)}))\\
  &=& -\frac{N}{2}\log |A| -\half \tr(A^{-1}(\sum_{n\in C_1}(x_n-\mu_1)\trans{(x_n-\mu_1)}+\sum_{n\in C_2}(x_n-\mu_2)\trans{(x_n-\mu_2)}))\\
  &=& -\frac{N}{2}\log |A| -\half \tr(A^{-1}(N_1 S_1 + N_2 S_2))\\
@@ -840,9 +832,10 @@ $f(\theta)=p(D|\theta)p(\theta)$, $Z=p(D)$とすると$\theta=\theta_{\text{MAP}}$の
 $$
 A=-\nabla^2 \log p(D|\theta_{\text{MAP}})p(\theta_{\text{MAP}}).
 $$
-$$
-\log p(D)=\log Z \approx \log f(\theta_{\text{MAP}}) + \log \sqrt{\frac{(2\pi)^M}{|A|}}=\log p(D|\theta_{\text{MAP}})+(\log p(\theta_{\text{MAP}})+\frac{M}{2} \log (2\pi) - \half \log |A|).
-$$
+\begin{eqnarray*}
+\log p(D)&=&\log Z \approx \log f(\theta_{\text{MAP}}) + \log \sqrt{\frac{(2\pi)^M}{|A|}}\\
+         &=&\log p(D|\theta_{\text{MAP}})+(\log p(\theta_{\text{MAP}})+\frac{M}{2} \log (2\pi) - \half \log |A|).
+\end{eqnarray*}
 括弧内の後ろ三項をOccam係数という.
 
 この値をごくごく荒く近似してみる.
@@ -1050,7 +1043,8 @@ $p(a)$の平均を求める. $q(w)$の平均が$m_N$であることに注意すると,
 \end{eqnarray*}
 分散は
 \begin{eqnarray*}
-\sigma(a)^2 &=& \int p(a)(a^2-E[a]^2)\,da = \int (\delta(a-\trans{w}\phi)a^2\,da)q(w)\,dw - \int (\delta(a-\trans{w}\phi)E[a]^2\,da)q(w)\,dw\\
+\sigma(a)^2 &=& \int p(a)(a^2-E[a]^2)\,da \\
+ &=& \int (\delta(a-\trans{w}\phi)a^2\,da)q(w)\,dw - \int (\delta(a-\trans{w}\phi)E[a]^2\,da)q(w)\,dw\\
  &=&\int q(w)(\trans{w}\phi)^2\,dw - \int q(w) (\trans{m_N}\phi)^2\,dw\\
  &=&\trans{\phi}\Bigl( \int q(w)(w\trans{w}-m_N \trans{m_N})\,dw \Bigr)\phi.
 \end{eqnarray*}
@@ -1116,4 +1110,4 @@ $$
 p(C_1|\phi,t) \approx \sigma(\kappa(\sigma_a^2)\mu_a)
 $$
 という近似予測分布が得られた.
-\end{document}
+
