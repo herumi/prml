@@ -23,6 +23,12 @@ chapter 10 : https://github.com/herumi/prml/raw/master/prml10.pdf
 
 get L for mixing Guass distribution
 
+How to create pdf
+-------------
+platex main.tex
+platex main.tex
+dvipdfmx main.dvi
+
 License
 -------------
 CC BY 3.0(http://creativecommons.org/licenses/by/3.0/)
