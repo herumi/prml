@@ -9,53 +9,53 @@
 
 \begin{document}
 
-\title{PRML¤Î10¾Ï¤Î¿ô¼°¤ÎÊäÂ­}
-\author{¥µ¥¤¥Ü¥¦¥º¡¦¥é¥Ü ¸÷À®¼¢À¸}
+\title{PRML‚Ì10Í‚Ì”®‚Ì•â‘«}
+\author{ƒTƒCƒ{ƒEƒYEƒ‰ƒ{ Œõ¬ ¶}
 
 \maketitle
 
-\section{³µÍ×}
-¤³¤ÎÊ¸¾Ï¤Ï¡Ø¥Ñ¥¿¡¼¥óÇ§¼±¤Èµ¡³£³Ø½¬¡Ù¡Ê°Ê²¼PRML¡Ë¤Î10¾Ï¤Î¼°ÊÑ·Á¤ò°ìÉôËä¤á¤¿¤â¤Î¤Ç¤¹.
-´Ö°ã¤¤, ¼ÁÌä¤Ê¤É¤´¤¶¤¤¤Ş¤·¤¿¤é{\tt herumi@nifty.com}¤Ş¤¿¤Ï{\tt twitterID:herumi}¤Ş¤Ç¤´Ï¢Íí¤¯¤À¤µ¤¤.
+\section{ŠT—v}
+‚±‚Ì•¶Í‚Íwƒpƒ^[ƒ“”F¯‚Æ‹@ŠBŠwKxiˆÈ‰ºPRMLj‚Ì10Í‚Ì®•ÏŒ`‚ğˆê•”–„‚ß‚½‚à‚Ì‚Å‚·.
+ŠÔˆá‚¢, ¿–â‚È‚Ç‚²‚´‚¢‚Ü‚µ‚½‚ç{\tt herumi@nifty.com}‚Ü‚½‚Í{\tt twitterID:herumi}‚Ü‚Å‚²˜A—‚­‚¾‚³‚¢.
 
-\section{¤³¤Î¾Ï¤Ç¤è¤¯»È¤ï¤ì¤ë¸ø¼°}
-9¾Ï¤ÈÆ±¤¸¤è¤¦¤Ë¤è¤¯»È¤¦¸ø¼°¤òÎóµó¤·¤Æ¤ª¤¯.
-\subsection{¥¬¥ó¥Ş´Ø¿ô}
+\section{‚±‚ÌÍ‚Å‚æ‚­g‚í‚ê‚éŒö®}
+9Í‚Æ“¯‚¶‚æ‚¤‚É‚æ‚­g‚¤Œö®‚ğ—ñ‹“‚µ‚Ä‚¨‚­.
+\subsection{ƒKƒ“ƒ}ŠÖ”}
 $$
 \Gamma(x)=\int_0^\infty t^{x-1} e^{-t}\,dt, \quad \Gamma(x+1)=x\Gamma(x).
 $$
-¥Ç¥£¥¬¥ó¥Ş´Ø¿ô
+ƒfƒBƒKƒ“ƒ}ŠÖ”
 $$
 \phi(x)=\diff{x} \log \Gamma(x).
 $$
 
-\subsection{¥Ç¥£¥ê¥¯¥ìÊ¬ÉÛ}
-$0 \le \mu_k \le 1$, $\sum_k \mu_k = 1$, $\hat{\alpha}=\sum_k \alpha_k$¤È¤·¤Æ
+\subsection{ƒfƒBƒŠƒNƒŒ•ª•z}
+$0 \le \mu_k \le 1$, $\sum_k \mu_k = 1$, $\hat{\alpha}=\sum_k \alpha_k$‚Æ‚µ‚Ä
 $$
 \Dir(\mu|\alpha)=C(\alpha)\prod_{k=1}^K \mu_k ^{\alpha_k-1}, \quad C(\alpha)=\frac{\Gamma(\hat{\alpha})}{\prod_k \Gamma(\alpha_k)}.
 $$
 $$
 E[\mu_k]=\frac{\alpha_k}{\hat{\alpha}}.
 $$
-\subsection{¥¬¥ó¥ŞÊ¬ÉÛ}
+\subsection{ƒKƒ“ƒ}•ª•z}
 $$
 \Gam(\tau|a,b)=\frac{1}{\Gamma(a)}b^a\tau^{a-1}e^{-b\tau}.
 $$
 $$
 E[\tau]=\frac{a}{b}, \quad \var[\tau]=\frac{a}{b^2}, \quad E[\log \tau]=\phi(a)-\log b.
 $$
-\subsection{Àµµ¬Ê¬ÉÛ}
+\subsection{³‹K•ª•z}
 $$
 \calN = \calN(x|\mu,\Sigma)=\frac{1}{(2\pi)^{D/2}}|\Sigma|^{-1/2}\exp(-\half\quads{{\Sigma^{-1}}}{(x-\mu)}).
 $$
 $$
 E[x]=\mu, \quad \cov[x]=\Sigma, \quad, E[\outp{x}]=\outp{\mu}+\Sigma, \quad E[\inp{x}]=\inp{\mu}+\tr(\Sigma).
 $$
-$p(x)=\calN(x|\mu,\Lambda^{-1})$, $p(y|x)=\calN(x|Ax+b, L^{-1})$¤Î¤È¤­
+$p(x)=\calN(x|\mu,\Lambda^{-1})$, $p(y|x)=\calN(x|Ax+b, L^{-1})$‚Ì‚Æ‚«
 $$
 p(y)=\calN(y|A\mu + b, L^{-1} + A\Lambda^{-1}\trans{A}).
 $$
-\subsection{¥¹¥Á¥å¡¼¥Ç¥ó¥È¤ÎtÊ¬ÉÛ}
+\subsection{ƒXƒ`ƒ…[ƒfƒ“ƒg‚Ìt•ª•z}
 $$
 \St(x|\mu,\Lambda,\nu)
 =\frac{\Gamma(\frac{\nu+D}{2})}{\Gamma(\frac{\nu}{2})}
@@ -64,7 +64,7 @@ $$
 $$
 E[x]=\mu.
 $$
-\subsection{¥¦¥£¥·¥ã¡¼¥ÈÊ¬ÉÛ}
+\subsection{ƒEƒBƒVƒƒ[ƒg•ª•z}
 $$
 \calW(\Lambda,W,\nu)=B(W,\nu)|\Lambda|^{\frac{\nu-D-1}{2}}\exp(-\half\tr (W^{-1}\Lambda).
 $$
@@ -77,7 +77,7 @@ $$
 && H[\Lambda]=-\log B(W,\nu)-\frac{\nu-D-1}{2}E[\log |\Lambda]+\frac{\nu D}{2}.
 \end{eqnarray*}
 
-\subsection{¹ÔÎó¤Î¸ø¼°}
+\subsection{s—ñ‚ÌŒö®}
 \begin{eqnarray*}
 && \quads{A}{x}=\tr(Ax\trans{x}).\\
 && \diff{A}\log|A|=\trans{(A^{-1})}.\\
@@ -86,62 +86,62 @@ $$
 && |I+a\trans{b}|=1+\trans{a}b.
 \end{eqnarray*}
 
-\subsection{¥«¥ë¥Ğ¥Ã¥¯µ÷Î¥}
+\subsection{ƒJƒ‹ƒoƒbƒN‹——£}
 $$
 \KL(q||p)=-\int q(Z) \log \frac{p(Z|X)}{q(Z)}\,dZ \ge 0.
 $$
 
-\section{²¼¸Â¤È²¼³¦}\label{lower_bound}
-²¼³¦¡Êlower bound¡Ë¤È²¼¸Â¡Êinf, greatest lower bound¡Ë¤Ï°ÕÌ£¤¬°ã¤¦.
-¤Ç¤­¤ë¤À¤±»È¤¤Ê¬¤±¤¿Êı¤¬¤è¤¤¤À¤í¤¦. °ìÈÌ¤Ë¤Ï½ç½ø½¸¹ç¤ËÂĞ¤·¤ÆÄêµÁ¤¹¤ë¤¬¤³¤³¤Ç¤Ï¼Â¿ô¤ÎÏÃ¤ËÀ©¸Â¤¹¤ë.
-$A$¤¬$\RR$¤ÎÉôÊ¬½¸¹ç¤È¤¹¤ë. ¤¢¤ë$x$¤ËÂĞ¤·¤Æ$x$¤¬$A$¤Î²¼³¦¤Ç¤¢¤ë¤È¤Ï, Á´¤Æ¤Î$a\in A$¤ËÂĞ¤·¤Æ$x \le a$¤Ç¤¢¤ë¤³¤È¤ò¤¤¤¦.
-¤Ä¤Ş¤ê$x$¤Ï$A$¤ÎÃæ¤Î°ìÈÖ¾®¤µ¤¤ÃÍ¤è¤ê¤âÆ±¤¸¤«¤è¤ê¾®¤µ¤¤¤È¤­¤Î¤³¤È¤ò¤¤¤¦.
+\section{‰ºŒÀ‚Æ‰ºŠE}\label{lower_bound}
+‰ºŠEilower boundj‚Æ‰ºŒÀiinf, greatest lower boundj‚ÍˆÓ–¡‚ªˆá‚¤.
+‚Å‚«‚é‚¾‚¯g‚¢•ª‚¯‚½•û‚ª‚æ‚¢‚¾‚ë‚¤. ˆê”Ê‚É‚Í‡˜W‡‚É‘Î‚µ‚Ä’è‹`‚·‚é‚ª‚±‚±‚Å‚ÍÀ”‚Ì˜b‚É§ŒÀ‚·‚é.
+$A$‚ª$\RR$‚Ì•”•ªW‡‚Æ‚·‚é. ‚ ‚é$x$‚É‘Î‚µ‚Ä$x$‚ª$A$‚Ì‰ºŠE‚Å‚ ‚é‚Æ‚Í, ‘S‚Ä‚Ì$a\in A$‚É‘Î‚µ‚Ä$x \le a$‚Å‚ ‚é‚±‚Æ‚ğ‚¢‚¤.
+‚Â‚Ü‚è$x$‚Í$A$‚Ì’†‚Ìˆê”Ô¬‚³‚¢’l‚æ‚è‚à“¯‚¶‚©‚æ‚è¬‚³‚¢‚Æ‚«‚Ì‚±‚Æ‚ğ‚¢‚¤.
 
-¤¿¤È¤¨¤Ğ$A=\{x|x\ge 0\}$¤Î¤È¤­, $-3$¤Ï$A$¤Î²¼³¦¤Ç¤¢¤ë. $-5$¤â$A$¤Î²¼³¦¤Ç¤¢¤ë.
-ÉáÄÌ²¼³¦¤È¤Ê¤ëÃÍ¤Ï¤¿¤¯¤µ¤ó¤¢¤ë¤Î¤Ç¼ç¸ì¤È½Ò¸ì¤òÆş¤ì´¹¤¨¤¿¡Ö$A$¤Î²¼³¦¤Ï$-3$¤Ç¤¢¤ë¡×¤È¤¤¤¦¸À¤¤Êı¤Ï¤¢¤Ş¤ê¤·¤Ê¤¤¤È»×¤¦.
+‚½‚Æ‚¦‚Î$A=\{x|x\ge 0\}$‚Ì‚Æ‚«, $-3$‚Í$A$‚Ì‰ºŠE‚Å‚ ‚é. $-5$‚à$A$‚Ì‰ºŠE‚Å‚ ‚é.
+•’Ê‰ºŠE‚Æ‚È‚é’l‚Í‚½‚­‚³‚ñ‚ ‚é‚Ì‚ÅåŒê‚ÆqŒê‚ğ“ü‚êŠ·‚¦‚½u$A$‚Ì‰ºŠE‚Í$-3$‚Å‚ ‚év‚Æ‚¢‚¤Œ¾‚¢•û‚Í‚ ‚Ü‚è‚µ‚È‚¢‚Æv‚¤.
 
-¤³¤ì¤Ï¡Ö$x^2=1$¤Î²ò¤Ï1¤Ç¤¢¤ë¡×¤È¤Ï¸À¤ï¤Ê¤¤¤Î¤ÈÆ±¤¸´¶³Ğ¤Ç¤¢¤ë¡Ê$-1$¤Ï¤É¤¦¤·¤¿¤Î?¤ÈÊ¹¤«¤ì¤ë¤À¤í¤¦¡Ë.
+‚±‚ê‚Íu$x^2=1$‚Ì‰ğ‚Í1‚Å‚ ‚év‚Æ‚ÍŒ¾‚í‚È‚¢‚Ì‚Æ“¯‚¶Š´Šo‚Å‚ ‚éi$-1$‚Í‚Ç‚¤‚µ‚½‚Ì?‚Æ•·‚©‚ê‚é‚¾‚ë‚¤j.
 
-¤½¤·¤Æ, ¤¿¤¯¤µ¤ó¤¢¤ë²¼³¦¤ÎÃæ¤Ç°ìÈÖÂç¤­¤¤ÃÍ¤ò²¼¸Â¤È¤¤¤¦. ²¼¸Â¤ÏÂ¸ºß¤¹¤ì¤Ğ¤¿¤À°ì¤Ä¤Ç¤¢¤ë.
-¾åµ­$A$¤Î²¼¸Â¤Ï0. °ì¤Ä¤·¤«¤Ê¤¤¤Î¤Ç¡Ö$A$¤Î²¼¸Â¤Ï0¤Ç¤¢¤ë¡×¤È¤â¤¤¤¦¤·, ¡Ö0¤Ï$A$¤Î²¼¸Â¤Ç¤¢¤ë¡×¤È¤â¤¤¤¦.
+‚»‚µ‚Ä, ‚½‚­‚³‚ñ‚ ‚é‰ºŠE‚Ì’†‚Åˆê”Ô‘å‚«‚¢’l‚ğ‰ºŒÀ‚Æ‚¢‚¤. ‰ºŒÀ‚Í‘¶İ‚·‚ê‚Î‚½‚¾ˆê‚Â‚Å‚ ‚é.
+ã‹L$A$‚Ì‰ºŒÀ‚Í0. ˆê‚Â‚µ‚©‚È‚¢‚Ì‚Åu$A$‚Ì‰ºŒÀ‚Í0‚Å‚ ‚év‚Æ‚à‚¢‚¤‚µ, u0‚Í$A$‚Ì‰ºŒÀ‚Å‚ ‚év‚Æ‚à‚¢‚¤.
 
-¤¿¤È¤¨¤ĞPRML¾å´¬¡Ê4ºş¡Ëp.49¤Î°ìÈÖ²¼¤Ç¤Ï
+‚½‚Æ‚¦‚ÎPRMLãŠªi4üjp.49‚Ìˆê”Ô‰º‚Å‚Í
 
-¡Ö³ÎÎ¨ÊÑ¿ô¤Î¾õÂÖ¤òÁ÷¤ë¤¿¤á¤ËÉ¬Í×¤Ê¥Ó¥Ã¥È¿ô¤Î²¼¸Â¤¬¥¨¥ó¥È¥í¥Ô¡¼¤Ç¤¢¤ë¡×
+uŠm—¦•Ï”‚Ìó‘Ô‚ğ‘—‚é‚½‚ß‚É•K—v‚Èƒrƒbƒg”‚Ì‰ºŒÀ‚ªƒGƒ“ƒgƒƒs[‚Å‚ ‚év
 
-¤È¤¢¤ê¤³¤ì¤ÏÀµ¤·¤¤. ¤¢¤ë¤¤¤Ï
+‚Æ‚ ‚è‚±‚ê‚Í³‚µ‚¢. ‚ ‚é‚¢‚Í
 
-¡Ö¥¨¥ó¥È¥í¥Ô¡¼¤Ï³ÎÎ¨ÊÑ¿ô¤Î¾õÂÖ¤òÁ÷¤ë¤¿¤á¤ËÉ¬Í×¤Ê¥Ó¥Ã¥È¿ô¤Î²¼¸Â¤Ç¤¢¤ë¡×
+uƒGƒ“ƒgƒƒs[‚ÍŠm—¦•Ï”‚Ìó‘Ô‚ğ‘—‚é‚½‚ß‚É•K—v‚Èƒrƒbƒg”‚Ì‰ºŒÀ‚Å‚ ‚év
 
-¤Ç¤â¤è¤¤. ¤·¤«¤·, ¤³¤ì¤ò
+‚Å‚à‚æ‚¢. ‚µ‚©‚µ, ‚±‚ê‚ğ
 
-¡Ö¥¨¥ó¥È¥í¥Ô¡¼¤Ï³ÎÎ¨ÊÑ¿ô¤Î¾õÂÖ¤òÁ÷¤ë¤¿¤á¤ËÉ¬Í×¤Ê¥Ó¥Ã¥È¿ô¤Î²¼³¦¤Ç¤¢¤ë¡×
+uƒGƒ“ƒgƒƒs[‚ÍŠm—¦•Ï”‚Ìó‘Ô‚ğ‘—‚é‚½‚ß‚É•K—v‚Èƒrƒbƒg”‚Ì‰ºŠE‚Å‚ ‚év
 
-¤È¤·¤Æ¤·¤Ş¤¦¤È¡Ê2011/7/27»şÅÀ¤Ç¤ÎÆüËÜ¸ì¥µ¥İ¡¼¥È¤ÎÀµ¸íÉ½¡Ë,
-´Ö°ã¤Ã¤Æ¤Ï¤¤¤Ê¤¤¤¬¾å¤ÎÊ¸¾Ï¤ÈÁ´Á³°ÕÌ£¤¬°ã¤Ã¤Æ¤·¤Ş¤¦.
-¤³¤ì¤Ç¤Ï¥¨¥ó¥È¥í¥Ô¡¼¤¬¤®¤ê¤®¤ê¤ÎÃÍ¤Ç¤¢¤ë¤È¤¤¤¦¼çÄ¥¤¬¾Ã¤¨¤¿¤·¤ç¤¦¤â¤Ê¤¤¤â¤Î¤Ë¤Ê¤Ã¤Æ¤¤¤ë.
+‚Æ‚µ‚Ä‚µ‚Ü‚¤‚Æi2011/7/27“_‚Å‚Ì“ú–{ŒêƒTƒ|[ƒg‚Ì³Œë•\j,
+ŠÔˆá‚Á‚Ä‚Í‚¢‚È‚¢‚ªã‚Ì•¶Í‚Æ‘S‘RˆÓ–¡‚ªˆá‚Á‚Ä‚µ‚Ü‚¤.
+‚±‚ê‚Å‚ÍƒGƒ“ƒgƒƒs[‚ª‚¬‚è‚¬‚è‚Ì’l‚Å‚ ‚é‚Æ‚¢‚¤å’£‚ªÁ‚¦‚½‚µ‚å‚¤‚à‚È‚¢‚à‚Ì‚É‚È‚Á‚Ä‚¢‚é.
 
-\section{Ê¬²ò¤Ë¤è¤ë¶á»÷¤Î»ı¤ÄÀ­¼Á}
-¤³¤³¤Ç$\Lambda_{ij}$¤Ï¥¹¥«¥é¡¼¤Ç$\Lambda_{12}=\Lambda_{21}$.
-$E[z_1] = m_1$, $E[z_2] = m_2$¤è¤ê
+\section{•ª‰ğ‚É‚æ‚é‹ß—‚Ì‚Â«¿}
+‚±‚±‚Å$\Lambda_{ij}$‚ÍƒXƒJƒ‰[‚Å$\Lambda_{12}=\Lambda_{21}$.
+$E[z_1] = m_1$, $E[z_2] = m_2$‚æ‚è
 \begin{eqnarray*}
 m_1 &=& \mu_1 - \Lambda_{11}^{-1}\Lambda_{12}(m_2 - \mu_2) \\
     &=& \mu_1 - \Lambda_{11}^{-1}\Lambda_{12}(\mu_2 - \Lambda_{22}^{-1}\Lambda_{21}(m_1-\mu_1) - \mu_2) \\
     &=& \mu_1 + \Lambda_{11}^{-1}\Lambda_{22}^{-1}\Lambda_{12}^2(m_1-\mu_1).
 \end{eqnarray*}
-¤è¤Ã¤Æ
+‚æ‚Á‚Ä
 $$
 (m_1-\mu_1)(\Lambda_{11}^{-1}\Lambda_{22}^{-1}\Lambda_{12}^2-1)=0.
 $$
-Ê¬ÉÛ¤¬ÈóÆÃ°Û¤Ê¤é$|\Lambda|=\Lambda_{11}\Lambda_{22}-\Lambda_{12}^2 \ne0$¤è¤ê$m_1=\mu_1$. Æ±ÍÍ¤Ë $m_2=\mu_2$.
+•ª•z‚ª”ñ“ÁˆÙ‚È‚ç$|\Lambda|=\Lambda_{11}\Lambda_{22}-\Lambda_{12}^2 \ne0$‚æ‚è$m_1=\mu_1$. “¯—l‚É $m_2=\mu_2$.
 
-ÊÑ¿ô$Z=\{z_1, \ldots, z_N \}$¤ËÂĞ¤¹¤ëÊ¬ÉÛ$q(Z)$¤¬
+•Ï”$Z=\{z_1, \ldots, z_N \}$‚É‘Î‚·‚é•ª•z$q(Z)$‚ª
 $$
 q(Z)=\prod_{i=1}^M q_i(Z_i)
 $$
-¤ÈÊ£¿ô¤Î¥°¥ë¡¼¥×¤Î´Ø¿ô¤ÎÀÑ¤È¤·¤Æ¤«¤±¤Æ¤¤¤ë¤È²¾Äê¤¹¤ë. ¤³¤³¤Ç$\{Z_i\}$¤Ï$Z$¤Îdisjoint-union¤Ç¤¢¤ë.
+‚Æ•¡”‚ÌƒOƒ‹[ƒv‚ÌŠÖ”‚ÌÏ‚Æ‚µ‚Ä‚©‚¯‚Ä‚¢‚é‚Æ‰¼’è‚·‚é. ‚±‚±‚Å$\{Z_i\}$‚Í$Z$‚Ìdisjoint-union‚Å‚ ‚é.
 
-¡ÊPRML p.182¡Ë$\KL(p||q)$¤ò$Z_j$¤Ë¤Ä¤¤¤ÆºÇ¾®²½¤¹¤ëÌäÂê¤ò¹Í¤¨¤ë¡Ê°Ê²¼, ÂĞ¾İÊÑ¿ô°Ê³°¤Î¹à¤ò¤Ş¤È¤á¤Æ$C$¤ÈÎ¬µ­¤¹¤ë¡Ë.
+iPRML p.182j$\KL(p||q)$‚ğ$Z_j$‚É‚Â‚¢‚ÄÅ¬‰»‚·‚é–â‘è‚ğl‚¦‚éiˆÈ‰º, ‘ÎÛ•Ï”ˆÈŠO‚Ì€‚ğ‚Ü‚Æ‚ß‚Ä$C$‚Æ—ª‹L‚·‚éj.
 \begin{eqnarray*}
 \KL(p||q) &=& -\int p(Z) (\sum_i \log q_i(Z_i))\,dZ + C \\
    &=& -\int (p(Z) \log q_j(Z_j) + p(Z) \sum_{i \ne j} \log q_i(Z_i))\,dZ + C \\
@@ -152,11 +152,11 @@ $$
 $$
 \int q_j(Z_j)\,dZ_j=1
 $$
-¤Î¾ò·ï¤Î¸µ¤Ç
+‚ÌğŒ‚ÌŒ³‚Å
 $$
 X=-\int F_j(Z_j) \log q_j(Z_j)\,dZ_j + \lambda (\int q_j(Z_j)\,dZ_j-1)
 $$
-¤òºÇ¾®²½¤¹¤ë.
+‚ğÅ¬‰»‚·‚é.
 \begin{eqnarray*}
 \diff{q_j}X &=& -\int F_j(Z_j) \log (q_j + \delta q_j)\,dZ_j + \lambda (\int (q_j + \delta q_j)\,dZ_j-1)\\
  &=&\left(-\int F_j(Z_j) \log q_j\,dZ_j + \lambda (\int q_j\,dZ_j - 1)\right)-(\int F_j(Z_j)/q_j\,dZ_j - \lambda)\delta q_j=0.
@@ -164,69 +164,69 @@ $$
 $$
 F_j/q_j - \lambda = 0.
 $$
-¤è¤Ã¤Æ$F_j=\lambda q_j$. ÀÑÊ¬¤·¤Æ
+‚æ‚Á‚Ä$F_j=\lambda q_j$. Ï•ª‚µ‚Ä
 $$
 \int F_j\,dZ_j = \int \lambda q_j\,dZ_j=\lambda=1.
 $$
-¤è¤Ã¤Æ
+‚æ‚Á‚Ä
 $$
 q_j^*(Z_j)=q_j=F_j=\int p(Z) \prod_{i \ne j}\,dZ_i.
 $$
-\section{$\alpha$¥À¥¤¥Ğ¡¼¥¸¥§¥ó¥¹}
-$\alpha$¤ò¼Â¿ô¤È¤·¤Æ
+\section{$\alpha$ƒ_ƒCƒo[ƒWƒFƒ“ƒX}
+$\alpha$‚ğÀ”‚Æ‚µ‚Ä
 $$
 D_\alpha(p||q)=\frac{4}{1-\alpha^2}(1-\int p(x)^{(1+\alpha)/2} q(x)^{(1-\alpha)/2}\,dx)
 $$
-¤ò$\alpha$¥À¥¤¥Ğ¡¼¥¸¥§¥ó¥¹¤È¤¤¤¦.
-$\alpha \rightarrow 1$¤Î¤È¤­$\KL(p||q)$, $\alpha \rightarrow -1$¤Î¤È¤­$\KL(q||p)$¤Ë¤Ê¤ë.
+‚ğ$\alpha$ƒ_ƒCƒo[ƒWƒFƒ“ƒX‚Æ‚¢‚¤.
+$\alpha \rightarrow 1$‚Ì‚Æ‚«$\KL(p||q)$, $\alpha \rightarrow -1$‚Ì‚Æ‚«$\KL(q||p)$‚É‚È‚é.
 
-¡Ê¾ÚÌÀ¡Ë$\alpha=1-2\epsilon$¤ÈÃÖ¤¯. $\alpha \rightarrow 1$¤Ç$\epsilon \rightarrow 0$¤È¤Ê¤ë.
+iØ–¾j$\alpha=1-2\epsilon$‚Æ’u‚­. $\alpha \rightarrow 1$‚Å$\epsilon \rightarrow 0$‚Æ‚È‚é.
 $$
 (q/p)^\epsilon=\exp(\epsilon \log(q/p)) \approx 1 + \epsilon \log(q/p)
 $$
-¤è¤ê
+‚æ‚è
 \begin{eqnarray*}
 D_\alpha(p||q) &=& \frac{1}{\epsilon(1-\epsilon)}(1-\int p(q/p)^\epsilon\,dx) \\
  &\simeq& \frac{1}{\epsilon}(1-\int p(1+\epsilon \log \frac{q}{p})\,dx) \\
  &=& \frac{1}{\epsilon}(-\epsilon \int p \log \frac{q}{p}\,dx)=\KL(p||q).
 \end{eqnarray*}
-$\alpha \rightarrow -1$¤âÆ±ÍÍ.
+$\alpha \rightarrow -1$‚à“¯—l.
 
-\section{Îã¡§°ìÊÑ¿ô¥¬¥¦¥¹Ê¬ÉÛ}
-¥¬¥¦¥¹Ê¬ÉÛ¤«¤éÆÈÎ©¤ËÈ¯À¸¤·¤¿´ÑÂ¬ÃÍ$x$¤Î¥Ç¡¼¥¿¥»¥Ã¥È¤ò$\calD=\{x_1,\ldots,x_N\}$¤È¤¹¤ë.
-¤â¤È¤Î¥¬¥¦¥¹Ê¬ÉÛ¤ÎÊ¿¶Ñ$\mu$¤ÈÀºÅÙ$\tau$¤Î»ö¸åÊ¬ÉÛ¤ò¤â¤È¤á¤ë.
+\section{—áFˆê•Ï”ƒKƒEƒX•ª•z}
+ƒKƒEƒX•ª•z‚©‚ç“Æ—§‚É”­¶‚µ‚½ŠÏ‘ª’l$x$‚Ìƒf[ƒ^ƒZƒbƒg‚ğ$\calD=\{x_1,\ldots,x_N\}$‚Æ‚·‚é.
+‚à‚Æ‚ÌƒKƒEƒX•ª•z‚Ì•½‹Ï$\mu$‚Æ¸“x$\tau$‚Ì–Œã•ª•z‚ğ‚à‚Æ‚ß‚é.
 $$
 p(D|\mu,\tau)=(\frac{\tau}{2\pi})^{N/2} \exp(-\frac{\tau}{2}\sum_n (x_n-\mu)^2).
 $$
 $$
 p(\mu|\tau)=\calN(\mu|\mu_0, (\lambda_0\tau)^{-1}), \quad p(\tau)=\Gam(\tau|a_0, b_0).
 $$
-¤³¤ÎÌäÂê¤Ï¸·Ì©¤Ë¤â¤È¤á¤é¤ì¤ë¤¬¤³¤³¤Ç¤Ï»ö¸åÊ¬ÉÛ¤¬¼¡¤Î¤è¤¦¤ËÊ¬²ò¤Ç¤­¤ë¤È²¾Äê¤·¤¿¤È¤­¤ÎÊÑÊ¬¶á»÷¤ò¹Í¤¨¤ë.
+‚±‚Ì–â‘è‚ÍŒµ–§‚É‚à‚Æ‚ß‚ç‚ê‚é‚ª‚±‚±‚Å‚Í–Œã•ª•z‚ªŸ‚Ì‚æ‚¤‚É•ª‰ğ‚Å‚«‚é‚Æ‰¼’è‚µ‚½‚Æ‚«‚Ì•Ï•ª‹ß—‚ğl‚¦‚é.
 $$
 q(\mu,\tau)=q_\mu(\mu)q_\tau(\tau).
 $$
 
-¤Ş¤º$\mu$¤Ë¤Ä¤¤¤Æ
+‚Ü‚¸$\mu$‚É‚Â‚¢‚Ä
 \begin{eqnarray*}
 \log q_\mu^*(\mu)
- &=& E_\tau[\log p(D,\mu,\tau)]=E_\tau[\log p(D|\mu,\tau)+\log p(\mu|\tau)] + \mu{\text ¤Ë°ÍÂ¸¤·¤Ê¤¤ÉôÊ¬}C{\text¡Ê°Ê²¼Î¬¡Ë}\\
+ &=& E_\tau[\log p(D,\mu,\tau)]=E_\tau[\log p(D|\mu,\tau)+\log p(\mu|\tau)] + \mu{\text ‚ÉˆË‘¶‚µ‚È‚¢•”•ª}C{\textiˆÈ‰º—ªj}\\
  &=& \frac{E[\tau]}{2}(\sum_n (x_n-\mu)^2)+E_\tau[-\frac{\lambda_0 \tau}{2}(\mu-\mu_0)^2] + C\\
  &=&-(E[\tau]/2)(\lambda_0(\mu-\mu_0)^2+\sum_n (x_n-\mu)^2) + C.
 \end{eqnarray*}
-$\mu$¤Ë¤Ä¤¤¤ÆÊ¿Êı´°À®¤¹¤ë¤È
+$\mu$‚É‚Â‚¢‚Ä•½•ûŠ®¬‚·‚é‚Æ
 \begin{eqnarray*}
 && -(E[\tau]/2)\left((\lambda_0+N)\mu^2-2\mu(\lambda_0\mu_0+\sum_n x_n)+\lambda_0 \mu_0^2+\sum_n x_n^2\right) + C\\
-&& \sum_n x_n=N \bar{x}¤è¤ê\\
+&& \sum_n x_n=N \bar{x}‚æ‚è\\
 &=& -\frac{E[\tau](\lambda_0 + N)}{2}(\mu-\frac{\lambda_0 \mu_0 + N\bar{x}}{\lambda_0 + N})^2+\cdots.
 \end{eqnarray*}
-¤è¤Ã¤Æ¤³¤ÎÊ¬ÉÛ¤Ï¥¬¥¦¥¹Ê¬ÉÛ¤Ç¤¢¤ë¤³¤È¤¬Ê¬¤«¤ê,
+‚æ‚Á‚Ä‚±‚Ì•ª•z‚ÍƒKƒEƒX•ª•z‚Å‚ ‚é‚±‚Æ‚ª•ª‚©‚è,
 $$
 \mu_N=\frac{\lambda_0 \mu_0 + N\bar{x}}{\lambda_0 + N}, \quad, \lambda_N=(\lambda_0+N)E[\tau]
 $$
-¤ÈÃÖ¤¯¤È$\calN(\mu|\mu_N,\lambda_N^{-1})$¤È¤Ê¤ë¤³¤È¤¬Ê¬¤«¤ë.
-$N\rightarrow \infty$¤Î¤È¤­$\mu_N \rightarrow \bar{x}$¤ÇÊ¬»¶¤Ï0¡ÊÀºÅÙ¤Ï$\infty$¡Ë.
+‚Æ’u‚­‚Æ$\calN(\mu|\mu_N,\lambda_N^{-1})$‚Æ‚È‚é‚±‚Æ‚ª•ª‚©‚é.
+$N\rightarrow \infty$‚Ì‚Æ‚«$\mu_N \rightarrow \bar{x}$‚Å•ªU‚Í0i¸“x‚Í$\infty$j.
 
-$\tau$¤Ë¤Ä¤¤¤Æ
+$\tau$‚É‚Â‚¢‚Ä
 \begin{eqnarray*}
 \log q_\tau^*(\tau)
  &=& E_\mu[\log p(D,\tau|\mu)]=E_\mu[\log p(D|\mu,\tau)+\log p(\mu|\tau)]+\log p(\tau)\\
@@ -235,32 +235,32 @@ $\tau$¤Ë¤Ä¤¤¤Æ
  &+& E_\mu[(a_0-1)\log \tau - b_0 \tau - \log \Gamma(a_0)+a_0 \log b_0] + C\\
  &=& (a_0-1)\log \tau - b_0 \tau + (N+1)/2 \log \tau - (\tau/2)E_\mu[\sum_n (x_n-\mu)^2+\lambda_0(\mu-\mu_0)^2] + C.
 \end{eqnarray*}
-¤è¤Ã¤Æ$q_\tau(\tau)$¤Ï¥¬¥ó¥ŞÊ¬ÉÛ¤È¤Ê¤ê
+‚æ‚Á‚Ä$q_\tau(\tau)$‚ÍƒKƒ“ƒ}•ª•z‚Æ‚È‚è
 $$
 a_N=a_0+\frac{N+1}{2}, \quad b_N=b_0+\half E_\mu[\sum_n (x_n-\mu)^2+\lambda_0 (\mu-\mu_0)^2]
 $$
-¤ÈÃÖ¤¯¤È$q_\tau(\tau)=\Gam(\tau|a_N, b_N)$.
-$q_\mu(\mu)$, $q_\tau(\tau)$¤Î´Ø¿ô¤Î·Á¤Ë²¿¤â²¾Äê¤òÃÖ¤¤¤Æ¤¤¤Ê¤¤¤Î¤Ë, ÌàÅÙ´Ø¿ô¤È¶¦Ìò»öÁ°Ê¬ÉÛ¤Î¹½Â¤¤«¤é·è¤Ş¤Ã¤¿¤³¤È¤ËÃí°Õ.
-$N \rightarrow \infty$¤Ç
+‚Æ’u‚­‚Æ$q_\tau(\tau)=\Gam(\tau|a_N, b_N)$.
+$q_\mu(\mu)$, $q_\tau(\tau)$‚ÌŠÖ”‚ÌŒ`‚É‰½‚à‰¼’è‚ğ’u‚¢‚Ä‚¢‚È‚¢‚Ì‚É, –Ş“xŠÖ”‚Æ‹¤–ğ–‘O•ª•z‚Ì\‘¢‚©‚çŒˆ‚Ü‚Á‚½‚±‚Æ‚É’ˆÓ.
+$N \rightarrow \infty$‚Å
 $$
-E[\Gam(\tau|a_N, b_N)]=\frac{a_N}{b_N} \rightarrow 1/E_\mu[(1/N\sum_n (x_n-\mu)^2] \rightarrow 1/{\text Ê¬»¶}.
+E[\Gam(\tau|a_N, b_N)]=\frac{a_N}{b_N} \rightarrow 1/E_\mu[(1/N\sum_n (x_n-\mu)^2] \rightarrow 1/{\text •ªU}.
 $$
 $$
 \sigma[\Gam] = a_N / b_N^2 \rightarrow 0.
 $$
 
-$\mu_0=a_0=b_0=\lambda_0=0$¤È¤¤¤¦Ìµ¾ğÊó»öÁ°Ê¬ÉÛ¤òÆş¤ì¤Æ¤ß¤ë.
+$\mu_0=a_0=b_0=\lambda_0=0$‚Æ‚¢‚¤–³î•ñ–‘O•ª•z‚ğ“ü‚ê‚Ä‚İ‚é.
 $$
 a_N=\frac{N+1}{2}, \quad b_N=\half E_\mu[\sum_n (x_n-\mu)^2].
 $$
-¤è¤Ã¤Æ
+‚æ‚Á‚Ä
 $$
 E[\tau]^{-1}=\frac{b_N}{a_N}=E[\frac{1}{N+1}\sum_n (x_n-\mu)^2]=\frac{N}{N+1}(\overline{x^2}-2\bar{x}E[\mu]+E[\mu^2]).
 $$
 $$
 \mu_N=\frac{0+N\bar{x}}{0+N}=\bar{x}, \quad \lambda_N=N E[\tau].
 $$
-¤è¤Ã¤Æ
+‚æ‚Á‚Ä
 $$
 E[\mu]=\bar{x}, \quad E[\mu^2]=E[\mu]^2 + \frac{1}{\lambda_N}=\bar{x}^2+\frac{1}{N E[\tau]}.
 $$
@@ -270,18 +270,18 @@ $$
 $$
 \frac{N}{N+1}(\overline{x^2}-\bar{x}^2)=1/E[\tau]-(1/(N+1))(1/E[\tau])=\frac{N}{N+1}\frac{1}{E[\tau]}.
 $$
-¤è¤Ã¤Æ
+‚æ‚Á‚Ä
 $$
 \frac{1}{E[\tau]}=\overline{x^2}-\bar{x}^2=\frac{1}{N}\sum_n (x_n-\bar{x})^2.
 $$
 
-\section{¥â¥Ç¥ëÈæ³Ó}
-»öÁ°³ÎÎ¨$p(m)$¤ò»ı¤ÄÊ£¿ô¤Î¥â¥Ç¥ë¤ÎÈæ³Ó. ´ÑÂ¬¥Ç¡¼¥¿$X$¤Î²¼¤Ç»ö¸å³ÎÎ¨$p(m|X)$¤ò¶á»÷¤·¤¿¤¤.
+\section{ƒ‚ƒfƒ‹”äŠr}
+–‘OŠm—¦$p(m)$‚ğ‚Â•¡”‚Ìƒ‚ƒfƒ‹‚Ì”äŠr. ŠÏ‘ªƒf[ƒ^$X$‚Ì‰º‚Å–ŒãŠm—¦$p(m|X)$‚ğ‹ß—‚µ‚½‚¢.
 
 $$
 q(Z, m)=q(Z|m)q(m), \quad p(X, Z, m)=p(X)p(Z, m|X).
 $$
-$\sum_{m,Z} q(Z, m)=1$¤ËÃí°Õ¤·¤Æ
+$\sum_{m,Z} q(Z, m)=1$‚É’ˆÓ‚µ‚Ä
 \begin{eqnarray*}
 \log p(X)
  &=& \sum_{m,Z} q(Z,m) \log p(X)\\
@@ -292,8 +292,8 @@ $\sum_{m,Z} q(Z, m)=1$¤ËÃí°Õ¤·¤Æ
  &=& \calL - \sum_{m,Z} q(Z|m) q(m) \log \frac{p(Z,m|X)}{q(Z|m)q(m)}.
 \end{eqnarray*}
 
-$\calL$¤ò$q(m)$¤Ë¤Ä¤¤¤ÆºÇÂç²½¤¹¤ë.
-$\sum_Z q(Z|m)=1$¤ËÃí°Õ¤·¤Æ
+$\calL$‚ğ$q(m)$‚É‚Â‚¢‚ÄÅ‘å‰»‚·‚é.
+$\sum_Z q(Z|m)=1$‚É’ˆÓ‚µ‚Ä
 \begin{eqnarray*}
 \calL
  &=& \sum_{m,Z} q(Z|m)q(m)(\log p(Z,X|m)+\log p(m)-\log q(Z|m)-\log q(m))\\
@@ -302,36 +302,36 @@ $\sum_Z q(Z|m)=1$¤ËÃí°Õ¤·¤Æ
  &=&\sum_m q(m) \log \frac{p(m) \exp \calL_m}{q(m)}
   = -\sum_m \KL(q(m)||p(m) \exp \calL_m).
 \end{eqnarray*}
-¤è¤Ã¤Æ$\calL$¤¬ºÇÂç¤È¤Ê¤ë¤Î¤Ï¥«¥ë¥Ğ¥Ã¥¯µ÷Î¥¤¬ºÇ¾®¤È¤Ê¤ë¤È¤­, ¤Ä¤Ş¤ê$q(m) \propto p(m) \exp \calL_m$¤Î¤È¤­¤Ç¤¢¤ë¡Ê$p(m)\exp \calL_m$¤ÏÀµµ¬²½¤µ¤ì¤Æ¤¤¤ë¤È¤Ï¸Â¤é¤Ê¤¤¤Î¤Ç$=$¤Ç¤Ï¤Ê¤¯$\propto$¡Ë.
+‚æ‚Á‚Ä$\calL$‚ªÅ‘å‚Æ‚È‚é‚Ì‚ÍƒJƒ‹ƒoƒbƒN‹——£‚ªÅ¬‚Æ‚È‚é‚Æ‚«, ‚Â‚Ü‚è$q(m) \propto p(m) \exp \calL_m$‚Ì‚Æ‚«‚Å‚ ‚éi$p(m)\exp \calL_m$‚Í³‹K‰»‚³‚ê‚Ä‚¢‚é‚Æ‚ÍŒÀ‚ç‚È‚¢‚Ì‚Å$=$‚Å‚Í‚È‚­$\propto$j.
 
-\subsection{ÊÑÊ¬º®¹ç¥¬¥¦¥¹Ê¬ÉÛ}
-¥¬¥¦¥¹º®¹ç¥â¥Ç¥ë¤ËÊÑÊ¬¿äÏÀË¡¤òÅ¬ÍÑ¤·¤Æ¤ß¤ë.
-$x_n$¤ËÂĞ±ş¤¹¤ëÀøºßÊÑ¿ô$z_n$. $z_n$¤Ï$K$¸Ä¤ÎÍ×ÁÇ$z_{nk}$¤«¤é¤Ê¤ë.
-$z_{nk}=0$¤Ş¤¿¤Ï1¤Ç$\sum_k z_{nk}=1$.
+\subsection{•Ï•ª¬‡ƒKƒEƒX•ª•z}
+ƒKƒEƒX¬‡ƒ‚ƒfƒ‹‚É•Ï•ª„˜_–@‚ğ“K—p‚µ‚Ä‚İ‚é.
+$x_n$‚É‘Î‰‚·‚éöİ•Ï”$z_n$. $z_n$‚Í$K$ŒÂ‚Ì—v‘f$z_{nk}$‚©‚ç‚È‚é.
+$z_{nk}=0$‚Ü‚½‚Í1‚Å$\sum_k z_{nk}=1$.
 
-$X=\{x_1, \ldots, x_N\}$, $Z=\{z_1, \ldots, z_N\}$, º®¹çÈæ¤Ï$\vpi=(\pi_1, \ldots, \pi_K)$.
+$X=\{x_1, \ldots, x_N\}$, $Z=\{z_1, \ldots, z_N\}$, ¬‡”ä‚Í$\vpi=(\pi_1, \ldots, \pi_K)$.
 $$
 p(z_n)=\prod_k \pi_k^{z_{nk}}, \quad p(x_n|z_n)=\prod_k \calN(x_n|\mu_k, \Sigma_k)^{z_{nk}}.
 $$
 $$
 p(X|Z,\mu,\Lambda)=\prod_{n,k} \calN(x_n|\mu_k, \Lambda_k^{-1})^{z_{nk}}.
 $$
-$\vpi$¤Î»öÁ°Ê¬ÉÛ¤Ï¥Ç¥£¥ê¥¯¥ìÊ¬ÉÛ¤È¤¹¤ë.
+$\vpi$‚Ì–‘O•ª•z‚ÍƒfƒBƒŠƒNƒŒ•ª•z‚Æ‚·‚é.
 $$
 p(\vpi)=\Dir(\vpi|\alpha_0)=C(\alpha_0)\prod_k \pi_k^{\alpha_0-1}.
 $$
-º®¹çÍ×ÁÇ¤Î»ı¤Ä¥¬¥¦¥¹Ê¬ÉÛ¤Î»öÁ°Ê¬ÉÛ¤Ï¥¬¥¦¥¹¡¦¥¦¥£¥·¥ã¡¼¥ÈÊ¬ÉÛ¤È¤¹¤ë.
+¬‡—v‘f‚Ì‚ÂƒKƒEƒX•ª•z‚Ì–‘O•ª•z‚ÍƒKƒEƒXEƒEƒBƒVƒƒ[ƒg•ª•z‚Æ‚·‚é.
 $$
 p(\mu,\Lambda)=p(\mu|\Lambda)p(\Lambda)=\prod_k \calN(\mu_k|m_0, (\beta_0 \Lambda_k)^{-1})\calW(\Lambda_k,|W_0,\nu_0).
 $$
 
-\subsection{ÊÑÊ¬»ö¸åÊ¬ÉÛ}
+\subsection{•Ï•ª–Œã•ª•z}
 $$
 p(X,Z,\vpi,\mu,\Lambda)=p(X|Z,\mu,\Lambda)p(z|\vpi)p(\vpi)p(\mu|\Lambda)p(\Lambda).
 $$
-$q(Z,\vpi,\mu,\Lambda)=q(Z)q(\vpi,\mu,\Lambda)$¤È¤¤¤¦ÊÑÊ¬¶á»÷¤ò¹Í¤¨¤ë.
+$q(Z,\vpi,\mu,\Lambda)=q(Z)q(\vpi,\mu,\Lambda)$‚Æ‚¢‚¤•Ï•ª‹ß—‚ğl‚¦‚é.
 
-$Z$¤Ë¤Ä¤¤¤Æ¡Ê°Ê¸åÂĞ¾İ¤È¤·¤Æ¤¤¤ëÊÑ¿ô°Ê³°¤Î¹à¤ÏÌµ»ë¤¹¤ë¡Ë
+$Z$‚É‚Â‚¢‚ÄiˆÈŒã‘ÎÛ‚Æ‚µ‚Ä‚¢‚é•Ï”ˆÈŠO‚Ì€‚Í–³‹‚·‚éj
 \begin{eqnarray*}
 \log q^*(Z)
  &=& E_{\vpi,\mu,\Lambda}[\log p(X,Z,\vpi,\mu,\Lambda)]\\
@@ -341,75 +341,75 @@ $Z$¤Ë¤Ä¤¤¤Æ¡Ê°Ê¸åÂĞ¾İ¤È¤·¤Æ¤¤¤ëÊÑ¿ô°Ê³°¤Î¹à¤ÏÌµ»ë¤¹¤ë¡Ë
  -\frac{D}{2}\log (2\pi)-\half E_{\mu_k,\Lambda_k}[\quads{\Lambda_k}{(x_n-\mu_k)}]}_{=:\log \rho_{nk}})\\
  &=& \sum_{n,k} z_{nk} \log \rho_{nk}.
 \end{eqnarray*}
-¤è¤Ã¤Æ
+‚æ‚Á‚Ä
 $$
 q^*(Z) \propto \prod_{n,k} \rho_{nk}^{z_{nk}}.
 $$
-$Z$¤Ë¤Ä¤¤¤ÆÁíÏÂ¤ò¤È¤ë¤È$\sum_k z_{nk}=1$¤è¤ê
+$Z$‚É‚Â‚¢‚Ä‘˜a‚ğ‚Æ‚é‚Æ$\sum_k z_{nk}=1$‚æ‚è
 $$
 \sum_Z \prod_{n,k} \rho_{nk}^{z_{nk}}=\prod_n (\sum_k \rho_{nk}).
 $$
-¤è¤Ã¤Æ
+‚æ‚Á‚Ä
 $$
 r_{nk}=\rho_{nk}/(\sum_k \rho_{nk})
 $$
-¤ÈÃÖ¤¯¤È
+‚Æ’u‚­‚Æ
 $$
 q^*(Z)=\prod_{n,k} r_{nk}^{z_{nk}}
 $$
-¤È¤Ç¤­¤ë. $q(Z)$¤ÎºÇÅ¬²ò¤Ï»öÁ°Ê¬ÉÛ$p(Z|\vpi)$¤ÈÆ±¤¸·Á. $\rho_{nk}=e^?$¤Î·Á¤Ê¤Î¤Ç$\rho_{nk} \ge 0$.
-¤Ä¤Ş¤ê$r_{nk} \ge 0$. ³Æ$n$¤Ë¤Ä¤¤¤Æ$\sum_k r_{nk}=1$
+‚Æ‚Å‚«‚é. $q(Z)$‚ÌÅ“K‰ğ‚Í–‘O•ª•z$p(Z|\vpi)$‚Æ“¯‚¶Œ`. $\rho_{nk}=e^?$‚ÌŒ`‚È‚Ì‚Å$\rho_{nk} \ge 0$.
+‚Â‚Ü‚è$r_{nk} \ge 0$. Še$n$‚É‚Â‚¢‚Ä$\sum_k r_{nk}=1$
 $$
 E[z_{nk}]=r_{nk}.
 $$
 
-¼¡¤ÎÃÍ¤òÄêµÁ¤¹¤ë¡§
+Ÿ‚Ì’l‚ğ’è‹`‚·‚éF
 $$
 N_k=\sum_n r_{nk}, \quad \bar{x}_k = \frac{1}{N_k}\sum_n r_{nk} x_n, \quad S_k = \frac{1}{N_k} \sum_n r_{nk}\outp{(x_n-\bar{x}_k)}.
 $$
 
-$q(\vpi,\mu,\Lambda)$¤Ë¤Ä¤¤¤Æ¹Í¤¨¤ë.
+$q(\vpi,\mu,\Lambda)$‚É‚Â‚¢‚Äl‚¦‚é.
 \begin{eqnarray*}
 \log q^*(\vpi,\mu,\Lambda)
  &=& E_Z[\log p(X,Z,\vpi,\mu,\Lambda)]\\
  &=& \log p(\vpi) + \sum_k \log p(\mu_k, \Lambda_k) + E_Z[\log p(Z|\vpi)] + \sum_{n,k} E[z_{nk}] \log \calN(x_n|\mu_k,\Lambda_k^{-1}).
 \end{eqnarray*}
-¤³¤Î¼°¤Ï$\vpi$¤À¤±¤ò´Ş¤à¹à¤È¤½¤ì°Ê³°¤Î¹à¤ËÊ¬¤«¤ì¤Æ¤¤¤ë. ¹¹¤Ë$\mu_k$, $\Lambda_k$¤ÎÀÑ¤Ë¤â¤Ê¤Ã¤Æ¤¤¤ë.
-¤Ä¤Ş¤ê$q(\vpi,\mu,\Lambda)=q(\vpi) \prod_k q(\mu_k, \Lambda_k)$¤È¤¤¤¦·Á¤Ë¤Ê¤Ã¤Æ¤¤¤ë.
+‚±‚Ì®‚Í$\vpi$‚¾‚¯‚ğŠÜ‚Ş€‚Æ‚»‚êˆÈŠO‚Ì€‚É•ª‚©‚ê‚Ä‚¢‚é. X‚É$\mu_k$, $\Lambda_k$‚ÌÏ‚É‚à‚È‚Á‚Ä‚¢‚é.
+‚Â‚Ü‚è$q(\vpi,\mu,\Lambda)=q(\vpi) \prod_k q(\mu_k, \Lambda_k)$‚Æ‚¢‚¤Œ`‚É‚È‚Á‚Ä‚¢‚é.
 
-$\vpi$¤Ë°ÍÂ¸¤¹¤ëÉôÊ¬¤ò¸«¤ë.
+$\vpi$‚ÉˆË‘¶‚·‚é•”•ª‚ğŒ©‚é.
 \begin{eqnarray*}
 \log q^*(\vpi)
  &=& \log \Dir (\vpi|\alpha_0) + E_Z[\sum_{n,k} z_{nk} \log \pi_k]\\
  &=& (\alpha_0-1)\sum_k \log \pi_k + \sum_{n,k} r_{nk} \log \pi_k\\
  &=& \sum_k (\alpha_0-1+\sum_n r_{nk})\log \pi_k.
 \end{eqnarray*}
-¤è¤Ã¤Æ$q^*(\vpi)$¤Ï¥Ç¥£¥ê¥¯¥ìÊ¬ÉÛ¤È¤Ê¤ë.
-¤½¤Î·¸¿ô¤Ï$\alpha_k=\alpha_0 + N_k$¤È¤ª¤¤¤Æ$\alpha=(\alpha_k)$¤È¤¹¤ë¤È$q^*(\vpi)=\Dir(\vpi|\alpha)$.
+‚æ‚Á‚Ä$q^*(\vpi)$‚ÍƒfƒBƒŠƒNƒŒ•ª•z‚Æ‚È‚é.
+‚»‚ÌŒW”‚Í$\alpha_k=\alpha_0 + N_k$‚Æ‚¨‚¢‚Ä$\alpha=(\alpha_k)$‚Æ‚·‚é‚Æ$q^*(\vpi)=\Dir(\vpi|\alpha)$.
 
-$q^*(\mu_k,\Lambda_k)=q^*(\mu_k|\Lambda_k) q^*(\Lambda_k)$¤ò¹Í¤¨¤ë.
-¤Ş¤º
+$q^*(\mu_k,\Lambda_k)=q^*(\mu_k|\Lambda_k) q^*(\Lambda_k)$‚ğl‚¦‚é.
+‚Ü‚¸
 \begin{eqnarray*}
 \log q^*(\mu_k,\Lambda_k)
  &=& \log \calN(\mu_k|m_0, (\beta_0 \Lambda_k)^{-1})+\log \calW(\Lambda_k|W_0,\nu_0)+\sum_n r_{nk} \log \calN(x_n|\mu_k,\Lambda_k^{-1})\\
- && \mu_k, \Lambda_k{\text ¤Î°ÍÂ¸ÉôÊ¬¤À¤±¤È¤ê¤À¤·¤Æ}\\
+ && \mu_k, \Lambda_k{\text ‚ÌˆË‘¶•”•ª‚¾‚¯‚Æ‚è‚¾‚µ‚Ä}\\
  &=&\half\log |\beta_0 \Lambda_k|-\half\quads{\beta_0 \Lambda_k}{(\mu_k-m_0)}
       +\frac{\nu_0-D-1}{2}\log |\Lambda_k|\\
  && - \half\tr (W_0^{-1}\Lambda_k) + \sum_n r_{nk} (\half\log |\Lambda_k|-\half\quads{\Lambda_k}{(x_n-\mu_k)}).
 \end{eqnarray*}
-¤³¤Î¤¦¤Á¹¹¤Ë$\mu_k$¤Ë°ÍÂ¸¤¹¤ëÉôÊ¬¤ò¤ß¤ë¡§
+‚±‚Ì‚¤‚¿X‚É$\mu_k$‚ÉˆË‘¶‚·‚é•”•ª‚ğ‚İ‚éF
 \begin{eqnarray*}
 \log q^*(\mu_k|\Lambda_k)
  &=& -\half\quads{(\beta_0 + \sum_n r_{nk})\Lambda_k}{\mu_k}
       + \trans{\mu_k}\Lambda_k(\beta_0 m_0 + \sum_n r_{nk} x_n)\\
- && \beta_k := \beta_0 + N_k, \quad m_k := \frac{1}{\beta_k}(\beta_0 m_0 + N_k \bar{x}_k) {\text ¤ÈÃÖ¤¯¤È}\\
+ && \beta_k := \beta_0 + N_k, \quad m_k := \frac{1}{\beta_k}(\beta_0 m_0 + N_k \bar{x}_k) {\text ‚Æ’u‚­‚Æ}\\
  &=&-\half\quads{{(\beta_k \Lambda_k)}}{\mu_k} + \trans{\mu_k}(\beta_k \Lambda_k) m_k.
 \end{eqnarray*}
-¤è¤Ã¤Æ
+‚æ‚Á‚Ä
 $$
 q^*(\mu_k|\Lambda_k)=\calN(\mu_k|m_k, (\beta_k \Lambda_k)^{-1}).
 $$
-»Ä¤ê¤ò¹Í¤¨¤ë.
+c‚è‚ğl‚¦‚é.
 \begin{eqnarray*}
 \log q^*(\Lambda_k)
  &=& \log q^*(\mu_k,\Lambda_k) - \log q^*(\mu_k|\Lambda_k)\\
@@ -420,40 +420,40 @@ $$
  &=& \frac{(\nu_0+N_k)-D-1}{2}\log |\Lambda_k|
       -\half\tr((\beta_0 \Lambda_k)\outp{(\mu_k-m_0)}\\
   &&  + \sum_n r_{nk} \Lambda_k \outp{(x_n-\mu_k)}-\beta_k \Lambda_k \outp{(\mu_k-m_k)})-\half(\Lambda_k W_0^{-1})\\
-  && v_k:=v_0 + N_k{\text ¤ÈÃÖ¤¯}\\
+  && v_k:=v_0 + N_k{\text ‚Æ’u‚­}\\
  &=& \frac{\nu_k-D-1}{2}\log |\Lambda_k| - \half\tr(\Lambda_k(W_0^{-1}+\beta_0\outp{(\mu_k-m_0)}\\
  && +\sum_n r_{nk}\outp{(x_n-\mu_k)}-\beta_k\outp{(\mu_k-m_k)}))\\
- &=& \frac{\nu_k-D-1}{2}\log |\Lambda_k| - \half\tr(\Lambda_k W_k^{-1}) {\text ¤ÈÃÖ¤¯}.
+ &=& \frac{\nu_k-D-1}{2}\log |\Lambda_k| - \half\tr(\Lambda_k W_k^{-1}) {\text ‚Æ’u‚­}.
 \end{eqnarray*}
 
-$W_k$¤òµá¤á¤è¤¦. ¤Ş¤º
+$W_k$‚ğ‹‚ß‚æ‚¤. ‚Ü‚¸
 \begin{eqnarray}\label{r_nk_outp_x_n}
 \sum_n r_{nk}\outp{x_n}
  &=& \sum_n r_{nk}(\outp{(x_n-\bar{x}_k)}+2x_n \bar{x}_k-\outp{{\bar{x}}})\nonumber\\
  &=& N_k S_k + 2_Nk + 2N_k \outp{\bar{x}_k} - N_k \outp{\bar{x}_k}\nonumber\\
  &=& N_k S_k + N_k \outp{\bar{x}_k}.
 \end{eqnarray}
-¤è¤Ã¤Æ
+‚æ‚Á‚Ä
 \begin{eqnarray*}
 W_k^{-1}
  &=& W_0^{-1}+\beta_0(\outp{\mu_k}-2\mu_k \trans{m_0}+\outp{m_0})
       +N_k S_k + N_k \outp{\bar{x}_k}-2\sum_n r_{nk} x_n \trans{\mu_k}\\
  && + \sum_n r_{nk} \outp{\mu_k} -(\beta_0 + N_k)(\outp{\mu_k}-2\mu_k \frac{1}{\beta_k}\trans{(\beta_0 m_0+N_k\bar{x}_k)}\\
  && + \frac{1}{\beta_k^2}\outp{(\beta_0 m_0 + N_k \bar{x}_k)}\\
- && \sum_n r_{nk} = N_k {\text ¤ËÃí°Õ¤·¤Æ}\\
+ && \sum_n r_{nk} = N_k {\text ‚É’ˆÓ‚µ‚Ä}\\
  &=& W_0^{-1} + N_k S_k + \beta_0 \outp{m_0}+N_k \outp{\bar{x}_k}\\
  && - \frac{1}{\beta_k}(\beta_0^2 \outp{m_0}+2 \beta_0 N_k m_0 \trans{\bar{x}_k}+N_k^2 \outp{\bar{x}_k})\\
  &=& W_0^{-1} + N_k S_k + \frac{(\beta_0 + N_k)\beta_0 - \beta_0^2}{\beta_k}\outp{m_0}
     + \frac{(\beta_0 + N_k)N_k-N_k^2}{\beta_k}\outp{\bar{x}_k} - \frac{2\beta_0 N_k}{\beta_k}m_0 \trans{\bar{x}_k}\\
  &=& W_0^{-1} + N_k S_k + \frac{\beta_0 N_k}{\beta_k}\outp{(m_0-\bar{x}_k)}.
 \end{eqnarray*}
-¤è¤Ã¤Æ
+‚æ‚Á‚Ä
 $$
 q^*(\Lambda_k)=\calW(\Lambda_k|W_k,\nu_k), \quad
   q^*(\mu_k,\Lambda_k)=\calN(\mu_k|m_k,(\beta_k \Lambda_k)^{-1}) \calW (\Lambda_k|W_k,\nu_k).
 $$
 
-$\calN(x|\mu,\Lambda^{-1})$¤Ë¤Ä¤¤¤Æ$E[\outp{x}]=\outp{\mu}+\Lambda^{-1}$, $\calW(\Lambda_k|W_k,\nu_k)$¤Ë¤Ä¤¤¤Æ$E[\Lambda_k]=\nu_k W_k$¤Ê¤Î¤Ç
+$\calN(x|\mu,\Lambda^{-1})$‚É‚Â‚¢‚Ä$E[\outp{x}]=\outp{\mu}+\Lambda^{-1}$, $\calW(\Lambda_k|W_k,\nu_k)$‚É‚Â‚¢‚Ä$E[\Lambda_k]=\nu_k W_k$‚È‚Ì‚Å
 \begin{eqnarray}\label{eval_quad}
 E_{\mu_k,\Lambda_k}[\quads{\Lambda_k}{(x_n-\mu_k)}]
  &=& \tr(E[\Lambda_k \outp{x_n}]-2E[\Lambda_k x_n \trans{\mu_k}]+E[\Lambda_k \outp{\mu_k}]) \nonumber \\
@@ -462,11 +462,11 @@ E_{\mu_k,\Lambda_k}[\quads{\Lambda_k}{(x_n-\mu_k)}]
  &=& \nu_k \tr(W_k \outp{x_n})-2\nu_k \tr(W_k x_n \trans{m_k})+\tr (\nu_k W_k \outp{m_k})+D\beta_k^{-1}\nonumber \\
  &=& D\beta_k^{-1} + \nu_k \quads{W_k}{(x_n-m_k)}.
 \end{eqnarray}
-¥¦¥£¥·¥ã¡¼¥ÈÊ¬ÉÛ¤Î¸ø¼°¤«¤é
+ƒEƒBƒVƒƒ[ƒg•ª•z‚ÌŒö®‚©‚ç
 $$
 \log \tilde{\Lambda}_k := E[\log |\Lambda_k|]=\sum_i \phi(\frac{\nu_k+1-i}{2})+D \log 2+ \log |W_k|.
 $$
-¥Ç¥£¥ê¥¯¥ìÊ¬ÉÛ¤Î¸ø¼°¤«¤é
+ƒfƒBƒŠƒNƒŒ•ª•z‚ÌŒö®‚©‚ç
 $$
 \log \tilde{\pi}_k := E[\log \pi_k] = \phi(\alpha_k) - \phi(\hat{\alpha}), \quad \hat{\alpha}=\sum_k \alpha_k.
 $$
@@ -477,34 +477,34 @@ $$
  &=& \log \tilde{\pi}_k + \half\log \tilde{\Lambda}_k
        - \frac{D}{2}\log (2\pi)-\half(D\beta_k^{-1}+\nu_k\quads {W_k}{(x_n-m_k)}).
 \end{eqnarray*}
-¤è¤Ã¤Æ
+‚æ‚Á‚Ä
 $$
 r_{nk} \propto \rho_{nk} \propto \tilde{\pi}_k \Lambda_k^{1/2} \exp(-\frac{D}{2\beta_k} - \frac{\nu_k}{2}\quads{W_k}{(x_n-m_k)}).
 $$
-º®¹ç¥¬¥¦¥¹Ê¬ÉÛ¤ÎEM¥¢¥ë¥´¥ê¥º¥à¤Ç¤ÎÉéÃ´Î¨¤Ï$\gamma(z_{nk}) \propto \pi_k \calN(x_n|\mu_k, \Lambda_k^{-1})$¤À¤Ã¤¿¤Î¤Ç
+¬‡ƒKƒEƒX•ª•z‚ÌEMƒAƒ‹ƒSƒŠƒYƒ€‚Å‚Ì•‰’S—¦‚Í$\gamma(z_{nk}) \propto \pi_k \calN(x_n|\mu_k, \Lambda_k^{-1})$‚¾‚Á‚½‚Ì‚Å
 $$
 r_{nk} \propto \pi_k|\lambda_k|^{1/2} \exp (-\half\quads{\Lambda_k}{(x_n-\mu_k)}).
 $$
-¤³¤ì¤Ï¾å¤Î¼°¤È¤è¤¯»÷¤Æ¤¤¤ë.
+‚±‚ê‚Íã‚Ì®‚Æ‚æ‚­—‚Ä‚¢‚é.
 
-¥Ç¥£¥ê¥¯¥ìÊ¬ÉÛ¤ÎÊ¿¶Ñ¤Î¼°$E[\mu_k]=\alpha_k/\hat{\alpha}$¤è¤ê
+ƒfƒBƒŠƒNƒŒ•ª•z‚Ì•½‹Ï‚Ì®$E[\mu_k]=\alpha_k/\hat{\alpha}$‚æ‚è
 $$
 E[\pi_k]=\frac{\alpha_0 + N_k}{\sum_k \alpha_k}=\frac{\alpha_0 + N_k}{K\alpha_0 + \sum_k N_k} = \frac{\alpha_0 + N_k}{K \alpha_0 + N}.
 $$
-¤¢¤ëº®¹çÍ×ÁÇ$k$¤Ë¤Ä¤¤¤Æ$r_{nk} \simeq 0$¤Ê¤é$N_k \simeq 0$¡ÊPRML p.193¤Ï¤«¤Ä¤È¤Ê¤Ã¤Æ¤ë¤±¤ÉÊÒÊı¤Î¾ò·ï¤«¤é½Ğ¤ë¡Ë.
-¤³¤Î¤È¤­$\alpha_k \simeq \alpha_0$¤È¤Ê¤ë. PRML10¾Ï¤Ç¤ÏÊ¬ÉÛ¤¬Éı¹­¤¤¤È¤¤¤¦¾õÂÖ¤ò¡Ö¤Ê¤À¤é¤«¡×¤ÈÉ½µ­¤·¤Æ¤¤¤ë¤è¤¦¤À.
-¤Á¤ç¤Ã¤È¥Ë¥å¥¢¥ó¥¹¤¬°ã¤¦µ¤¤â¤¹¤ë¤±¤É.
+‚ ‚é¬‡—v‘f$k$‚É‚Â‚¢‚Ä$r_{nk} \simeq 0$‚È‚ç$N_k \simeq 0$iPRML p.193‚Í‚©‚Â‚Æ‚È‚Á‚Ä‚é‚¯‚Ç•Ğ•û‚ÌğŒ‚©‚ço‚éj.
+‚±‚Ì‚Æ‚«$\alpha_k \simeq \alpha_0$‚Æ‚È‚é. PRML10Í‚Å‚Í•ª•z‚ª•L‚¢‚Æ‚¢‚¤ó‘Ô‚ğu‚È‚¾‚ç‚©v‚Æ•\‹L‚µ‚Ä‚¢‚é‚æ‚¤‚¾.
+‚¿‚å‚Á‚Æƒjƒ…ƒAƒ“ƒX‚ªˆá‚¤‹C‚à‚·‚é‚¯‚Ç.
 
-»öÁ°Ê¬ÉÛ¤Ç$\alpha_0 \rightarrow 0$¤È¤¹¤ë¤È$E[\pi_k] \rightarrow 0$.
-$\alpha_0 \rightarrow \infty$¤Ê¤é$E[\pi_k] \rightarrow 1/K$.
+–‘O•ª•z‚Å$\alpha_0 \rightarrow 0$‚Æ‚·‚é‚Æ$E[\pi_k] \rightarrow 0$.
+$\alpha_0 \rightarrow \infty$‚È‚ç$E[\pi_k] \rightarrow 1/K$.
 
-\section{ÊÑÊ¬²¼¸Â}
-PRML²¼´¬¡Ê3ºş¡Ë¤Ç¤Ï¤³¤Î¾Ï¤ÏÊÑÊ¬²¼¸Â¤Ç¤¢¤ë.
-¤·¤«¤·¤³¤³¤Ç·×»»¤¹¤ë$\calL$¤ÎÃÍ¤Ï$\log p(X)$¤Î²¼³¦¤ÎÃæ¤Ç°ìÈÖÂç¤­¤¤¤â¤Î¤Ë¤Ê¤ë¤È¤Ï¸Â¤é¤Ê¤¤.
-$\KL(q||p)$¤Ï°ìÈÌ¤Ë0¤Ç¤Ï¤Ê¤¤.
-¤½¤Î°ÕÌ£¤Ç\ref{lower_bound}¾Ï¤Ç½Ò¤Ù¤¿¤è¤¦¤ËÊÑÊ¬²¼³¦¤¬Å¬ÀÚ¤È»×¤ï¤ì¤ë.
+\section{•Ï•ª‰ºŒÀ}
+PRML‰ºŠªi3üj‚Å‚Í‚±‚ÌÍ‚Í•Ï•ª‰ºŒÀ‚Å‚ ‚é.
+‚µ‚©‚µ‚±‚±‚ÅŒvZ‚·‚é$\calL$‚Ì’l‚Í$\log p(X)$‚Ì‰ºŠE‚Ì’†‚Åˆê”Ô‘å‚«‚¢‚à‚Ì‚É‚È‚é‚Æ‚ÍŒÀ‚ç‚È‚¢.
+$\KL(q||p)$‚Íˆê”Ê‚É0‚Å‚Í‚È‚¢.
+‚»‚ÌˆÓ–¡‚Å\ref{lower_bound}Í‚Åq‚×‚½‚æ‚¤‚É•Ï•ª‰ºŠE‚ª“KØ‚Æv‚í‚ê‚é.
 
-¤½¤ì¤Ï¤µ¤Æ¤ª¤­, $q(Z,\vpi,\mu,\Lambda)=q(Z)q(\vpi,\mu,\Lambda)$¤ÈÊ¬²ò¤Ç¤­¤ë¤È²¾Äê¤¹¤ë¤È
+‚»‚ê‚Í‚³‚Ä‚¨‚«, $q(Z,\vpi,\mu,\Lambda)=q(Z)q(\vpi,\mu,\Lambda)$‚Æ•ª‰ğ‚Å‚«‚é‚Æ‰¼’è‚·‚é‚Æ
 \begin{eqnarray*}
 \calL(q) &=& \int q(Z) \log \frac{p(X,Z)}{q(Z)}\,dZ\\
  &=& \sum \int q(Z,\vpi,\mu,\Lambda) \log \frac{p(X,Z,\vpi,\mu,\Lambda)}{q(Z,\vpi,\mu,\Lambda)}\,d\vpi d\mu d\Lambda\\
@@ -512,7 +512,7 @@ $\KL(q||p)$¤Ï°ìÈÌ¤Ë0¤Ç¤Ï¤Ê¤¤.
  &=& E[\log p(X|Z,\mu,\Lambda)]+E[\log p(Z|\vpi)]+E[\log p(\vpi)]+E[\log p(\mu,\Lambda)]\\
  && - E[\log q(Z)]-E[\log q(\vpi)]-E[\log q(\mu,\Lambda)].
 \end{eqnarray*}
-°Ê²¼, ¤Ò¤¿¤¹¤é·×»»¤¹¤ë.
+ˆÈ‰º, ‚Ğ‚½‚·‚çŒvZ‚·‚é.
 \begin{eqnarray*}
 E[\log p(X|Z,\mu,\Lambda)]
  &=& E[\sum_{n,k} z_{nk} \log \calN(x_n|\mu_k,\Lambda_k^{-1})]\\
@@ -524,18 +524,18 @@ E[\log p(X|Z,\mu,\Lambda)]
 $$
 X = \sum_k N_k D\beta_k^{-1} + \sum_k \nu_k (\underbrace{\sum_n r_{nk} \quads{W_k}{(x_n-m_k)}}_{=:Y}).
 $$
-¼°¡Ê\ref{r_nk_outp_x_n}¡Ë¤è¤ê
+®i\ref{r_nk_outp_x_n}j‚æ‚è
 $$
 \sum_n r_{nk} \outp{x_n}=N_k S_k + N_k \outp{\bar{x}_k}.
 $$
-¤è¤Ã¤Æ
+‚æ‚Á‚Ä
 \begin{eqnarray*}
 Y &=& \tr(W_k(\sum_n r_{nk} \outp{x_n}-2\sum_n r_{nk} x_n \trans{m_k} + \sum_n r_{nk} \outp{m_k}))\\
  &=& \tr(W_k(N_k S_k + N_k \outp{\bar{x}_k} - 2N_k \bar{x}_k \trans{m_k} + N_k \outp{m_k}))\\
  &=& N_k \tr(W_k(S_k+\outp{(\bar{x}_k-m_k)}))\\
  &=& N_k (\tr (S_k W_k)+\quads{W_k}{(\bar{x}_k-m_k)}).
 \end{eqnarray*}
-¤è¤Ã¤Æ
+‚æ‚Á‚Ä
 \begin{eqnarray*}
 E[\log p(X|Z,\mu,\Lambda)]
  &=& \half \sum_k N_k (\log \tilde{\Lambda}_k - D\beta_k^{-1} - \nu_k \tr(S_k W_k)\\
@@ -575,7 +575,7 @@ Y &=& E[\log W(\Lambda_k|W_k,\nu_k)]\\
   &=& \log B(W_k,\nu_k)+\frac{\nu_k-D-1}{2} E[\log |\Lambda_k|] - \half \tr (W_k^{-1} E[\Lambda_k])\\
   &=& \log B(W_k,\nu_k)+\frac{\nu_k-D-1}{2} E[\log |\Lambda_k|] - \half \nu_k D = -H[\Lambda_k].
 \end{eqnarray*}
-¤è¤Ã¤Æ
+‚æ‚Á‚Ä
 $$
 E[\log q(\mu,\Lambda)]=\sum_k (\half \log \tilde{\Lambda_k}+\frac{D}{2} \log (\frac{\beta_k}{2\pi}) - \frac{D}{2}-H[\Lambda_k]).
 $$
@@ -588,7 +588,7 @@ E[\log p(\mu,\Lambda)]
 \begin{eqnarray*}
 A &=& E[-\frac{D}{2}\log (2\pi)+\half \log |\beta_0 \Lambda_k|-\half \quads{(\beta_0 \Lambda_k)}{(\mu_k - m_0)}]\\
  &=& \frac{D}{2}\log(\frac{\beta_0}{2\pi})+\half \log \tilde{\Lambda}_k-\half \beta_0 E[\quads{\Lambda_k}{(m_0-\mu_k)}]\\
- && {\text 2¥Ú¡¼¥¸Á°¤Î¼°¡Ê\ref{eval_quad}¡Ë¤Çx_n=m_0¤È¤·¤Æ»È¤¦¤È}\\
+ && {\text 2ƒy[ƒW‘O‚Ì®i\ref{eval_quad}j‚Åx_n=m_0‚Æ‚µ‚Äg‚¤‚Æ}\\
  &=& \half(D\log (\frac{\beta_0}{2\pi})+\log \tilde{\Lambda}_k-\beta_0(D\beta_k^{-1}+\nu_k\quads{W_k}{(m_0-\mu_k)})\\
  &=& \half(D\log (\frac{\beta_0}{2\pi})+\log \tilde{\Lambda}_k
       -\frac{D\beta_0}{\beta_k}-\beta_0 \nu_k\quads{W_k}{(m_k-m_0)}).
@@ -597,21 +597,21 @@ A &=& E[-\frac{D}{2}\log (2\pi)+\half \log |\beta_0 \Lambda_k|-\half \quads{(\be
 B &=& E[\log B(W_0,\nu_0)+\frac{\nu_0-D-1}{2}\log |\Lambda_k|-\half \tr (W_0^{-1}\Lambda_k)]\\
   &=& \log B(W_0,\nu_0)+\frac{\nu_0-D-1}{2} \log \tilde{\Lambda}_k - \half \tr (W_0^{-1}\underbrace{E[\Lambda_k]}_{=\nu_k W_k}).
 \end{eqnarray*}
-¤è¤Ã¤Æ
+‚æ‚Á‚Ä
 \begin{eqnarray*}
 E[\log p(\mu,\Lambda)]
  &=&\half\sum_k (D\log (\frac{\beta_0}{2\pi})+\log \tilde{\Lambda}_k-\frac{D\beta_0}{\beta_k}-\beta_0\nu_k\quads{W_k}{(m_k-m_0)})\\
  && + K\log B(W_0,\nu_0)+\frac{\nu_0-D-1}{2}\sum_k \log \tilde{\Lambda}_k - \half \sum_k \nu_k \tr(W_0^{-1}W_k).
 \end{eqnarray*}
 
-ºÇ¸å¤Ë$\calL$¤òµá¤á¤è¤¦.
+ÅŒã‚É$\calL$‚ğ‹‚ß‚æ‚¤.
 $$
 \sum_k N_k=N,
 $$
 $$
 H[q(\Lambda_k)]=-\log B(W_k,\nu_k)-\frac{\nu_k-D-1}{2}\log \tilde{\Lambda}_k+\frac{\nu_k D}{2}
 $$
-¤ËÃí°Õ¤¹¤ë.
+‚É’ˆÓ‚·‚é.
 \begin{eqnarray*}
 \calL
  &=& \half \sum_k N_k \log \tilde{\Lambda}_k-\half \sum_k N_k \frac{D}{\beta_k}-\half \sum_k N_k \nu_k \tr(S_k W_k)
@@ -637,13 +637,13 @@ $$
 $$
 m_k-m_0=\frac{1}{\beta_k}(\beta_0 m_0+N_k \bar{x}_k)-m_0=\frac{1}{\beta_k}(N_k \bar{x}_k+\beta_0 m_0-\beta_k m_0)=\frac{N_k}{\beta_k}(\bar{x}_k-m_0).
 $$
-¤è¤Ã¤Æ
+‚æ‚Á‚Ä
 \begin{eqnarray*}
 N_k \outp{(\bar{x}_k-m_k)}+\beta_0\outp{(m_k-m_0)}
       &=& (\frac{N_k\beta_0^2}{\beta_k^2}+\frac{\beta_0 N_k^2}{\beta_k^2})\\
       &=& \frac{\beta_0 N_k}{\beta_k}\outp{(\bar{x}_k-m_0)}.
 \end{eqnarray*}
-¤è¤Ã¤Æ
+‚æ‚Á‚Ä
 $$
 X=W_k^{-1}, \quad \sum_k \nu_k \tr(W_k W_k^{-1})=D\sum_k \nu_k.
 $$
@@ -651,10 +651,10 @@ $$
 \calL = \log \frac{C(\alpha_0)}{C(\alpha)}-\sum_{n,k}r_{nk} \log r_{nk}+\sum_k \log \frac{B(W_0,\nu_0)}{B(W_k,\nu_k)}
  + \frac{D}{2}\sum_k \log \frac{\beta_0}{\beta_k}-\frac{DN}{2}\log (2\pi).
 $$
-\section{Í½Â¬Ê¬ÉÛ}
-¿·¤·¤¤´ÑÂ¬ÃÍ¤ÎÍ½Â¬Ê¬ÉÛ¤òÃÎ¤ê¤¿¤¤.
-$p(Z|\vpi)=\prod_{n,k} \pi_k^{z_{nk}}$, $p(X|Z,\mu,\Lambda)=\prod_{n,k} \calN(x_n|\mu_k,\Lambda_k^{-1})^{z_{nk}}$¤È
-$\sum_k z_{nk}=1$¤ò»È¤Ã¤Æ
+\section{—\‘ª•ª•z}
+V‚µ‚¢ŠÏ‘ª’l‚Ì—\‘ª•ª•z‚ğ’m‚è‚½‚¢.
+$p(Z|\vpi)=\prod_{n,k} \pi_k^{z_{nk}}$, $p(X|Z,\mu,\Lambda)=\prod_{n,k} \calN(x_n|\mu_k,\Lambda_k^{-1})^{z_{nk}}$‚Æ
+$\sum_k z_{nk}=1$‚ğg‚Á‚Ä
 \begin{eqnarray*}
 p(\hat{x}|X)
  &=& \sum_{\hat{z}} \int p(\hat{x}|\hat{z},\mu,\Lambda)p(\hat{z}|\vpi)p(\vpi,\mu,\Lambda|X)\,d\vpi d\mu d\Lambda\\
@@ -664,14 +664,14 @@ p(\hat{x}|X)
 \begin{eqnarray*}
 p(\hat{x}|X)
  &\simeq& \sum_k \int \pi_k \calN(\hat{x}|\mu_k,\Lambda_k^{-1})q(\vpi)\prod_j q(\mu_j,\Lambda_j)\,d\vpi d\Lambda d\mu\\
- && k\ne j{\text ¤Ê¤éÀÑÊ¬¤·¤Æ1¤Ê¤Î¤Ç}\\
+ && k\ne j{\text ‚È‚çÏ•ª‚µ‚Ä1‚È‚Ì‚Å}\\
  &=& \sum_k \int \pi_k \calN(\hat{x}|\mu_k,\Lambda_k^{-1})q(\vpi)q(\mu_k,\Lambda_k)\, d\vpi d\mu_k d\Lambda_k\\
  &=& \sum_k (\underbrace{\int \pi_k q(\vpi)\, d\vpi}_{=:X})
      \int \left(\underbrace{\int \calN(\hat{x}|\mu_k,\Lambda_k^{-1})
       \calN(\mu_k|m_k,(\beta_k \Lambda_k)^{-1})\,d\mu_k}_{=:Y} \right)
       W(\Lambda_k|W_k,\nu_k) \, d\Lambda_k
 \end{eqnarray*}
-¤½¤ì¤¾¤ì·×»»¤¹¤ë¡§
+‚»‚ê‚¼‚êŒvZ‚·‚éF
 $$
 X=\int \pi_k \Dir(\vpi|\alpha)\, d\vpi=\frac{\alpha_k}{\hat{\alpha}}.
 $$
@@ -691,13 +691,13 @@ $$
 C=\frac{\beta}{\beta+1}\outp{x}+\frac{\beta^2+\beta-\beta^2}{\beta+1}\outp{m}-\frac{2 \beta}{\beta+1}x\trans{m}
  = \frac{\beta}{\beta+1}\outp{(x-m)}.
 $$
-¤è¤Ã¤Æ
+‚æ‚Á‚Ä
 \begin{eqnarray*}
 A &=& \int \calN(\mu|\frac{x+\beta m}{\beta + 1}, ((\beta+1)\Lambda)^{-1})\frac{1}{(2\pi)^{D/2}}
       \frac{|\beta \Lambda^2|^{1/2}}{|(\beta+1)\Lambda|^{1/2}}\exp(-\half \quads{(\frac{\beta}{\beta+1}\Lambda)}{(x-m)})\,d\mu\\
   &=& \calN(x|m,(\frac{\beta}{\beta+1}\Lambda)^{-1}).
 \end{eqnarray*}
-¤Ä¤Ş¤ê
+‚Â‚Ü‚è
 $$
 Y = \calN(\hat{x}|m_k,(\frac{\beta_k}{\beta_k+1}\Lambda_k)^{-1}).
 $$
@@ -711,19 +711,19 @@ D
 $$
 W'^{-1}:=W^{-1}+\frac{\beta}{\beta+1}\outp{(x-m)}
 $$
-¤È¤ª¤¯.
-$|I+a\trans{b}|=1+\trans{a}b$¤è¤ê$W=\trans{W}$¤Î¤È¤­
+‚Æ‚¨‚­.
+$|I+a\trans{b}|=1+\trans{a}b$‚æ‚è$W=\trans{W}$‚Ì‚Æ‚«
 $$
 |W^{-1}+\outp{x}|=|W^{-1}||I+W\outp{x}|=|W|^{-1}(1+\quads{W}{x}).
 $$
-¤è¤Ã¤Æ
+‚æ‚Á‚Ä
 $$
 |W'^{-1}|=|W|^{-1}(1+\underbrace{\frac{\beta}{\beta+1}\quads{W}{(x-m)}}_{=:\lambda})=|W|^{-1}(1+\lambda).
 $$
 $$
 |W'|=|W|(\frac{1}{1+\lambda}).
 $$
-¤è¤Ã¤Æ
+‚æ‚Á‚Ä
 \begin{eqnarray*}
 \int D\,d\Lambda
  &=& (\frac{\beta}{2\pi(\beta+1)})^{D/2}\frac{B(W,\nu)}{B(W',\nu+1)}
@@ -739,14 +739,14 @@ $$
        \left(1+\frac{\quads{(\frac{\beta(\nu+1-D)}{1+\beta}W)}{(x-m)}}{\nu+1-D}\right)^{-(\nu+1)/2}\\
  &=& \St(x|m,L,\nu+1-D), \quad L:=\frac{\beta(\nu+1-D)}{1+\beta}W.
 \end{eqnarray*}
-¤è¤Ã¤Æ
+‚æ‚Á‚Ä
 $$
 p(\hat{x}|X) \simeq \frac{1}{\hat{\alpha}}\sum_k \alpha_k \St(\hat{x}|m_k,L_k,\nu_k+1-D).
 $$
-¤À¤¤¤¿¤¤¤³¤Î¤¢¤¿¤ê¤Ş¤Ç. ¤¢¤È¤Ï¤³¤³¤è¤ê¤Ï°×¤·¤¤¤Î¤ÇÂç¾æÉ×¤À¤í¤¦.
+‚¾‚¢‚½‚¢‚±‚Ì‚ ‚½‚è‚Ü‚Å. ‚ ‚Æ‚Í‚±‚±‚æ‚è‚ÍˆÕ‚µ‚¢‚Ì‚Å‘åä•v‚¾‚ë‚¤.
 
-PRML²¼´¬p.215¤Î²¼¤«¤é5¹ÔÌÜ¡§
-¡Ö$\lambda'(\xi)$¤Ï$\xi \ge 0$¤Î¤È¤­Ã±Ä´´Ø¿ô¡×¤È¤¢¤ë¤¬´Ö°ã¤¤.
-$\lambda(\xi)$¤Ï$\xi \ge 0$¤Î¤È¤­Ã±Ä´¸º¾¯¤À¤¬$\lambda'(\xi)$¤Ï¤½¤¦¤Ç¤Ï¤Ê¤¤.
-¤Ş¤¿$\lambda(\xi)$¤¬Ã±Ä´¸º¾¯¤À¤«¤é¤È¤¤¤Ã¤Æ¤½¤ì¤À¤±¤Ç$\lambda'(\xi) \ne 0$¤¬¸À¤¨¤ë¤ï¤±¤Ç¤â¤Ê¤¤.
+PRML‰ºŠªp.215‚Ì‰º‚©‚ç5s–ÚF
+u$\lambda'(\xi)$‚Í$\xi \ge 0$‚Ì‚Æ‚«’P’²ŠÖ”v‚Æ‚ ‚é‚ªŠÔˆá‚¢.
+$\lambda(\xi)$‚Í$\xi \ge 0$‚Ì‚Æ‚«’P’²Œ¸­‚¾‚ª$\lambda'(\xi)$‚Í‚»‚¤‚Å‚Í‚È‚¢.
+‚Ü‚½$\lambda(\xi)$‚ª’P’²Œ¸­‚¾‚©‚ç‚Æ‚¢‚Á‚Ä‚»‚ê‚¾‚¯‚Å$\lambda'(\xi) \ne 0$‚ªŒ¾‚¦‚é‚í‚¯‚Å‚à‚È‚¢.
 \end{document}
