@@ -17,9 +17,9 @@
 
 \subsection{行列の公式}
 \begin{eqnarray*}
-&& \quads{A}{x}=\tr(Ax\trans{x}),\\
+&& \quads{A}{x}=\tr\left(Ax\trans{x}\right),\\
 && \diff{A}\log|A|=\trans{(A^{-1})},\\
-&& \diff{x}\log|A|=\tr(A^{-1}\diff{x}A),\\
+&& \diff{x}\log|A|=\tr\left(A^{-1}\diff{x}A\right),\\
 && \diff{A}\tr(A^{-1}B) = -\trans{(A^{-1}BA^{-1})}.
 \end{eqnarray*}
 
@@ -36,7 +36,7 @@ $$
 
 \subsection{ガウス分布}
 $$
-\calN = \calN(x|\mu,\Sigma)=\frac{1}{(2\pi)^{D/2}}|\Sigma|^{-1/2}\exp(-\half\quads{{\Sigma^{-1}}}{(x-\mu)}).
+\calN = \calN(x|\mu,\Sigma)=\frac{1}{(2\pi)^{D/2}}|\Sigma|^{-1/2}\exp\left(-\half\quads{{\Sigma^{-1}}}{(x-\mu)}\right).
 $$
 期待値と分散について
 \begin{eqnarray*}
@@ -80,7 +80,7 @@ $$
 これらを合わせて
 \begin{eqnarray*}
 p(x) &=& \sum_z p(z)p(x|z) \\
- &=& \sum_z \prod_k (\pi_k \calN(x|\mu_k,\Sigma_k))^{z_k}\\
+ &=& \sum_z \prod_k \left(\pi_k \calN(x|\mu_k,\Sigma_k)\right)^{z_k}\\
  && \text{$z_k$はどれか一つのみが1（そのとき$\pi_k$）であとは0なので}\\
  &=& \sum_{k} \pi_k \calN(x|\mu_k,\Sigma_k).
 \end{eqnarray*}
@@ -99,17 +99,17 @@ $X$は$N \times D$行列で$Z$は$N \times K$行列.
 
 対数尤度関数の最大点の条件をもとめる.
 $$
-F=\log p(X|\vpi,\mu,\Sigma)=\sum_{n=1}^N \log (\sum_{j=1}^K \pi_j \calN(x_n|\mu_j,\Sigma_j))
+F=\log p(X|\vpi,\mu,\Sigma)=\sum_{n=1}^N \log\left(\sum_{j=1}^K \pi_j \calN(x_n|\mu_j,\Sigma_j)\right)
 $$
 とする.
 $$
 \diff{\mu} \log \calN(x|\mu,\Sigma)
-= \diff{\mu} (-\half\quads{{\Sigma^{-1}}}{{(x-\mu)}})
+= \diff{\mu} \left(-\half\quads{{\Sigma^{-1}}}{{(x-\mu)}}\right)
 = \Sigma^{-1}(x-\mu)
 $$
 より
 $$
-\diff{\mu} \calN = \calN \cdot (\diff{\mu} \log \calN) = \calN \cdot \Sigma^{-1}(x-\mu).
+\diff{\mu} \calN = \calN \cdot \left(\diff{\mu} \log \calN\right) = \calN \cdot \Sigma^{-1}(x-\mu).
 $$
 もちろんガウス分布の微分は普通にそのまましてもよい.
 だが今回は対数をとってから微分をとった方が,
@@ -118,13 +118,13 @@ $$
 \begin{eqnarray*}
 \diff{\mu_k}F
  &=& \sum_n \frac{\pi_k \diff{\mu_k}\calN_{nk}}{\sum_j \pi_j \calN_{nj}} \\
- &=& \sum_n (\frac{\pi_k \calN_{nk}}{\sum_j \pi_j \calN_{nj}})\diff{\mu_k}\log \calN_{nk} \\
+ &=& \sum_n \left(\frac{\pi_k \calN_{nk}}{\sum_j \pi_j \calN_{nj}}\right)\diff{\mu_k}\log \calN_{nk} \\
  &=& \sum_n \gamma(z_{nk}) \diff{\mu_k}\log \calN_{nk} \\
- &=& \Sigma_k^{-1}(\sum_n \gamma(z_{nk})(x_n-\mu_k))=0.
+ &=& \Sigma_k^{-1}\left(\sum_n \gamma(z_{nk})(x_n-\mu_k)\right)=0.
 \end{eqnarray*}
 よって
 $$
-\sum_n \gamma(z_{nk})x_n - (\sum_n \gamma(z_{nk}))\mu_k=0.
+\sum_n \gamma(z_{nk})x_n - \left(\sum_n \gamma(z_{nk})\right)\mu_k=0.
 $$
 $$
 N_k=\sum_n \gamma(z_{nk})
@@ -141,24 +141,24 @@ $$
 $$
 のとき
 $$
-\log \calN = -\frac{D}{2}\log(2\pi)-\half\log |\Sigma| - \half\tr(\Sigma^{-1}\outp{(x-\mu)})
+\log \calN = -\frac{D}{2}\log(2\pi)-\half\log |\Sigma| - \half\tr\left(\Sigma^{-1}\outp{(x-\mu)}\right)
 $$
 なので$\trans{\Sigma}=\Sigma$だから
 $$
 \diff{\Sigma} (\log \calN)
 = -\half(\Sigma^{-1})
-  +\half(\Sigma^{-1}(x-\mu)\trans{(x-\mu)}\Sigma^{-1}).
+  +\half\left(\Sigma^{-1}(x-\mu)\trans{(x-\mu)}\Sigma^{-1}\right).
 $$
 よって$\mu_k$の微分と同様にして
 \begin{eqnarray*}
 \diff{\Sigma_k}F
  &=& \sum_n \gamma(z_{nk}) \diff{\Sigma_k} \log \calN_{nk}\\
- &=&\sum_n \gamma(z_{nk})(-\half(\Sigma_k^{-1})
-        + \half(\Sigma_k^{-1}\outp{(x_n-\mu_k)}\Sigma_k^{-1})) = 0.
+ &=&\sum_n \gamma(z_{nk})\left(-\half(\Sigma_k^{-1})
+        + \half(\Sigma_k^{-1}\outp{(x_n-\mu_k)}\Sigma_k^{-1})\right) = 0.
 \end{eqnarray*}
 よって
 $$
-\sum_n \gamma(z_{nk})(I-\outp{(x_n-\mu_k)}\Sigma_k^{-1})=0.
+\sum_n \gamma(z_{nk})\left(I-\outp{(x_n-\mu_k)}\Sigma_k^{-1}\right)=0.
 $$
 $$
 \Sigma_k=\frac{1}{N_k}\sum_n \gamma(z_{nk})\outp{(x_n-\mu_k)}.
@@ -167,7 +167,7 @@ $$
 最後に$\pi_k$に関する微分を考える.
 $\sum_k \pi_k=1$の制約を入れる.
 $$
-G=F+\lambda(\sum_k \pi_k-1)
+G=F+\lambda\left(\sum_k \pi_k-1\right)
 $$
 とすると
 $$
@@ -196,16 +196,16 @@ $$
 より
 \begin{eqnarray*}
 F=\log p(X,Z|\mu,\Sigma,\vpi)
- &=& \log (\prod_{n,k} \pi_k^{z_{nk}}\calN(x_n|\mu_k,\Sigma_k)^{z_{nk}})\\
- &=& \sum_{n,k} z_{nk}(\log \pi_k + \log \calN_{nk})).
+ &=& \log \left(\prod_{n,k} \pi_k^{z_{nk}}\calN(x_n|\mu_k,\Sigma_k)^{z_{nk}}\right)\\
+ &=& \sum_{n,k} z_{nk}(\log \pi_k + \log \calN_{nk}).
 \end{eqnarray*}
 $z_n$は$(0, 0,\ldots, 1, 0, \ldots, 0)$の形で$\sum_k \pi_k=1$の制約条件を入れると上式の微分を考えると
 $$
-G=F+\lambda(\sum_k \pi_k-1)
+G=F+\lambda\left(\sum_k \pi_k-1\right)
 $$
 として
 $$
-\diff{\pi_k}G=\sum_n z_{nk}\frac{1}{\pi_k}+\lambda=(\sum_n z_{nk})/\pi_k + \lambda=0.
+\diff{\pi_k}G=\sum_n z_{nk}\frac{1}{\pi_k}+\lambda=\left(\sum_n z_{nk}\right)/\pi_k + \lambda=0.
 $$
 よって
 $$
@@ -247,14 +247,14 @@ $$
 \sum_n \gamma(z_{nk})=\lambda \pi_k.
 $$
 $$
-\sum_{n,k}\gamma(z_{nk})=-\lambda(\sum_k \pi_k)=-\lambda=N
+\sum_{n,k}\gamma(z_{nk})=-\lambda\left(\sum_k \pi_k\right)=-\lambda=N
 $$
 より
 $$
 \pi_k=\frac{1}{N}\sum_n \gamma(z_{nk})=\frac{N_k}{N}.
 $$
 $$
-\diff{\mu_k}F=\sum_n\gamma(z_{nk})(-\Sigma_k^{-1}(x_n-\mu_k))=\Sigma_k^{-1}(\sum_n \gamma(z_{nk})x_n-(\sum_n \gamma(z_{nk}))\mu_k)=0.
+\diff{\mu_k}F=\sum_n\gamma(z_{nk})\left(-\Sigma_k^{-1}(x_n-\mu_k)\right)=\Sigma_k^{-1}\left(\sum_n \gamma(z_{nk})x_n-\left(\sum_n \gamma(z_{nk})\right)\mu_k\right)=0.
 $$
 よって
 $$
@@ -268,15 +268,15 @@ $$
 式(9.43)は不正確. $E$ではなく$\epsilon E$を考えないと(9.43)の右辺にはならない.
 式(9.40)を$E$とおく.
 $$
-E=\sum_{n,k} \gamma(z_{nk})(\log \pi_k + \log \calN(x_n|\mu_k,\Sigma_k)).
+E=\sum_{n,k} \gamma(z_{nk})\left(\log \pi_k + \log \calN(x_n|\mu_k,\Sigma_k)\right).
 $$
 $\epsilon E$に
 $$
-\calN(x|\mu_k,\Sigma_k)=\frac{1}{(2\pi \epsilon)^{D/2}}\exp(-\frac{1}{2\epsilon}||x-\mu_k||^2)
+\calN(x|\mu_k,\Sigma_k)=\frac{1}{(2\pi \epsilon)^{D/2}}\exp\left(-\frac{1}{2\epsilon}||x-\mu_k||^2\right)
 $$
 を代入する.
 $$
-\epsilon E = \sum_{n,k} \gamma(z_{nk})(\epsilon \log \pi_k - \frac{D}{2}\epsilon \log (2\pi \epsilon) - \half||x_n-\mu_k||^2).
+\epsilon E = \sum_{n,k} \gamma(z_{nk})\left(\epsilon \log \pi_k - \frac{D}{2}\epsilon \log (2\pi \epsilon) - \half||x_n-\mu_k||^2\right).
 $$
 $\epsilon \rightarrow 0$で
 $$
@@ -334,7 +334,7 @@ $$
 \end{eqnarray*}
 データ集合$X=\{x_1, \ldots, x_N\}$が与えられたとき, 対数尤度関数は
 $$
-\log p(X|\mu,\vpi)=\sum_n \log (\sum_k \pi_k p(x_n|\mu_k)).
+\log p(X|\mu,\vpi)=\sum_n \log\left(\sum_k \pi_k p(x_n|\mu_k)\right).
 $$
 対数の中に和があるので解析的に最尤解をもとめられない. EMアルゴリズムを使う.
 $x$に対応する潜在変数を$z=\trans{(z_1,\ldots,z_K)}$を導入する.
@@ -357,7 +357,7 @@ $$
 完全データ対数尤度関数は$X=\{x_n\}$, $Z=\{z_n\}$として
 \begin{eqnarray*}
 \log p(X,Z|\mu,\vpi)
- &=& \sum_{n,k} z_{nk}(\underbrace{\log \pi_k + \sum_i x_{ni} \log \mu_{ki}+(1-x_{ni})\log (1-\mu_{ki})}_{=:A_{nk}})\\
+ &=& \sum_{n,k} z_{nk}\underbrace{\left(\log \pi_k + \sum_i x_{ni} \log \mu_{ki}+(1-x_{ni})\log (1-\mu_{ki})\right)}_{=:A_{nk}}\\
  &=& \sum_{n,k} z_{nk} A_{nk}.
 \end{eqnarray*}
 \begin{eqnarray*}
@@ -377,8 +377,8 @@ $$
 \begin{eqnarray*}
 F
  &=& E_Z[\log p(X,Z|\mu,\vpi)]\\
- &=& \sum_k (\log \pi_k)(\sum_n \gamma(z_{nk}))+\sum_{k,i} \log \mu_{ki}(\sum_n \gamma(z_{nk})x_{ni})
-   + \sum_{k,i} \log (1-\mu_{ki})(\sum_n \gamma(z_{nk})(1-x_{ni}))\\
+ &=& \sum_k (\log \pi_k)\left(\sum_n \gamma(z_{nk})\right)+\sum_{k,i} \log \mu_{ki}\left(\sum_n \gamma(z_{nk})x_{ni}\right)
+   + \sum_{k,i} \log (1-\mu_{ki})\left(\sum_n \gamma(z_{nk})(1-x_{ni})\right)\\
  &=& \sum_k N_k \log \pi_k + \sum_{k,i} N_k \bar{x}_{ki} \log \mu_{ki}
    + \sum_{k,i} \log (1-\mu_{ki}) N_k(1-\bar{x}_{ki}).
 \end{eqnarray*}
@@ -414,7 +414,7 @@ $$
 
 $0 \le p(x_n|\mu_k) \le 1$より
 $$
-\log p(X|\mu,\vpi)=\sum_n \log (\sum_k \pi_k p(x_n|\mu_k)) \le \sum \log (\sum_k \pi_k)=0.
+\log p(X|\mu,\vpi)=\sum_n \log \left(\sum_k \pi_k p(x_n|\mu_k)\right) \le \sum \log \left(\sum_k \pi_k\right)=0.
 $$
 よって尤度関数が発散することはない.
 
@@ -440,11 +440,11 @@ $$
 なので
 \begin{eqnarray*}
 F &=& E[\log p(t,w|\alpha,\beta)]\\
- &=& E[\sum_n (\half \log (\frac{\beta}{2\pi})
-     -\frac{\beta}{2}(t_n-\trans{w}\phi_n)^2)
-     +\frac{M}{2}\log (\frac{\alpha}{2\pi}) - \frac{\alpha}{2}\inp{w}]\\
- &=& \frac{M}{2}\log (\frac{\alpha}{2\pi})-\frac{\alpha}{2}E[\inp{w}]
-     +\frac{N}{2}\log (\frac{\beta}{2\pi})-\frac{\beta}{2}\sum_n E[(t_n-\trans{w}\phi_n)^2].
+ &=& E\left[\sum_n \left(\half \log \left(\frac{\beta}{2\pi}\right)
+     -\frac{\beta}{2}(t_n-\trans{w}\phi_n)^2\right)
+     +\frac{M}{2}\log \left(\frac{\alpha}{2\pi}\right) - \frac{\alpha}{2}\inp{w}\right]\\
+ &=& \frac{M}{2}\log \left(\frac{\alpha}{2\pi}\right)-\frac{\alpha}{2}E[\inp{w}]
+     +\frac{N}{2}\log \left(\frac{\beta}{2\pi}\right)-\frac{\beta}{2}\sum_n E[(t_n-\trans{w}\phi_n)^2].
 \end{eqnarray*}
 
 $\alpha$に関する最大化
@@ -538,7 +538,7 @@ $$
 $$
 $\mu_k=(1/N_k)\sum_n \gamma(z_{nk})x_n$より
 $$
-\mu_k'=\frac{1}{N_k'}(\sum_{n \ne m}\gamma(z_{nk})x_n+\gamma'(z_{mk})x_m).
+\mu_k'=\frac{1}{N_k'}\left(\sum_{n \ne m}\gamma(z_{nk})x_n+\gamma'(z_{mk})x_m\right).
 $$
 よって
 $$
@@ -582,5 +582,5 @@ N_k' S'
 \end{eqnarray*}
 よって
 $$
-S'=\frac{N_k}{N_k'}(S + \frac{d}{N_k'}\outp{(x_m-\mu_k)}).
+S'=\frac{N_k}{N_k'}\left(S + \frac{d}{N_k'}\outp{(x_m-\mu_k)}\right).
 $$

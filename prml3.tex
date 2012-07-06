@@ -32,9 +32,9 @@ $$(\trans{\bm{x}}\bm{y})\bm{y}
 $$だから$\bm{t}=\trans{(t_1, \ldots, t_N)}$とおくと
 \begin{eqnarray*}
 \half\diff{\bm{w}}f(\bm{w})
- &=& -\sum_n t_n \phi(\bm{x}_n) + \sum_n (\phi(\bm{x}_n)\trans{\phi(\bm{x}_n)})\bm{w} + \lambda \bm{w}\\
+ &=& -\sum_n t_n \phi(\bm{x}_n) + \sum_n \left(\phi(\bm{x}_n)\trans{\phi(\bm{x}_n)}\right)\bm{w} + \lambda \bm{w}\\
  &=& -\trans{\Phi} \bm{t} + \trans{\Phi}\Phi \bm{w} + \lambda \bm{w}\\
- &=& -\trans{\Phi} \bm{t} + (\trans{\Phi}\Phi + \lambda I)\bm{w}=0.	
+ &=& -\trans{\Phi} \bm{t} + (\trans{\Phi}\Phi + \lambda I)\bm{w}=0.
 \end{eqnarray*}
 よって$\det(\lambda I + \trans{\Phi}\Phi)\ne0$のとき
 $$\bm{w}_{\text{ML}}=(\lambda I + \trans{\Phi}\Phi)^{-1}\trans{\Phi}\bm{t}$$
@@ -68,17 +68,17 @@ $$X:(s_1, \ldots, s_N, t_1, \ldots, t_{N-M}) \rightarrow (s_1, \ldots, s_N, 0, \
 \subsection{行列での微分}
 
 $x$を$n$次元ベクトル, $A$を$m$行$n$列として$y=Ax$とおく.
-$$f(A) = ||y||^2=\trans{(Ax)}Ax$$
+$$f(A) = ||y||^2=\trans{\left(Ax\right)}Ax$$
 を$A$で微分してみよう.
-$$\trans{(Ax)}Ax=\sum_s (Ax)_s (Ax)_s = \sum_s (\sum_t a_{st}x_t) (\sum_u a_{su}x_u) = \sum_{s,t,u} x_t x_u a_{st}a_{su}.$$
+$$\trans{\left(Ax\right)}Ax=\sum_s \left(Ax\right)_s \left(Ax\right)_s = \sum_s \left(\sum_t a_{st}x_t\right) \left(\sum_u a_{su}x_u\right) = \sum_{s,t,u} x_t x_u a_{st}a_{su}.$$
 よって
 \begin{eqnarray*}
-\diff{a_{ij}}f(A) &=& \sum_{s,t,u} x_t x_u ((\diff{a_{ij}}a_{st}) a_{su} + a_{st} \diff{a_{ij}}a_{su})\\
- &=& \sum_{s,t,u}x_t x_u(\delta_{is}\delta_{jt}a_{su} + a_{st} \delta_{is}\delta_{ju})\\
- &=& (\sum_u x_j x_u a_{iu}) + (\sum_t x_t x_j a_{it})\\
+\diff{a_{ij}}f(A) &=& \sum_{s,t,u} x_t x_u \left(\left(\diff{a_{ij}}a_{st}\right) a_{su} + a_{st} \diff{a_{ij}}a_{su}\right)\\
+ &=& \sum_{s,t,u}x_t x_u\left(\delta_{is}\delta_{jt}a_{su} + a_{st} \delta_{is}\delta_{ju}\right)\\
+ &=& \left(\sum_u x_j x_u a_{iu}\right) + \left(\sum_t x_t x_j a_{it}\right)\\
  &=& 2\sum_u x_j x_u a_{iu}\\
- &=& 2x_j (Ax)_i\\
- &=& 2(Ax\trans{x})_{ij}.
+ &=& 2x_j \left(Ax\right)_i\\
+ &=& 2\left(Ax\trans{x}\right)_{ij}.
 \end{eqnarray*}
 よって
 $$\diff{A}||Ax||^2 = 2Ax\trans{x}.$$
@@ -86,26 +86,26 @@ $$\diff{A}||Ax||^2 = 2Ax\trans{x}.$$
 \subsection{Woodburyの逆行列の公式}
 
 行列$A$, $B$, $C$, $D$について
-$$(A+BD^{-1}C)^{-1}=A^{-1}-A^{-1}B(D+CA^{-1}B)^{-1}CA^{-1}$$
+$$\left(A+BD^{-1}C\right)^{-1}=A^{-1}-A^{-1}B\left(D+CA^{-1}B\right)^{-1}CA^{-1}$$
 が成り立つ.
 
 （証明）
 \begin{eqnarray*}
-A^{-1}B(D+CA^{-1}B)^{-1}CA^{-1} &=& A^{-1}B((DB^{-1}A+C)A^{-1}B)^{-1}CA^{-1}\\
- &=&(DB^{-1}A+C)^{-1}CA^{-1}\\
- &=&(DB^{-1}(A+BD^{-1}C))^{-1}CA^{-1}\\
- &=&(A+BD^{-1}C)^{-1}BD^{-1}CA^{-1}
+A^{-1}B\left(D+CA^{-1}B\right)^{-1}CA^{-1} &=& A^{-1}B\left(\left(DB^{-1}A+C\right)A^{-1}B\right)^{-1}CA^{-1}\\
+ &=&\left(DB^{-1}A+C\right)^{-1}CA^{-1}\\
+ &=&\left(DB^{-1}\left(A+BD^{-1}C\right)\right)^{-1}CA^{-1}\\
+ &=&\left(A+BD^{-1}C\right)^{-1}BD^{-1}CA^{-1}
 \end{eqnarray*}
 よって
 \begin{eqnarray*}
-\text{左辺} &=& (I-(A+BD^{-1}C)^{-1}BD^{-1}C)A^{-1}\\
- &=& (A+BD^{-1}C)^{-1}((A+BD^{-1}C)-BD^{-1}C)A^{-1}\\
+\text{左辺} &=& \left(I-\left(A+BD^{-1}C\right)^{-1}BD^{-1}C\right)A^{-1}\\
+ &=& \left(A+BD^{-1}C\right)^{-1}\left(\left(A+BD^{-1}C\right)-BD^{-1}C\right)A^{-1}\\
  &=& \text{右辺}.
 \end{eqnarray*}
 
 特に, $A$が$n$次正方行列で$B$を$n$次縦ベクトル$\bm{x}$, $C=\trans{\bm{x}}$, $D$を$n$次単位行列とすると
 \begin{equation}\label{inv_A_xx}
-(A+\bm{x}\trans{\bm{x}})^{-1}=A^{-1}-\frac{(A^{-1}\bm{x})(\trans{\bm{x}}A^{-1})}{1+\trans{\bm{x}}A^{-1}\bm{x}}
+\left(A+\bm{x}\trans{\bm{x}}\right)^{-1}=A^{-1}-\frac{\left(A^{-1}\bm{x}\right)\left(\trans{\bm{x}}A^{-1}\right)}{1+\trans{\bm{x}}A^{-1}\bm{x}}
 \end{equation}
 が成り立つ.
 
@@ -130,7 +130,7 @@ $$ A>0 \iff \lambda_i > 0 \mbox{ for } \forall i.$$
 
 また実ベクトル$\bm{v}$に対して$A=\bm{v}\trans{\bm{v}}$とおくと,
 $A$は実対称であり, 任意の$\bm{x}$に対して
-$$\quadf{A}{x}=(\trans{\bm{v}}\bm{x})^2 \ge 0$$
+$$\quadf{A}{x}=\left(\trans{\bm{v}}\bm{x}\right)^2 \ge 0$$
 なので$A \ge 0$.
 
 \subsection{予測分布の分散}
@@ -138,26 +138,26 @@ $S_N^{-1}=S_0^{-1} + \beta \trans{\Phi_N}\Phi_N$としたときの予測分布の分散
 $$\sigma_N^2=\frac{1}{\beta}+\trans{\phi} S_N \phi$$
 を考える. $\beta>0$であり, $S_0$は共分散行列なので実正定値であることに注意する.
 まず計画行列$\Phi_N$は$N$が一つ増える毎に1行増える. $\bm{v}_N$（煩雑なので$v$と略記する）を$M$次元縦ベクトルとして
-$$\trans{\Phi_{N+1}}=\bigl(\trans{\Phi_N}\text{ } v\bigr)$$
+$$\trans{\Phi_{N+1}}=\left(\trans{\Phi_N}\text{ } v\right)$$
 としよう.
 すると
 $$
 S_{N+1}^{-1}
- =S_0^{-1} + \beta(\trans{\Phi_N}\Phi_N + v\trans{v})
+ =S_0^{-1} + \beta\left(\trans{\Phi_N}\Phi_N + v\trans{v}\right)
  = S_N^{-1} + \beta v\trans{v}.
 $$
 行列$\beta v\trans{v}$は正定値であり, $S_N$に関して帰納法を使うと全ての$S_N$は正定値であることが分かる.
 
 公式\ref{inv_A_xx}を使って
 \begin{eqnarray*}
-\sigma_{N+1}^2&=&\frac{1}{\beta} + \trans{\phi}(S_N^{-1} + \beta v\trans{v})^{-1}\phi\\
- &=& \frac{1}{\beta} + \trans{\phi}(S_N - \frac{(S_N v)(\trans{v} S_N)}{1+\trans{v}S_Nv})\phi\\
+\sigma_{N+1}^2&=&\frac{1}{\beta} + \trans{\phi}\left(S_N^{-1} + \beta v\trans{v}\right)^{-1}\phi\\
+ &=& \frac{1}{\beta} + \trans{\phi}\left(S_N - \frac{\left(S_N v\right)\left(\trans{v} S_N\right)}{1+\trans{v}S_Nv}\right)\phi\\
  &=& \sigma_N^2 - z
 \end{eqnarray*}
 ここで$S_N$は対称なので
 \begin{eqnarray*}
-z &=& \trans{\phi}\frac{(S_N v)(\trans{v} S_N)}{1+\trans{v}S_Nv}\phi\\
-  &=& \frac{1}{1+\trans{v}S_Nv} (\trans{v}S_N\phi)^2.
+z &=& \trans{\phi}\frac{\left(S_N v\right)\left(\trans{v} S_N\right)}{1+\trans{v}S_Nv}\phi\\
+  &=& \frac{1}{1+\trans{v}S_Nv} \left(\trans{v}S_N\phi\right)^2.
 \end{eqnarray*}
 $S_N$は正定値なので任意の$v$に対して$\trans{v}S_Nv \ge 0$.
 よって $z \ge 0$となり
@@ -195,8 +195,8 @@ $$
 なぜなら$S'(x)=-e^{-x}+1$. $S''(x)=e^{-x} \ge 0$なので$S'(x)$は単調増加. $S'(0) = 0$より$x > 0$なら$S'(x) > 0$, $x<0$なら$S'(x)<0$. つまり$S(x)$は0で最小値0をとる.
 
 \begin{eqnarray*}
-\int p(x) S(\log \frac{p(x)}{q(x)})\,dx &=& \int p(x) (\frac{q(x)}{p(x)} + \log \frac{p(x)}{q(x)} - 1)\,dx\\
- &=& \KL(p||q) + \int (q(x) - p(x))\,dx\\
+\int p(x) S\left(\log \frac{p(x)}{q(x)}\right)\,dx &=& \int p(x) \left(\frac{q(x)}{p(x)} + \log \frac{p(x)}{q(x)} - 1\right)\,dx\\
+ &=& \KL(p||q) + \int \left(q(x) - p(x)\right)\,dx\\
  &=& \KL(p||q).
 \end{eqnarray*}
 ここで$p$, $q$が確率密度関数なので$\int p(x)\,dx = 1$, $\int q(x)\,dx=1$であることを使った.
@@ -205,10 +205,10 @@ $$
 
 $\KL(p||q) = 0$ならば殆ど全ての$x$について
 $$
-p(x) S(\log \frac{p(x)}{q(x)})=0.
+p(x) S\left(\log \frac{p(x)}{q(x)}\right)=0.
 $$
 $p=0$ではないので殆ど全ての$x$について
-$$S(\log \frac{p(x)}{q(x)})=0.$$
+$$S\left(\log \frac{p(x)}{q(x)}\right)=0.$$
 $S(x)=0$となる$x$は0のときだけだから,
 殆ど全ての$x$について$p(x)=q(x)$.
 
@@ -220,7 +220,7 @@ $S(x)=0$となる$x$は0のときだけだから,
 $A=\alpha I + \beta \trans{\Phi}\Phi$とおくと
 \begin{eqnarray*}
 E(w) &=& \frac{\beta}{2}||t-\Phi w||^2+\frac{\alpha}{2}\trans{w}w\\
-     &=& \half\trans{w}(\alpha I + \beta \trans{\Phi}\Phi)w-\beta \trans{t}\Phi w+\frac{\beta}{2}||t||^2\\
+     &=& \half\trans{w}\left(\alpha I + \beta \trans{\Phi}\Phi\right)w-\beta \trans{t}\Phi w+\frac{\beta}{2}||t||^2\\
      &=& \half\trans{w}Aw-\beta \trans{w}\trans{\Phi} t+\frac{\beta}{2}||t||^2.
 \end{eqnarray*}
 ここで一般に対称行列$A$とベクトル$w$, $m$について
@@ -244,23 +244,23 @@ $$
 
 よって
 \begin{eqnarray*}
-E(w) &=& \int \exp(-E(w))\,dw \\
-     &=& \exp(-E(m_N)) \int \exp(-\half\trans{(w-m_N)}A{(w-m_N)})\,dw\\
-     &=& \exp(-E(m_N)) (2\pi)^{M/2} |A|^{-1/2}.
+E(w) &=& \int \exp\left(-E(w)\right)\,dw \\
+     &=& \exp\left(-E(m_N)\right) \int \exp\left(-\half\trans{(w-m_N)}A{(w-m_N)}\right)\,dw\\
+     &=& \exp\left(-E(m_N)\right) (2\pi)^{M/2} |A|^{-1/2}.
 \end{eqnarray*}
 
 従って
 \begin{eqnarray}\label{log_evidence}
 \log p(\bm{t}|\alpha,\beta)
- &=& (N/2) \log(\frac{\beta}{2\pi}) + (M/2) \log(\frac{\alpha}{2\pi}) \log (\int \exp(-E(w))\,dw)\\
- &=& (M/2)\log \alpha + \frac{N}{2} \log \beta - E(m_N) - \half\log |A| - \frac{N}{2} \log (2\pi).
+ &=& (N/2) \log\left(\frac{\beta}{2\pi}\right) + (M/2) \log\left(\frac{\alpha}{2\pi}\right) \log \left(\int \exp\left(-E(w)\right)\,dw\right)\\
+ &=& (M/2)\log \alpha + \frac{N}{2} \log \beta - E(m_N) - \half\log |A| - \frac{N}{2} \log(2\pi).
 \end{eqnarray}
 
 
 \subsection{ヘッセ行列}
 $x$が$n$次縦ベクトルのとき, $y=f(x)$における2階微分の$n$次正方行列
 $$
-H(f)=(\difff{x_i}{x_j}f(x))
+H(f)=\left(\difff{x_i}{x_j}f(x)\right)
 $$
 をヘッセ行列という.
 通常偏微分は可換なので, これは対称行列である.
@@ -299,7 +299,7 @@ $$
 \subsection{エビデンス関数の最大化の式変形}
 行列$\beta\trans{\Phi}\Phi$をある行列$P$で対角化する.
 $$
-P^{-1} (\beta\trans{\Phi}\Phi) P = \diag(\lambda_1, \ldots, \lambda_M).
+P^{-1} \left(\beta\trans{\Phi}\Phi\right) P = \diag(\lambda_1, \ldots, \lambda_M).
 $$
 すると行列$A=\alpha I + \beta\trans{\Phi}\Phi$も同じ$P$で対角化できて
 $$
@@ -307,7 +307,7 @@ P^{-1} A P = \diag(\alpha + \lambda_1, \ldots, \alpha + \lambda_M).
 $$
 よって
 $$
-|A|=\prod_{i=1}^M(\lambda_i + \alpha)
+|A|=\prod_{i=1}^M\left(\lambda_i + \alpha\right)
 $$
 となる. $\alpha$で微分すると
 $$
@@ -315,7 +315,7 @@ $$
 $$
 式\ref{log_evidence}を$\alpha$で微分すると
 $$
-\diff{\alpha} \log p(\bm{t}|\alpha,\beta)=\frac{M}{2\alpha}-\half\trans{m_N}m_N - \half\sum \frac{1}{\lambda_i + \alpha}=0.
+\diff{\alpha} \log p\left(\bm{t}|\alpha,\beta\right)=\frac{M}{2\alpha}-\half\trans{m_N}m_N - \half\sum \frac{1}{\lambda_i + \alpha}=0.
 $$
 よって
 $$
@@ -354,7 +354,7 @@ y(x,w)=\trans{w}\phi(x)
 $$
 とした. $\bm{t}$を観測値に対する目標値で, それは$x$によらずに精度パラメータ$\beta$に従うガウス分布とした.
 $$
-p(\bm{t}|w,\beta)=\calN(t|y(x,w),\beta^{-1}).
+p(\bm{t}|w,\beta)=\calN\left(t|y(x,w),\beta^{-1}\right).
 $$
 ベイズ的に扱うために$w$に関して事前確率分布を与えたい. 上式が$w$に関する2次関数なので,
 共役事前分布としてハイパーパラメータ$\alpha$を導入し,

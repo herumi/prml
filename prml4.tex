@@ -44,9 +44,9 @@ $$\trans{A}=(a_{ji})$$
 $$
 \diff{A}\tr(AB)=\trans{B}
 $$
-なぜなら, 
+なぜなら,
 $$
-(\diff{A}\tr(AB))_{ij}=\diff{a_{ij}}\sum_{s,t} a_{st} b_{ts} = b_{ji}.
+\left(\diff{A}\tr(AB)\right)_{ij}=\diff{a_{ij}}\sum_{s,t} a_{st} b_{ts} = b_{ji}.
 $$
 ここで
 $\diff{a_{ij}} a_{st} = \delta_{is} \delta_{jt}$を使った. つまり添え字$s$, $t$が走るときに, $s=i$, $t=j$のときのみが生き残るというわけである.
@@ -60,11 +60,11 @@ $$
 \diff{a_{ij}} \tr(AB\trans{A})
  &=& \diff{a_{ij}} \sum_{s,t,u} a_{st} b_{tu} a_{su}\\
  &=& \sum_{s,t,u} b_{tu}  \diff{a_{ij}} (a_{st} a_{su})\\
- &=& \sum_{s,t,u} b_{tu} (\delta_{is} \delta_{jt} a_{su} + a_{st} \delta_{is} \delta_{ju})\\
+ &=& \sum_{s,t,u} b_{tu} \left(\delta_{is} \delta_{jt} a_{su} + a_{st} \delta_{is} \delta_{ju}\right)\\
  &=& \sum_{u} b_{ju} a_{iu} + \sum_{t} b_{tj} a_{it}\\
  &=& \sum_{u} a_{iu} b_{ju} + \sum_{t} a_{it} b_{tj}\\
  &=& (A\trans{B})_{ij} + (AB)_{ij}\\
- &=& (A(B + \trans{B}))_{ij}.
+ &=& \left(A(B + \trans{B})\right)_{ij}.
 \end{eqnarray*}
 
 \section{多クラス}
@@ -122,19 +122,19 @@ $y(x)=\trans{W}x$としよう. $x$, $y$はベクトル, $W$は行列である.
 
 二乗誤差関数
 $$
-E_D(W)=\half\tr(\trans{(XW-T)}(XW-T))
+E_D(W)=\half\tr\left(\trans{(XW-T)}(XW-T)\right)
 $$
 を最小化する$W$を求めよう.
 
 \begin{eqnarray*}
 \diff{w_{ij}}E_D(W)
- &=& \half\diff{w_{ij}}\sum_{s,t} ((XW-T)_{st})^2\\
+ &=& \half\diff{w_{ij}}\sum_{s,t} \left((XW-T)_{st}\right)^2\\
  &=& \sum_{s,t} (XW-T)_{st} \diff{w_{ij}}(XW-T)_{st}\\
- &=& \sum_{s,t} (XW-T)_{st} \diff{w_{ij}}(\sum_u x_{su}w_{ut})\\
+ &=& \sum_{s,t} (XW-T)_{st} \diff{w_{ij}}\left(\sum_u x_{su}w_{ut}\right)\\
  &=& \sum_{s,t,u} (XW-T)_{st} x_{su}\delta_{iu}\delta_{jt}\\
  &=& \sum_s (XW-T)_{sj} x_{si}\\
  &=& \sum_s (\trans{X})_{is} (XW-T)_{sj}\\
- &=& (\trans{X}(XW-T))_{ij}.
+ &=& \left(\trans{X}(XW-T)\right)_{ij}.
 \end{eqnarray*}
 よって
 $$\diff{W}E_D(W)=\trans{X}(XW-T).$$
@@ -204,13 +204,13 @@ J(w)=\frac{\trans{w}S_B w}{\trans{w} S_W w}.
 $$
 これが最大となる$w$の値を求めてみよう. 大きさはどうでもよくて向きが重要である.
 $$
-\diff{w}J(w)=(2 (S_B w)(\trans{w} S_W w) - 2 (\trans{w} S_B w) (S_W w))/(\trans{w}S_W w)^2=0.
+\diff{w}J(w)=\left(2 (S_B w)(\trans{w} S_W w) - 2 (\trans{w} S_B w) (S_W w)\right)/(\trans{w}S_W w)^2=0.
 $$
 よって
 $$
 (\trans{w}S_B w)S_w w = (\trans{w} S_W w)S_B w.
 $$
-$S_B w = (\bmm_2-\bmm_1)(\trans{(\bmm_2-\bmm_1)}w)\propto (\bmm_2-\bmm_1)$だから
+$S_B w = (\bmm_2-\bmm_1)\left(\trans{(\bmm_2-\bmm_1)}w\right)\propto (\bmm_2-\bmm_1)$だから
 $$
 w \propto S_W^{-1}S_B w \propto S_W^{-1}(\bmm_2-\bmm_1)
 $$
@@ -248,7 +248,7 @@ $$
 $$
 よって
 $$
-\diff{w}E=\sum(\trans{w}x_n + w_0-t_n)x_n=0
+\diff{w}E=\sum\left(\trans{w}x_n + w_0-t_n\right)x_n=0
 $$
 を使うと
 $$
@@ -329,7 +329,7 @@ $$
 仮定：条件付き確率密度がガウス分布, そのガウス分布の共分散行列（$\Sigma=A$）がすべてのクラスで共通
 
 $$
-p(x|C_k)=\frac{1}{(2\pi)^(D/2)}\frac{1}{|A|^{1/2}}\exp(-\half\trans{(x-\mu_k)}A^{-1}(x-\mu_k))
+p(x|C_k)=\frac{1}{(2\pi)^{(D/2)}}\frac{1}{|A|^{1/2}}\exp\left(-\half\trans{(x-\mu_k)}A^{-1}(x-\mu_k)\right)
 $$
 \begin{eqnarray*}
 a&=& \log \frac{p(x|C_1)p(C_1)}{p(x|C_2)p(C_2)}\\
@@ -377,11 +377,11 @@ p(x_n, C_2)=p(C_2)p(x_n|C_2)=p (1-p) \calN(x_n|\mu_2, A).
 $$
 尤度関数は
 $$
-p(t,X|p, \mu_1, \mu_2, A)= \prod^N(p \calN(x_n|\mu_1, A))^{t_n} ((1-p)\calN(x_n|\mu_2,A))^{1-t_n}.
+p(t,X|p, \mu_1, \mu_2, A)= \prod^N\left(p \calN(x_n|\mu_1, A)\right)^{t_n} \left((1-p)\calN(x_n|\mu_2,A)\right)^{1-t_n}.
 $$
 このうち$p$に関する部分の対数は
 $$
-\sum (t_n \log p + (1-t_n) \log (1-p)).
+\sum \left(t_n \log p + (1-t_n) \log (1-p)\right).
 $$
 $p$で微分して0とおく.
 $$
@@ -413,7 +413,7 @@ $$
 $$
 $\mu_1$で微分して0とおくと
 $$
-\sum t_n A^{-1}(x_n-\mu_1)=A^{-1} (\sum t_n x_n - \mu_1 \sum t_n)=A^{-1} (\sum t_n x_n - \mu_1 N_1)=0.
+\sum t_n A^{-1}(x_n-\mu_1)=A^{-1} \left(\sum t_n x_n - \mu_1 \sum t_n\right)=A^{-1} \left(\sum t_n x_n - \mu_1 N_1\right)=0.
 $$
 よって
 $$\mu_1=\frac{1}{N_1}\sum t_n x_n.
@@ -428,9 +428,9 @@ $$
 \begin{eqnarray*}
  && -\half\sum_{n=1}^N(t_n \log |A|+t_n \trans{(x_n-\mu_1)}A^{-1}(x_n-\mu_1)\\
  &&+(1-t_n) \log |A|+(1-t_n)\trans{(x_n-\mu_2)}A^{-1}(x_n-\mu_2))\\
- &=& -\frac{N}{2}\log |A| - \half \tr(\sum_{n=1}^N(t_n A^{-1}(x_n -\mu_1)\trans{(x_n-\mu_1)}+(1-t_n)A^{-1}(x_n-\mu_2)\trans{(x_n-\mu_2)}))\\
- &=& -\frac{N}{2}\log |A| -\half \tr(A^{-1}(\sum_{n\in C_1}(x_n-\mu_1)\trans{(x_n-\mu_1)}+\sum_{n\in C_2}(x_n-\mu_2)\trans{(x_n-\mu_2)}))\\
- &=& -\frac{N}{2}\log |A| -\half \tr(A^{-1}(N_1 S_1 + N_2 S_2))\\
+ &=& -\frac{N}{2}\log |A| - \half \tr\left(\sum_{n=1}^N(t_n A^{-1}(x_n -\mu_1)\trans{(x_n-\mu_1)}+(1-t_n)A^{-1}(x_n-\mu_2)\trans{(x_n-\mu_2)})\right)\\
+ &=& -\frac{N}{2}\log |A| -\half \tr\left(A^{-1}\left(\sum_{n\in C_1}(x_n-\mu_1)\trans{(x_n-\mu_1)}+\sum_{n\in C_2}(x_n-\mu_2)\trans{(x_n-\mu_2)}\right)\right)\\
+ &=& -\frac{N}{2}\log |A| -\half \tr\left(A^{-1}(N_1 S_1 + N_2 S_2)\right)\\
  &=& -\frac{N}{2}\log |A| -\frac{N}{2} \tr(A^{-1}S)
 \end{eqnarray*}
 ここで最後の式変形に
@@ -448,7 +448,7 @@ $$
 $$
 を使うと
 $$
--\frac{N}{2}(\trans{(A^{-1})}-\trans{(A^{-1}SA^{-1})})=0.
+-\frac{N}{2}\left(\trans{(A^{-1})}-\trans{(A^{-1}SA^{-1})}\right)=0.
 $$
 よって$A=S$となる. これは2クラスの各クラスの共分散行列の重みつき平均である.
 またフィッシャーの判別基準で求めた総クラス内共分散行列$S_W$を$N$で割ったものに等しいことにも注意する.
@@ -469,7 +469,7 @@ $$
 \sigma'(x)
 =-\frac{-e^{-x}}{(1+e^{-x})^2}
 =\frac{e^{-x}}{(1+e^{-x})^2}
-=\frac{1}{1+e^{-x}}(1-\frac{1}{1+e^{-x}})
+=\frac{1}{1+e^{-x}}\left(1-\frac{1}{1+e^{-x}}\right)
 =\sigma(x)(1-\sigma(x)).
 $$
 データ集合$\{\phi_n, t_n\}$, $t_n\in \{0,1\}$, $\phi_n=\phi(x_n)$, $n=1, \ldots, N$,
@@ -480,7 +480,7 @@ p(t|w)=\prod_{n=1}^N y_n^{t_n}(1-y_n)^{1-t_n}.
 $$
 誤差関数は
 $$
-E(w)=-\log p(t|w)=-\sum(t_n \log y_n + (1-t_n) \log (1-y_n)).
+E(w)=-\log p(t|w)=-\sum\left(t_n \log y_n + (1-t_n) \log (1-y_n)\right).
 $$
 $w$で微分してみよう.
 まず
@@ -489,7 +489,7 @@ $$
 $$
 よって
 \begin{eqnarray*}
-\diff{w}E &=&-\sum(t_n (1-y_n)\phi_n + (1-t_n)(-y_n)\phi_n)\\
+\diff{w}E &=&-\sum\left(t_n (1-y_n)\phi_n + (1-t_n)(-y_n)\phi_n\right)\\
  &=& \sum(-t_n+t_n y_n+y_n-y_n t_n)\phi\\
  &=& \sum(y_n-t_n)\phi_n.
 \end{eqnarray*}
@@ -517,7 +517,7 @@ $$
 
 この式を線形回帰モデルに適用してみる.
 $$
-E(w)=\half\sum(t_n-\trans{w}\phi(x_n))^2, \phi_n=\phi(x_n)
+E(w)=\half\sum\left(t_n-\trans{w}\phi(x_n)\right)^2, \phi_n=\phi(x_n)
 $$
 を$w$で微分して$\Phi=\trans{(\phi_1, \ldots)}$とおくと
 $$
@@ -534,7 +534,7 @@ $$
 
 次にロジスティック回帰に適用してみる.
 $$
-E(w)=-\sum(t_n \log y_n + (1-t_n)\log (1-y_n)), y_n=\sigma(a_n)=\sigma(\trans{w}\phi_n).
+E(w)=-\sum\left(t_n \log y_n + (1-t_n)\log (1-y_n)\right), y_n=\sigma(a_n)=\sigma(\trans{w}\phi_n).
 $$
 $$
 \diff{w}E(w)=\sum (y_n-t_n)\phi_n.
@@ -597,7 +597,7 @@ $p_1, \ldots, p_n$を足して1になる非負の数, すなわち$\sum_{i=1}^n p_i=1$, $p_i \g
 
 このとき$n$個の任意の実数$x_1, \ldots, x_n$に対して
 $$
-\sum_{i=1}^n p_i f(x_i) \ge f(\sum_{i=1}^n p_i x_i).
+\sum_{i=1}^n p_i f(x_i) \ge f\left(\sum_{i=1}^n p_i x_i\right).
 $$
 これをJensenの不等式という.
 
@@ -616,10 +616,10 @@ $$
 \begin{eqnarray*}
 \sum_{i=1}^{n+1} p_i f(x_i) &=& q \sum_{i=1}^n (p_i/q) f(x_i) + p_{n+1} f(x_{n+1})\\
  &&{\text 帰納法の仮定を用いて}\\
- &\ge& q f(\sum_{i=1}^n (p_i/q) x_i) + p_{n+1} f(x_{n+1})\\
+ &\ge& q f\left(\sum_{i=1}^n (p_i/q) x_i\right) + p_{n+1} f(x_{n+1})\\
  &&f{\text が凸関数であることを用いて}\\
- &\ge& f(q (\sum_{i=1}^n (p_i/q) x_i) + p_{n+1}x_{n+1})\\
- &=& f(\sum_{i=1}^{n+1} p_i x_i).
+ &\ge& f\left(q \left(\sum_{i=1}^n (p_i/q) x_i\right) + p_{n+1}x_{n+1}\right)\\
+ &=& f\left(\sum_{i=1}^{n+1} p_i x_i\right).
 \end{eqnarray*}
 
 \section{多クラスロジスティック回帰}
@@ -651,7 +651,7 @@ $$
 よって
 \begin{eqnarray*}
 \diff{w_j}E &=& -\sum_{n,k} t_{nk} \frac{y_k(\phi_n)(\delta_{kj}-y_j(\phi_n))}{y_k(\phi_n)}\phi_n\\
- &=& -\sum_{n,k} t_{nk}(\delta_{kj} -y_{nj})\phi_n=-\sum_n ((\sum_k t_{nk} \delta_{kj})-(\sum_k t_{nk})y_{nj})\phi_n\\
+ &=& -\sum_{n,k} t_{nk}(\delta_{kj} -y_{nj})\phi_n=-\sum_n \left(\left(\sum_k t_{nk} \delta_{kj}\right)-\left(\sum_k t_{nk}\right)y_{nj}\right)\phi_n\\
  &=& -\sum_n (t_{nj}-y_{nj})\phi_n\\
  &=& \sum(y_{nj}-t_{nj})\phi_n.
 \end{eqnarray*}
@@ -672,9 +672,9 @@ Hの正定値であることを示そう.\\
 $v_{nk}=\trans{u_k}\phi_n$, $f(x)=x^2$とおく. $f(x)$は下に凸.
 \begin{eqnarray*}
 \trans{u}H u &=& \sum_{n,k,j} y_{nk}(\delta_{kj}-y_{nj})(\trans{u_k}\phi_n)(\trans{\phi_n}u_j)\\
- &=& \sum_n(\sum_{k,j} y_{nk}\delta_{kj} v_{nk} v_{nj} - \sum_{k,j} y_{nk} y_{nj} v_{nk} v_{nj})\\
- && {\text 一般に}(\sum_k x_k)^2=(\sum_k x_k)(\sum_j x_j) = \sum_{k,j} x_k x_j{\text より}\\
- &=& \sum_n \{\sum_k y_{nk}v_{nk}^2 - (\sum_k y_{nk} v_{nk})^2 \}.
+ &=& \sum_n\left(\sum_{k,j} y_{nk}\delta_{kj} v_{nk} v_{nj} - \sum_{k,j} y_{nk} y_{nj} v_{nk} v_{nj}\right)\\
+ && {\text 一般に}\left(\sum_k x_k\right)^2=\left(\sum_k x_k\right)\left(\sum_j x_j\right) = \sum_{k,j} x_k x_j{\text より}\\
+ &=& \sum_n \left(\sum_k y_{nk}v_{nk}^2 - \left(\sum_k y_{nk} v_{nk}\right)^2\right).
 \end{eqnarray*}
 ここで$\sum_k y_{nk}=1$, $0 < y_{nk} < 1$よりJensenの不等式を適用すると
 $$
@@ -695,16 +695,16 @@ $$
 $$
 この逆関数をプロビット関数（probit）という. 誤差関数を
 $$
-\makeop{erf}(a)=\frac{2}{\sqrt{\pi}}\int_0^a \exp(-\theta^2)\,d\theta
+\makeop{erf}(a)=\frac{2}{\sqrt{\pi}}\int_0^a \exp\left(-\theta^2\right)\,d\theta
 $$
 で定義する.
 
 $x=\theta/\sqrt{2}$とおくと$dx=d\theta/\sqrt{2}$.
 \begin{eqnarray*}
-\Phi(a) &=& \int_{-\infty}^a = \int_{-\infty}^0 + \int_0^a=\half+\int_0^a \frac{1}{\sqrt{2\pi}}\exp(-\frac{\theta^2}{2})\,d\theta\\
+\Phi(a) &=& \int_{-\infty}^a = \int_{-\infty}^0 + \int_0^a=\half+\int_0^a \frac{1}{\sqrt{2\pi}}\exp\left(-\frac{\theta^2}{2}\right)\,d\theta\\
  &=&\half+\int_0^{a/\sqrt{2}}\frac{1}{\sqrt{2\pi}}\exp(-x^2)\sqrt{2}\,dx\\
- &=&\half(1+\frac{2}{\sqrt{\pi}}\int_0^{a/\sqrt{2}} \exp(-x^2)\,dx)\\
- &=&\half\{1+\makeop{erf}(\frac{a}{\sqrt{2}})\}.
+ &=&\half\left(1+\frac{2}{\sqrt{\pi}}\int_0^{a/\sqrt{2}} \exp(-x^2)\,dx\right)\\
+ &=&\half\left(1+\makeop{erf}\left(\frac{a}{\sqrt{2}}\right)\right).
 \end{eqnarray*}
 プロビット活性化関数を用いた一般化線形モデルをプロビット回帰という.
 
@@ -716,17 +716,17 @@ $x\rightarrow\infty$でロジスティック回帰の微分は$\sigma'(x)=\exp(-x)/(1+\exp(-x)
 「誤差」$\times$「特徴ベクトル」という形でかけることを示そう.
 
 $$
-p(t|\eta,s)=\frac{1}{s}h(t/s)g(\eta)\exp(\frac{\eta t}{s})
+p(t|\eta,s)=\frac{1}{s}h(t/s)g(\eta)\exp\left(\frac{\eta t}{s}\right)
 $$
 とする. 確率なので$\int p(t|\eta,s)\,dt=1$.
 つまり
 $$
-g(\eta)\int h(t/s) \exp(\frac{\eta t}{s})\,dt=s.
+g(\eta)\int h(t/s) \exp\left(\frac{\eta t}{s}\right)\,dt=s.
 $$
 $\eta$で微分して
 \begin{eqnarray*}
-&& (\diff{\eta}g(\eta)) \int h(t/s)\exp(\frac{\eta t}{s})\,dt+g(\eta)\int (t/s) h(t/s) \exp(\frac{\eta t}{s})\,dt\\
-&=& (\diff{\eta}g(\eta))(\frac{s}{g(\eta)})+\int t p(t|\eta,s)\,dt\\
+&& \left(\diff{\eta}g(\eta)\right) \int h(t/s)\exp\left(\frac{\eta t}{s}\right)\,dt+g(\eta)\int (t/s) h(t/s) \exp\left(\frac{\eta t}{s}\right)\,dt\\
+&=& \left(\diff{\eta}g(\eta)\right)\left(\frac{s}{g(\eta)}\right)+\int t p(t|\eta,s)\,dt\\
 &=& s\diff{\eta}\log g(\eta) + E[t] = 0.
 \end{eqnarray*}
 よって
@@ -742,7 +742,7 @@ y=f(\trans{w}\phi)
 $$
 とかけるモデルを考える. 対数尤度関数は
 $$
-\log p(t|\eta,s)=\sum_{n=1}^N \log p(t_n|\eta,s)=\sum_{n=1}^N (\log g(\eta_n) + \frac{\eta_n t_n}{s}) + \text{const}
+\log p(t|\eta,s)=\sum_{n=1}^N \log p(t_n|\eta,s)=\sum_{n=1}^N \left(\log g(\eta_n) + \frac{\eta_n t_n}{s}\right) + \text{const}
 $$
 を考える. ここで$s$と$\eta$は独立, $\eta_n=\phi(y_n)$, $y_n=f(a_n)$, $a_n=\trans{w}\phi_n$.
 
@@ -793,11 +793,11 @@ $$
 $$
 つまり
 $$
-f(z) \approx f(z_0) \exp(-\half A(z-z_0)^2).
+f(z) \approx f(z_0) \exp\left(-\half A(z-z_0)^2\right).
 $$
 よって正規分布で近似すると
 $$
-q(z)=(\frac{A}{2\pi})^{1/2} \exp(-\half A(z-z_0)^2).
+q(z)=(\frac{A}{2\pi})^{1/2} \exp\left(-\half A(z-z_0)^2\right).
 $$
 
 $M$次元の場合を考える. $p(z)=(1/Z)f(z)$. $z=z_0$が最大値を与えるなら$p(z_0)>0$, $\diff{z}f(z_0)=0$.
@@ -807,11 +807,11 @@ A=-\difff{z_i}{z_j} \log f(z) \Bigl|_{z=z_0}
 $$
 とすると$A>0$（正定値）で
 $$
-f(z) \approx f(z_0) \exp (-\half\trans{(z-z_0)}A(z-z_0)).
+f(z) \approx f(z_0) \exp\left(-\half\trans{(z-z_0)}A(z-z_0)\right).
 $$
 よって
 $$
-q(z)=\calN(z|z_0,A^{-1})=\sqrt{\frac{|A|}{(2\pi)^M}} \exp (-\half\trans{(z-z_0)}A(z-z_0)).
+q(z)=\calN(z|z_0,A^{-1})=\sqrt{\frac{|A|}{(2\pi)^M}} \exp\left(-\half\trans{(z-z_0)}A(z-z_0)\right).
 $$
 山が複数ある多峰的なときはどのモードを選ぶかでラプラス近似は異なる.
 総的的にデータ数が多くなるとガウス分布に近づくので近似はよくなるが, ある点での近傍の情報しか利用していないため大域的な特徴がとらえられるとは限らない.
@@ -819,7 +819,7 @@ $$
 \section{モデルの比較とBIC}
 前節のラプラス近似を行うと正規化係数$Z$の近似も分かる. ガウス分布の特性から
 $$
-Z=\int f(z)\,dx \approx \int f(z_0) \exp(-\half\trans{(z-z_0)}A(z-z_0))\,dx=f(z_0)\sqrt{\frac{(2\pi)^M}{|A|}}.
+Z=\int f(z)\,dx \approx \int f(z_0) \exp\left(-\half\trans{(z-z_0)}A(z-z_0)\right)\,dx=f(z_0)\sqrt{\frac{(2\pi)^M}{|A|}}.
 $$
 
 データ集合$D$, パラメータ$\{\theta_i\}$の集合$\{M_i\}$を考えて各モデルに対して$p(D|\theta_i, M_i)$を定義する.
@@ -834,7 +834,7 @@ A=-\nabla^2 \log p(D|\theta_{\text{MAP}})p(\theta_{\text{MAP}}).
 $$
 \begin{eqnarray*}
 \log p(D)&=&\log Z \approx \log f(\theta_{\text{MAP}}) + \log \sqrt{\frac{(2\pi)^M}{|A|}}\\
-         &=&\log p(D|\theta_{\text{MAP}})+(\log p(\theta_{\text{MAP}})+\frac{M}{2} \log (2\pi) - \half \log |A|).
+         &=&\log p(D|\theta_{\text{MAP}})+\left(\log p(\theta_{\text{MAP}})+\frac{M}{2} \log (2\pi) - \half \log |A|\right).
 \end{eqnarray*}
 括弧内の後ろ三項をOccam係数という.
 
@@ -912,10 +912,10 @@ $$\Phi(a) = \int_{-\infty}^a \calN(\theta|0,1)\,d\theta.$$
 \end{itemize}
 $\Phi(\lambda a)$と$\sigma(a)$を近似するように$\lambda$を調節する. 原点で同じ向きになるようにしよう.
 $$
-\sigma'(0)=\sigma(a)(1-\sigma(a))\Bigr|_{a=0}=\half(1-\half)=\frac{1}{4}.
+\sigma'(0)=\sigma(a)(1-\sigma(a))\Bigr|_{a=0}=\half\left(1-\half\right)=\frac{1}{4}.
 $$
 $$
-\Phi'(\lambda a)=\frac{1}{\sqrt{2\pi}}\lambda \exp(-\half(\lambda a)^2)
+\Phi'(\lambda a)=\frac{1}{\sqrt{2\pi}}\lambda \exp\left(-\half(\lambda a)^2\right)
 $$
 より$\Phi'(0)=\lambda/\sqrt{2\pi}$. この二つが等しいので
 $$
@@ -925,15 +925,15 @@ $$
 
 $\Phi$と$\calN$に関する畳み込み計算の関係式：$\lambda>0$として
 \begin{equation}\label{inv_probit}
-\int_{-\infty}^\infty \Phi(\lambda a)\calN(a|\mu,\sigma^2)\,da=\Phi(\frac{\lambda \mu}{\sqrt{1+\lambda^2\sigma^2}}).
+\int_{-\infty}^\infty \Phi(\lambda a)\calN(a|\mu,\sigma^2)\,da=\Phi\left(\frac{\lambda \mu}{\sqrt{1+\lambda^2\sigma^2}}\right).
 \end{equation}
 これを示そう. 左辺を$L$, 右辺を$R$とおく.
 まずガウス分布に関する積分を簡単にする.
 $$
-\calN(a|\mu,\sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}\exp(-\frac{1}{2\sigma^2}(x-\mu)^2).
+\calN(a|\mu,\sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{1}{2\sigma^2}(x-\mu)^2\right).
 $$
 $$
-f(x)=\calN(x|0,1)=\frac{1}{2\pi}\exp(-\half x^2)
+f(x)=\calN(x|0,1)=\frac{1}{2\pi}\exp\left(-\half x^2\right)
 $$
 とおく.
 $$
@@ -941,7 +941,7 @@ $$
 $$
 $a=\mu+\sigma x$とおくと$da=\sigma dx$で
 $$
-\calN(a|\mu,\sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}\exp(-\frac{1}{2\sigma^2}(\mu+\sigma x-\mu)^2)=\frac{1}{\sigma}\frac{1}{\sqrt{2\pi}}\exp(-\half x^2)=\frac{f(x)}{\sigma}.
+\calN(a|\mu,\sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{1}{2\sigma^2}(\mu+\sigma x-\mu)^2\right)=\frac{1}{\sigma}\frac{1}{\sqrt{2\pi}}\exp\left(-\half x^2\right)=\frac{f(x)}{\sigma}.
 $$
 よって
 $$
@@ -949,31 +949,31 @@ L=\int_{-\infty}^\infty \Phi(\lambda \mu+\lambda\sigma x)\frac{f(x)}{\sigma}\sig
 $$
 まず$L$と$R$の$\mu$に関する微分が等しいことを示す. $\Phi'(x)=f(x)$なので
 $$
-\diff{\mu}R=f(\frac{\lambda \mu}{\sqrt{1+\lambda^2\sigma^2}}) \frac{\lambda}{\sqrt{1+\lambda^2\sigma^2}}.
+\diff{\mu}R=f\left(\frac{\lambda \mu}{\sqrt{1+\lambda^2\sigma^2}}\right) \frac{\lambda}{\sqrt{1+\lambda^2\sigma^2}}.
 $$
 $$
-\diff{\mu}L=\int_{-\infty}^\infty \lambda f(\lambda \mu + \lambda \sigma x)f(x)\,dx=\lambda \int_{-\infty}^\infty \Bigl(\frac{1}{\sqrt{2\pi}}\Bigr)^2\exp(-\half(\lambda\mu+\lambda \sigma x)^2-\half x^2)\,dx.
+\diff{\mu}L=\int_{-\infty}^\infty \lambda f(\lambda \mu + \lambda \sigma x)f(x)\,dx=\lambda \int_{-\infty}^\infty \Bigl(\frac{1}{\sqrt{2\pi}}\Bigr)^2\exp\left(-\half(\lambda\mu+\lambda \sigma x)^2-\half x^2\right)\,dx.
 $$
 $\exp()$の内側を$x$について平方完成しよう：
 $$
--\half((\lambda\sigma)^2+1)x^2+2\lambda^2\mu \sigma x + \lambda^2 \mu^2)=-\half\Bigl((\sqrt{1+\lambda^2\sigma^2}x+\frac{\lambda^2\mu \sigma}{\sqrt{1+\lambda^2\sigma^2}})^2+\lambda^2 \mu^2-\frac{\lambda^4 \mu^2 \sigma^2}{1+\lambda^2 \sigma^2} \Bigr).
+-\half\left((\lambda\sigma)^2+1\right)x^2+2\lambda^2\mu \sigma x + \lambda^2 \mu^2)=-\half\left(\left(\sqrt{1+\lambda^2\sigma^2}x+\frac{\lambda^2\mu \sigma}{\sqrt{1+\lambda^2\sigma^2}}\right)^2+\lambda^2 \mu^2-\frac{\lambda^4 \mu^2 \sigma^2}{1+\lambda^2 \sigma^2} \right).
 $$
 定数項は
 $$
 \lambda^2\mu^2-\frac{\lambda^4 \mu^2 \sigma^2}{1+\lambda^2 \sigma^2}=\frac{\lambda^2\mu^2+\lambda^4\mu^2\sigma^2-\lambda^4\mu^2\sigma^2}{1+\lambda^2 \sigma^2}=\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2}.
 $$
 $$
-\int_{-\infty}^\infty\exp(-\frac{1}{2\sigma^2}x^2)\,dx=\sqrt{2\pi}\sigma
+\int_{-\infty}^\infty\exp\left(-\frac{1}{2\sigma^2}x^2\right)\,dx=\sqrt{2\pi}\sigma
 $$
 より
 $$
-I:=\int_{-\infty}^\infty \exp(-\half(\sqrt{1+\lambda^2\sigma^2}x+\frac{\lambda^2\mu\sigma}{\sqrt{1+\lambda^2\sigma^2}})^2)\,dx=\frac{\sqrt{2\pi}}{\sqrt{1+\lambda^2\sigma^2}}.
+I:=\int_{-\infty}^\infty \exp\left(-\half\left(\sqrt{1+\lambda^2\sigma^2}x+\frac{\lambda^2\mu\sigma}{\sqrt{1+\lambda^2\sigma^2}}\right)^2\right)\,dx=\frac{\sqrt{2\pi}}{\sqrt{1+\lambda^2\sigma^2}}.
 $$
 よって
 \begin{eqnarray*}
-\diff{\mu}L &=& \frac{\lambda}{2\pi} \exp(-\half\Bigl(\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2}\Bigr)) I\\
- &=& \frac{\lambda}{2\pi} \exp(-\half\Bigl(\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2}\Bigr)) \frac{\sqrt{2\pi}}{\sqrt{1+\lambda^2\sigma^2}}\\
- &=& \frac{\lambda}{\sqrt{1+\lambda^2\sigma^2}}f(\frac{\lambda\mu}{\sqrt{1+\lambda^2\sigma^2}})\\
+\diff{\mu}L &=& \frac{\lambda}{2\pi} \exp\left(-\half\left(\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2}\right)\right) I\\
+ &=& \frac{\lambda}{2\pi} \exp\left(-\half\Bigl(\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2}\Bigr)\right) \frac{\sqrt{2\pi}}{\sqrt{1+\lambda^2\sigma^2}}\\
+ &=& \frac{\lambda}{\sqrt{1+\lambda^2\sigma^2}}f\left(\frac{\lambda\mu}{\sqrt{1+\lambda^2\sigma^2}}\right)\\
  &=& \diff{\mu}R.
 \end{eqnarray*}
 つまり$L$と$R$は定数の差を除いて等しいことが分かった. 定数項が0であることを示す. $\mu \rightarrow \infty$で
@@ -1002,7 +1002,7 @@ p(w|t) \propto p(w)p(t|w).
 $$
 よって
 $$
-\log p(w|t)=-\half\trans{(w-m_0)}S_0^{-1}(w-m_0)+\sum_{n=1}^N (t_n \log y_n + (1-t_n)\log (1-y_n)) + \text{const}.
+\log p(w|t)=-\half\trans{(w-m_0)}S_0^{-1}(w-m_0)+\sum_{n=1}^N \left(t_n \log y_n + (1-t_n)\log (1-y_n)\right) + \text{const}.
 $$
 これを最大化する最大事後確率（MAP）の解$w_\text{MAP}$を何らかの方法で求める.
 ラプラス近似をするために$w_\text{MAP}$を平均とするガウス分布で近似しよう. 以後$w_\text{MAP}$を$m_N$と書く.
@@ -1025,8 +1025,8 @@ $$
 $$
 よって
 \begin{eqnarray*}
-p(C_1|\phi,t) &\approx& \int \Bigl(\int \delta(a-\trans{w}\phi)\sigma(a)q(w)\,da\Bigr) dw\\
- &=&\int \Bigl(\int \delta(a-\trans{w}\phi)q(w)\,dw\Bigr) \sigma(a)\,da\\
+p(C_1|\phi,t) &\approx& \int \left(\int \delta(a-\trans{w}\phi)\sigma(a)q(w)\,da\right) dw\\
+ &=&\int \left(\int \delta(a-\trans{w}\phi)q(w)\,dw\right) \sigma(a)\,da\\
  &=&\int p(a)\sigma(a)\,da.
 \end{eqnarray*}
 ただし
@@ -1038,15 +1038,15 @@ $$
 $p(a)$の平均を求める. $q(w)$の平均が$m_N$であることに注意すると,
 \begin{eqnarray*}
 \mu_a &=& E[a]=\int p(a)a\,da=\int \int \delta(a-\trans{w}\phi)q(w)a\,dw da\\
- &=& \int \Bigl(\int \delta(a-\trans{w}\phi)a\, da\Bigr)q(w)\,dw = \int q(w)(\trans{w}\phi)\,dw\\
- &=& \trans{(\int q(w)w\,dw)}\phi = \trans{E[w]}\phi = \trans{m_N}\phi.
+ &=& \int \left(\int \delta(a-\trans{w}\phi)a\, da\right)q(w)\,dw = \int q(w)(\trans{w}\phi)\,dw\\
+ &=& \trans{\left(\int q(w)w\,dw\right)}\phi = \trans{E[w]}\phi = \trans{m_N}\phi.
 \end{eqnarray*}
 分散は
 \begin{eqnarray*}
 \sigma(a)^2 &=& \int p(a)(a^2-E[a]^2)\,da \\
  &=& \int (\delta(a-\trans{w}\phi)a^2\,da)q(w)\,dw - \int (\delta(a-\trans{w}\phi)E[a]^2\,da)q(w)\,dw\\
  &=&\int q(w)(\trans{w}\phi)^2\,dw - \int q(w) (\trans{m_N}\phi)^2\,dw\\
- &=&\trans{\phi}\Bigl( \int q(w)(w\trans{w}-m_N \trans{m_N})\,dw \Bigr)\phi.
+ &=&\trans{\phi}\left( \int q(w)(w\trans{w}-m_N \trans{m_N})\,dw \right)\phi.
 \end{eqnarray*}
 括弧内は
 $$
@@ -1083,7 +1083,7 @@ $$
 $q(w)=q(w_1,w_2)=q(w_2|w_1)q(w_1)$より
 \begin{eqnarray*}
 p &=& \int \sigma(\trans{w}\phi)q(w)\,dw=\int \sigma(w_1||\phi||) \int q(w_2|w_1)\,dw_2 dw_1\\
- &=& \int \sigma(w_1||\phi||) \Bigr( \int q(w_2|w_1)\,dw_2 \Bigr) q(w_1) dw_1\\
+ &=& \int \sigma(w_1||\phi||) \left( \int q(w_2|w_1)\,dw_2 \right) q(w_1) dw_1\\
  && {\text 括弧内は}1{\text なので}\\
  &=& \int \sigma(w_1||\phi||)q(w_1)\,dw_1.
 \end{eqnarray*}
@@ -1101,9 +1101,9 @@ $$
 
 前節の結果から$\lambda = \sqrt{\pi/8}$として$\sigma(a) \approx \Phi(\lambda a)$と近似すると
 \begin{eqnarray*}
-\int \sigma(a)\calN(a|\mu,\sigma^2)\,da &\approx& \sigma(\frac{\mu}{\sqrt{1+\lambda^2 \sigma^2}})\\
+\int \sigma(a)\calN(a|\mu,\sigma^2)\,da &\approx& \sigma\left(\frac{\mu}{\sqrt{1+\lambda^2 \sigma^2}}\right)\\
 && \kappa(\sigma^2)=1/\sqrt{1+(\pi/8)\sigma^2}{\text とおくと}\\
-&=&\sigma(\kappa(\sigma^2)\mu).
+&=&\sigma\left(\kappa(\sigma^2)\mu\right).
 \end{eqnarray*}
 よって
 $$
