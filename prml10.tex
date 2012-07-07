@@ -36,7 +36,7 @@ $$
 \calN = \calN(x|\mu,\Sigma)=\frac{1}{(2\pi)^{D/2}}|\Sigma|^{-1/2}\exp\left(-\half\quads{{\Sigma^{-1}}}{(x-\mu)}\right).
 $$
 $$
-E[x]=\mu, \quad \cov[x]=\Sigma, \quad, E[\outp{x}]=\outp{\mu}+\Sigma, \quad E[\inp{x}]=\inp{\mu}+\tr(\Sigma).
+E[x]=\mu, \quad \cov[x]=\Sigma, \quad E\left[\outp{x}\right]=\outp{\mu}+\Sigma, \quad E\left[\inp{x}\right]=\inp{\mu}+\tr(\Sigma).
 $$
 $p(x)=\calN(x|\mu,\Lambda^{-1})$, $p(y|x)=\calN(x|Ax+b, L^{-1})$‚Ì‚Æ‚«
 $$
@@ -216,7 +216,7 @@ $N\rightarrow \infty$‚Ì‚Æ‚«$\mu_N \rightarrow \bar{x}$‚Å•ªU‚Í0i¸“x‚Í$\infty$
 $\tau$‚É‚Â‚¢‚Ä
 \begin{eqnarray*}
 \log q_\tau^*(\tau)
- &=& E_\mu[\log p(D,\tau|\mu)]=E_\mu[\log p(D|\mu,\tau)+\log p(\mu|\tau)]+\log p(\tau)\\
+ &=& E_\mu\left[\log p(D,\tau|\mu)\right]=E_\mu\left[\log p(D|\mu,\tau)+\log p(\mu|\tau)\right]+\log p(\tau)\\
  &=& E_\mu\left[(N/2)\log \tau - (\tau/2) \sum_n (x_n-\mu)^2\right]\\
  &+& E_\mu\left[(1/2)\log (\lambda_0 \tau) - (\lambda_0 \pi/2)(\mu-\mu_0)^2\right]\\
  &+& E_\mu\left[(a_0-1)\log \tau - b_0 \tau - \log \Gamma(a_0)+a_0 \log b_0\right] + C\\
@@ -379,10 +379,10 @@ $q^*(\mu_k,\Lambda_k)=q^*(\mu_k|\Lambda_k) q^*(\Lambda_k)$‚ğl‚¦‚é.
 \begin{eqnarray*}
 \log q^*(\mu_k,\Lambda_k)
  &=& \log \calN(\mu_k|m_0, (\beta_0 \Lambda_k)^{-1})+\log \calW(\Lambda_k|W_0,\nu_0)+\sum_n r_{nk} \log \calN(x_n|\mu_k,\Lambda_k^{-1})\\
- && \mu_k, \Lambda_k{\text ‚ÌˆË‘¶•”•ª‚¾‚¯‚Æ‚è‚¾‚µ‚Ä}\\
+ && i\mu_k, \Lambda_k{\text ‚ÌˆË‘¶•”•ª‚¾‚¯‚Æ‚è‚¾‚µ‚Ä}j\\
  &=&\half\log |\beta_0 \Lambda_k|-\half\quads{\beta_0 \Lambda_k}{(\mu_k-m_0)}
       +\frac{\nu_0-D-1}{2}\log |\Lambda_k|\\
- && - \half\tr (W_0^{-1}\Lambda_k) + \sum_n r_{nk} (\half\log |\Lambda_k|-\half\quads{\Lambda_k}{(x_n-\mu_k)}).
+ && - \half\tr (W_0^{-1}\Lambda_k) + \sum_n r_{nk} \left(\half\log |\Lambda_k|-\half\quads{\Lambda_k}{(x_n-\mu_k)}\right).
 \end{eqnarray*}
 ‚±‚Ì‚¤‚¿X‚É$\mu_k$‚ÉˆË‘¶‚·‚é•”•ª‚ğ‚İ‚éF
 \begin{eqnarray*}
@@ -407,7 +407,7 @@ $$
  &=& \frac{(\nu_0+N_k)-D-1}{2}\log |\Lambda_k|
       -\half\tr\Bigl((\beta_0 \Lambda_k)\outp{(\mu_k-m_0)}\\
   &&  + \sum_n r_{nk} \Lambda_k \outp{(x_n-\mu_k)}-\beta_k \Lambda_k \outp{(\mu_k-m_k)}\Bigr)-\half(\Lambda_k W_0^{-1})\\
-  && v_k:=v_0 + N_k{\text ‚Æ’u‚­}\\
+  && iv_k:=v_0 + N_k{\text ‚Æ’u‚­}j\\
  &=& \frac{\nu_k-D-1}{2}\log |\Lambda_k| - \half\tr\Bigl(\Lambda_k\bigl(W_0^{-1}+\beta_0\outp{(\mu_k-m_0)}\\
  && +\sum_n r_{nk}\outp{(x_n-\mu_k)}-\beta_k\outp{(\mu_k-m_k)}\bigr)\Bigr)\\
  &=& \frac{\nu_k-D-1}{2}\log |\Lambda_k| - \half\tr(\Lambda_k W_k^{-1}) {\text ‚Æ’u‚­}.
@@ -423,11 +423,11 @@ $W_k$‚ğ‹‚ß‚æ‚¤. ‚Ü‚¸
 ‚æ‚Á‚Ä
 \begin{eqnarray*}
 W_k^{-1}
- &=& W_0^{-1}+\beta_0(\outp{\mu_k}-2\mu_k \trans{m_0}+\outp{m_0})
+ &=& W_0^{-1}+\beta_0\left(\outp{\mu_k}-2\mu_k \trans{m_0}+\outp{m_0}\right)
       +N_k S_k + N_k \outp{\bar{x}_k}-2\sum_n r_{nk} x_n \trans{\mu_k}\\
  && + \sum_n r_{nk} \outp{\mu_k} -(\beta_0 + N_k)\Bigl(\outp{\mu_k}-2\mu_k \frac{1}{\beta_k}\trans{(\beta_0 m_0+N_k\bar{x}_k)}\\
  && + \frac{1}{\beta_k^2}\outp{(\beta_0 m_0 + N_k \bar{x}_k)}\Bigr)\\
- && \sum_n r_{nk} = N_k {\text ‚É’ˆÓ‚µ‚Ä}\\
+ && i\sum_n r_{nk} = N_k {\text ‚É’ˆÓ‚µ‚Ä}j\\
  &=& W_0^{-1} + N_k S_k + \beta_0 \outp{m_0}+N_k \outp{\bar{x}_k}\\
  && - \frac{1}{\beta_k}\left(\beta_0^2 \outp{m_0}+2 \beta_0 N_k m_0 \trans{\bar{x}_k}+N_k^2 \outp{\bar{x}_k}\right)\\
  &=& W_0^{-1} + N_k S_k + \frac{(\beta_0 + N_k)\beta_0 - \beta_0^2}{\beta_k}\outp{m_0}
@@ -551,7 +551,7 @@ E[\log q(\mu,\Lambda)]
  &=& \sum_k E\left[-\frac{D}{2} \log (2\pi)+\half \log |\beta_k \Lambda_k|
        - \half \quads{(\beta_k \Lambda_k)}{(\mu_k-m_k)}\right]+E[\log W]\\
  &=& \sum_k \half \log \tilde{\Lambda}_k + \frac{D}{2}\log \left(\frac{\beta_k}{2\pi}\right) -
-  \half \underbrace{\tr E\left[(\beta_k \Lambda_k)\outp{(\mu_k-m_k)}\right]}_{=:X} + \underbrace{E[\log W]}_{=:Y}
+  \half \underbrace{\tr E\left[(\beta_k \Lambda_k)\outp{(\mu_k-m_k)}\right]}_{=:X} + \underbrace{E[\log W]}_{=:Y}.
 \end{eqnarray*}
 \begin{eqnarray*}
 X &=& \tr (\beta_k \Lambda_k)\left(E[\outp{\mu_k}]-2E[\mu_k]\trans{m_k} + \outp{m_k}\right)\\
@@ -576,7 +576,7 @@ E[\log p(\mu,\Lambda)]
 \begin{eqnarray*}
 A &=& E\left[-\frac{D}{2}\log (2\pi)+\half \log |\beta_0 \Lambda_k|-\half \quads{(\beta_0 \Lambda_k)}{(\mu_k - m_0)}\right]\\
  &=& \frac{D}{2}\log\left(\frac{\beta_0}{2\pi}\right)+\half \log \tilde{\Lambda}_k-\half \beta_0 E[\quads{\Lambda_k}{(m_0-\mu_k)}]\\
- && {\text 2ƒy[ƒW‘O‚Ì®i\ref{eval_quad}j‚Åx_n=m_0‚Æ‚µ‚Äg‚¤‚Æ}\\
+ && i{\text 2ƒy[ƒW‘O‚Ì®i\ref{eval_quad}j‚Åx_n=m_0‚Æ‚µ‚Äg‚¤‚Æ}j\\
  &=& \half\left(D\log \left(\frac{\beta_0}{2\pi}\right)+\log \tilde{\Lambda}_k-\beta_0\left(D\beta_k^{-1}+\nu_k\quads{W_k}{(m_0-\mu_k)}\right)\right)\\
  &=& \half\left(D\log \left(\frac{\beta_0}{2\pi}\right)+\log \tilde{\Lambda}_k
       -\frac{D\beta_0}{\beta_k}-\beta_0 \nu_k\quads{W_k}{(m_k-m_0)}\right).
@@ -681,18 +681,18 @@ C=\frac{\beta}{\beta+1}\outp{x}+\frac{\beta^2+\beta-\beta^2}{\beta+1}\outp{m}-\f
 $$
 ‚æ‚Á‚Ä
 \begin{eqnarray*}
-A &=& \int \calN\left(\mu|\frac{x+\beta m}{\beta + 1}, \left((\beta+1)\Lambda\right)^{-1}\right)\frac{1}{(2\pi)^{D/2}}
+A &=& \int \calN\left(\mu\Bigl|\frac{x+\beta m}{\beta + 1}, \left((\beta+1)\Lambda\right)^{-1}\right)\frac{1}{(2\pi)^{D/2}}
       \frac{|\beta \Lambda^2|^{1/2}}{|(\beta+1)\Lambda|^{1/2}}\exp\left(-\half \quads{\left(\frac{\beta}{\beta+1}\Lambda\right)}{(x-m)}\right)\,d\mu\\
-  &=& \calN\left(x|m,(\frac{\beta}{\beta+1}\Lambda)^{-1}\right).
+  &=& \calN\left(x\Bigl|m,\left(\frac{\beta}{\beta+1}\Lambda\right)^{-1}\right).
 \end{eqnarray*}
 ‚Â‚Ü‚è
 $$
-Y = \calN\left(\hat{x}|m_k,\left(\frac{\beta_k}{\beta_k+1}\Lambda_k\right)^{-1}\right).
+Y = \calN\left(\hat{x}\Bigl|m_k,\left(\frac{\beta_k}{\beta_k+1}\Lambda_k\right)^{-1}\right).
 $$
 \begin{eqnarray*}
 D
- &:=& \calN\left(x|m,\left(\frac{\beta}{\beta+1}\Lambda\right)^{-1}\right)W(\Lambda|W,\nu)\\
- &=& \frac{1}{(2\pi)^{D/2}}|\frac{\beta}{\beta+1}\Lambda|^{1/2}\\
+ &:=& \calN\left(x\Bigl|m,\left(\frac{\beta}{\beta+1}\Lambda\right)^{-1}\right)W(\Lambda|W,\nu)\\
+ &=& \frac{1}{(2\pi)^{D/2}}\left|\frac{\beta}{\beta+1}\Lambda\right|^{1/2}\\
   &&   \exp\left(-\half \tr\left(\Lambda \frac{\beta}{\beta+1}\outp{(x-m)}\right)\right)\\
   &&   \cdot B(W,\nu)|\Lambda|^{\frac{\nu-D-1}{2}}\exp\left(-\half \tr(W^{-1}\Lambda)\right).
 \end{eqnarray*}
@@ -700,9 +700,9 @@ $$
 W'^{-1}:=W^{-1}+\frac{\beta}{\beta+1}\outp{(x-m)}
 $$
 ‚Æ‚¨‚­.
-$|I+a\trans{b}|=1+\trans{a}b$‚æ‚è$W=\trans{W}$‚Ì‚Æ‚«
+$\left|I+a\trans{b}\right|=1+\trans{a}b$‚æ‚è$W=\trans{W}$‚Ì‚Æ‚«
 $$
-|W^{-1}+\outp{x}|=|W^{-1}||I+W\outp{x}|=|W|^{-1}(1+\quads{W}{x}).
+\left|W^{-1}+\outp{x}\right|=\left|W^{-1}\right|\left|I+W\outp{x}\right|=|W|^{-1}\left(1+\quads{W}{x}\right).
 $$
 ‚æ‚Á‚Ä
 $$

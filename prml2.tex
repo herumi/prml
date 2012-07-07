@@ -522,7 +522,7 @@ $$\diff{y_i}\left(\trans{\bm{x}}\bm{y}\right)=\sum_j x_j \delta_{ij}=x_j.$$
 $$\diff{\bm{x}}\left(\quadf{A}{x}\right)=2A\bm{x}.$$
 
 \item $AA^{-1}=I$の両辺を$x$で微分すると
-$$(\diff{x} A)A^{-1}+A \diff{x}(A^{-1})=0.$$
+$$\left(\diff{x} A\right)A^{-1}+A \diff{x}(A^{-1})=0.$$
 
 左から$A^{-1}$をかけることによって
 \begin{equation}\label{diff_inv}
@@ -562,7 +562,7 @@ $$\diff{x}A=A'
 $$(P^{-1})'\tri(\lambda_i)P=-P^{-1}P'P^{-1}\tri(\lambda_i)P$$
 更に$\tr(A+B)=\tr(A)+\tr(B)$を使うと
 \begin{eqnarray*}
-\tr(A^{-1}A')&=&-\tr\left(\left(P^{-1}\tri(\lambda_i)^{-1}P\right)P^{-1}P'P^{-1}\tri(\lambda_i)P\right)\\
+\tr\left(A^{-1}A'\right)&=&-\tr\left(\left(P^{-1}\tri(\lambda_i)^{-1}P\right)P^{-1}P'P^{-1}\tri(\lambda_i)P\right)\\
  &+&\tr\left((P^{-1}\tri(\lambda_i)^{-1}P)P^{-1}\tri(\lambda_i')P\right)\\
  &+&\tr\left((P^{-1}\tri(\lambda_i)^{-1}P)P^{-1}\tri(\lambda_i)P'\right)\\
  &=&-\tr\left(P^{-1}\tri(\lambda_i)^{-1}P'P^{-1}\tri(\lambda_i)P\right)\\
@@ -607,7 +607,7 @@ $$\diff{a_{ij}}\log|A|=\tr\left(A^{-1}\diff{a_{ij}}A\right).$$
 $\diff{a_{ij}}A$は$ij$成分のみが1でそれ以外は0の行列になる.
 その行列を$I_{ij}$と書くと,
 \begin{eqnarray*}
-\tr(A^{-1}I_{ij})&=&\sum_s (A^{-1}I_{ij})_{ss}\\
+\tr(A^{-1}I_{ij})&=&\sum_s \left(A^{-1}I_{ij}\right)_{ss}\\
 &=&\sum_s \left(\sum_t (A^{-1})_{st} (I_{ij})_{ts}\right)\\
 &=&\sum_s \left(\sum_t (A^{-1})_{st} \delta_{it} \delta_{js}\right) = (A^{-1})_{ji}.
 \end{eqnarray*}

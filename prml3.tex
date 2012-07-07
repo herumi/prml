@@ -18,12 +18,12 @@ $$\diff{\bm{y}} (\trans{\bm{x}}\bm{y}) = \bm{x}.$$
 
 \subsection{誤差関数の最小化}
 
-$$f(\bm{w})=\sum_{n=1}^N\{t_n - \trans{\bm{w}}\phi(\bm{x}_n)\}^2+\lambda \trans{\bm{w}}\bm{w}$$
+$$f(\bm{w})=\sum_{n=1}^N\left(t_n - \trans{\bm{w}}\phi(\bm{x}_n)\right)^2+\lambda \trans{\bm{w}}\bm{w}$$
 とする. ここで$\bm{w}$と$\phi(\bm{x}_n)$は$M$次元縦ベクトルである.
 $$\trans{\Phi}=(\phi(\bm{x}_1) \cdots \phi(\bm{x}_N))$$
 とおく. $\Phi$は$N$行$M$列の行列である. $f(\bm{w})$を$w$で微分しよう.
 $$\diff{\bm{w}}f(\bm{w})
-= 2\sum_{n=1}^N\{t_n - \trans{\bm{w}}\phi(\bm{x}_n)\}(-\phi(\bm{x}_n)) +2\lambda \bm{w}.$$
+= 2\sum_{n=1}^N\left(t_n - \trans{\bm{w}}\phi(\bm{x}_n)\right)(-\phi(\bm{x}_n)) +2\lambda \bm{w}.$$
 一般に縦ベクトル$\bm{x}$, $\bm{y}$に対して
 $$(\trans{\bm{x}}\bm{y})\bm{y}
  =(\trans{\bm{y}}{\bm{x}})\bm{y}
@@ -251,7 +251,7 @@ E(w) &=& \int \exp\left(-E(w)\right)\,dw \\
 
 従って
 \begin{eqnarray}\label{log_evidence}
-\log p(\bm{t}|\alpha,\beta)
+\log p(\bm{t}|\alpha,\beta)\nonumber
  &=& (N/2) \log\left(\frac{\beta}{2\pi}\right) + (M/2) \log\left(\frac{\alpha}{2\pi}\right) \log \left(\int \exp\left(-E(w)\right)\,dw\right)\\
  &=& (M/2)\log \alpha + \frac{N}{2} \log \beta - E(m_N) - \half\log |A| - \frac{N}{2} \log(2\pi).
 \end{eqnarray}

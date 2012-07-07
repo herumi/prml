@@ -154,7 +154,7 @@ $$
 \diff{\Sigma_k}F
  &=& \sum_n \gamma(z_{nk}) \diff{\Sigma_k} \log \calN_{nk}\\
  &=&\sum_n \gamma(z_{nk})\left(-\half(\Sigma_k^{-1})
-        + \half(\Sigma_k^{-1}\outp{(x_n-\mu_k)}\Sigma_k^{-1})\right) = 0.
+        + \half\left(\Sigma_k^{-1}\outp{(x_n-\mu_k)}\Sigma_k^{-1}\right)\right) = 0.
 \end{eqnarray*}
 よって
 $$
@@ -309,7 +309,7 @@ E[x_i x_j]=
 $$
 よって
 $$
-\cov[x]_{ij}=E[\outp{(x-\mu)}]_{ij}=E[x_i x_j]-(\outp{\mu})_{ij}=(\mu_i - \mu_i^2)\delta_{ij}
+\cov[x]_{ij}=E\left[\outp{(x-\mu)}\right]_{ij}=E[x_i x_j]-(\outp{\mu})_{ij}=(\mu_i - \mu_i^2)\delta_{ij}
 $$
 より
 $$
@@ -328,9 +328,9 @@ E_k[\outp{x}]=\cov_k[x]+\outp{\mu_k}=\Sigma_k+\outp{\mu_k}
 $$
 より
 \begin{eqnarray*}
-\cov[x]&=&E[\outp{(x-E[x])}]\\
-       &=&E[\outp{x}]-\outp{E[x]}\\
-       &=&\sum_k \pi_k(\Sigma_k+\outp{\mu_k})-\outp{E[x]}.
+\cov[x]&=&E\left[\outp{(x-E[x])}\right]\\
+       &=&E\left[\outp{x}\right]-\outp{E[x]}\\
+       &=&\sum_k \pi_k\left(\Sigma_k+\outp{\mu_k}\right)-\outp{E[x]}.
 \end{eqnarray*}
 データ集合$X=\{x_1, \ldots, x_N\}$が与えられたとき, 対数尤度関数は
 $$
@@ -363,7 +363,7 @@ $$
 \begin{eqnarray*}
 E[z_{nk}]
  &=& \frac{\sum_{z_n} z_{nk} \prod_j (\pi_j p(x_n|\mu_j))^{z_{nj}}}{\sum_{z_n} \prod_j (\pi_j p(x_n|\mu_j)^{z_{nj}}}\\
- && (z_{nk}=1 \text{となるものだけとるので})\\
+ && （z_{nk}=1 \text{となるものだけとるので}）\\
  &=& \frac{\pi_k p(x_n|\mu_k)}{\sum_j \pi_j p(x_n|\mu_j)}
 \end{eqnarray*}
 を$\gamma(z_{nk})$とおく. すると
@@ -443,8 +443,8 @@ F &=& E[\log p(t,w|\alpha,\beta)]\\
  &=& E\left[\sum_n \left(\half \log \left(\frac{\beta}{2\pi}\right)
      -\frac{\beta}{2}(t_n-\trans{w}\phi_n)^2\right)
      +\frac{M}{2}\log \left(\frac{\alpha}{2\pi}\right) - \frac{\alpha}{2}\inp{w}\right]\\
- &=& \frac{M}{2}\log \left(\frac{\alpha}{2\pi}\right)-\frac{\alpha}{2}E[\inp{w}]
-     +\frac{N}{2}\log \left(\frac{\beta}{2\pi}\right)-\frac{\beta}{2}\sum_n E[(t_n-\trans{w}\phi_n)^2].
+ &=& \frac{M}{2}\log \left(\frac{\alpha}{2\pi}\right)-\frac{\alpha}{2}E\left[\inp{w}\right]
+     +\frac{N}{2}\log \left(\frac{\beta}{2\pi}\right)-\frac{\beta}{2}\sum_n E\left[(t_n-\trans{w}\phi_n)^2\right].
 \end{eqnarray*}
 
 $\alpha$に関する最大化
@@ -458,11 +458,11 @@ $$
 
 $\beta$に関する最大化
 $$
-\diff{\beta}F=\frac{N}{2}\frac{1}{\beta}-\half\sum_n E[(t_n-\trans{w}\phi_n)^2]=0.
+\diff{\beta}F=\frac{N}{2}\frac{1}{\beta}-\half\sum_n E\left[(t_n-\trans{w}\phi_n)^2\right]=0.
 $$
 よって
 $$
-\frac{1}{\beta}=\frac{1}{N}\sum_n E[(t_n-\trans{w}\phi_n)^2].
+\frac{1}{\beta}=\frac{1}{N}\sum_n E\left[(t_n-\trans{w}\phi_n)^2\right].
 $$
 
 \section{一般のEMアルゴリズム}
@@ -554,7 +554,7 @@ N_k'S'=\sum_{n \ne m}\gamma(z_{nk})\outp{(x_n-\mu_k')}+\gamma'(z_{mk})\outp{(x_m
 $$
 以下式変形をひたすら行う.
 $$
-x_m-\mu_k'=x_m-\mu_k-\frac{d}{N_k'}(x_m-\mu_k)=(1-\frac{d}{N_k'})(x_m-\mu_k)=\frac{N_k}{N_k'}(x_m-\mu_k).
+x_m-\mu_k'=x_m-\mu_k-\frac{d}{N_k'}(x_m-\mu_k)=\left(1-\frac{d}{N_k'}\right)(x_m-\mu_k)=\frac{N_k}{N_k'}(x_m-\mu_k).
 $$
 $$
 x_n-\mu_k'=(x_n-\mu_k)-\frac{d}{N_k'}(x_m-\mu_k).
@@ -576,8 +576,8 @@ $$
 \begin{eqnarray*}
 N_k' S'
  &=& N_k S - \gamma A + 2\frac{d}{N_k'}\gamma A + (N_k-\gamma)\frac{d^2}{N_k'^2}A + (\gamma+d)A \frac{N_k^2}{N_k'^2}\\
- &=& N_k S + \frac{A}{N_k'^2}(-\gamma(N_k+d)^2+2d\gamma(N_k+d)+(N_k-\gamma)d^2+(\gamma+d)N_k^2)\\
- &=& N_k S + \frac{A}{N_k'^2}(-\gamma N_k^2-2d\gamma N_k - \gamma d^2 + 2d \gamma N_k + 2d^2 \gamma + N_k d^2-\gamma d^2 + \gamma N_k^2 + d N_k^2)\\
+ &=& N_k S + \frac{A}{N_k'^2}\left(-\gamma(N_k+d)^2+2d\gamma(N_k+d)+(N_k-\gamma)d^2+(\gamma+d)N_k^2\right)\\
+ &=& N_k S + \frac{A}{N_k'^2}\left(-\gamma N_k^2-2d\gamma N_k - \gamma d^2 + 2d \gamma N_k + 2d^2 \gamma + N_k d^2-\gamma d^2 + \gamma N_k^2 + d N_k^2\right)\\
  &=& N_k S + \frac{A}{N_k'^2}N_k d(N_k+d) = N_k S + \frac{A N_k d}{N_k'}.
 \end{eqnarray*}
 よって

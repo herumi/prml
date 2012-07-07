@@ -262,15 +262,15 @@ S_W &=& \sum_{n\in C_1} x_n\trans{x_n}-2\sum_{C_1} x_n \trans{\bmm_1}+\sum_{C_1}
 \end{eqnarray*}
 よって
 \begin{eqnarray*}
-(S_W+\frac{N_1 N_2}{N}S_B)w&=&N(\bmm_1-\bmm_2)\\
-                           &+&\{N\bmm \trans{\bmm}-N_1\bmm_1 \trans{\bmm_1}-N_2 \bmm_2 \trans{\bmm_2}+\frac{N_1 N_2}{N} (\bmm_1 -\bmm_2)\trans{(\bmm_1-\bmm_2)}\}w.
+\left(S_W+\frac{N_1 N_2}{N}S_B\right)w&=&N(\bmm_1-\bmm_2)\\
+                           &+&\left(N\bmm \trans{\bmm}-N_1\bmm_1 \trans{\bmm_1}-N_2 \bmm_2 \trans{\bmm_2}+\frac{N_1 N_2}{N} (\bmm_1 -\bmm_2)\trans{(\bmm_1-\bmm_2)}\right)w.
 \end{eqnarray*}
 
-$\{\}$内が0であることを示す（めんどうなので$\bmm_i$を$m_i$と略する）.
+$()$内が0であることを示す（めんどうなので$\bmm_i$を$m_i$と略する）.
 \begin{eqnarray*}
-\{\}
-&=& \frac{1}{N}(N_1 m_1+N_2 m_2)\trans{(N_1 m_1+N_2 m_2)}-N_1 m_1\trans{m_1}-N_2 m_2\trans{m_2}+\frac{N_1 N_2}{N}(m_1 \trans{m_2}+m_2 \trans{m_2})\\
-&=& (\frac{N_1^2}{N}-N_1+\frac{N_1 N_2}{N})m_1\trans{m_1}+(\frac{2}{N} N_1 N_2 - \frac{2}{N}N_1 N_2)m_1\trans{m_2}+(\frac{N_2^2}{N}-N_2+\frac{N_1 N_2}{N})m_2 \trans{m_2}.
+()
+&=& \frac{1}{N}\outp{\left(N_1 m_1+N_2 m_2\right)}-N_1 \outp{m_1}-N_2 \outp{m_2}+\frac{N_1 N_2}{N}\left(m_1 \trans{m_2}+m_2 \trans{m_2}\right)\\
+&=& \left(\frac{N_1^2}{N}-N_1+\frac{N_1 N_2}{N}\right)\outp{m_1}+\left(\frac{2}{N} N_1 N_2 - \frac{2}{N}N_1 N_2\right)m_1\trans{m_2}+\left(\frac{N_2^2}{N}-N_2+\frac{N_1 N_2}{N}\right)\outp{m_2}.
 \end{eqnarray*}
 $$
 \frac{N_1^2}{N}-N_1+\frac{N_1 N_2}{N}=\frac{N_1}{N}(N_1-N+N_2)=0,
@@ -280,7 +280,7 @@ $$
 $$
 よって
 $$
-(S_W+\frac{N_1 N_2}{N}S_B)w=N(\bmm_1-\bmm_2).
+\left(S_W+\frac{N_1 N_2}{N}S_B\right)w=N(\bmm_1-\bmm_2).
 $$
 $S_Bw\propto(\bmm_2 -\bmm_1)$なので$w \propto S_W^{-1}(\bmm_2 - \bmm_1)$.
 
@@ -359,7 +359,7 @@ a_k
 $$
 p(C_k|x)
 =\frac{\exp(a_k)}{\sum_j \exp(a_j)}
-=\frac{\exp(a_k')\exp(-(1/2)\quads{A^{-1}}{x}+\text{const})}{\sum_j \exp(a_j')\exp(-(1/2)\quads{A^{-1}}{x}+\text{const})}
+=\frac{\exp(a_k')\exp\left(-(1/2)\quads{A^{-1}}{x}+\text{const}\right)}{\sum_j \exp(a_j')\exp\left(-(1/2)\quads{A^{-1}}{x}+\text{const}\right)}
 =\frac{\exp(a_k')}{\sum_j \exp(a_j')}.
 $$
 
@@ -426,9 +426,9 @@ $$
 最後に$A$に関する最尤解を求める. $A$に関する部分の対数は
 
 \begin{eqnarray*}
- && -\half\sum_{n=1}^N(t_n \log |A|+t_n \trans{(x_n-\mu_1)}A^{-1}(x_n-\mu_1)\\
- &&+(1-t_n) \log |A|+(1-t_n)\trans{(x_n-\mu_2)}A^{-1}(x_n-\mu_2))\\
- &=& -\frac{N}{2}\log |A| - \half \tr\left(\sum_{n=1}^N(t_n A^{-1}(x_n -\mu_1)\trans{(x_n-\mu_1)}+(1-t_n)A^{-1}(x_n-\mu_2)\trans{(x_n-\mu_2)})\right)\\
+ && -\half\sum_{n=1}^N\Bigl(t_n \log |A|+t_n \trans{(x_n-\mu_1)}A^{-1}(x_n-\mu_1)\\
+ &&+(1-t_n) \log |A|+(1-t_n)\trans{(x_n-\mu_2)}A^{-1}(x_n-\mu_2)\Bigr)\\
+ &=& -\frac{N}{2}\log |A| - \half \tr\left(\sum_{n=1}^N\left(t_n A^{-1}(x_n -\mu_1)\trans{(x_n-\mu_1)}+(1-t_n)A^{-1}(x_n-\mu_2)\trans{(x_n-\mu_2)}\right)\right)\\
  &=& -\frac{N}{2}\log |A| -\half \tr\left(A^{-1}\left(\sum_{n\in C_1}(x_n-\mu_1)\trans{(x_n-\mu_1)}+\sum_{n\in C_2}(x_n-\mu_2)\trans{(x_n-\mu_2)}\right)\right)\\
  &=& -\frac{N}{2}\log |A| -\half \tr\left(A^{-1}(N_1 S_1 + N_2 S_2)\right)\\
  &=& -\frac{N}{2}\log |A| -\frac{N}{2} \tr(A^{-1}S)
@@ -629,7 +629,7 @@ p(C_k|\phi)=y_k(\phi)=\frac{\exp(a_k)}{\sum_j \exp(a_j)}, a_k=\trans{w_k}\phi
 $$
 で与えたときに最尤法を用いて直接$w_k$を求めよう.
 $$
-\diff{a_k}y_k=\frac{\exp(a_k)(\sum \exp(a_j))-\exp(a_k)\exp(a_k)}{(\sum \exp(a_j))^2}=y_k-y_k^2.
+\diff{a_k}y_k=\frac{\exp(a_k)\left(\sum \exp(a_j)\right)-\exp(a_k)\exp(a_k)}{\left(\sum \exp(a_j)\right)^2}=y_k-y_k^2.
 $$
 $k\ne j$として
 $$
@@ -702,8 +702,8 @@ $$
 $x=\theta/\sqrt{2}$とおくと$dx=d\theta/\sqrt{2}$.
 \begin{eqnarray*}
 \Phi(a) &=& \int_{-\infty}^a = \int_{-\infty}^0 + \int_0^a=\half+\int_0^a \frac{1}{\sqrt{2\pi}}\exp\left(-\frac{\theta^2}{2}\right)\,d\theta\\
- &=&\half+\int_0^{a/\sqrt{2}}\frac{1}{\sqrt{2\pi}}\exp(-x^2)\sqrt{2}\,dx\\
- &=&\half\left(1+\frac{2}{\sqrt{\pi}}\int_0^{a/\sqrt{2}} \exp(-x^2)\,dx\right)\\
+ &=&\half+\int_0^{a/\sqrt{2}}\frac{1}{\sqrt{2\pi}}\exp\left(-x^2\right)\sqrt{2}\,dx\\
+ &=&\half\left(1+\frac{2}{\sqrt{\pi}}\int_0^{a/\sqrt{2}} \exp\left(-x^2\right)\,dx\right)\\
  &=&\half\left(1+\makeop{erf}\left(\frac{a}{\sqrt{2}}\right)\right).
 \end{eqnarray*}
 プロビット活性化関数を用いた一般化線形モデルをプロビット回帰という.
