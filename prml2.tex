@@ -20,14 +20,14 @@ $$\int f(g(y)) g'(y) \,dy.$$
 
 $x_i = g_i(y_1, \ldots, y_n) \mbox{ for $i=1, \ldots, n$}$とすると
 
-$$\det\left(\frac{\partial (x_1, \ldots, x_n)}{\partial (y_1, \ldots, y_n)}\right) = \det(\frac{\partial x_i}{\partial y_j}).$$
+$$\det\left(\frac{\partial (x_1, \ldots, x_n)}{\partial (y_1, \ldots, y_n)}\right) = \det\left(\frac{\partial x_i}{\partial y_j}\right).$$
 
 ヤコビアンは変数変換したときのある点における微小区間の拡大率を意味する.
 
 適当な条件の下で
 \begin{eqnarray*}
 & & \int \cdots \int f(x_1, \ldots, x_n)\,dx_1 \cdots \,dx_n\\
-&=& \int \cdots \int f\bigl(g_1(y_1, \ldots, y_n), \ldots, g_n(y_1, \ldots, y_n)\bigr)|\det(\frac{\partial x_i}{\partial y_j})|\,dy_1\cdots dy_n.
+&=& \int \cdots \int f\left(g_1(y_1, \ldots, y_n), \ldots, g_n(y_1, \ldots, y_n)\right)\left|\det\left(\frac{\partial x_i}{\partial y_j}\right)\right|\,dy_1\cdots dy_n.
 \end{eqnarray*}
 
 \subsection{奇関数の積分}
