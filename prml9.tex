@@ -11,9 +11,7 @@
 
 \section{復習}
 よく使ういくつかの式を書いておく. どれも今までに既に示したものである.\\
-{\tt https://github.com/herumi/prml/raw/master/prml2.pdf},\\
-{\tt https://github.com/herumi/prml/raw/master/prml3.pdf}
-を参照.
+2章や3章を参照.
 
 \subsection{行列の公式}
 \begin{eqnarray*}
@@ -265,8 +263,8 @@ $$
 $$
 として同様（流石に略）.
 \section{$K$-meansとの関連}
-式(9.43)は不正確. $E$ではなく$\epsilon E$を考えないと(9.43)の右辺にはならない.
-式(9.40)を$E$とおく.
+PRML式(9.43)は不正確. $E$ではなく$\epsilon E$を考えないとPRML式(9.43)の右辺にはならない.
+RPML式(9.40)を$E$とおく.
 $$
 E=\sum_{n,k} \gamma(z_{nk})\left(\log \pi_k + \log \calN(x_n|\mu_k,\Sigma_k)\right).
 $$
@@ -482,8 +480,8 @@ $$
 \KL(q||p)=-\sum_Z q(Z) \log \frac{p(Z|X,\theta)}{q(Z)}
 $$
 とおく.
-$\KL(q||p)$は$q(Z)$と事後分布$p(Z|X,\theta)$との距離なので常に0以上\\
-（cf. {\tt https://github.com/herumi/prml/raw/master/prml3.pdf}）.
+$\KL(q||p)$は$q(Z)$と事後分布$p(Z|X,\theta)$との距離なので常に0以上
+（3章のカルバック距離を参照）.
 \begin{eqnarray*}
 \calL(q,\theta)+\KL(q||p)
  &=& \sum_Z q(Z) \log \frac{p(X,Z|\theta)}{p(Z|X,\theta)}\\

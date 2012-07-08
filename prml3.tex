@@ -148,7 +148,7 @@ S_{N+1}^{-1}
 $$
 行列$\beta v\trans{v}$は正定値であり, $S_N$に関して帰納法を使うと全ての$S_N$は正定値であることが分かる.
 
-公式\ref{inv_A_xx}を使って
+式(\ref{inv_A_xx})を使って
 \begin{eqnarray*}
 \sigma_{N+1}^2&=&\frac{1}{\beta} + \trans{\phi}\left(S_N^{-1} + \beta v\trans{v}\right)^{-1}\phi\\
  &=& \frac{1}{\beta} + \trans{\phi}\left(S_N - \frac{\left(S_N v\right)\left(\trans{v} S_N\right)}{1+\trans{v}S_Nv}\right)\phi\\
@@ -313,7 +313,7 @@ $$
 $$
 \diff{\alpha}\log |A|=\sum_{i=1}^M \frac{1}{\lambda_i + \alpha}.
 $$
-式\ref{log_evidence}を$\alpha$で微分すると
+式(\ref{log_evidence})を$\alpha$で微分すると
 $$
 \diff{\alpha} \log p\left(\bm{t}|\alpha,\beta\right)=\frac{M}{2\alpha}-\half\trans{m_N}m_N - \half\sum \frac{1}{\lambda_i + \alpha}=0.
 $$
@@ -336,7 +336,7 @@ $$
 $$
 \diff{\beta} \log |A| = \sum \frac{\lambda_i/\beta}{\lambda_i + \alpha}=\frac{\gamma}{\beta}.
 $$
-式\ref{log_evidence}を$\beta$で微分すると
+式(\ref{log_evidence})を$\beta$で微分すると
 $$
 \frac{N}{2\beta} - \half||\bm{t}-\Phi m_N||^2-\frac{\gamma}{2\beta}=0.
 $$
