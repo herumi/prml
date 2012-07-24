@@ -10,7 +10,67 @@
 概ねPRMLに従ってますが, 違う方法をとっているところもあります.
 
 \section{微積分の復習}
+\subsection{微分の定義}
+微分の積の公式も忘れたなあという人のために，微分について軽く復習しておこう．
+関数$y=f(x)$が与えられたとき，点$x=a$における微分係数$f'(a)$とはその点でのグラフの接線の傾きのことであった．
+\begin{figure}[h]
+ \begin{minipage}{0.5\hsize}
+  \begin{center}
+   \includegraphics[bb=0 0 160 120,width=4cm]{../prml/f_x.pdf}
+  \end{center}
+  \caption{$y=f(x)$}
+  \label{f_x}
+ \end{minipage}
+\end{figure}
 
+$h$を十分小さい値ならば，$x=a$での接線の傾きは区間$[a, a+h]$での平均の傾きで近似できるだろう：
+$$
+f'(a) = a{\text における傾き} \approx \frac{f(a+h)-f(a)}{(a+h)-a}=\frac{f(a+h)-f(a)}{h}.
+$$
+両辺を$h$倍して移行すると
+$$
+f(a+h) \approx f(a) + f'(a)h.
+$$
+この式は$f$の点$a$における値$f(a)$と傾き$f'(a)$で$a$の付近の値を直線で近似したということを表している（$h$について線形）．
+$a$を$x$で置き換えて
+$$
+f(x+h) = f(x) + f'(x)h + \epsilon
+$$
+とかくことにする．$\epsilon$は$h$に比べて十分小さい$h$の関数である．
+
+さて，二つの関数$f(x)$と$g(x)$があったとき，その積の関数$s(x)=f(x)g(x)$の微分はどうなるだろうか．
+\begin{eqnarray*}
+f(x+h)&=&f(x)+f'(x)h + \epsilon_1\\
+g(x+h)&=&g(x)+g'(x)h + \epsilon_2
+\end{eqnarray*}
+を$s(x+h)$に代入して計算してみよう：
+\begin{eqnarray*}
+s(x+h) &=& f(x+h)g(x+h)\\
+       &=& \left(f(x)+f'(x)h+\epsilon_1\right)\left(g(x)+g'(x)h+\epsilon_2\right)\\
+       &=& f(x)g(x)+(f'(x)g(x)+f(x)g'(x))h + (h{\text より十分小さい})\\
+       &=& s(x)+(f'(x)g(x)+f(x)g'(x))h + \epsilon_3
+\end{eqnarray*}
+となる．つまり
+$$
+(f(x)g(x))'=f'(x)g(x)+f(x)g'(x)
+$$
+が成り立つ．これが積の微分である．
+
+もう一つ試してみよう．今度は$y=f(x)$と$z=g(y)$という関数があったときにその合成関数$z=g(f(x))$の微分を考えてみる．
+\begin{eqnarray*}
+g(f(x+h)) &=& g(f(x) + f'(x)h + \epsilon_1)\\
+          &=& g(f(x)) + g'(f(x))(f'(x)h + \epsilon_1) + \epsilon_2\\
+          &=& g(f(x)) + g'(f(x))f'(x)h + \epsilon_3.
+\end{eqnarray*}
+つまり
+$$
+(g(f(x)))' = g'(f(x))f'(x)
+$$
+が成り立つ．これは合成関数の微分である．$dy/dx=f'(x)$という微分の記号を使うと
+$$
+\frac{d(g(f(x)))}{dx}=\frac{dg}{dy}\Bigl|_{y=f(x)} \frac{dy}{dx}.
+$$
+$dy/dx$という記号があたかも約分できるように見えるのが面白い．変数変換ではこの記法が活躍する．
 \subsection{変数変換}
 
 $$\int f(x) \,dx$$
