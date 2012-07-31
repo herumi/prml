@@ -109,7 +109,7 @@ A^{-1}B\left(D+CA^{-1}B\right)^{-1}CA^{-1} &=& A^{-1}B\left(\left(DB^{-1}A+C\rig
 \end{equation}
 が成り立つ.
 
-\subsection{正定値対称行列}
+\subsection{正定値対称行列}\label{pos_sym_matrix}
 $n$次元実対称行列$A$はある直行行列$P$を用いて常に対角化可能であった.
 $$P^{-1}AP=\diag(\lambda_1, \cdots, \lambda_n).$$
 全ての固有値が正であるとき$A$を正定値といい, $A > 0$とかく.
@@ -260,7 +260,7 @@ E(w) &=& \int \exp\left(-E(w)\right)\,dw \\
 \subsection{ヘッセ行列}
 $x$が$n$次縦ベクトルのとき, $y=f(x)$における2階微分の$n$次正方行列
 $$
-H(f)=\left(\difff{x_i}{x_j}f(x)\right)
+H(f)=\left(\ddif{x_i}{x_j}f(x)\right)
 $$
 をヘッセ行列という.
 通常偏微分は可換なので, これは対称行列である.

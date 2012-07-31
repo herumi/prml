@@ -524,7 +524,7 @@ $$
 \dif{w}E(w)=\sum(t_n-\trans{w}\phi_n)\phi_n=\sum \phi_n \trans{\phi_n}w-\sum \phi_n t_n=\PhiT \Phi w-\PhiT t.
 $$
 $$
-H=H(w)=\difff{w_i}{w_j}E(w)=\PhiT \Phi.
+H=H(w)=\ddif{w_i}{w_j}E(w)=\PhiT \Phi.
 $$
 更新式に代入すると
 $$
@@ -663,7 +663,7 @@ $$
 $$
 より
 $$
-H = \difff{w_k}{w_j}E
+H = \ddif{w_k}{w_j}E
   = \sum_n y_{nk}(\delta_{kj}-y_{nj})\phi_n \trans{\phi_n}.
 $$
 
@@ -803,7 +803,7 @@ $$
 $M$次元の場合を考える. $p(z)=(1/Z)f(z)$. $z=z_0$が最大値を与えるなら$p(z_0)>0$, $\dif{z}f(z_0)=0$.
 1次元と同様に
 $$
-A=-\difff{z_i}{z_j} \log f(z) \Bigl|_{z=z_0}
+A=-\ddif{z_i}{z_j} \log f(z) \Bigl|_{z=z_0}
 $$
 とすると$A>0$（正定値）で
 $$
@@ -824,7 +824,7 @@ $$
 
 データ集合$D$, パラメータ$\{\theta_i\}$の集合$\{M_i\}$を考えて各モデルに対して$p(D|\theta_i, M_i)$を定義する.
 事前確率$p(\theta_i|M_i)$を決めてモデルエビデンス$p(D|M_i)$を計算してみよう. 以下$M_i$を略す.
-また行列作用素$(\difff{\theta_i}{\theta_j})$を$\nabla^2$と書くことにする.
+また行列作用素$(\ddif{\theta_i}{\theta_j})$を$\nabla^2$と書くことにする.
 $$
 p(D)=\int p(D|\theta)p(\theta)\,d\theta.
 $$
