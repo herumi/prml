@@ -9,11 +9,11 @@
 
 \subsection{微分の復習}
 $\bm{x}$, $\bm{y}$を縦ベクトルとして
-$$\diff{\bm{x}} (\trans{\bm{x}}\bm{y}) = \bm{y}.$$
-$$\diff{\bm{y}} (\trans{\bm{x}}\bm{y}) = \bm{x}.$$
+$$\dif{\bm{x}} (\trans{\bm{x}}\bm{y}) = \bm{y}.$$
+$$\dif{\bm{y}} (\trans{\bm{x}}\bm{y}) = \bm{x}.$$
 
-ここで$\diff{\bm{x}}$は$\diff{x_i}$を縦に並べた縦ベクトルとする.
-2章でも述べたが$\diff{\bm{x}}$を$\nabla$と書くこともあるがPRMLでは場所によって縦ベクトル（3.22）だったり,
+ここで$\dif{\bm{x}}$は$\dif{x_i}$を縦に並べた縦ベクトルとする.
+2章でも述べたが$\dif{\bm{x}}$を$\nabla$と書くこともあるがPRMLでは場所によって縦ベクトル（3.22）だったり,
 横ベクトル（3.13）だったりする. 常に縦ベクトルとしたほうが混乱は少ない.
 
 \subsection{誤差関数の最小化}
@@ -22,7 +22,7 @@ $$f(\bm{w})=\sum_{n=1}^N\left(t_n - \trans{\bm{w}}\phi(\bm{x}_n)\right)^2+\lambd
 とする. ここで$\bm{w}$と$\phi(\bm{x}_n)$は$M$次元縦ベクトルである.
 $$\trans{\Phi}=(\phi(\bm{x}_1) \cdots \phi(\bm{x}_N))$$
 とおく. $\Phi$は$N$行$M$列の行列である. $f(\bm{w})$を$w$で微分しよう.
-$$\diff{\bm{w}}f(\bm{w})
+$$\dif{\bm{w}}f(\bm{w})
 = 2\sum_{n=1}^N\left(t_n - \trans{\bm{w}}\phi(\bm{x}_n)\right)(-\phi(\bm{x}_n)) +2\lambda \bm{w}.$$
 一般に縦ベクトル$\bm{x}$, $\bm{y}$に対して
 $$(\trans{\bm{x}}\bm{y})\bm{y}
@@ -31,7 +31,7 @@ $$(\trans{\bm{x}}\bm{y})\bm{y}
  =(\bm{y}\trans{\bm{y}})\bm{x}
 $$だから$\bm{t}=\trans{(t_1, \ldots, t_N)}$とおくと
 \begin{eqnarray*}
-\half\diff{\bm{w}}f(\bm{w})
+\half\dif{\bm{w}}f(\bm{w})
  &=& -\sum_n t_n \phi(\bm{x}_n) + \sum_n \left(\phi(\bm{x}_n)\trans{\phi(\bm{x}_n)}\right)\bm{w} + \lambda \bm{w}\\
  &=& -\trans{\Phi} \bm{t} + \trans{\Phi}\Phi \bm{w} + \lambda \bm{w}\\
  &=& -\trans{\Phi} \bm{t} + (\trans{\Phi}\Phi + \lambda I)\bm{w}=0.
@@ -73,7 +73,7 @@ $$f(A) = ||y||^2=\trans{\left(Ax\right)}Ax$$
 $$\trans{\left(Ax\right)}Ax=\sum_s \left(Ax\right)_s \left(Ax\right)_s = \sum_s \left(\sum_t a_{st}x_t\right) \left(\sum_u a_{su}x_u\right) = \sum_{s,t,u} x_t x_u a_{st}a_{su}.$$
 よって
 \begin{eqnarray*}
-\diff{a_{ij}}f(A) &=& \sum_{s,t,u} x_t x_u \left(\left(\diff{a_{ij}}a_{st}\right) a_{su} + a_{st} \diff{a_{ij}}a_{su}\right)\\
+\dif{a_{ij}}f(A) &=& \sum_{s,t,u} x_t x_u \left(\left(\dif{a_{ij}}a_{st}\right) a_{su} + a_{st} \dif{a_{ij}}a_{su}\right)\\
  &=& \sum_{s,t,u}x_t x_u\left(\delta_{is}\delta_{jt}a_{su} + a_{st} \delta_{is}\delta_{ju}\right)\\
  &=& \left(\sum_u x_j x_u a_{iu}\right) + \left(\sum_t x_t x_j a_{it}\right)\\
  &=& 2\sum_u x_j x_u a_{iu}\\
@@ -81,7 +81,7 @@ $$\trans{\left(Ax\right)}Ax=\sum_s \left(Ax\right)_s \left(Ax\right)_s = \sum_s 
  &=& 2\left(Ax\trans{x}\right)_{ij}.
 \end{eqnarray*}
 よって
-$$\diff{A}||Ax||^2 = 2Ax\trans{x}.$$
+$$\dif{A}||Ax||^2 = 2Ax\trans{x}.$$
 
 \subsection{Woodburyの逆行列の公式}
 
@@ -279,7 +279,7 @@ $$
 H(g)=\matt{2}{0}{0}{2}
 $$
 となり, ヘッセ行列が原点での形に対応していることが分かる.
-\begin{figure}[ht]
+\begin{figure}[h]
  \begin{minipage}{0.5\hsize}
   \begin{center}
    \includegraphics[scale=0.3]{../prml/x2my2.ps}
@@ -311,11 +311,11 @@ $$
 $$
 となる. $\alpha$で微分すると
 $$
-\diff{\alpha}\log |A|=\sum_{i=1}^M \frac{1}{\lambda_i + \alpha}.
+\dif{\alpha}\log |A|=\sum_{i=1}^M \frac{1}{\lambda_i + \alpha}.
 $$
 式(\ref{log_evidence})を$\alpha$で微分すると
 $$
-\diff{\alpha} \log p\left(\bm{t}|\alpha,\beta\right)=\frac{M}{2\alpha}-\half\trans{m_N}m_N - \half\sum \frac{1}{\lambda_i + \alpha}=0.
+\dif{\alpha} \log p\left(\bm{t}|\alpha,\beta\right)=\frac{M}{2\alpha}-\half\trans{m_N}m_N - \half\sum \frac{1}{\lambda_i + \alpha}=0.
 $$
 よって
 $$
@@ -330,11 +330,11 @@ $$
 $\beta$についても同様にしてみる. $\beta\trans{\Phi}\Phi$の固有値が$\lambda_i$だから$\lambda_i$は$\beta$に比例する.
 つまり微分が比例係数に等しい.
 $$
-\diff{\beta} \lambda_i = \lambda_i/\beta.
+\dif{\beta} \lambda_i = \lambda_i/\beta.
 $$
 よって
 $$
-\diff{\beta} \log |A| = \sum \frac{\lambda_i/\beta}{\lambda_i + \alpha}=\frac{\gamma}{\beta}.
+\dif{\beta} \log |A| = \sum \frac{\lambda_i/\beta}{\lambda_i + \alpha}=\frac{\gamma}{\beta}.
 $$
 式(\ref{log_evidence})を$\beta$で微分すると
 $$

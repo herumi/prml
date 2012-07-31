@@ -16,9 +16,9 @@
 \subsection{行列の公式}
 \begin{eqnarray*}
 && \quads{A}{x}=\tr\left(Ax\trans{x}\right),\\
-&& \diff{A}\log|A|=\trans{(A^{-1})},\\
-&& \diff{x}\log|A|=\tr\left(A^{-1}\diff{x}A\right),\\
-&& \diff{A}\tr(A^{-1}B) = -\trans{(A^{-1}BA^{-1})}.
+&& \dif{A}\log|A|=\trans{(A^{-1})},\\
+&& \dif{x}\log|A|=\tr\left(A^{-1}\dif{x}A\right),\\
+&& \dif{A}\tr(A^{-1}B) = -\trans{(A^{-1}BA^{-1})}.
 \end{eqnarray*}
 
 \subsection{微分}
@@ -101,23 +101,23 @@ F=\log p(X|\vpi,\mu,\Sigma)=\sum_{n=1}^N \log\left(\sum_{j=1}^K \pi_j \calN(x_n|
 $$
 とする.
 $$
-\diff{\mu} \log \calN(x|\mu,\Sigma)
-= \diff{\mu} \left(-\half\quads{{\Sigma^{-1}}}{{(x-\mu)}}\right)
+\dif{\mu} \log \calN(x|\mu,\Sigma)
+= \dif{\mu} \left(-\half\quads{{\Sigma^{-1}}}{{(x-\mu)}}\right)
 = \Sigma^{-1}(x-\mu)
 $$
 より
 $$
-\diff{\mu} \calN = \calN \cdot \left(\diff{\mu} \log \calN\right) = \calN \cdot \Sigma^{-1}(x-\mu).
+\dif{\mu} \calN = \calN \cdot \left(\dif{\mu} \log \calN\right) = \calN \cdot \Sigma^{-1}(x-\mu).
 $$
 もちろんガウス分布の微分は普通にそのまましてもよい.
 だが今回は対数をとってから微分をとった方が,
 微分してでてくる$\calN$が$\gamma(z_{nk})$の一部となることを見通しやすいのでそうしてみた.
 さて$\calN_{nk}=\calN(x_n|\mu_k,\Sigma_k)$とおいて
 \begin{eqnarray*}
-\diff{\mu_k}F
- &=& \sum_n \frac{\pi_k \diff{\mu_k}\calN_{nk}}{\sum_j \pi_j \calN_{nj}} \\
- &=& \sum_n \left(\frac{\pi_k \calN_{nk}}{\sum_j \pi_j \calN_{nj}}\right)\diff{\mu_k}\log \calN_{nk} \\
- &=& \sum_n \gamma(z_{nk}) \diff{\mu_k}\log \calN_{nk} \\
+\dif{\mu_k}F
+ &=& \sum_n \frac{\pi_k \dif{\mu_k}\calN_{nk}}{\sum_j \pi_j \calN_{nj}} \\
+ &=& \sum_n \left(\frac{\pi_k \calN_{nk}}{\sum_j \pi_j \calN_{nj}}\right)\dif{\mu_k}\log \calN_{nk} \\
+ &=& \sum_n \gamma(z_{nk}) \dif{\mu_k}\log \calN_{nk} \\
  &=& \Sigma_k^{-1}\left(\sum_n \gamma(z_{nk})(x_n-\mu_k)\right)=0.
 \end{eqnarray*}
 よって
@@ -143,14 +143,14 @@ $$
 $$
 なので$\trans{\Sigma}=\Sigma$だから
 $$
-\diff{\Sigma} (\log \calN)
+\dif{\Sigma} (\log \calN)
 = -\half(\Sigma^{-1})
   +\half\left(\Sigma^{-1}(x-\mu)\trans{(x-\mu)}\Sigma^{-1}\right).
 $$
 よって$\mu_k$の微分と同様にして
 \begin{eqnarray*}
-\diff{\Sigma_k}F
- &=& \sum_n \gamma(z_{nk}) \diff{\Sigma_k} \log \calN_{nk}\\
+\dif{\Sigma_k}F
+ &=& \sum_n \gamma(z_{nk}) \dif{\Sigma_k} \log \calN_{nk}\\
  &=&\sum_n \gamma(z_{nk})\left(-\half(\Sigma_k^{-1})
         + \half\left(\Sigma_k^{-1}\outp{(x_n-\mu_k)}\Sigma_k^{-1}\right)\right) = 0.
 \end{eqnarray*}
@@ -169,7 +169,7 @@ G=F+\lambda\left(\sum_k \pi_k-1\right)
 $$
 とすると
 $$
-\diff{\pi_k}{G}
+\dif{\pi_k}{G}
 =\sum_n \frac{\calN_{nk}}{\sum_j \pi_j\calN_{nj}}+\lambda=\sum_n \gamma(z_{nk})/\pi_k+\lambda=N_k/\pi_k+\lambda=0.
 $$
 つまり
@@ -203,7 +203,7 @@ G=F+\lambda\left(\sum_k \pi_k-1\right)
 $$
 として
 $$
-\diff{\pi_k}G=\sum_n z_{nk}\frac{1}{\pi_k}+\lambda=\left(\sum_n z_{nk}\right)/\pi_k + \lambda=0.
+\dif{\pi_k}G=\sum_n z_{nk}\frac{1}{\pi_k}+\lambda=\left(\sum_n z_{nk}\right)/\pi_k + \lambda=0.
 $$
 よって
 $$
@@ -238,7 +238,7 @@ $$
 今までと同様にできる.
 $F'=F+\lambda(\sum_k \pi_k-1)$として
 $$
-\diff{\pi_k}F'=\sum_n \gamma(z_{nk})(1/\pi_k)+\lambda=0
+\dif{\pi_k}F'=\sum_n \gamma(z_{nk})(1/\pi_k)+\lambda=0
 $$
 より
 $$
@@ -252,14 +252,14 @@ $$
 \pi_k=\frac{1}{N}\sum_n \gamma(z_{nk})=\frac{N_k}{N}.
 $$
 $$
-\diff{\mu_k}F=\sum_n\gamma(z_{nk})\left(-\Sigma_k^{-1}(x_n-\mu_k)\right)=\Sigma_k^{-1}\left(\sum_n \gamma(z_{nk})x_n-\left(\sum_n \gamma(z_{nk})\right)\mu_k\right)=0.
+\dif{\mu_k}F=\sum_n\gamma(z_{nk})\left(-\Sigma_k^{-1}(x_n-\mu_k)\right)=\Sigma_k^{-1}\left(\sum_n \gamma(z_{nk})x_n-\left(\sum_n \gamma(z_{nk})\right)\mu_k\right)=0.
 $$
 よって
 $$
 \mu_k=\frac{1}{N_k}\sum_n \gamma(z_{nk})x_n.
 $$
 $$
-\diff{\Sigma_k}F=\sum_n \gamma(z_{nk}) \diff{\Sigma_k}\log \calN_{nk}=0
+\dif{\Sigma_k}F=\sum_n \gamma(z_{nk}) \dif{\Sigma_k}\log \calN_{nk}=0
 $$
 として同様（流石に略）.
 \section{$K$-meansとの関連}
@@ -383,7 +383,7 @@ F
 
 $\mu_{ki}$に関する最大化.
 \begin{eqnarray*}
-\diff{\mu_{ki}}F
+\dif{\mu_{ki}}F
  &=& N_k \bar{x}_{ki} \frac{1}{\mu_{ki}}+\frac{-1}{1-\mu_{ki}} N_k (1-\bar{x}_{ki})\\
  &=& \frac{N_{k}}{\mu_{ki}(1-\mu_{ki})}(\bar{x}_{ki}(1-\mu_{ki})-(1-\bar{x}_{ki})\mu_{ki}) = 0.
 \end{eqnarray*}
@@ -399,7 +399,7 @@ $$
 $\pi_k$に関する最適化.
 $G=F+\lambda(\sum_k \pi_k-1)$とすると
 $$
-\diff{\pi_k}G = \frac{N_k}{\pi_k}+\lambda=0.
+\dif{\pi_k}G = \frac{N_k}{\pi_k}+\lambda=0.
 $$
 よって
 $$
@@ -447,7 +447,7 @@ F &=& E[\log p(t,w|\alpha,\beta)]\\
 
 $\alpha$に関する最大化
 $$
-\diff{\alpha}F=\frac{M}{2}\frac{1}{\alpha}-\half E[\inp{w}]=0.
+\dif{\alpha}F=\frac{M}{2}\frac{1}{\alpha}-\half E[\inp{w}]=0.
 $$
 よって
 $$
@@ -456,7 +456,7 @@ $$
 
 $\beta$に関する最大化
 $$
-\diff{\beta}F=\frac{N}{2}\frac{1}{\beta}-\half\sum_n E\left[(t_n-\trans{w}\phi_n)^2\right]=0.
+\dif{\beta}F=\frac{N}{2}\frac{1}{\beta}-\half\sum_n E\left[(t_n-\trans{w}\phi_n)^2\right]=0.
 $$
 よって
 $$

@@ -13,7 +13,7 @@ $$
 $$
 ディガンマ関数
 $$
-\phi(x)=\diff{x} \log \Gamma(x).
+\phi(x)=\dif{x} \log \Gamma(x).
 $$
 
 \subsection{ディリクレ分布}
@@ -67,9 +67,9 @@ $$
 \subsection{行列の公式}
 \begin{eqnarray*}
 && \quads{A}{x}=\tr(Ax\trans{x}).\\
-&& \diff{A}\log|A|=\trans{(A^{-1})}.\\
-&& \diff{x}\log|A|=\tr\left(A^{-1}\diff{x}A\right).\\
-&& \diff{A}\tr(A^{-1}B) = -\trans{(A^{-1}BA^{-1})}.\\
+&& \dif{A}\log|A|=\trans{(A^{-1})}.\\
+&& \dif{x}\log|A|=\tr\left(A^{-1}\dif{x}A\right).\\
+&& \dif{A}\tr(A^{-1}B) = -\trans{(A^{-1}BA^{-1})}.\\
 && |I+a\trans{b}|=1+\trans{a}b.
 \end{eqnarray*}
 
@@ -145,7 +145,7 @@ X=-\int F_j(Z_j) \log q_j(Z_j)\,dZ_j + \lambda \left(\int q_j(Z_j)\,dZ_j-1\right
 $$
 を最小化する.
 \begin{eqnarray*}
-\diff{q_j}X &=& -\int F_j(Z_j) \log (q_j + \delta q_j)\,dZ_j + \lambda \left(\int (q_j + \delta q_j)\,dZ_j-1\right)\\
+\dif{q_j}X &=& -\int F_j(Z_j) \log (q_j + \delta q_j)\,dZ_j + \lambda \left(\int (q_j + \delta q_j)\,dZ_j-1\right)\\
  &=&\left(-\int F_j(Z_j) \log q_j\,dZ_j + \lambda \left(\int q_j\,dZ_j - 1\right)\right)-\left(\int F_j(Z_j)/q_j\,dZ_j - \lambda\right)\delta q_j=0.
 \end{eqnarray*}
 $$

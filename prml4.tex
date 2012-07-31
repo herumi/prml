@@ -42,24 +42,24 @@ $$\trans{A}=(a_{ji})$$
 
 さて$A$, $B$を適当な行列として
 $$
-\diff{A}\tr(AB)=\trans{B}
+\dif{A}\tr(AB)=\trans{B}
 $$
 なぜなら,
 $$
-\left(\diff{A}\tr(AB)\right)_{ij}=\diff{a_{ij}}\sum_{s,t} a_{st} b_{ts} = b_{ji}.
+\left(\dif{A}\tr(AB)\right)_{ij}=\dif{a_{ij}}\sum_{s,t} a_{st} b_{ts} = b_{ji}.
 $$
 ここで
-$\diff{a_{ij}} a_{st} = \delta_{is} \delta_{jt}$を使った. つまり添え字$s$, $t$が走るときに, $s=i$, $t=j$のときのみが生き残るというわけである.
+$\dif{a_{ij}} a_{st} = \delta_{is} \delta_{jt}$を使った. つまり添え字$s$, $t$が走るときに, $s=i$, $t=j$のときのみが生き残るというわけである.
 
 慣れるためにもう一つやっておこう.
 $$
-\diff{A}\tr(AB\trans{A})=A(B+\trans{B}).
+\dif{A}\tr(AB\trans{A})=A(B+\trans{B}).
 $$
 なぜなら,
 \begin{eqnarray*}
-\diff{a_{ij}} \tr(AB\trans{A})
- &=& \diff{a_{ij}} \sum_{s,t,u} a_{st} b_{tu} a_{su}\\
- &=& \sum_{s,t,u} b_{tu}  \diff{a_{ij}} (a_{st} a_{su})\\
+\dif{a_{ij}} \tr(AB\trans{A})
+ &=& \dif{a_{ij}} \sum_{s,t,u} a_{st} b_{tu} a_{su}\\
+ &=& \sum_{s,t,u} b_{tu}  \dif{a_{ij}} (a_{st} a_{su})\\
  &=& \sum_{s,t,u} b_{tu} \left(\delta_{is} \delta_{jt} a_{su} + a_{st} \delta_{is} \delta_{ju}\right)\\
  &=& \sum_{u} b_{ju} a_{iu} + \sum_{t} b_{tj} a_{it}\\
  &=& \sum_{u} a_{iu} b_{ju} + \sum_{t} a_{it} b_{tj}\\
@@ -127,17 +127,17 @@ $$
 を最小化する$W$を求めよう.
 
 \begin{eqnarray*}
-\diff{w_{ij}}E_D(W)
- &=& \half\diff{w_{ij}}\sum_{s,t} \left((XW-T)_{st}\right)^2\\
- &=& \sum_{s,t} (XW-T)_{st} \diff{w_{ij}}(XW-T)_{st}\\
- &=& \sum_{s,t} (XW-T)_{st} \diff{w_{ij}}\left(\sum_u x_{su}w_{ut}\right)\\
+\dif{w_{ij}}E_D(W)
+ &=& \half\dif{w_{ij}}\sum_{s,t} \left((XW-T)_{st}\right)^2\\
+ &=& \sum_{s,t} (XW-T)_{st} \dif{w_{ij}}(XW-T)_{st}\\
+ &=& \sum_{s,t} (XW-T)_{st} \dif{w_{ij}}\left(\sum_u x_{su}w_{ut}\right)\\
  &=& \sum_{s,t,u} (XW-T)_{st} x_{su}\delta_{iu}\delta_{jt}\\
  &=& \sum_s (XW-T)_{sj} x_{si}\\
  &=& \sum_s (\trans{X})_{is} (XW-T)_{sj}\\
  &=& \left(\trans{X}(XW-T)\right)_{ij}.
 \end{eqnarray*}
 よって
-$$\diff{W}E_D(W)=\trans{X}(XW-T).$$
+$$\dif{W}E_D(W)=\trans{X}(XW-T).$$
 $=0$とおいて
 $\trans{X}XW = \trans{X}T$より
 $$W=(\trans{X}X)^{-1}\trans{X}T.$$
@@ -159,14 +159,14 @@ f(w)=\trans{w}(\bmm_2-\bmm_1)+\lambda(1-|w|^2)
 $$
 とおくと
 $$
-\diff{w}f=\bmm_2-\bmm_1-2\lambda w = 0.
+\diff{w}{f}=\bmm_2-\bmm_1-2\lambda w = 0.
 $$
 よって
 $$
 w=\frac{1}{2\lambda}(\bmm_2-\bmm_1) \propto (\bmm_2-\bmm_1).
 $$
 $$
-\diff{\lambda}f=1-|w|^2=0
+\diff{\lambda}{f}=1-|w|^2=0
 $$
 より$|w|=1$. ただしこの手法ではそれぞれのクラスの重心$\bmm_1$と$\bmm_2$とだけで$w$の向きが決まってしまい,
 場合によっては二つのクラスの射影が大きく重なってうまく分離できないことがある.
@@ -204,7 +204,7 @@ J(w)=\frac{\trans{w}S_B w}{\trans{w} S_W w}.
 $$
 これが最大となる$w$の値を求めてみよう. 大きさはどうでもよくて向きが重要である.
 $$
-\diff{w}J(w)=\left(2 (S_B w)(\trans{w} S_W w) - 2 (\trans{w} S_B w) (S_W w)\right)/(\trans{w}S_W w)^2=0.
+\dif{w}J(w)=\left(2 (S_B w)(\trans{w} S_W w) - 2 (\trans{w} S_B w) (S_W w)\right)/(\trans{w}S_W w)^2=0.
 $$
 よって
 $$
@@ -231,7 +231,7 @@ $$
 $$E=\half\sum_{n=1}^N(\trans{w}x_n+w_0-t_n)^2$$
 を最大化してみよう.
 $$
-\diff{w_0}E=\sum(\trans{w}x_n+w_0-t_0)=0
+\dif{w_0}E=\sum(\trans{w}x_n+w_0-t_0)=0
 $$
 より$\bmm=(1/N)\sum x_n$とおくと$N \trans{w}m+N w_0 - \sum t_n=0$.
 $$\sum t_n=N_1(N/N_1) + N_2(-N/N_2)=0$$
@@ -248,7 +248,7 @@ $$
 $$
 よって
 $$
-\diff{w}E=\sum\left(\trans{w}x_n + w_0-t_n\right)x_n=0
+\dif{w}E=\sum\left(\trans{w}x_n + w_0-t_n\right)x_n=0
 $$
 を使うと
 $$
@@ -440,11 +440,11 @@ $$
 を用いた. これを$A$で微分する.
 2章で示した行列式の対数の微分の公式（2）：式(\ref{diff_log_mat})
 $$
-\diff{A}\log|A|=\trans{(A^{-1})}
+\dif{A}\log|A|=\trans{(A^{-1})}
 $$
 と式(\ref{diff_tr_invA_B})：
 $$
-\diff{A}\tr(A^{-1}B)=-\trans{(A^{-1}BA^{-1})}
+\dif{A}\tr(A^{-1}B)=-\trans{(A^{-1}BA^{-1})}
 $$
 を使うと
 $$
@@ -485,11 +485,11 @@ $$
 $w$で微分してみよう.
 まず
 $$
-\diff{w}y_n=\sigma'(a_n) \phi_n=y_n(1-y_n) \phi_n.
+\dif{w}y_n=\sigma'(a_n) \phi_n=y_n(1-y_n) \phi_n.
 $$
 よって
 \begin{eqnarray*}
-\diff{w}E &=&-\sum\left(t_n (1-y_n)\phi_n + (1-t_n)(-y_n)\phi_n\right)\\
+\dif{w}E &=&-\sum\left(t_n (1-y_n)\phi_n + (1-t_n)(-y_n)\phi_n\right)\\
  &=& \sum(-t_n+t_n y_n+y_n-y_n t_n)\phi\\
  &=& \sum(y_n-t_n)\phi_n.
 \end{eqnarray*}
@@ -507,12 +507,12 @@ $$
 x_{n+1}=x_n - (f'(x_n))^{-1} f(x_n).
 $$
 
-関数$E(w)$を最小化するためのベクトル$w$を与える更新式を考えてみると, 最小化を与える$w$は$\diff{w}E(w)$の零点.
-$\diff{w}E(w)$の零点を求める問題にニュートン・ラフラソン法を適用する.
+関数$E(w)$を最小化するためのベクトル$w$を与える更新式を考えてみると, 最小化を与える$w$は$\dif{w}E(w)$の零点.
+$\dif{w}E(w)$の零点を求める問題にニュートン・ラフラソン法を適用する.
 $w$を古い値, $w'$を新しい値, $H(w)$を$E(w)$のヘッシアンとする.
-$f \longleftrightarrow \diff{w}E(w)$, $f' \longleftrightarrow H(w)$という対応により
+$f \longleftrightarrow \dif{w}E(w)$, $f' \longleftrightarrow H(w)$という対応により
 $$
-w'=w-H(w)^{-1}\diff{w}E(w).
+w'=w-H(w)^{-1}\dif{w}E(w).
 $$
 
 この式を線形回帰モデルに適用してみる.
@@ -521,7 +521,7 @@ E(w)=\half\sum\left(t_n-\trans{w}\phi(x_n)\right)^2, \phi_n=\phi(x_n)
 $$
 を$w$で微分して$\Phi=\trans{(\phi_1, \ldots)}$とおくと
 $$
-\diff{w}E(w)=\sum(t_n-\trans{w}\phi_n)\phi_n=\sum \phi_n \trans{\phi_n}w-\sum \phi_n t_n=\PhiT \Phi w-\PhiT t.
+\dif{w}E(w)=\sum(t_n-\trans{w}\phi_n)\phi_n=\sum \phi_n \trans{\phi_n}w-\sum \phi_n t_n=\PhiT \Phi w-\PhiT t.
 $$
 $$
 H=H(w)=\difff{w_i}{w_j}E(w)=\PhiT \Phi.
@@ -530,14 +530,14 @@ $$
 $$
 w'=w-(\PhiT \Phi)^{-1}(\PhiT \Phi w-\PhiT t)=(\PhiT \Phi)^{-1}\PhiT t.
 $$
-これは最小二乗解である. つまり1回の更新で厳密解に到達した. 線形回帰モデルは$w$に関して2次なので$\diff{w}E(w)$に関しては1次だからである.
+これは最小二乗解である. つまり1回の更新で厳密解に到達した. 線形回帰モデルは$w$に関して2次なので$\dif{w}E(w)$に関しては1次だからである.
 
 次にロジスティック回帰に適用してみる.
 $$
 E(w)=-\sum\left(t_n \log y_n + (1-t_n)\log (1-y_n)\right), y_n=\sigma(a_n)=\sigma(\trans{w}\phi_n).
 $$
 $$
-\diff{w}E(w)=\sum (y_n-t_n)\phi_n.
+\dif{w}E(w)=\sum (y_n-t_n)\phi_n.
 $$
 $y_n'=y_n(1-y_n)\phi_n$だったので
 $$
@@ -578,7 +578,7 @@ $a$を$y$の関数とみなし,
 $a_n$を目標値$t_n$の変数とみなして近次解$y_n=\sigma(\trans{w_{\text {old}}}\phi)$のまわりで一次近似を行うと
 
 \begin{eqnarray*}
-a_n &\approx& a_n(y_n)+\diff{y_n} a_n \Bigr|_{t_n=y_n}(t_n-y_n)\\
+a_n &\approx& a_n(y_n)+\dif{y_n} a_n \Bigr|_{t_n=y_n}(t_n-y_n)\\
  &=& \trans{w_{\text {old}}}\phi + \frac{1}{y_n(1-y_n)}(t_n-y_n)\\
  &=& \trans{w_{\text {old}}}\phi - \frac{y_n-t_n}{y_n(1-y_n)}\\
  &=& z_n.
@@ -629,15 +629,15 @@ p(C_k|\phi)=y_k(\phi)=\frac{\exp(a_k)}{\sum_j \exp(a_j)}, a_k=\trans{w_k}\phi
 $$
 で与えたときに最尤法を用いて直接$w_k$を求めよう.
 $$
-\diff{a_k}y_k=\frac{\exp(a_k)\left(\sum \exp(a_j)\right)-\exp(a_k)\exp(a_k)}{\left(\sum \exp(a_j)\right)^2}=y_k-y_k^2.
+\dif{a_k}y_k=\frac{\exp(a_k)\left(\sum \exp(a_j)\right)-\exp(a_k)\exp(a_k)}{\left(\sum \exp(a_j)\right)^2}=y_k-y_k^2.
 $$
 $k\ne j$として
 $$
-\diff{a_j}y_k=-\frac{\exp(a_k) \exp(a_j)}{(\sum \exp(a_j))^2}=-y_k y_j.
+\dif{a_j}y_k=-\frac{\exp(a_k) \exp(a_j)}{(\sum \exp(a_j))^2}=-y_k y_j.
 $$
 よってこの二つをまとめて
 $$
-\diff{a_j}y_k=y_k(\delta_{kj}-y_j).
+\dif{a_j}y_k=y_k(\delta_{kj}-y_j).
 $$
 目的変数ベクトル$t_n$を$k$番目の要素だけが1であるものとする. つまり$t_n=(t_{nk})$.
 $y_{nk}=y_k(\phi_n)$, $T=(t_nk)$とすると
@@ -650,7 +650,7 @@ E=-\log p(T|w_1, \ldots, w_k)=-\sum_{n,k} t_{nk} \log y_{nk}.
 $$
 よって
 \begin{eqnarray*}
-\diff{w_j}E &=& -\sum_{n,k} t_{nk} \frac{y_k(\phi_n)(\delta_{kj}-y_j(\phi_n))}{y_k(\phi_n)}\phi_n\\
+\dif{w_j}E &=& -\sum_{n,k} t_{nk} \frac{y_k(\phi_n)(\delta_{kj}-y_j(\phi_n))}{y_k(\phi_n)}\phi_n\\
  &=& -\sum_{n,k} t_{nk}(\delta_{kj} -y_{nj})\phi_n=-\sum_n \left(\left(\sum_k t_{nk} \delta_{kj}\right)-\left(\sum_k t_{nk}\right)y_{nj}\right)\phi_n\\
  &=& -\sum_n (t_{nj}-y_{nj})\phi_n\\
  &=& \sum(y_{nj}-t_{nj})\phi_n.
@@ -659,7 +659,7 @@ $$
 
 ヘッシアンをみる.
 $$
-\diff{w_k}y_{nj}=\diff{w_k}y_j(\phi_n)=y_k(\phi_n)(\delta_{kj}-y_j(\phi_n))\phi_n=y_{nk}(\delta_{kj}-y_{nj})\phi_n
+\dif{w_k}y_{nj}=\dif{w_k}y_j(\phi_n)=y_k(\phi_n)(\delta_{kj}-y_j(\phi_n))\phi_n=y_{nk}(\delta_{kj}-y_{nj})\phi_n
 $$
 より
 $$
@@ -725,13 +725,13 @@ g(\eta)\int h(t/s) \exp\left(\frac{\eta t}{s}\right)\,dt=s.
 $$
 $\eta$で微分して
 \begin{eqnarray*}
-&& \left(\diff{\eta}g(\eta)\right) \int h(t/s)\exp\left(\frac{\eta t}{s}\right)\,dt+g(\eta)\int (t/s) h(t/s) \exp\left(\frac{\eta t}{s}\right)\,dt\\
-&=& \left(\diff{\eta}g(\eta)\right)\left(\frac{s}{g(\eta)}\right)+\int t p(t|\eta,s)\,dt\\
-&=& s\diff{\eta}\log g(\eta) + E[t] = 0.
+&& \left(\dif{\eta}g(\eta)\right) \int h(t/s)\exp\left(\frac{\eta t}{s}\right)\,dt+g(\eta)\int (t/s) h(t/s) \exp\left(\frac{\eta t}{s}\right)\,dt\\
+&=& \left(\dif{\eta}g(\eta)\right)\left(\frac{s}{g(\eta)}\right)+\int t p(t|\eta,s)\,dt\\
+&=& s\dif{\eta}\log g(\eta) + E[t] = 0.
 \end{eqnarray*}
 よって
 $$
-y=E[t]=-s\diff{\eta} \log g(\eta).
+y=E[t]=-s\dif{\eta} \log g(\eta).
 $$
 $y$が$\eta$の関数として表せた.
 この逆関数が存在するとしてそれを$\eta=\psi(y)$と書くことにする.
@@ -748,14 +748,14 @@ $$
 
 パラメータが多いので依存関係に注意して微分する.
 $$
-\diff{w}\eta_n=\psi'(y_n)f'(a_n)\phi_n.
+\dif{w}\eta_n=\psi'(y_n)f'(a_n)\phi_n.
 $$
 $$
-\diff{w}\log g(\eta_n)=\frac{g'(\eta_n)}{g(\eta_n)}\psi'(y_n)f'(a_n)\phi_n=-\frac{y_n}{s}\phi'(y_n)f'(a_n)\phi_n.
+\dif{w}\log g(\eta_n)=\frac{g'(\eta_n)}{g(\eta_n)}\psi'(y_n)f'(a_n)\phi_n=-\frac{y_n}{s}\phi'(y_n)f'(a_n)\phi_n.
 $$
 よって
 $$
-\diff{w} \log p(t|\eta,s)=\sum_n \frac{1}{s}(t_n-y_n)\psi'(y_n)f'(a_n)\phi_n.
+\dif{w} \log p(t|\eta,s)=\sum_n \frac{1}{s}(t_n-y_n)\psi'(y_n)f'(a_n)\phi_n.
 $$
 連結関数として$f^{-1}(y)=\psi(y)$となるものを使ってみよう. $f(\psi(y))=y$を$y$で微分して
 $$
@@ -767,7 +767,7 @@ f'(a)\psi'(y)=1.
 $$
 よって
 $$
-\diff{w}E(w)=-\diff{w} \log p(t|\eta,s)=\frac{1}{s}\sum_n (y_n - t_n)\phi_n.
+\dif{w}E(w)=-\dif{w} \log p(t|\eta,s)=\frac{1}{s}\sum_n (y_n - t_n)\phi_n.
 $$
 「誤差」$\times$「特徴ベクトル」という形でかけることが分かった.
 
@@ -800,7 +800,7 @@ $$
 q(z)=(\frac{A}{2\pi})^{1/2} \exp\left(-\half A(z-z_0)^2\right).
 $$
 
-$M$次元の場合を考える. $p(z)=(1/Z)f(z)$. $z=z_0$が最大値を与えるなら$p(z_0)>0$, $\diff{z}f(z_0)=0$.
+$M$次元の場合を考える. $p(z)=(1/Z)f(z)$. $z=z_0$が最大値を与えるなら$p(z_0)>0$, $\dif{z}f(z_0)=0$.
 1次元と同様に
 $$
 A=-\difff{z_i}{z_j} \log f(z) \Bigl|_{z=z_0}
@@ -949,10 +949,10 @@ L=\int_{-\infty}^\infty \Phi(\lambda \mu+\lambda\sigma x)\frac{f(x)}{\sigma}\sig
 $$
 まず$L$と$R$の$\mu$に関する微分が等しいことを示す. $\Phi'(x)=f(x)$なので
 $$
-\diff{\mu}R=f\left(\frac{\lambda \mu}{\sqrt{1+\lambda^2\sigma^2}}\right) \frac{\lambda}{\sqrt{1+\lambda^2\sigma^2}}.
+\dif{\mu}R=f\left(\frac{\lambda \mu}{\sqrt{1+\lambda^2\sigma^2}}\right) \frac{\lambda}{\sqrt{1+\lambda^2\sigma^2}}.
 $$
 $$
-\diff{\mu}L=\int_{-\infty}^\infty \lambda f(\lambda \mu + \lambda \sigma x)f(x)\,dx=\lambda \int_{-\infty}^\infty \left(\frac{1}{\sqrt{2\pi}}\right)^2\exp\left(-\half(\lambda\mu+\lambda \sigma x)^2-\half x^2\right)\,dx.
+\dif{\mu}L=\int_{-\infty}^\infty \lambda f(\lambda \mu + \lambda \sigma x)f(x)\,dx=\lambda \int_{-\infty}^\infty \left(\frac{1}{\sqrt{2\pi}}\right)^2\exp\left(-\half(\lambda\mu+\lambda \sigma x)^2-\half x^2\right)\,dx.
 $$
 $\exp()$の内側を$x$について平方完成しよう：
 $$
@@ -971,10 +971,10 @@ I:=\int_{-\infty}^\infty \exp\left(-\half\left(\sqrt{1+\lambda^2\sigma^2}x+\frac
 $$
 よって
 \begin{eqnarray*}
-\diff{\mu}L &=& \frac{\lambda}{2\pi} \exp\left(-\half\left(\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2}\right)\right) I\\
+\dif{\mu}L &=& \frac{\lambda}{2\pi} \exp\left(-\half\left(\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2}\right)\right) I\\
  &=& \frac{\lambda}{2\pi} \exp\left(-\half\left(\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2}\right)\right) \frac{\sqrt{2\pi}}{\sqrt{1+\lambda^2\sigma^2}}\\
  &=& \frac{\lambda}{\sqrt{1+\lambda^2\sigma^2}}f\left(\frac{\lambda\mu}{\sqrt{1+\lambda^2\sigma^2}}\right)\\
- &=& \diff{\mu}R.
+ &=& \dif{\mu}R.
 \end{eqnarray*}
 つまり$L$と$R$は定数の差を除いて等しいことが分かった. 定数項が0であることを示す. $\mu \rightarrow \infty$で
 $$
