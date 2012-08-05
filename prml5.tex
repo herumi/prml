@@ -1,24 +1,14 @@
-\documentclass[b5j,final]{jsbook}
-\usepackage[dvipdfmx,final]{graphicx}
-\usepackage{amsmath,amssymb}
-\usepackage{bm}
-
-\include{notation}
-
-\newcommand{\wji}{w_{ji}^{(1)}}
-\newcommand{\wkj}{w_{kj}^{(2)}}
-
-\begin{document}
-
-\title{PRMLの5章の数式の補足}
-\author{サイボウズ・ラボ 光成滋生}
-
-\maketitle
-
-\section{概要}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 第5章
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{chapter}{2}
+\chapter{「ニューラルネットワーク」のための数学}
 PRML5章では, 本来別の記号を割り当てるべきところに同じ記号を用いることがあり, 初読時には非常に読みにくい.
 例えば一つの式の中に$a_j$と$a_k$があって, $j=1$の$a_j$と$k=1$の$a_k$は別のものを指す.
 慣れれば煩雑さが減ってむしろ読みやすくなるのであるが, ここではあえて区別してみる.
+
+\newcommand{\wji}{w_{ji}^{(1)}}
+\newcommand{\wkj}{w_{kj}^{(2)}}
 
 \section{フィードフォワードネットワーク関数}
 3章, 4章でやったモデルは基底関数$\phi_j$とパラメータ$w_j$の線型和を非線形活性化関数に入れたものだった.
@@ -375,6 +365,3 @@ $$
 \calRR{\diff{\ww{kj}{2}}{E}}&=&\calRR{\deltak}z_j+\deltak \calRR{z_j}.\\
 \calRR{\diff{\ww{jk}{1}}{E}}&=&x_i\calRR{\deltaj}.
 \end{eqnarray*}
-
-\end{document}
-
