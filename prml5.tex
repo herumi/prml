@@ -1,0 +1,380 @@
+\documentclass[b5j,final]{jsbook}
+\usepackage[dvipdfmx,final]{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+
+\include{notation}
+
+\newcommand{\wji}{w_{ji}^{(1)}}
+\newcommand{\wkj}{w_{kj}^{(2)}}
+
+\begin{document}
+
+\title{PRMLの5章の数式の補足}
+\author{サイボウズ・ラボ 光成滋生}
+
+\maketitle
+
+\section{概要}
+PRML5章では, 本来別の記号を割り当てるべきところに同じ記号を用いることがあり, 初読時には非常に読みにくい.
+例えば一つの式の中に$a_j$と$a_k$があって, $j=1$の$a_j$と$k=1$の$a_k$は別のものを指す.
+慣れれば煩雑さが減ってむしろ読みやすくなるのであるが, ここではあえて区別してみる.
+
+\section{フィードフォワードネットワーク関数}
+3章, 4章でやったモデルは基底関数$\phi_j$とパラメータ$w_j$の線型和を非線形活性化関数に入れたものだった.
+ここではそれを拡張する.
+$x_1, \ldots, x_D$を入力変数とし$x_0=1$を定数変数, $w_{ji}^{(1)}$をパラメータとして
+$$
+\hat{a}_j = \sum_{i=0}^D \wji x_i
+$$
+とする.
+PRMLでは上記の$\hat{a}_j$を$a_j$と書いているがすぐあとに出てくる$a_k$とは無関係である.
+冒頭で述べたように混乱しやすいので異なることを強調するために$\hat{a}_j$とした.
+
+$\hat{a}_j$を活性化関数$h$で変換する.
+$$
+z_j=h(\hat{a}_j).
+$$
+$h$としてはロジスティックシグモイドなどのシグモイド関数が用いられる.
+これらの線型和をとって出力ユニット活性を求める. $z_0=1$を定数変数として
+$$
+a_k=\sum_{j=0}^M \wkj z_j.
+$$
+
+この出力ユニット活性を活性化関数を通してネットワークの出力$y_k$とする.
+2クラス分類問題ならロジスティックシグモイド関数を使う.
+$$
+y_k=y_k(x,w)=\sigma(a_k).
+$$
+ここで$w$は$\{\wji, \wkj\}$をまとめたベクトルである.
+これらの式を組み合わせると
+$$
+y_k=\sigma\left(\sum_{j=0}^M w_{kj}^{(2)} h \left(\sum_{i=0}^D w_{ji}^{(1)} x_i \right) \right)
+$$
+となる.
+\section{ネットワーク訓練}
+回帰問題を考える. 入力ベクトル$x$と$K$次元の目標変数$t$があり, $x$, $w$についての条件付き確率が独立で精度$\beta$が共通のガウス分布とする.
+$N$個の同時独立分布$x=\{x_1,\ldots,x_N\}$と$t=\{t_1,\ldots,t_N\}$を用意して出力ユニットの活性化関数を恒等写像として
+$y_n=y(x_n,w)$とする.
+$$
+p(t|x,w)=\prod_{n=1}^N \calN(t_n|y(x_n,w),\beta^{-1}I).
+$$
+対数をとると
+\begin{eqnarray}\label{cp5_1}
+\log p(t|x,w) &=& -\sum_n \left(\frac{1}{2}\trans{(t_n-y_n)}(\beta I)(t_n-y_n)\right) - \sum_n \frac{D}{2}\log(2\pi) - \sum_n \frac{1}{2}\log|\beta^{-1}I| \nonumber \\
+&=&-\frac{\beta}{2}\sum_n||t_n-y(x_n,w)||^2-\frac{DN}{2}\log(2\pi)+\frac{NK}{2}\log \beta.
+\end{eqnarray}
+そうするとこの関数の$w$についての最大化は最初の項の最小化, つまり
+$$
+E(w)=\frac{1}{2}\sum_n ||y(x_n,w)-t_n||^2
+$$
+の最小化と同等である. そうなる$w$をなんらかの方法で求めて$w_{\text ML}$とする.
+その値を式(\ref{cp5_1})に代入して$\beta$で微分して0とおくと
+$$
+-\frac{1}{2}\sum_n||t_n-y(x_n,w_{\text ML})||^2+\frac{NK}{2}\frac{1}{\beta}=0.
+$$
+よって
+$$
+\frac{1}{\beta_{\text ML}}=\frac{1}{NK}\sum_n||t_n-y(x_n,w_{\text ML})||^2.
+$$
+
+\subsection{問題に応じた関数の選択}
+回帰問題を考える. 活性化関数$y_k=\sigma(a_k)$を恒等写像（$y_k=a_k$）にとる.
+すると二乗和誤差関数の微分は
+$$
+\diff{a_k}{E}=y_k-t_k.
+$$
+クラス分類問題でも同様の関係式が成り立つことを確認しよう.
+
+目標変数$t$が$t=1$でクラス$C_1$, $t=0$でクラス$C_2$を表す2クラス分類問題を考える.
+活性化関数をロジスティックシグモイド関数に選ぶ.
+$$
+y=\sigma(a)=\frac{1}{1+\exp(-a)}.
+$$
+この微分は$dy/da=\sigma(a)(1-\sigma(a))=y(1-y)$であった.
+確率$t$で$p(C_1|x)=y(x,w)$, 確率$1-t$で$p(C_2|x)=1-y(x,w)$なので
+$$
+p(t|x,w)=y(x,w)^t \left(1-y(x,w)\right)^{1-t}
+$$
+となる. よって誤差関数は
+$$
+E(w)=-\sum_{n=1}^N \left(t_n \log y_n + (1-t_n) \log (1-y_n)\right).
+$$
+これを$a_k$で微分すると
+\begin{eqnarray*}
+\diff{a_k}{E} &=& -\left(t_k\frac{y_k(1-y_k)}{y_k} + (1-t_k)\frac{-y_k(1-y_k)}{1-y_k}\right)\\
+              &=& -(t_k - t_k y_k - y_k + y_k t_k)\\
+              &=& y_k - t_k.
+\end{eqnarray*}
+
+$K$個のクラス分類問題を考える. $t_k$を0, 1をとる変数とする.
+$\sum_n t_{nk}=t_k$,
+$\sum_k t_k = 1$という関係式が成り立つ.
+$y_k(x,w)$を$t_k$が1となる確率$p(t_k=1|x)$とみなす.
+$$
+E(w) = -\log p(t|x,w))=-\sum_n \log p(t_n=1|x,w)=\sum_{n,k} t_{nk} \log y_k(x_n,w).
+$$
+活性化関数はソフトマックス関数で
+$$
+y_k(x,w)=\frac{\exp a_k(x,w)}{\sum_j \exp(a_j(x,w))}
+$$
+のとき
+$$
+\diff{a_j}{y_k}=y_k(\delta_{kj}-y_j).
+$$
+よって
+$$
+\dif{a_j}\log y_k(x_n,w)=\frac{1}{y_k}\diff{a_j}{y_k}=\delta_{kj}-y_j.
+$$
+よって
+$$
+\diff{a_j}{E}=-\sum_{n,k} t_{nk}(\delta_{kj}-y_j)=-\sum_nt_{nj}+\sum_{n,k}t_{nk}y_j=-t_j+y_j.
+$$
+\section{局所二次近似}\label{ch5_loc}
+$w$に関する一変数関数$E(w)$の$w=\hat{w}$におけるテイラー展開を2次の項で打ち切った近似式は
+$$
+E(w) \approx E(\hat{w}) + E'(\hat{w})(w-\hat{w}) + \half E''(\hat{w}) (w-\hat{w})^2
+$$
+であった. $w$を$w=\trans(x_1, \ldots, x_n)$と$n$次元縦ベクトルとしたときは
+\begin{eqnarray*}
+E(w)
+ &\approx& E(\hat{w}) + \trans{(w-\hat{w})}\left(\dif{x_i}E\right) + \half \trans{(w-\hat{w})}\left(\ddiff{x_i}{x_j}{E}\right)(w-\hat{w})\\
+ &=&       E(\hat{w}) + \trans{(w-\hat{w})} (\nabla E) + \half \quads{H(E)}{(w-\hat{w})}
+\end{eqnarray*}
+となる. $E(w)$が$w=w^*$の付近で極小となるとすると, そこでの勾配$\nabla E$は0なので
+$$
+E(w) \approx E(w^*) + \half \quads{H(E)}{(w-w^*)}.
+$$
+$H(E)$は対称行列なので\ref{pos_sym_matrix}節の議論より対角化することで
+$$
+E(w) \approx E(w^*) + \half \sum_i \lambda_i y_i^2.
+$$
+の形にできる. そして固有値が正なら$E(w)$が$w=w^*$の付近で極小となることがわかる.
+
+なお, $H(f)=\nabla^2 f = \nabla(\nabla f)$という表記をすることがある. 微分作用素$\nabla$を2回するので2乗の形をしている.
+ただ$\nabla f$が縦ベクトルならもう一度$\nabla$をするときは結果が行列になるように,
+入力ベクトルの転置を取って作用するとみなす.
+$\nabla$を2回するので$n^2$の長いベクトルになると勘違いしないように.
+\section{誤差関数微分の評価}
+与えられたネットワークに対して, 誤差関数の変化の割合について調べる.
+この章ではどの変数がどの変数に依存しているか気を付けて微分する必要がある.
+誤差関数が訓練集合の各データに対す誤差の和で表せると仮定する：
+$$
+E(w)=\sum_{n=1}^N E_n(w).
+$$
+一般のフィードフォワードネットワークで
+\label{ch5_2}
+\begin{eqnarray}
+a_j=\sum_i w_{ji} z_i, \quad z_j=h(a_j)
+\end{eqnarray}
+とする. 入力$z_i$が出力ユニット$a_j$に影響を与え, その$a_j$が非線形活性化関数$h()$を通して$z_j$に影響を与える.
+ある特定のパターン$E_n$の重み$w_{ji}$に関する微分を考える.
+以下, パターンを固定することで添え字の$n$を省略する.
+式(\ref{ch5_2})のように$E_n$は非線形活性化関数$h$の変数$a_j$を通して$w_{ji}$に依存している.
+$$
+\diff{w_{ji}}{E_n}=\diff{a_j}{E_n}\diff{w_{ji}}{a_j}.
+$$
+$a_j$は$w_{ji}$に関しては線形なので
+$$
+\diff{w_{ji}}{a_j}=z_i.
+$$
+誤差と呼ばれる記号$\delta_j=\diff{a_j}{E_n}$を導入すると
+$$
+\diff{w_{ji}}{E_n}=\delta_j z_i
+$$
+とかける. $h()$が正準連結関数の場合はネットワーク訓練の節での考察により
+$$
+\delta_j=\diff{a_j}{E_n}=y_j-t_j.
+$$
+$E_n$への$a_j$の影響がユニット$j$につながっているユニット$k$を通してあると考えると
+\label{cp5_3}
+\begin{eqnarray}
+\diff{a_j}{E_n}=\sum_k \diff{a_k}{E_n}\diff{a_j}{a_k}.
+\end{eqnarray}
+ここで$a_j$と$a_k$は$z$を経由して関係していると考えているので$\diff{a_j}{a_k}=\delta_{jk}$（クロネッカーのデルタ）にはならないことに注意する.
+実際,
+$$
+a_k=\sum_i w_{ki} h(a_i)
+$$
+より
+$$
+\diff{a_j}{a_k}=w_{kj} h'(a_j).
+$$
+これを式(\ref{cp5_3})に代入して
+$$
+\delta_j=\diff{a_j}{E_n}=\sum_k \delta_k w_{kj} h'(a_j)=h'(a_J)\sum_k w_{kj} \delta_k.
+$$
+\section{外積による近似}
+$$
+E(w)=\half \sum_{n=1}^N \left(y_n-t_n\right)^2
+$$
+のときのヘッセ行列は
+$$
+H=H(E) = \sum_n \outp{(\nabla y_n)} + \sum_n (y_n-t_n)H(y_n).
+$$
+一般には成立しないがもしよく訓練された状態で$y_n$が目標値$t_n$に十分近ければ第2項を無視できる.
+その場合$b_n=\nabla y_n=\nabla a_n$（活性化関数が恒等写像なので）とおくと
+$$
+H \approx \sum_n \outp{b_n}.
+$$
+これをLevenberg-Marquardt近似という.
+$$
+E=\half \iint (y(x,w)-t)^2p(x,t)\,dxdt
+$$
+のときのヘッセ行列を考えてみると
+$$
+\diff{w_s}{E}=\iint (y-t)\diff{w_s}{y} p(x,t)\,dxdt.
+$$
+\begin{eqnarray*}
+\ddiff{w_s}{w_r}{E}&=&\iint \left( \diff{w_r}{y}\diff{w_s}{y} + (y-t)\ddiff{w_s}{w_r}{y} \right)p(x,t)\,dxdt.\\
+ && （p(x,t)=p(t|x)p(x)より）\\
+ &=&\int \diff{w_r}{y}\diff{w_s}{y}\left( \int p(t|x)\,dt\right) p(x)\,dx + \int \ddiff{w_s}{w_r}{y}\left(\int (y-t)p(t|x)\,dt\right)p(x)\,dx\\
+ && （第1項のカッコ内は1. \quad 第2項はy(x)=\int t p(t|x)\,dtを使うと0）\\
+ &=&\int \diff{w_r}{y}\diff{w_s}{y}p(x)\,dx.
+\end{eqnarray*}
+ロジスティックシグモイドのときは
+\begin{eqnarray*}
+\nabla E(w)&=&\sum_n \diff{a_n}{E} \nabla a_n=-\sum_n\left(\frac{t_n y_n(1-y_n)}{y_n}-\frac{(1-t_n)y_n (1-y_n)}{1-y_n}\right)\nabla a_n\\
+&=& \sum_n (y_n-t_n)\nabla a_n.
+\end{eqnarray*}
+よって
+\begin{eqnarray*}
+\nabla^2 E(w) &=& \sum_n \diff{a_n}{y_n} \outp{\nabla a_n}+\sum_n (y_n-t_n)\nabla^2 a_n\\
+ &\approx& \sum_n y_n(1-y_n) \outp{\nabla a_n}.
+\end{eqnarray*}
+
+
+\section{ヘッセ行列の厳密な評価}
+\newcommand{\ww}[2]{w_{#1}^{(#2)}}
+
+計算は難しくはないが, 記号がややこしいので書いてみる.
+変数の関係式は
+$a_j=\sum_i \ww{ji}{1}x_i$, $z_j=h(a_j)$, $a_k=\sum_j \ww{kj}{2} z_j$, $y_k=a_k$である.
+PRMLの$a_j$と$a_k$は違う対象であることに注意する. ここでは$a_j$の代わりに$\hat{a}_j$を使う.
+
+添え字の$i$, $i'$は入力, $j$, $j'$は隠れユニット, $k$, $k'$は出力である.
+また
+$$
+\delta_k=\diff{a_k}{E_n}, \quad M_{kk'}=\ddiff{a_k}{a_{k'}}{E_n}
+$$
+という記号を導入する.
+\subsection{両方の重みが第2層にある}
+$$
+\diff{\ww{kj}{2}}{a_k}=z_j, \quad \diff{\ww{kj}{2}}{E_n}=\diff{\ww{kj}{2}}{a_k}\diff{a_k}{E_n}=z_j \delta_k.
+$$
+よって
+$$
+\ddiff{\ww{kj}{2}}{\ww{k'j'}{2}}{E_n}=\diff{\ww{k'j'}{2}}{a_k'}\dif{a_{k'}}\left(\diff{\ww{kj}{2}}{E_n}\right)=z_{j'}z_j \diff{a_{k'}}{\delta_k}=z_j z_{j'} M_{kk'}.
+$$
+\subsection{両方の重みが第1層にある}
+$$
+\diff{\hat{a}_j}{a_k}=\ww{kj}{2}h'(\hat{a}_j), \quad \diff{\ww{ji}{1}}{\hat{a}_j}=x_i
+$$
+より
+$$
+\diff{\ww{ji}{1}}{E_n}=\diff{\ww{ji}{1}}{\hat{a}_j}\diff{\hat{a}_j}{E_n}=x_i\sum_k \diff{\hat{a}_j}{a_k}\diff{a_k}{E_n}=x_i\sum_k \ww{kj}{2}h'(\hat{a}_j)\delta_k.
+$$
+$$
+\ddiff{\ww{ji}{1}}{\ww{j'i'}{1}}{E_n}=\diff{\ww{j'i'}{1}}{\hat{a}_{j'}}\dif{\hat{a}_{j'}}\left(\diff{\ww{ji}{1}}{E_n}\right)=x_i x_{i'}\underbrace{\dif{\hat{a}_{j'}}\left(h'(\hat{a}_j)\sum_k \ww{kj}{2}\delta_k \right)}_{=:A}.
+$$
+$j=j'$のとき
+$$
+A=h''(\hat{a}_{j'})\sum_k \ww{kj}{2}\delta_k + B, \quad B:=h'(\hat{a}_j)\dif{\hat{a}_{j'}}\left(\sum_k \ww{kj}{2}\delta_k\right).
+$$
+$j\ne j'$のとき
+$$
+B= h'(\hat{a}_j) \sum_{k'} \diff{\hat{a}_j}{a_{k'}}\dif{a_{k'}}\left(\sum_k \ww{kj}{2}\delta_k\right)
+ = \sum_{k,k'} h'(\hat{a}_j)h'(\hat{a}_{j'})\ww{k'j'}{2}\ww{kj}{2}M_{kk'}.
+$$
+二つをまとめて
+$$
+\ddiff{\ww{ji}{1}}{\ww{j'i'}{1}}{E_n}=x_i x_{i'}\left\{h''(\hat{a}_{j'})\delta_{jj'}\sum_k \ww{kj}{2}\delta_k+h'(\hat{a}_j)h'(\hat{a}_{j'})\sum_{k,k'}\ww{kj}{2}\ww{k'j'}{2}M_{kk'}\right\}.
+$$
+$\delta_{jj'}$はクロネッカーのデルタ.
+\subsection{重みが別々の層に一つずつある}
+$$
+\diff{\ww{kj'}{2}}{E_n}=z_{j'}\delta_k, \quad \ddiff{\ww{ji}{1}}{\ww{kj'}{2}}{E_n}=\diff{\ww{ji}{1}}{\hat{a}_j} \underbrace{\dif{\hat{a}_j}(z_{j'}\delta_k)}_{=:A}, \quad \diff{\ww{ji}{1}}{\hat{a}_j}=x_i.
+$$
+$j=j'$のとき
+$$
+A=h'(\hat{a}_{j'})\delta_k+B, \quad B:=z_{j'}\diff{\hat{a}_j}{\delta_k}.
+$$
+$j\ne j'$のとき
+$$
+B=z_{j'}\sum_{k'} \diff{\hat{a}_j}{a_{k'}}\diff{a_{k'}}{\delta_k}=z_{j'}\sum_{k'} \ww{k'j}{2}h'(\hat{a}_j)M_{kk'}.
+$$
+よって
+$$
+\ddiff{\ww{ji}{1}}{\ww{kj'}{2}}{E_n}=x_i h'(\hat{a}_j)\left\{\delta_{jj'}\delta_k+z_{j'}\sum_{k'} \ww{k'j}{2}M_{kk'}\right\}.
+$$
+\newcommand{\calRR}[1]{{\cal R}\left\{#1 \right\}}
+
+\subsection{ヘッセ行列の積の高速な計算}
+応用例では最終的に必要なものはヘッセ行列$H$そのもではなくあるベクトル$v$と$H$の積であることが多い.
+直接$\trans{v}H=\trans{v}\nabla \nabla$を計算するための方法のために, 左半分だけを取り出して$\calRR{\cdot}=\trans{v}\nabla$という記法を導入する.
+\ref{ch5_loc}節の終わりに書いたようにこの$\nabla$は入力が縦ベクトルなら転置を取ってから作用するとみなす.
+なお, $v$に依存するものをあたかも依存しないかのように$\calRR{\cdot}$と書いてしまうのは筋がよいとは思わない.
+
+簡単な例を見てみよう. $y=f(x_1, x_2)$のとき
+$$
+\calRR{\cdot}=\trans{(v_1,v_2)}\nabla = \trans{(v_1,v_2)}\vvec{\dif{x_1}}{\dif{x_2}}.
+$$
+よって
+\begin{eqnarray*}
+\calRR{x_1}&=&\trans{(v_1,v_2)}\vvec{1}{0}=v_1,\\
+\calRR{x_2}&=&\trans{(v_1,v_2)}\vvec{0}{1}=v_2,
+\end{eqnarray*}
+これを, $\calRR{}$は入力値の$x_i$をその添え字に対応する$v_i$に置き換える作用と考えることにする.
+$\calRR{}$は$x_i$について明らかに線形, つまり
+$$
+\calRR{ax_1+bx_2}=a v_1 + b v_2 = a\calRR{x_1}+b\calRR{x_2}.
+$$
+
+前節と同じ2層ネットワークで考えてみる.
+$a_j=\sum_i \ww{ji}{1}x_i$, $z_j=h(a_j)$, $y_k=\sum_j \ww{kj}{2} z_j$である.
+$a_k$の代わりに$y_k$を使うので$\hat{a}_j$ではなくPRMLと同じ$a_j$にする.
+PRMLでは$w_{ji}$の肩の添え字を省略しているが念のためここではつけておく.
+
+$\ww{ji}{1}$に対応する値を$v_{ji}$とすると$\ww{ji}{1}$の線形和である$a_j$について
+$$
+\calRR{a_j} =\sum_i x_i \calRR{\ww{ji}{1}} 	= \sum_i v_{ji} x_i.
+$$
+$$
+\calRR{z_j}=\trans{v}\nabla \left(\sum_j \ww{ji}{1} h(a_j)\right)=\trans{v}\left(\diff{a_j}{h(a_j)} \nabla a_j\right)=h'(a_j)\calRR{a_j}.
+$$
+\begin{eqnarray*}
+\calRR{y_k}
+ &=&\trans{v^{(2)}}\left(\nabla \left(\sum_j \ww{kj}{2}z_j\right)\right)=\trans{v^{(2)}}\left(\sum_j \left(\nabla \ww{kj}{2}\right)z_j+\sum_j \ww{kj}{2}\nabla z_j\right)\\
+ &=&\sum_j v_{kj}^{(2)} z_j+\sum_j\ww{kj}{2}\calRR{z_j}.
+\end{eqnarray*}
+なんとなくルールが見えてきたであろう.
+$\calRR{\cdot}$は$\calRR{w}=v$という記号の置き換え以外は積や合成関数の微分のルールの形に従っている（もともと微分作用素を用いて定義しているので当然ではあるが）.
+
+\newcommand{\deltaj}{\delta_j^{(1)}}
+\newcommand{\deltak}{\delta_k^{(2)}}
+逆伝播の式：
+\begin{eqnarray*}
+\deltak&=&y_k-t_k,\\
+\deltaj&=&h'(a_j)\sum_k\ww{kj}{2}\deltak
+\end{eqnarray*}
+で考えてみると
+$$
+\calRR{\deltak}=\calRR{y_k}.
+$$
+$$
+\calRR{\deltaj}
+ =\left(h''(a_j)\calRR{a_j}\right)\left(\sum_k \ww{kj}{2}\deltak \right)+h'(a_j)\left(\sum_k v_{kj}^{(2)} \deltak + \sum_k \ww{kj}{2} \calRR{\deltak}\right).
+$$
+誤差の微分の式:
+\begin{eqnarray*}
+\diff{\ww{kj}{2}}{E}&=&\deltak z_j.\\
+\diff{\ww{jk}{1}}{E}&=&\deltaj x_i.
+\end{eqnarray*}
+より
+\begin{eqnarray*}
+\calRR{\diff{\ww{kj}{2}}{E}}&=&\calRR{\deltak}z_j+\deltak \calRR{z_j}.\\
+\calRR{\diff{\ww{jk}{1}}{E}}&=&x_i\calRR{\deltaj}.
+\end{eqnarray*}
+
+\end{document}
+
