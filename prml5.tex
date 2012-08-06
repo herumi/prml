@@ -2,10 +2,10 @@
 % 第5章
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{chapter}{4}
-\chapter{「ニューラルネットワーク」のための数学}
+\chapter{「ニューラルネットワーク」の補足}
 PRML5章では, 本来別の記号を割り当てるべきところに同じ記号を用いることがあり, 初読時には非常に読みにくい.
-例えば一つの式の中に$a_j$と$a_k$があって, $j=1$の$a_j$と$k=1$の$a_k$は別のものを指す.
-慣れれば煩雑さが減ってむしろ読みやすくなるのであるが, ここではあえて区別してみる.
+例えば一つの式の中に$a_j$と$a_k$があって, $j=1$の$a_j$と$k=1$の$a_k$は別のものを指すことがある.
+慣れてしまえば読むのは難しくないが, ここではあえて区別してみる.
 
 \newcommand{\ww}[2]{w_{#1}^{(#2)}}
 \newcommand{\calRR}[1]{{\cal R}\left\{#1 \right\}}
@@ -220,7 +220,8 @@ $$
 \begin{eqnarray*}
 \ddiff{w_s}{w_r}{E}&=&\iint \left( \diff{w_r}{y}\diff{w_s}{y} + (y-t)\ddiff{w_s}{w_r}{y} \right)p(x,t)\,dxdt.\\
  && （p(x,t)=p(t|x)p(x)より）\\
- &=&\int \diff{w_r}{y}\diff{w_s}{y}\left( \int p(t|x)\,dt\right) p(x)\,dx + \int \ddiff{w_s}{w_r}{y}\left(\int (y-t)p(t|x)\,dt\right)p(x)\,dx\\
+ &=&\int \diff{w_r}{y}\diff{w_s}{y}\left( \int p(t|x)\,dt\right) p(x)\,dx\\
+ &+& \int \ddiff{w_s}{w_r}{y}\left(\int (y-t)p(t|x)\,dt\right)p(x)\,dx\\
  && （第1項のカッコ内は1. \quad 第2項はy(x)=\int t p(t|x)\,dtを使うと0）\\
  &=&\int \diff{w_r}{y}\diff{w_s}{y}p(x)\,dx.
 \end{eqnarray*}
@@ -362,4 +363,163 @@ $$
 \begin{eqnarray*}
 \calRR{\diff{\ww{kj}{2}}{E}}&=&\calRR{\deltak}z_j+\deltak \calRR{z_j}.\\
 \calRR{\diff{\ww{jk}{1}}{E}}&=&x_i\calRR{\deltaj}.
+\end{eqnarray*}
+
+\section{ソフト重み共有}
+ネットワークの重みが等しいという制約の元で混合ガウス分布の確率分布を考える.
+$$
+p(w)=\prod_i p(w_i), \quad p(w_i)=\sum_{k=1}^M \pi_k \calN(w_i|\mu_k,\sigma_k^2).
+$$
+正規化関数は
+$$
+\Omega(w)=-\log p(w)=-\sum_i\log\left(\sum_{k=1}^M \pi_k \calN(w_i|\mu_k,\sigma_k^2)\right).
+$$
+誤差関数は
+$$
+\tilde{E}(w)=E(w)+\Omega(w).
+$$
+$\pi_j$を事前分布とみなして負担率を導入する.
+$$
+\gamma_j(w_i)
+ =p(j|w_i)
+ =\frac{p(j)p(w_i|j)}{p(w_i)}=
+ \frac{\pi_j \calN(w_i|\mu_j,\sigma_j^2)}{p(w_i)}.
+$$
+正規分布の微分
+\begin{eqnarray*}
+\dif{x}\calN(x|\mu,\sigma)&=&\calN(x|\mu,\sigma)\left(-\frac{x-\mu}{\sigma^2}\right),\\
+\dif{\mu}\calN(x|\mu,\sigma)&=&\calN(x|\mu,\sigma)\left(\frac{x-\mu}{\sigma^2}\right)\\
+\dif{\sigma}\calN(x|\mu,\sigma)&=&\calN(x|\mu,\sigma)\left(-\frac{1}{\sigma}+\frac{(x-\mu)^2}{\sigma^3}\right)
+\end{eqnarray*}
+を思い出しておく.
+$\log p(w_i)$を$w_i$で微分すると
+\begin{eqnarray*}
+\dif{w_i}\log p(w_i)
+ &=& \frac{1}{p(w_i)} \left(\sum_k \pi_k \dif{w_i} \calN(w_i|\mu_k,\sigma_k^2)\right)\\
+ &=& \frac{1}{p(w_i)} \left(\sum_k \pi_k \calN(w_i|\mu_k,\sigma_k^2) \left(-\frac{w_i-\mu_k}{\sigma_k^2}\right)\right)\\
+ &=&-\sum_k \frac{\pi_k \calN(w_i|\mu_k,\sigma_k)}{p(w_i)}\frac{w_i-\mu_k}{\sigma_k^2}\\
+ &=&-\sum_k \gamma_k(w_i)\frac{w_i-\mu_k}{\sigma_k^2}.
+\end{eqnarray*}
+よって
+$$
+\diff{w_i}{\tilde{E}}=\diff{w_i}{E}+\sum_k \gamma_k(w_i)\frac{w_i-\mu_k}{\sigma_k^2}.
+$$
+同様に
+\begin{eqnarray*}
+\dif{\mu_k}\log p(w)
+ &=&\sum_j \dif{\mu_k}\log p(w_j)
+  =\sum_j \frac{\pi_k \calN(w_j|\mu_k,\sigma_k^2)}{p(w_j)}\frac{w_j-\mu_k}{\sigma_k^2}\\
+ &=&\sum_j \gamma_k(w_j)\frac{w_j-\mu_k}{\sigma_k^2}.
+\end{eqnarray*}
+よって
+$$
+\diff{\mu_k}{\tilde{E}}=\sum_j \gamma_k(w_j)\frac{\mu_k-w_j}{\sigma_k^2}.
+$$
+\begin{eqnarray*}
+\diff{\sigma_k}{\tilde{E}}
+ &=&-\sum_j \dif{\sigma_k}\log p(w_j)
+  =-\sum_j \frac{\pi_k \calN(w_j|\mu_k,\sigma_k^2)}{p(w_j)}
+    \left(-\frac{1}{\sigma_k}+\frac{(w_j-\mu_k)^2}{\sigma_k^3}\right)\\
+ &=&\sum_j \gamma_k(w_j)\left(\frac{1}{\sigma_k}-\frac{(w_j-\mu_k)^2}{\sigma_k^3}\right).
+\end{eqnarray*}
+
+$\pi_j$が事前分布であることから$\sum_j \pi_j=1$, $0 \le \pi_j \le 1$という制約があるので
+$$
+\pi_j=\frac{\exp(\eta_j)}{\sum_k \exp(\eta_k)}
+$$
+と補助変数$\eta_j$を用いて表すと式(\ref{ch4_mclass})より
+$$
+\diff{\eta_j}{\pi_k}=\pi_k(\delta_{kj}-\pi_j).
+$$
+よって
+\begin{eqnarray*}
+\diff{\eta_j}{\tilde{E}}
+ &=& -\sum_i \dif{\eta_j} \log p(w_i)=-\sum_i\dif{\eta_j} \log \left(\sum_k \pi_k \calN(w_i|\mu_k,\sigma_k^2)\right)\\
+ &=& -\sum_{i,k} \frac{\calN(w_i|\mu_k,\sigma_k^2)}{p(w_i)}\diff{\eta_j}{\pi_k}\\
+ &=& -\sum_{i,k} \frac{\calN(w_i|\mu_k,\sigma_k^2)}{p(w_i)}\pi_k(\delta_{kj}-\pi_j)\\
+ &=& -\sum_i \left(\frac{\pi_j \calN(w_i|\mu_j,\sigma_j^2)}{p(w_i)}
+  - \frac{\pi_j \sum_k \pi_k \calN(w_i|\mu_k,\sigma_k^2)}{p(w_i)}\right)\\
+ &=& -\sum_i (\gamma_j(w_i) - \pi_j) = \sum_i (\pi_j - \gamma_j(w_i)).
+\end{eqnarray*}
+
+\section{混合密度ネットワーク}
+$$
+p(t|x)=\sum_{k=1}^K \pi_k(x)\calN(t|\mu_k(x),\sigma_k^2(x)I)
+$$
+という分布のモデルを考える.
+前節と同様$\sum_k \pi_k(x)=1$, $0 \le \pi_k(x) \le 1$という制約があるので
+$$
+\pi_k(x)=\frac{\exp(a_k^\pi)}{\sum_l \exp(a_l^\pi)}
+$$
+とする. 分散は0以上という制約があるので
+$$
+\sigma_k(x)=\exp(a_k^\sigma)
+$$
+とする. 平均は特に制約がないので
+$$
+\mu_{kj}(x)=a_{kj}^\mu
+$$
+とする.
+$$
+\calN_{nk}=\calN(t_n|\mu_k(x_n), \sigma_k^2(x_n)I)
+$$
+とおくと誤差関数は
+$$
+E(w)=-\sum_n \log \left(\sum_k \pi_k(x_n) \calN_{nk} \right).
+$$
+前節と同様$\pi_k(x)$を$x$に関する事前分布として
+$$
+\gamma_{nk}(t_n|x_n)=\frac{\pi_k \calN_{nk}}{\sum_l \pi_l \calN_{nl}}
+$$
+とする.
+$$
+\diff{a_k^\pi}{\pi_j}=\pi_j(\delta_{kj}-\pi_k)
+$$
+より
+$$
+\diff{a_k^\pi}{E_n}
+ =-\frac{\sum_j \pi_j(\delta_{kj}-\pi_k)\calN_{nj}}{\sum_j \pi_j \calN_{nj}}
+ =-(\gamma_{nk}-\pi_k)
+ =\pi_k - \gamma_{nk}.
+$$
+$$
+\calN(t|\mu,\sigma^2 I) =\frac{1}{(2\pi)^{L/2}}\frac{1}{\sigma^L}\exp\left(-\frac{1}{2\sigma^2}\sum_{l=1}^L(t_l-\mu_l)^2\right)
+$$
+なので
+$$
+\dif{\mu_l}\calN(t|\mu,\sigma^2 I)
+ = \calN(t|\mu,\sigma^2 I)\left(-\frac{t_l-\mu_l}{\sigma^2}\right).
+$$
+よって
+$$
+\diff{a_{kl}^\mu}{E_n}
+ =-\frac{\calN_{nk}}{\sum_j \pi_j \calN_{nj}}\frac{t_{nl}-\mu_{kl}}{\sigma_k^2}
+ =\gamma_{nk}\left(\frac{\mu_{kl}-t_{nl}}{\sigma_k^2}\right).
+$$
+同様に
+$$
+\dif{\sigma}\calN(t|\mu,\sigma^2 I)
+ = \calN(t|\mu,\sigma^2 I)\left(-\frac{L}{\sigma} + \frac{||t-\mu||^2}{\sigma^3}\right)
+$$
+より
+$$
+\dif{a_{kl}^\mu}\calN_{nj}=\delta_{jk}\calN_{nj}\left(\frac{t_{nl}-\mu_{kl}}{\sigma_k^2}\right).
+$$
+よって
+$$
+\diff{a_k^\sigma}{\calN_{nk}}
+ =\diff{a_k^\sigma}{\sigma_k}\diff{\sigma_k}{\calN_{nk}}
+ =\sigma_k \calN_{nk}\left(-\frac{L}{\sigma_k} + \frac{||t_n-\mu_k||^2}{\sigma_k^3}\right)
+ =\calN_{nk}\left(-L + \frac{||t_n-\mu_k||^2}{\sigma_k^2}\right).
+$$
+よって
+$$
+\diff{a_k^\sigma}{E_n}=\gamma_{nk}\left(L-\frac{||t_n-\mu_k||^2}{\sigma_k^2}\right).
+$$
+\begin{eqnarray*}
+s^2(x)
+ &=& E\left[||t-E[t|x]||^2\bigl|x\right]\\
+ &=& \sum_k \pi_k \int \left(||t||^2-2\trans{t}E[t|x]+||E[t|x]||^2)\right)\calN(t|\mu_k,\sigma_k^2 I)\,dt\\
+ &=& \sum_k \pi_k \left(\sigma_k^2+||\mu_k||^2-2\trans{\mu_k}E[t|x]+||E[t|x]||^2\right)\\
+ &=& \sum_k \pi_k(x)\left(\sigma_k(x)^2+||\mu_k-\sum_l \pi_l(x)\mu_l(x)||^2\right).
 \end{eqnarray*}
