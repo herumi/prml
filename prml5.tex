@@ -11,6 +11,8 @@ PRML5Í‚Å‚Í, –{—ˆ•Ê‚Ì‹L†‚ğŠ„‚è“–‚Ä‚é‚×‚«‚Æ‚±‚ë‚É“¯‚¶‹L†‚ğ—p‚¢‚é‚±‚Æ‚ª‚ ‚è, ‰“
 \newcommand{\calRR}[1]{{\cal R}\left\{#1 \right\}}
 \newcommand{\deltaj}{\delta_j^{(1)}}
 \newcommand{\deltak}{\delta_k^{(2)}}
+\newcommand{\wmap}{w_{\rm MAP}}
+\newcommand{\amap}{a_{\rm MAP}}
 
 \section{ƒtƒB[ƒhƒtƒHƒ[ƒhƒlƒbƒgƒ[ƒNŠÖ”}
 3Í, 4Í‚Å‚â‚Á‚½ƒ‚ƒfƒ‹‚ÍŠî’êŠÖ”$\phi_j$‚Æƒpƒ‰ƒ[ƒ^$w_j$‚ÌüŒ`˜a‚ğ”ñüŒ`Šˆ«‰»ŠÖ”‚É“ü‚ê‚½‚à‚Ì‚¾‚Á‚½.
@@ -98,10 +100,22 @@ $$
               &=& -(t_k - t_k y_k - y_k + y_k t_k)\\
               &=& y_k - t_k.
 \end{eqnarray*}
-
-$K$ŒÂ‚ÌƒNƒ‰ƒX•ª—Ş–â‘è‚ğl‚¦‚é. $n$”Ô–Ú‚Ì“ü—Í$x_n$‚É‘Î‚·‚é–Ú•W•Ï”$t_{nk}$‚Å•\‚·.
+$K$ŒÂ‚Ì2ƒNƒ‰ƒX•ª—Ş–â‘è‚ğl‚¦‚é. ‚»‚ê‚¼‚ê‚ÌŠˆ«‰»ŠÖ”‚ªƒƒWƒXƒeƒBƒbƒNƒVƒOƒ‚ƒCƒhŠÖ”‚Æ‚·‚é.
+$$
+p(t|x,w)=\prod_{k=1}^K y_k(x,w)^{t_k} (1-y_k(x,w))^{1-t_k}.
+$$
+$y_{nk}=y_k(x_n,w)$‚Æ‚µ$n$”Ô–Ú‚Ì“ü—Í$x_n$‚É‘Î‚·‚é–Ú•W•Ï”$t_{nk}$‚Å•\‚·.
 $t_{nk}=0$‚Ü‚½‚Í1‚Å‚ ‚è, $\sum_k t_{nk}=1$‚Å‚ ‚é.
-$y_{nk}=y_k(x_n,w)$‚ğ$t_{nk}$‚ª1‚Æ‚È‚éŠm—¦$p(t_{nk}=1|x_n)$‚Æ‚İ‚È‚·.
+$$
+E(w)=-\prod_{n,k} (t_{nk} \log y_{nk}+(1-t_{nk})\log (1-y_{nk})).
+$$
+$y_{nj}$‚É‘Î‰‚·‚é$a$‚ğ$a_{nj}$‚Æ‚·‚é‚Æ
+$$
+\diff{a_{nj}}{E(w)}=-(t_{nj}(1-y_{nj})+(1-t_{nj})(-y_{nj}))=y_{nj}-t_{nj}.
+$$
+$K$ŒÂ‚ÌƒNƒ‰ƒX•ª—Ş–â‘è‚ğl‚¦‚é. “¯—l‚É$n$”Ô–Ú‚Ì“ü—Í$x_n$‚É‘Î‚·‚é–Ú•W•Ï”$t_{nk}$‚Å•\‚·.
+$t_{nk} \in \{0,1\}$‚Å‚ ‚è, $\sum_k t_{nk}=1$‚Å‚ ‚é.
+$y_k(x_n,w)$‚ğ$t_{nk}$‚ª1‚Æ‚È‚éŠm—¦$p(t_{nk}=1|x_n)$‚Æ‚İ‚È‚·.
 $$
 E(w) = -\log p(t|x,w)=-\sum_{n,k} t_{nk} \log y_k(x_n,w).
 $$
@@ -522,3 +536,64 @@ s^2(x)
  &=& \sum_k \pi_k \left(\sigma_k^2+||\mu_k||^2-2\trans{\mu_k}E[t|x]+||E[t|x]||^2\right)\\
  &=& \sum_k \pi_k(x)\left(\sigma_k(x)^2+||\mu_k-\sum_l \pi_l(x)\mu_l(x)||^2\right).
 \end{eqnarray*}
+
+\section{ƒNƒ‰ƒX•ª—Ş‚Ì‚½‚ß‚ÌƒxƒCƒYƒjƒ…[ƒ‰ƒ‹ƒlƒbƒgƒ[ƒN}
+ƒƒWƒXƒeƒBƒbƒNƒVƒOƒ‚ƒCƒho—Í‚ğˆê‚Â‚Âƒlƒbƒgƒ[ƒN‚É‚æ‚é2ƒNƒ‰ƒX•ª—Ş–â‘è‚ğl‚¦‚é.
+‚»‚Ìƒ‚ƒfƒ‹‚Ì‘Î”–Ş“xŠÖ”‚Í$t_n \in \{0, 1\}$, $y_n=y(x_n,w)$‚Æ‚µ‚Ä
+$$
+\log p(\calD|w)=\sum_n (t_n \log y_n + (1-t_n)\log (1-y_n)).
+$$
+$W$‚ğ$w$‚ÉŠÜ‚Ü‚ê‚éƒpƒ‰ƒ[ƒ^‚Ì‘”‚Æ‚µ‚Ä–‘O•ª•z‚ğ
+$$
+p(w|\alpha)=\calN(w|0,\alpha^{-1}I)=\frac{1}{\sqrt{2\pi}^W|\alpha^{-1}|^{W/2}}\exp\left(-\half \alpha \inp{w}\right)
+$$
+‚Æ‚·‚é. ƒmƒCƒY‚ª‚È‚¢‚Ì‚Å$\beta$‚ğŠÜ‚Ü‚È‚¢.
+$$
+E(w)=\log p(\calD|w)+\frac{\alpha}{2}\inp{w}
+$$
+‚ÌÅ¬‰»‚Å$\wmap$‚ğ‹‚ß, $H=-\nabla^2 \log p(w|\calD)$‚ğ‰½‚ç‚©‚Ì•û–@‚Å‹‚ß‚é.
+ƒ‰ƒvƒ‰ƒX‹ß—‚ğg‚Á‚Ä–Œã•ª•z‚ğƒKƒEƒX‹ß—‚·‚é‚Æ
+$$
+q(w|\calD)=\calN(w|\wmap,A^{-1}).
+$$
+³‹K‰»€‚ğ‹‚ß‚é®(\ref{ch4_approx})‚ğg‚Á‚Ä
+\begin{eqnarray*}
+\log p(\calD|\alpha)
+ &\approx& \log \left(p(\calD|\wmap)p(\wmap|\alpha)\sqrt{\frac{(2\pi)^W}{|A|}}\right)\\
+ &=& \log p(\calD|\wmap)-\frac{W}{2}\log (2\pi) +\frac{W}{2}\log \alpha
+ - \half \alpha \inp{\wmap}\\
+ &+& \frac{W}{2}\log(2\pi)-\half \log |A|\\
+ &=&-E(\wmap)-\half \log |A| + \frac{W}{2}\log \alpha.
+\end{eqnarray*}
+$$
+E(\wmap)=-\sum_n (t_n \log y_n + (1-t_n)\log (1-y_n))+\half \alpha \inp{\wmap}.
+$$
+—\‘ª•ª•z‚ğl‚¦‚é.
+o—Íƒ†ƒjƒbƒg‚ÌŠˆ«‰»ŠÖ”‚ğüŒ`‹ß—‚·‚é.
+\begin{eqnarray*}
+a(x,w)
+ &\approx& a(x,\wmap) + \nabla \trans{a(x,\wmap)}(w-\wmap)\\
+ &&i\amap(x)=a(x,\wmap), \quad b = \nabla a(x,\wmap)‚Æ‚µ‚Äj\\
+ &=& \amap(x) + \trans{b}(w-\wmap).
+\end{eqnarray*}
+\begin{eqnarray*}
+p(a|x,\calD)
+ &=& \int \delta(a-a(x,w))q(w|\calD)\,dw\\
+ &=&\int \delta (a-\amap(x)-\trans{\wmap}b+\trans{w}b)q(w|\calD)\,dw.
+\end{eqnarray*}
+•½‹Ï‚Í
+\begin{eqnarray*}
+E[a]
+ &=& \int ap(a|x,\calD)\,da = \int \delta(a-a(x,w))w(w)a\,dadw\\
+ &=& \int a(x,w)q(w)\,dw=(\amap(x)-\trans{\wmap}b)+\int \trans{b}wq(w)\,dw\\
+ &=& \amap(x)-\trans{\wmap}b+\trans{b}\wmap=\amap(x).
+\end{eqnarray*}
+•ªU‚Í$\trans{w}b$‚ªŒø‚­‚Ì‚Å
+$$
+\sigma_a^2(x)=\trans{b}A^{-1}b(x)
+$$
+—\‘ª•ª•z‚Í®(\ref{ch4_probit})‚Ì‹ß—®‚ğg‚Á‚Ä
+$$
+p(t=1|x,\calD)=\int \sigma(a)p(a|x,\calD)\,da
+ \approx \sigma(\kappa(\sigma_a^2)\amap(x)).
+$$

@@ -818,9 +818,9 @@ $$
 
 \section{モデルの比較とBIC}
 前節のラプラス近似を行うと正規化係数$Z$の近似も分かる. ガウス分布の特性から
-$$
+\begin{eqnarray}\label{ch4_approx}
 Z=\int f(z)\,dx \approx \int f(z_0) \exp\left(-\half\trans{(z-z_0)}A(z-z_0)\right)\,dx=f(z_0)\sqrt{\frac{(2\pi)^M}{|A|}}.
-$$
+\end{eqnarray}
 
 データ集合$D$, パラメータ$\{\theta_i\}$の集合$\{M_i\}$を考えて各モデルに対して$p(D|\theta_i, M_i)$を定義する.
 事前確率$p(\theta_i|M_i)$を決めてモデルエビデンス$p(D|M_i)$を計算してみよう. 以下$M_i$を略す.
@@ -1100,11 +1100,11 @@ $$
 ここではロジスティックシグモイド関数をプロビット関数の逆関数で近似することで畳み込み積分を解析的に扱おう.
 
 前節の結果から$\lambda = \sqrt{\pi/8}$として$\sigma(a) \approx \Phi(\lambda a)$と近似すると
-\begin{eqnarray*}
-\int \sigma(a)\calN(a|\mu,\sigma^2)\,da &\approx& \sigma\left(\frac{\mu}{\sqrt{1+\lambda^2 \sigma^2}}\right)\\
-&& \kappa(\sigma^2)=1/\sqrt{1+(\pi/8)\sigma^2}{\text とおくと}\\
+\begin{eqnarray}\label{ch4_probit}
+\int \sigma(a)\calN(a|\mu,\sigma^2)\,da &\approx& \sigma\left(\frac{\mu}{\sqrt{1+\lambda^2 \sigma^2}}\right) \nonumber \\
+&& \kappa(\sigma^2)=1/\sqrt{1+(\pi/8)\sigma^2}{\text とおくと}\nonumber \\
 &=&\sigma\left(\kappa(\sigma^2)\mu\right).
-\end{eqnarray*}
+\end{eqnarray}
 よって
 $$
 p(C_1|\phi,t) \approx \sigma(\kappa(\sigma_a^2)\mu_a)
