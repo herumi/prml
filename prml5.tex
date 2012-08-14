@@ -84,11 +84,11 @@ $$
 y=\sigma(a)=\frac{1}{1+\exp(-a)}.
 $$
 この微分は$dy/da=\sigma(a)(1-\sigma(a))=y(1-y)$であった.
-確率$t$で$p(C_1|x)=y(x,w)$, 確率$1-t$で$p(C_2|x)=1-y(x,w)$なので
+$p(t=1|x)=y(x,w)$, $p(t=0|x)=1-y(x,w)$なので
 $$
 p(t|x,w)=y(x,w)^t \left(1-y(x,w)\right)^{1-t}
 $$
-となる. よって誤差関数は
+となる. よって4章と同様にして交差エントロピー誤差関数は
 $$
 E(w)=-\sum_{n=1}^N \left(t_n \log y_n + (1-t_n) \log (1-y_n)\right).
 $$
@@ -99,12 +99,11 @@ $$
               &=& y_k - t_k.
 \end{eqnarray*}
 
-$K$個のクラス分類問題を考える. $t_k$を0, 1をとる変数とする.
-$\sum_n t_{nk}=t_k$,
-$\sum_k t_k = 1$という関係式が成り立つ.
-$y_k(x,w)$を$t_k$が1となる確率$p(t_k=1|x)$とみなす.
+$K$個のクラス分類問題を考える. $n$番目の入力$x_n$に対する目標変数$t_{nk}$で表す.
+$t_{nk}=0$または1であり, $\sum_k t_{nk}=1$である.
+$y_{nk}=y_k(x_n,w)$を$t_{nk}$が1となる確率$p(t_{nk}=1|x_n)$とみなす.
 $$
-E(w) = -\log p(t|x,w))=-\sum_n \log p(t_n=1|x,w)=-\sum_{n,k} t_{nk} \log y_k(x_n,w).
+E(w) = -\log p(t|x,w)=-\sum_{n,k} t_{nk} \log y_k(x_n,w).
 $$
 活性化関数はソフトマックス関数で
 $$
@@ -114,13 +113,13 @@ $$
 $$
 \diff{a_j}{y_k}=y_k(\delta_{kj}-y_j).
 $$
+よって$a_{nj}=a_j(x_n,w)$とすると
+$$
+\dif{a_{nj}}\log y_k(x_n,w)=\frac{1}{y_{nk}}\diff{a_{nj}}{y_{nk}}=\delta_{kj}-y_{nj}.
+$$
 よって
 $$
-\dif{a_j}\log y_k(x_n,w)=\frac{1}{y_k}\diff{a_j}{y_k}=\delta_{kj}-y_j.
-$$
-よって
-$$
-\diff{a_j}{E}=-\sum_{n,k} t_{nk}(\delta_{kj}-y_j)=-\sum_nt_{nj}+\sum_{n,k}t_{nk}y_j=-t_j+y_j.
+\diff{a_{nj}}{E}=-\sum_k t_{nk}(\delta_{kj}-y_{nj})=-t_{nj}+\left(\sum_k t_{nk}\right)y_{nj}=y_{nj}-t_{nj}.
 $$
 \section{局所二次近似}\label{ch5_loc}
 $w$に関する一変数関数$E(w)$の$w=\hat{w}$におけるテイラー展開を2次の項で打ち切った近似式は
@@ -141,7 +140,7 @@ $H(E)$は対称行列なので\ref{pos_sym_matrix}節の議論より対角化することで
 $$
 E(w) \approx E(w^*) + \half \sum_i \lambda_i y_i^2.
 $$
-の形にできる. そして固有値が正なら$E(w)$が$w=w^*$の付近で極小となることがわかる.
+の形にできる. そして$E(w)$が$w=w^*$の付近で極小となるのは$H(E) > 0$であることがわかる.
 
 なお, $H(f)=\nabla^2 f = \nabla(\nabla f)$という表記をすることがある. 微分作用素$\nabla$を2回するので2乗の形をしている.
 ただ$\nabla f$が縦ベクトルならもう一度$\nabla$をするときは結果が行列になるように,
@@ -170,7 +169,7 @@ $a_j$は$w_{ji}$に関しては線形なので
 $$
 \diff{w_{ji}}{a_j}=z_i.
 $$
-誤差と呼ばれる記号$\delta_j=\diff{a_j}{E_n}$を導入すると
+誤差と呼ばれる記号$\delta_j = \partial E_n / \partial a_j$を導入すると
 $$
 \diff{w_{ji}}{E_n}=\delta_j z_i
 $$
@@ -178,7 +177,7 @@ $$
 $$
 \delta_j=\diff{a_j}{E_n}=y_j-t_j.
 $$
-$E_n$への$a_j$の影響がユニット$j$につながっているユニット$k$を通してあると考えると
+ユニット$j$につながっているユニット$k$を通して$E_n$への$a_j$の影響があると考えると
 \label{cp5_3}
 \begin{eqnarray}
 \diff{a_j}{E_n}=\sum_k \diff{a_k}{E_n}\diff{a_j}{a_k}.
