@@ -7,7 +7,7 @@
 
 \section{最小二乗法}
 
-\subsection{微分の復習}
+\section{微分の復習}
 $\bm{x}$, $\bm{y}$を縦ベクトルとして
 $$\dif{\bm{x}} (\trans{\bm{x}}\bm{y}) = \bm{y}.$$
 $$\dif{\bm{y}} (\trans{\bm{x}}\bm{y}) = \bm{x}.$$
@@ -16,7 +16,7 @@ $$\dif{\bm{y}} (\trans{\bm{x}}\bm{y}) = \bm{x}.$$
 2章でも述べたが$\dif{\bm{x}}$を$\nabla$と書くこともあるがPRMLでは場所によって縦ベクトル（3.22）だったり,
 横ベクトル（3.13）だったりする. 常に縦ベクトルとしたほうが混乱は少ない.
 
-\subsection{誤差関数の最小化}
+\section{誤差関数の最小化}
 
 $$f(\bm{w})=\sum_{n=1}^N\left(t_n - \trans{\bm{w}}\phi(\bm{x}_n)\right)^2+\lambda \trans{\bm{w}}\bm{w}$$
 とする. ここで$\bm{w}$と$\phi(\bm{x}_n)$は$M$次元縦ベクトルである.
@@ -40,7 +40,7 @@ $$だから$\bm{t}=\trans{(t_1, \ldots, t_N)}$とおくと
 $$\bm{w}_{\text{ML}}=(\lambda I + \trans{\Phi}\Phi)^{-1}\trans{\Phi}\bm{t}$$
 が最尤解. $\bm{y}=\Phi \bm{w}$が予測値である.
 
-\subsection{正射影}
+\section{正射影}
 
 前節で$\lambda = 0$のときを考える.
 $$\bm{y}=\Phi(\trans{\Phi}\Phi)^{-1}\trans{\Phi}\bm{t}$$
@@ -65,7 +65,7 @@ $$\bm{y}=X\bm{t}=\sum_i s_i a_i$$
 $$X:(s_1, \ldots, s_N, t_1, \ldots, t_{N-M}) \rightarrow (s_1, \ldots, s_N, 0, \ldots, 0).$$
 これを見ると正射影のニュアンスがより明確になる.
 
-\subsection{行列での微分}
+\section{行列での微分}
 
 $x$を$n$次元ベクトル, $A$を$m$行$n$列として$y=Ax$とおく.
 $$f(A) = ||y||^2=\trans{\left(Ax\right)}Ax$$
@@ -83,7 +83,7 @@ $$\trans{\left(Ax\right)}Ax=\sum_s \left(Ax\right)_s \left(Ax\right)_s = \sum_s 
 よって
 $$\dif{A}||Ax||^2 = 2Ax\trans{x}.$$
 
-\subsection{Woodburyの逆行列の公式}
+\section{Woodburyの逆行列の公式}
 
 行列$A$, $B$, $C$, $D$について
 $$\left(A+BD^{-1}C\right)^{-1}=A^{-1}-A^{-1}B\left(D+CA^{-1}B\right)^{-1}CA^{-1}$$
@@ -109,7 +109,7 @@ A^{-1}B\left(D+CA^{-1}B\right)^{-1}CA^{-1} &=& A^{-1}B\left(\left(DB^{-1}A+C\rig
 \end{equation}
 が成り立つ.
 
-\subsection{正定値対称行列}\label{pos_sym_matrix}
+\section{正定値対称行列}\label{pos_sym_matrix}
 $n$次元実対称行列$A$はある直行行列$P$を用いて常に対角化可能であった.
 $$P^{-1}AP=\diag(\lambda_1, \cdots, \lambda_n).$$
 全ての固有値が正であるとき$A$を正定値といい, $A > 0$とかく.
@@ -133,7 +133,7 @@ $A$は実対称であり, 任意の$\bm{x}$に対して
 $$\quadf{A}{x}=\left(\trans{\bm{v}}\bm{x}\right)^2 \ge 0$$
 なので$A \ge 0$.
 
-\subsection{予測分布の分散}
+\section{予測分布の分散}
 $S_N^{-1}=S_0^{-1} + \beta \trans{\Phi_N}\Phi_N$としたときの予測分布の分散
 $$\sigma_N^2=\frac{1}{\beta}+\trans{\phi} S_N \phi$$
 を考える. $\beta>0$であり, $S_0$は共分散行列なので実正定値であることに注意する.
@@ -178,7 +178,7 @@ $\bm{v}_i$が基底関数のベクトルに訓練データの値を代入したものであることを考えると
 $$\sigma_N^2 \rightarrow \frac{1}{\beta}$$
 となる.
 
-\subsection{カルバック距離}
+\section{カルバック距離}
 
 $p(x)$, $q(x)$を恒等的に0ではない確率密度関数とする. つまり$p(x)$, $q(x) \ge 0$.
 $$
@@ -216,7 +216,7 @@ $S(x)=0$となる$x$は0のときだけだから,
 カルバック距離$\KL(p(D|M)||p(D|M'))$は,
 0に近いほど真のモデルに近そうだということにする.
 
-\subsection{エビデンス関数の評価の式変形}
+\section{エビデンス関数の評価の式変形}
 $A=\alpha I + \beta \trans{\Phi}\Phi$とおくと
 \begin{eqnarray*}
 E(w) &=& \frac{\beta}{2}||t-\Phi w||^2+\frac{\alpha}{2}\trans{w}w\\
@@ -256,7 +256,7 @@ E(w) &=& \int \exp\left(-E(w)\right)\,dw \\
  &=& (M/2)\log \alpha + \frac{N}{2} \log \beta - E(m_N) - \half\log |A| - \frac{N}{2} \log(2\pi).
 \end{eqnarray}
 
-\subsection{ヘッセ行列}
+\section{ヘッセ行列}
 $x$が$n$次縦ベクトルのとき, $y=f(x)$における2階微分の$n$次正方行列
 $$
 H(f)=\left(\ddif{x_i}{x_j}f(x)\right)
@@ -295,7 +295,7 @@ $$
  \end{minipage}
 \end{figure}
 
-\subsection{エビデンス関数の最大化の式変形}
+\section{エビデンス関数の最大化の式変形}
 行列$\beta\trans{\Phi}\Phi$をある行列$P$で対角化する.
 $$
 P^{-1} \left(\beta\trans{\Phi}\Phi\right) P = \diag(\lambda_1, \ldots, \lambda_M).
@@ -343,8 +343,7 @@ $$
 $$
 \frac{1}{\beta}=\frac{1}{N-\gamma}||\bm{t}-\Phi m_N||^2.
 $$
-
-\subsection{パラメータの関係}
+\section{パラメータの関係}
 パラメータがたくさんでてきたのでそれらの関係を見直してみよう.
 まず線形基底モデルを考えた. $\phi(x)$を$M$個の基底関数からなるベクトルとする.
 $x$は観測値であり,
