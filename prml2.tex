@@ -95,34 +95,31 @@ $$\det\left(\frac{\partial (x_1, \ldots, x_n)}{\partial (y_1, \ldots, y_n)}\righ
 
 \subsection{ŠïŠÖ”‚ÌÏ•ª}
 
-‘S‚Ä‚Ì$x$‚É‚Â‚¢‚Ä$f(-x)=-f(x)$‚Ì‚Æ‚«$f$‚ğŠïŠÖ”‚Æ‚¢‚¤. \\
-$f(-x)=f(x)$‚Ì‚Æ‚«‚Í‹ôŠÖ”‚Æ‚¢‚¤.
-
+‘S‚Ä‚Ì$x$‚É‚Â‚¢‚Ä$f(-x)=f(x)$‚ª¬‚è—§‚Â‚Æ‚«$f$‚ğ‹ôŠÖ”,
+$f(-x)=-f(x)$‚ª¬‚è—§‚Â‚Æ‚«$f$‚ğŠïŠÖ”‚Æ‚¢‚¤.
 ŠïŠÖ”$f$‚É‚Â‚¢‚Ä
-$$I=\int_{-\infty}^\infty f(x) \,dx=0.$$
-
+$$
+I=\int_{-\infty}^\infty f(x) \,dx=0.
+$$
 ‚È‚º‚È‚ç$I=\int_{-\infty}^0 f(x) \,dx + \int_0^\infty f(x) \,dx$‚ÆÏ•ª‹æŠÔ‚ğ”¼•ª‚É‚í‚¯‚Ä‚İ‚æ‚¤.
 ‘æ1€‚Å$x=-y$‚Æ•Ï”•ÏŠ·‚·‚é‚Æ$f(x)dx=-f(-y)dy=f(y)dy$‚Æ‚È‚é.
 Ï•ª”ÍˆÍ‚Í$\infty$‚©‚ç$0$‚É‚È‚è, Œü‚«‚ª‹t“]‚·‚é‚Ì‚Å“ü‚êŠ·‚¦‚é‚Æ•„†‚ª‚Ğ‚Á‚­‚è•Ô‚é.
 ‚æ‚Á‚Ä$\text{‘æ1€}=-\int_0^\infty f(y) \,dy$. ‘æ2€‚Æ‘Å‚¿Á‚µ‚ ‚Á‚Ä$I=0$‚Æ‚È‚é‚©‚ç‚Å‚ ‚é.
 
 $\bm{x}$‚ª$n$ŸŒ³ƒxƒNƒgƒ‹‚Ì‚Æ‚«‚à“¯—l‚É‘S‚Ä‚Ì$\bm{x}$‚É‚Â‚¢‚Ä$f(-\bm{x})=-f(\bm{x})$‚Æ‚È‚é‚Æ‚«$f$‚ğŠïŠÖ”‚Æ‚¢‚¤.
-
-‚â‚Í‚è$I=\int_{-\infty}^\infty \cdots \int_{-\infty}^\infty f(\bm{x}) \,dx_1 \cdots \,dx_n=0$.
-
+‚â‚Í‚è
+$$
+I=\int_{-\infty}^\infty \cdots \int_{-\infty}^\infty f(\bm{x}) \,dx_1 \cdots \,dx_n=0.
+$$
 ‚È‚º‚È‚ç
-
 $$I=\int_{-\infty}^0 \int_{-\infty}^\infty \cdots \int_{-\infty}^\infty
    +\int_0^\infty \int_{-\infty}^\infty \cdots \int_{-\infty}^\infty$$
 ‚Æ“ñ‚Â‚Ì—Ìˆæ‚É•ª‚¯‚Ä$\bm{x}=-\bm{y}$‚Æ•Ï”•ÏŠ·‚·‚é‚Æ, $d\bm{x}=(-1)^nd\bm{y}$.
-
 ‘æ1€‚ÌÏ•ª”ÍˆÍ‚Í$(0,-\infty) \times (\infty,-\infty) \times \cdots \times (\infty,-\infty)$‚É‚È‚è,
 ‘æ2€‚ÌÏ•ª”ÍˆÍ‚É‡‚í‚¹‚é‚Æ$(-1)^n$‚ª‚Å‚é.
-
 ‚æ‚Á‚Ä$f(-\bm{y})=-f(\bm{y})$‚ğg‚¤‚Æ
 $$I=\int_0^\infty \int_{-\infty}^\infty \cdots \int_{-\infty}^\infty f(-\bm{y})\,d\bm{y}
    +\int_0^\infty \int_{-\infty}^\infty \cdots \int_{-\infty}^\infty f(\bm{x})\,d\bm{x}=0.$$
-
 
 \subsection{$\exp\left(-x^2\right)$‚ÌÏ•ª}
 
@@ -361,19 +358,16 @@ $$A=\lmatt{a_{11}}{*}{0}{a_{nn}}.$$
 ˆÈ‰º“¯—l‚É‚µ‚Ä‘ÎŠp¬•ª‚ğE‚Á‚½‚à‚Ì‚µ‚©c‚ç‚È‚¢‚©‚ç‚Å‚ ‚é.
 
 ‚³‚ÄŸ‚Ì’è—‚ğØ–¾–³‚µ‚Å”F‚ß‚é:
-
-\begin{equation}\label{trigonal}
-\text{”CˆÓ‚Ì$n$Ÿ³•ûs—ñ$A$‚É‘Î‚µ‚Ä, }\\
-\text{‚ ‚éƒ†ƒjƒ^ƒŠ[s—ñ$P$‚ª‚ ‚Á‚Ä$P^{-1}AP$‚ğOŠp‰»‚Å‚«‚é}
-\end{equation}
-
+\begin{eqnarray}\label{trigonal}
+&&”CˆÓ‚ÌnŸ³•ûs—ñA‚É‘Î‚µ‚Ä,\nonumber \\
+&&‚ ‚éƒ†ƒjƒ^ƒŠ[s—ñP‚ª‚ ‚Á‚ÄP^{-1}AP‚ğOŠp‰»‚Å‚«‚é.
+\end{eqnarray}
 i’ˆÓjˆê”Ê‚Ìs—ñ‚ªí‚É‘ÎŠp‰»‚Å‚«‚é‚Æ‚ÍŒÀ‚ç‚È‚¢‚ªOŠp‰»‚Íí‚É‚Å‚«‚é.
 
 \subsection{‘ÎÌs—ñ}
 
 $A$‚ğ$n$ŸÀ‘ÎÌs—ñ‚Æ‚·‚é.
-
-\begin{equation}\label{sym}
+\begin{equation}
 \text{$n$ŸÀ‘ÎÌs—ñ$A$‚É‘Î‚µ‚Ä, ‚ ‚és—ñ$P$‚ª‘¶İ‚µ‚Ä$P^{-1}AP$‚ğÀ‘ÎŠp‰»‚Å‚«‚é.}
 \end{equation}
 
@@ -387,7 +381,6 @@ $$P^{-1}AP=
   0 & \ldots & \lambda_n
 \end{pmatrix}.
 $$
-
 ‚±‚Ì—¼•Ó‚Ì”º‚ğ‚Æ‚é. $P$‚Íƒ†ƒjƒ^ƒŠ[s—ñ‚È‚Ì‚Å$PP^*=I$. ‚Â‚Ü‚è$P^{-1} = P^*$.
 ‚³‚ç‚É$A$‚ÍÀ‘ÎÌs—ñ‚È‚Ì‚Å$A^*=A$‚É’ˆÓ‚·‚é‚Æ
 $$P^*A^*(P^{-1})^*=P^{-1}AP=
@@ -471,19 +464,17 @@ $$\quadf{A}{x}
 =\quadf{\diag(\lambda_1,\ldots,\lambda_n)}{y}=\sum_{i=1}^n \lambda_i y_i^2.$$
 
 ‚Â‚Ü‚è2ŸŒ`®‚Í‘ÎŠp‰»‚·‚ê‚Î’P‚È‚é¬•ª‚²‚Æ‚Ì’¼˜a‚É‚È‚é.
-
-\newpage
-\subsection{‘½•Ï—ÊƒKƒEƒX•ª•z}
+\section{‘½•Ï—ÊƒKƒEƒX•ª•z}
 
 $A$‚ğ$n$ŸÀ‘ÎÌs—ñ, $\bm{z}$‚ğ$n$ŸŒ³cƒxƒNƒgƒ‹‚Æ‚µ‚Ä‚·‚é.
-
-‚Ü‚¸$f(\bm{z})=\exp\left(-(1/2)\quadf{A^{-1}}{z}\right)$‚ğl‚¦‚é.
-
+‚Ü‚¸
+$$
+f(\bm{z})=\exp\left(-\half\quadf{A^{-1}}{z}\right)
+$$
+‚ğl‚¦‚é.
 ‚±‚ê‚Í$\bm{z}$‚É‚Â‚¢‚Ä‹ôŠÖ”‚Å‚ ‚é.
-
 $A$‚ğ’¼Œğs—ñ$P$‚Å‘ÎŠp‰»‚·‚é.
 $P^{-1}AP=\diag(\lambda_1, \ldots, \lambda_n)$‚æ‚è, $P^{-1}A^{-1}P=\diag(\lambda_1^{-1}, \ldots, \lambda_n^{-1}).$
-
 $\bm{y}=P^{-1}\bm{z}$‚Æ’u‚¢‚Ä‘Oß‚Ì•ÏŒ`‚ğs‚¤‚Æ
 $$f(\bm{z})
 =\exp\left(-\half\sum_{i=1}^n \frac{z_i^2}{\lambda_i}\right)
@@ -540,23 +531,21 @@ $$
 ‘æ4€‚Æ‡‚í‚¹‚Ä, Œ‹‹Ç
 $$\EE[\bm{x}\trans{\bm{x}}]=\bm{\mu}\trans{\bm{\mu}} + A.$$
 
-\subsection{s—ñ‚Ì”÷•ª}
-
+\section{s—ñ‚Ì”÷•ª}
 ‚±‚±‚Å‚ÍƒKƒEƒX•ª•z‚ÌÅ–Ş„’è‚Åg‚¤‚¢‚­‚Â‚©‚ÌŒö®‚ğ—ñ‹“‚·‚é.
 PRML‚Ì•t˜^C‚Å‚Í‚½‚Æ‚¦‚Î(C.22)‚ğ(C.33)‚â(C.47)‚ğg‚Á‚Ä¦‚¹‚Æ‚ ‚é‚ª,
 ‚»‚ê‚¾‚Æ‘ÎÌs—ñ‚â‘ÎŠp‰»‚ª‚Å‚«‚és—ñ‚É‘Î‚µ‚Ä‚µ‚©¦‚¹‚Ä‚¢‚È‚¢’†“r”¼’[‚È‚à‚Ì‚Å‚ ‚é.
 ‚±‚ê‚ç‚Í‚à‚Á‚Æˆê”Ê“I‚Ès—ñ‚Å¬‚è—§‚Â.
 
 $A$‚ğ$n$Ÿ³•ûs—ñ‚Æ‚·‚é.
-\begin{enumerate}
-\item 2ŸŒ`®‚Ì•Ê‚Ì•\Œ»
+\subsection{2ŸŒ`®‚Ì•Ê‚Ì•\Œ»}
 $\bm{x}$‚ğ$n$ŸcƒxƒNƒgƒ‹‚Æ‚·‚é‚Æ‚«,
 \begin{equation}\label{quad}
 \quadf{A}{x}=\sum_{i,j} a_{ij} x_i x_j=\sum_i \left(\sum_j a_{ij} (\bm{x}\trans{\bm{x}})_{ji}\right)=\sum_i (A \bm{x}\trans{\bm{x}})_{ii}=\tr(A \bm{x}\trans{\bm{x}}).
 \end{equation}
 ‚±‚Ì®‚Í$A$‚ª‘ÎÌs—ñ‚Å‚È‚­‚Ä‚à¬‚è—§‚Â‚±‚Æ‚É’ˆÓ‚·‚é.
 
-\item “àÏ‚Ì”÷•ª
+\subsection{“àÏ‚Ì”÷•ª}
 $\bm{x}$, $\bm{y}$‚ğcƒxƒNƒgƒ‹‚Æ‚µ‚Ä
 $$\dif{\bm{x}} \left(\trans{\bm{x}}\bm{y}\right) = \bm{y}.$$
 $$\dif{\bm{y}} \left(\trans{\bm{x}}\bm{y}\right) = \bm{x}.$$
@@ -569,39 +558,37 @@ $\dif{\bm{x}}$‚ğ$\nabla$‚Æ‘‚­‚±‚Æ‚à‚ ‚é‚ªPRML‚Å‚ÍêŠ‚É‚æ‚Á‚ÄcƒxƒNƒgƒ‹i2.228
 $$\dif{x_i}\left(\trans{\bm{x}}\bm{y}\right)=\sum_j \delta_{ij} y_j=y_j.$$
 $$\dif{y_i}\left(\trans{\bm{x}}\bm{y}\right)=\sum_j x_j \delta_{ij}=x_j.$$
 
-\item 2ŸŒ`®‚Ì”÷•ª
+\subsection{2ŸŒ`®‚Ì”÷•ª}
 \begin{equation}\label{diff_quad}
 \dif{\bm{x}}\left(\quadf{A}{x}\right)=(A+\trans{A})\bm{x}.
 \end{equation}
-
 Ø–¾‚Í
 \begin{eqnarray*}
-\dif{x_i}\left(\quadf{A}{x}\right) &=& \sum_{s,t} a_{st} \dif{x_i}(x_s x_t)
-= \sum_{s,t} a_{st} (\delta_{is} x_t + x_s \delta_{it})
-= \left(\sum_t a_{it} x_t\right) + \left(\sum_s a_{si} x_s\right)\\
-&=& (A\bm{x})_i + (\trans{A}\bm{x})_i = \left((A + \trans{A})\bm{x}\right)_i.
+\dif{x_i}\left(\quadf{A}{x}\right)
+&=& \sum_{s,t} a_{st} \dif{x_i}(x_s x_t)= \sum_{s,t} a_{st} (\delta_{is} x_t + x_s \delta_{it})\\
+&=& \left(\sum_t a_{it} x_t\right) + \left(\sum_s a_{si} x_s\right)
+= (A\bm{x})_i + (\trans{A}\bm{x})_i = \left((A + \trans{A})\bm{x}\right)_i.
 \end{eqnarray*}
 
 “Á‚É$A$‚ª‘ÎÌs—ñ‚Ì‚Æ‚«‚Í
 $$\dif{\bm{x}}\left(\quadf{A}{x}\right)=2A\bm{x}.$$
-
-\item $AA^{-1}=I$‚Ì—¼•Ó‚ğ$x$‚Å”÷•ª‚·‚é‚Æ
+\subsection{‹ts—ñ‚Ì”÷•ª}
+$AA^{-1}=I$‚Ì—¼•Ó‚ğ$x$‚Å”÷•ª‚·‚é‚Æ
 $$\left(\dif{x} A\right)A^{-1}+A \dif{x}(A^{-1})=0.$$
-
 ¶‚©‚ç$A^{-1}$‚ğ‚©‚¯‚é‚±‚Æ‚É‚æ‚Á‚Ä
 \begin{equation}\label{diff_inv}
 \dif{x}\left(A^{-1}\right)=-A^{-1}\left(\dif{x} A\right)A^{-1}.
 \end{equation}
 
-\item s—ñ®‚Ì‘Î”‚Ì”÷•ª‚ÌŒö®(1)
-
+\subsection{s—ñ®‚Ì‘Î”‚Ì”÷•ª‚ÌŒö®(1)}
 $|A|>0$‚Æ‚È‚és—ñ‚É‘Î‚µ‚Ä
-$$\dif{x}\log |A| = \tr\left(A^{-1} \dif{x} A\right).$$
-
-iØ–¾j$A$‚ğ$P$‚ÅOŠp‰»‚·‚é:
-
-$$A=P^{-1}\lmatt{\lambda_1}{*}{0}{\lambda_n}P.$$
-
+$$
+\dif{x}\log |A| = \tr\left(A^{-1} \dif{x} A\right).
+$$
+iØ–¾j$A$‚ğ$P$‚ÅOŠp‰»‚·‚é.
+$$
+A=P^{-1}\lmatt{\lambda_1}{*}{0}{\lambda_n}P.
+$$
 ‚±‚±‚ÅŒvZ‚ğŒ©‚â‚·‚­‚·‚é‚½‚ß‚É
 $$\lmatt{\lambda_1}{*}{0}{\lambda_n}=\tri(\lambda_i)$$
 ‚Æ—ª‹L‚·‚é.
@@ -611,12 +598,10 @@ $$A=P^{-1}\tri(\lambda_i)P$$
 ‹ts—ñ‚Í
 $$A^{-1}=P^{-1}\tri(\lambda_i)^{-1}P$$
 ‚Æ‚È‚é.
-
 ‚³‚Ä$|A|=\prod \lambda_i$‚È‚Ì‚ÅØ–¾‚·‚×‚«®‚Ì¶•Ó‚Í
 $$\dif{x}\left(\sum \log (\lambda_i)\right) = \sum \frac{\lambda_i'}{\lambda_i}.$$
 
 ‚±‚±‚Å$\diff{x}{\lambda_i}=\lambda_i'$‚Æ—ª‹L‚µ‚½.
-
 Ø–¾‚·‚×‚«‰E•Ó‚ğl‚¦‚æ‚¤.
 $$\diff{x}{A}=A'
  =\left(P^{-1}\tri(\lambda_i)P\right)'
@@ -657,15 +642,13 @@ $$
 $$
 ‚±‚ê‚Å¶•Ó$=$‰E•Ó‚ª¦‚³‚ê‚½.
 
-\item s—ñ®‚Ì‘Î”‚Ì”÷•ª‚ÌŒö®(2)
-
+\subsection{s—ñ®‚Ì‘Î”‚Ì”÷•ª‚ÌŒö®(2)}
 $|A|>0$‚Æ‚È‚és—ñ‚É‘Î‚µ‚Ä
 \begin{equation}\label{diff_log_mat}
 \dif{A}\log |A| = \trans{{(A^{-1})}}.
 \end{equation}
 ‚±‚±‚Ås—ñ$A$‚Å”÷•ª‚·‚é‚Æ‚¢‚¤‚Ì‚ÍŠe—v‘f$a_{ij}$‚Å”÷•ª‚µ‚½‚à‚Ì‚ğ,
 s—ñ‚É•À‚×‚½‚à‚Ì‚ğˆÓ–¡‚·‚é.
-
 ¡¦‚µ‚½‘Î”‚Ì”÷•ª‚ÌŒö®(1)‚æ‚è
 $$\dif{a_{ij}}\log|A|=\tr\left(A^{-1}\dif{a_{ij}}A\right).$$
 $\dif{a_{ij}}A$‚Í$ij$¬•ª‚Ì‚İ‚ª1‚Å‚»‚êˆÈŠO‚Í0‚Ìs—ñ‚É‚È‚é.
@@ -675,13 +658,11 @@ $\dif{a_{ij}}A$‚Í$ij$¬•ª‚Ì‚İ‚ª1‚Å‚»‚êˆÈŠO‚Í0‚Ìs—ñ‚É‚È‚é.
 &=&\sum_s \left(\sum_t (A^{-1})_{st} (I_{ij})_{ts}\right)\\
 &=&\sum_s \left(\sum_t (A^{-1})_{st} \delta_{it} \delta_{js}\right) = (A^{-1})_{ji}.
 \end{eqnarray*}
-\end{enumerate}
 ‚Â‚Ü‚è$\log|A|$‚ğ$a_{ij}$¬•ª‚Å”÷•ª‚·‚é‚Æ
 $A^{-1}$‚Ì$ji$¬•ª‚É‚È‚é‚±‚Æ‚ª•ª‚©‚Á‚½‚Ì‚ÅØ–¾Š®—¹.
 
 À‚Í‚±‚Ì®‚ÍOŠp‰»‚ğg‚í‚È‚­‚Ä‚às—ñ®‚Ì’è‹`‚©‚ç’¼Ú¦‚·‚±‚Æ‚ª‚Å‚«‚é.
 2Ÿ³•ûs—ñ‚Å¦‚µ‚Ä‚İ‚æ‚¤.
-
 $A=\matt{a}{b}{c}{d}$‚Æ‚·‚é‚Æ$|A|=ad-bc$.
 ‚æ‚Á‚Ä¶•Ó‚Í$\log|A|$‚ğ$a$, $b$, $c$, $d$‚Å‚»‚ê‚¼‚ê”÷•ª‚µ‚Ä
 $$\text{¶•Ó}=\frac{1}{|A|}\matt{d}{-c}{-b}{a}=\text{‰E•Ó}.$$
@@ -700,7 +681,7 @@ $$A\tilde{A}=|A|I$$
 ‚Æ‚È‚é‚±‚Æ‚ª¦‚³‚ê‚éi‚Æ‚¢‚¤‚©‡˜‚ª‹t‚Å, •’Ê‚Í‹ts—ñ‚ğ‚±‚ê‚Å\¬‚·‚éj.
 ‚Â‚Ü‚è$\text{¶•Ó}=\trans{{(A^{-1})}}$.
 
-\subsection{ƒKƒEƒX•ª•z‚ÌÅ–Ş„’è}
+\section{ƒKƒEƒX•ª•z‚ÌÅ–Ş„’è}
 ‘½•Ï—ÊƒKƒEƒX•ª•z‚©‚ç, $N$ŒÂ‚ÌŠÏ‘ª’l$\bm{X}=\{\bm{x_i}\}$‚ª“Æ—§‚É“¾‚ç‚ê‚½‚Æ‚«‚É,
 ‘Î”–Ş“xŠÖ”
 $$\log p(\bm{X}|\bm{\mu}, A)
@@ -724,11 +705,8 @@ $$F(A)=-N\log|A|-\sum_i \quadf{A^{-1}}{y_i}
 =-N\log|A|-\tr\left(A^{-1}\sum_i \bm{y_i}\trans{\bm{y_i}}\right)$$
 ‚Æ‚¨‚­.
 ‘æ2€‚Ì®•ÏŒ`‚É‚Í®(\ref{quad})‚ğ—p‚¢‚½.
-
 $B=\sum_i \bm{y_i}\trans{\bm{y_i}}$‚Æ’u‚¢‚Ä$A$‚Å”÷•ª‚µ‚æ‚¤.
-
 ‘æ1€‚Í®(\ref{diff_log_mat})‚ğg‚Á‚Ä$-N\trans{{(A^{-1})}}$.
-
 ‘æ2€‚ğ‹‚ß‚é‚É‚Í®(\ref{diff_inv})‚ğg‚Á‚Ä
 \begin{eqnarray*}
 \dif{a_{ij}}\tr\left(A^{-1}B\right)&=&\tr\left(\left(\dif{a_{ij}}A^{-1}\right)B\right)\\
@@ -736,11 +714,12 @@ $B=\sum_i \bm{y_i}\trans{\bm{y_i}}$‚Æ’u‚¢‚Ä$A$‚Å”÷•ª‚µ‚æ‚¤.
 &=&-\tr\left(\left(\dif{a_{ij}}A\right)A^{-1}BA^{-1}\right).
 \end{eqnarray*}
 ÅŒã‚Ì®•ÏŒ`‚Å‚Í$\tr(XY)=\tr(YX)$‚ğg‚Á‚½. $C=A^{-1}BA^{-1}$‚Æ‚¨‚­.
-
-$$\tr\left(\left(\dif{a_{ij}}A\right)C\right)
-=\sum_s \left(\left(\dif{a_{ij}}A\right)C\right)_{ss}
-= \sum_s \left(\sum_t \left(\dif{a_{ij}}A\right)_{st} c_{ts}\right)
-=\sum_{s,t} \delta_{is} \delta_{jt} c_{ts}=c_{ji}.$$
+\begin{eqnarray*}
+\tr\left(\left(\dif{a_{ij}}A\right)C\right)
+ &=& \sum_s \left(\left(\dif{a_{ij}}A\right)C\right)_{ss}
+  = \sum_s \left(\sum_t \left(\dif{a_{ij}}A\right)_{st} c_{ts}\right)\\
+ &=& \sum_{s,t} \delta_{is} \delta_{jt} c_{ts}=c_{ji}.
+\end{eqnarray*}
 ‚Â‚Ü‚è
 \begin{eqnarray}\label{diff_tr_invA_B}
 \dif{A}\tr(A^{-1}B)=-\trans{C}=-\trans{(A^{-1}BA^{-1})}.
@@ -748,7 +727,6 @@ $$\tr\left(\left(\dif{a_{ij}}A\right)C\right)
 ‚æ‚Á‚Ä
 $$\dif{A}F(A)=-N\trans{{(A^{-1})}}+\trans{(A^{-1}BA^{-1})}.$$
 ‚±‚ê‚ª0‚É‚È‚é‚æ‚¤‚È$A$‚ª$F(A)$‚ÌÅ‘å’l‚ğ—^‚¦‚é.
-
 “]’u‚ğ‚Æ‚Á‚Ä
 $$-NA^{-1}+A^{-1}BA^{-1}=0.$$
 $$A=\frac{1}{N}B

@@ -35,11 +35,10 @@ $p(x|C_k)$を求めずにいきなり事後確率$p(C_k|x)$を決める推論問題を解く.
 
 \section{行列の微分の復習}
 $A=(a_{ij})$とかいた.
-$$(AB)_{ij}=\sum_k a_{ik} b_{kj}.$$
-$$\tr(A)=\sum_i a_{ii}$$
-$$\trans{A}=(a_{ji})$$
+$$
+(AB)_{ij}=\sum_k a_{ik} b_{kj}, \quad \tr(A)=\sum_i a_{ii}, \quad \trans{A}=(a_{ji})
+$$
 などを思い出しておく.
-
 さて$A$, $B$を適当な行列として
 $$
 \dif{A}\tr(AB)=\trans{B}
@@ -49,8 +48,7 @@ $$
 \left(\dif{A}\tr(AB)\right)_{ij}=\dif{a_{ij}}\sum_{s,t} a_{st} b_{ts} = b_{ji}.
 $$
 ここで
-$\dif{a_{ij}} a_{st} = \delta_{is} \delta_{jt}$を使った. つまり添え字$s$, $t$が走るときに, $s=i$, $t=j$のときのみが生き残るというわけである.
-
+$\partial a_{st}/ \partial a_{ij}= \delta_{is} \delta_{jt}$を使った. つまり添え字$s$, $t$が走るときに, $s=i$, $t=j$のときのみが生き残るというわけである.
 慣れるためにもう一つやっておこう.
 $$
 \dif{A}\tr(AB\trans{A})=A(B+\trans{B}).
@@ -58,12 +56,12 @@ $$
 なぜなら,
 \begin{eqnarray*}
 \dif{a_{ij}} \tr(AB\trans{A})
- &=& \dif{a_{ij}} \sum_{s,t,u} a_{st} b_{tu} a_{su}\\
- &=& \sum_{s,t,u} b_{tu}  \dif{a_{ij}} (a_{st} a_{su})\\
- &=& \sum_{s,t,u} b_{tu} \left(\delta_{is} \delta_{jt} a_{su} + a_{st} \delta_{is} \delta_{ju}\right)\\
- &=& \sum_{u} b_{ju} a_{iu} + \sum_{t} b_{tj} a_{it}\\
- &=& \sum_{u} a_{iu} b_{ju} + \sum_{t} a_{it} b_{tj}\\
- &=& (A\trans{B})_{ij} + (AB)_{ij}\\
+ &=& \dif{a_{ij}} \sum_{s,t,u} a_{st} b_{tu} a_{su}
+ = \sum_{s,t,u} b_{tu}  \dif{a_{ij}} (a_{st} a_{su})\\
+ &=& \sum_{s,t,u} b_{tu} \left(\delta_{is} \delta_{jt} a_{su} + a_{st} \delta_{is} \delta_{ju}\right)
+ = \sum_{u} b_{ju} a_{iu} + \sum_{t} b_{tj} a_{it}\\
+ &=& \sum_{u} a_{iu} b_{ju} + \sum_{t} a_{it} b_{tj}
+ = (A\trans{B})_{ij} + (AB)_{ij}\\
  &=& \left(A(B + \trans{B})\right)_{ij}.
 \end{eqnarray*}
 
@@ -125,35 +123,39 @@ $$
 E_D(W)=\half\tr\left(\trans{(XW-T)}(XW-T)\right)
 $$
 を最小化する$W$を求めよう.
-
 \begin{eqnarray*}
 \dif{w_{ij}}E_D(W)
- &=& \half\dif{w_{ij}}\sum_{s,t} \left((XW-T)_{st}\right)^2\\
- &=& \sum_{s,t} (XW-T)_{st} \dif{w_{ij}}(XW-T)_{st}\\
- &=& \sum_{s,t} (XW-T)_{st} \dif{w_{ij}}\left(\sum_u x_{su}w_{ut}\right)\\
- &=& \sum_{s,t,u} (XW-T)_{st} x_{su}\delta_{iu}\delta_{jt}\\
- &=& \sum_s (XW-T)_{sj} x_{si}\\
- &=& \sum_s (\trans{X})_{is} (XW-T)_{sj}\\
+ &=& \half\dif{w_{ij}}\sum_{s,t} \left((XW-T)_{st}\right)^2
+ = \sum_{s,t} (XW-T)_{st} \dif{w_{ij}}(XW-T)_{st}\\
+ &=& \sum_{s,t} (XW-T)_{st} \dif{w_{ij}}\left(\sum_u x_{su}w_{ut}\right)
+ = \sum_{s,t,u} (XW-T)_{st} x_{su}\delta_{iu}\delta_{jt}\\
+ &=& \sum_s (XW-T)_{sj} x_{si}
+ = \sum_s (\trans{X})_{is} (XW-T)_{sj}\\
  &=& \left(\trans{X}(XW-T)\right)_{ij}.
 \end{eqnarray*}
 よって
-$$\dif{W}E_D(W)=\trans{X}(XW-T).$$
+$$
+\dif{W}E_D(W)=\trans{X}(XW-T).
+$$
 $=0$とおいて
 $\trans{X}XW = \trans{X}T$より
-$$W=(\trans{X}X)^{-1}\trans{X}T.$$
-
+$$
+W=(\trans{X}X)^{-1}\trans{X}T.
+$$
 \section{フィッシャーの線形判別}
 まず$D$次元のベクトル$x$の入力に対して$y=\trans{w}x$で1次元に射影する.
 $y \ge w_0$なら$C_1$, そうでないなら$C_2$に分類する.
 $C_1$の点が$N_1$個, $C_2$の点が$N_2$個とする.
 $C_i$の点の平均は
-$$\bmm_i=\frac{1}{N_i}\sum_{n \in C_i} x_n.$$
-
+$$
+\bmm_i=\frac{1}{N_i}\sum_{n \in C_i} x_n.
+$$
 $m_i=\trans{w}\bm{m_i}$として, $|w|^2=\sum_i w_i^2=1$の制約下で
 $$
 m_2 - m_1=\trans{w}(\bmm_2-\bmm_1)
 $$
-を最大化してみよう. ラグランジュの未定乗数法を用いて
+を最大化してみよう.
+ラグランジュの未定乗数法を用いて
 $$
 f(w)=\trans{w}(\bmm_2-\bmm_1)+\lambda(1-|w|^2)
 $$
@@ -168,7 +170,8 @@ $$
 $$
 \diff{\lambda}{f}=1-|w|^2=0
 $$
-より$|w|=1$. ただしこの手法ではそれぞれのクラスの重心$\bmm_1$と$\bmm_2$とだけで$w$の向きが決まってしまい,
+より$|w|=1$.
+ただしこの手法ではそれぞれのクラスの重心$\bmm_1$と$\bmm_2$とだけで$w$の向きが決まってしまい,
 場合によっては二つのクラスの射影が大きく重なってうまく分離できないことがある.
 そこでクラス間の重なりを最小にするように分散も加味してみる.
 
@@ -177,7 +180,6 @@ $$
 y_n=\trans{w}x_n, \quad s_k^2=\sum_{n\in C_k}(y_n-m_k)^2
 $$
 で定義し, 全データに対する分散を$s_1^2+s_2^2$とする.
-
 フィッシャーの判別基準は
 $$
 J(w)=\frac{(m_2-m_1)^2}{s_1^2+s_2^2}
@@ -189,12 +191,13 @@ $$
 $$
 S_W=\sum_{n \in C_1}(x_n-\bmm_1)\trans{(x_n-\bmm_1)}+\sum_{n \in C_2}(x_n-\bmm_2)\trans{(x_n-\bmm_2)}
 $$
-とする. $S_B$をクラス間共分散行列, $S_W$を総クラス内共分散行列という.
-
-
+とする.
+$S_B$をクラス間共分散行列, $S_W$を総クラス内共分散行列という.
+$$
+\trans{w}S_B w=\trans{w}(\bmm_2-\bmm_1)\trans{(\bmm_2-\bmm_1)}w
+              =(m_2-m_1)^2.
+$$
 \begin{eqnarray*}
-\trans{w}S_B w&=&\trans{w}(\bmm_2-\bmm_1)\trans{(\bmm_2-\bmm_1)}w\\
-              &=&(m_2-m_1)^2.\\
 \trans{w}S_W w&=&\trans{w}\sum_{n \in C_1}(x_n-\bmm_1)\trans{(x_n-\bmm_1)}w+\trans{w}\sum_{n \in C_2}(x_n-\bmm_2)\trans{(x_n-\bmm_2)}w\\
               &=&\sum_{n\in C_1} (y_n-m_1)^2+\sum_{n\in C_2}(y_n-m_2)^2
 \end{eqnarray*}
@@ -202,7 +205,8 @@ $$
 $$
 J(w)=\frac{\trans{w}S_B w}{\trans{w} S_W w}.
 $$
-これが最大となる$w$の値を求めてみよう. 大きさはどうでもよくて向きが重要である.
+これが最大となる$w$の値を求めてみよう.
+大きさはどうでもよくて向きが重要である.
 $$
 \dif{w}J(w)=\left(2 (S_B w)(\trans{w} S_W w) - 2 (\trans{w} S_B w) (S_W w)\right)/(\trans{w}S_W w)^2=0.
 $$
@@ -256,21 +260,26 @@ $$
 $$
 これらの式を使って$S_w$を計算する.
 \begin{eqnarray*}
-S_W &=& \sum_{n\in C_1} x_n\trans{x_n}-2\sum_{C_1} x_n \trans{\bmm_1}+\sum_{C_1} \bmm_1\trans{\bmm_1} + \sum_{C_2} x_n\trans{x_n} - 2\sum_{C_2} x_n\trans{\bmm_2} + \sum_{C_2} \bmm_2 \trans{\bmm_2}\\
- &=&\sum x_n\trans{x_n}-N_1 \bmm_1 \trans{\bmm_1}-N_2 \bmm_2\trans{\bmm_2}\\
+S_W
+ &=& \sum_{n\in C_1} x_n\trans{x_n}-2\sum_{C_1} x_n \trans{\bmm_1}+\sum_{C_1} \bmm_1\trans{\bmm_1} + \sum_{C_2} x_n\trans{x_n} - 2\sum_{C_2} x_n\trans{\bmm_2}\\
+ &+& \sum_{C_2} \bmm_2 \trans{\bmm_2}
+ = \sum x_n\trans{x_n}-N_1 \bmm_1 \trans{\bmm_1}-N_2 \bmm_2\trans{\bmm_2}\\
  &=&N(\bmm \trans{\bmm})w+N(\bmm_1-\bmm_2)-N_1 \bmm_1 \trans{\bmm_1}-N_2 \bmm_2\trans{\bmm_2}.
 \end{eqnarray*}
 よって
 \begin{eqnarray*}
 \left(S_W+\frac{N_1 N_2}{N}S_B\right)w&=&N(\bmm_1-\bmm_2)\\
-                           &+&\left(N\bmm \trans{\bmm}-N_1\bmm_1 \trans{\bmm_1}-N_2 \bmm_2 \trans{\bmm_2}+\frac{N_1 N_2}{N} (\bmm_1 -\bmm_2)\trans{(\bmm_1-\bmm_2)}\right)w.
+                           &+&\Bigl(N\bmm \trans{\bmm}-N_1\bmm_1 \trans{\bmm_1}-N_2 \bmm_2 \trans{\bmm_2}\\
+                     &+&\frac{N_1 N_2}{N} (\bmm_1 -\bmm_2)\trans{(\bmm_1-\bmm_2)}\Bigr)w.
 \end{eqnarray*}
 
 $()$内が0であることを示す（めんどうなので$\bmm_i$を$m_i$と略する）.
 \begin{eqnarray*}
 ()
-&=& \frac{1}{N}\outp{\left(N_1 m_1+N_2 m_2\right)}-N_1 \outp{m_1}-N_2 \outp{m_2}+\frac{N_1 N_2}{N}\left(m_1 \trans{m_2}+m_2 \trans{m_2}\right)\\
-&=& \left(\frac{N_1^2}{N}-N_1+\frac{N_1 N_2}{N}\right)\outp{m_1}+\left(\frac{2}{N} N_1 N_2 - \frac{2}{N}N_1 N_2\right)m_1\trans{m_2}+\left(\frac{N_2^2}{N}-N_2+\frac{N_1 N_2}{N}\right)\outp{m_2}.
+&=& \frac{1}{N}\outp{\left(N_1 m_1+N_2 m_2\right)}-N_1 \outp{m_1}-N_2 \outp{m_2}\\
+&+& \frac{N_1 N_2}{N}\left(m_1 \trans{m_2}+m_2 \trans{m_2}\right)\\
+&=& \left(\frac{N_1^2}{N}-N_1+\frac{N_1 N_2}{N}\right)\outp{m_1}+\left(\frac{2}{N} N_1 N_2 - \frac{2}{N}N_1 N_2\right)m_1\trans{m_2}\\
+&+&\left(\frac{N_2^2}{N}-N_2+\frac{N_1 N_2}{N}\right)\outp{m_2}.
 \end{eqnarray*}
 $$
 \frac{N_1^2}{N}-N_1+\frac{N_1 N_2}{N}=\frac{N_1}{N}(N_1-N+N_2)=0,
@@ -422,14 +431,14 @@ $\mu_2$については$\sum (1-t_n) \log \calN(x_n|\mu_2,A)$を考えて
 $$
 \mu_2=\frac{1}{N_2}\sum (1-t_n)x_n.
 $$
-
 最後に$A$に関する最尤解を求める. $A$に関する部分の対数は
-
 \begin{eqnarray*}
  && -\half\sum_{n=1}^N\Bigl(t_n \log |A|+t_n \trans{(x_n-\mu_1)}A^{-1}(x_n-\mu_1)\\
  &&+(1-t_n) \log |A|+(1-t_n)\trans{(x_n-\mu_2)}A^{-1}(x_n-\mu_2)\Bigr)\\
- &=& -\frac{N}{2}\log |A| - \half \tr\left(\sum_{n=1}^N\left(t_n A^{-1}(x_n -\mu_1)\trans{(x_n-\mu_1)}+(1-t_n)A^{-1}(x_n-\mu_2)\trans{(x_n-\mu_2)}\right)\right)\\
- &=& -\frac{N}{2}\log |A| -\half \tr\left(A^{-1}\left(\sum_{n\in C_1}(x_n-\mu_1)\trans{(x_n-\mu_1)}+\sum_{n\in C_2}(x_n-\mu_2)\trans{(x_n-\mu_2)}\right)\right)\\
+ &=& -\frac{N}{2}\log |A|\\
+ &-& \half \tr\left(\sum_{n=1}^N\left(t_n A^{-1}(x_n -\mu_1)\trans{(x_n-\mu_1)}+(1-t_n)A^{-1}(x_n-\mu_2)\trans{(x_n-\mu_2)}\right)\right)\\
+ &=& -\frac{N}{2}\log |A|\\
+ &-&\half \tr\left(A^{-1}\left(\sum_{n\in C_1}(x_n-\mu_1)\trans{(x_n-\mu_1)}+\sum_{n\in C_2}(x_n-\mu_2)\trans{(x_n-\mu_2)}\right)\right)\\
  &=& -\frac{N}{2}\log |A| -\half \tr\left(A^{-1}(N_1 S_1 + N_2 S_2)\right)\\
  &=& -\frac{N}{2}\log |A| -\frac{N}{2} \tr(A^{-1}S)
 \end{eqnarray*}
@@ -819,7 +828,8 @@ $$
 \section{モデルの比較とBIC}
 前節のラプラス近似を行うと正規化係数$Z$の近似も分かる. ガウス分布の特性から
 \begin{eqnarray}\label{ch4_approx}
-Z=\int f(z)\,dx \approx \int f(z_0) \exp\left(-\half\trans{(z-z_0)}A(z-z_0)\right)\,dx=f(z_0)\sqrt{\frac{(2\pi)^M}{|A|}}.
+Z&=&\int f(z)\,dx \approx \int f(z_0) \exp\left(-\half\trans{(z-z_0)}A(z-z_0)\right)\,dx \nonumber\\
+ &=&f(z_0)\sqrt{\frac{(2\pi)^M}{|A|}}.
 \end{eqnarray}
 
 データ集合$D$, パラメータ$\{\theta_i\}$の集合$\{M_i\}$を考えて各モデルに対して$p(D|\theta_i, M_i)$を定義する.
