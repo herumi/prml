@@ -61,8 +61,8 @@ $$
  &=& \sum_{s,t,u} b_{tu} \left(\delta_{is} \delta_{jt} a_{su} + a_{st} \delta_{is} \delta_{ju}\right)
  = \sum_{u} b_{ju} a_{iu} + \sum_{t} b_{tj} a_{it}\\
  &=& \sum_{u} a_{iu} b_{ju} + \sum_{t} a_{it} b_{tj}
- = (A\trans{B})_{ij} + (AB)_{ij}\\
- &=& \left(A(B + \trans{B})\right)_{ij}.
+ = (A\trans{B})_{ij} + (AB)_{ij}
+ = \left(A(B + \trans{B})\right)_{ij}.
 \end{eqnarray*}
 
 \section{多クラス}
@@ -71,10 +71,8 @@ $$
 y_k(x)=\trans{w_k}x+w_{k0}.
 $$
 ここで$w_k$は重みベクトル, $w_{k0}$はバイアスパラメータでスカラー, $x$が分類したい入力パラメータでベクトルである.
-
 クラス分類を次の方法で定義する:
 $x$に対して, ある$k$が存在し, 全ての$j\neq k$に対して$y_k(x) > y_j(x)$であるとき$x$はクラス$C_k$に割り当てるとする.
-
 これはwell-definedである.
 つまり
 \begin{itemize}
@@ -82,7 +80,6 @@ $x$に対して, ある$k$が存在し, 全ての$j\neq k$に対して$y_k(x) > y_j(x)$であるとき
 \item （存在性）$x$が与えられたとき$\{y_k(x)\}$の最大値$m$を与える$k_0$がその候補である. もしも
 $m=y_k(x)$となる$k$が複数個存在（$k_1$, $k_2$）したとすると, クラス分類はできないが, そういう$x$の集合は$\{x|y_{k_1}(x)=y_{k_2}(x)\}$の部分集合となり, 通常次元が落ちる. つまり無視できるぐらいしかない.
 \end{itemize}
-
 上記で分類されたクラス$C_k$に属する空間は凸領域となる.
 すなわち
 $x$, $x'$を$C_K$の点とすると, 任意の$\lambda \in [0, 1]$に対して$x''=\lambda x + (1-\lambda) x'$も$C_k$に属する.
@@ -130,8 +127,8 @@ $$
  &=& \sum_{s,t} (XW-T)_{st} \dif{w_{ij}}\left(\sum_u x_{su}w_{ut}\right)
  = \sum_{s,t,u} (XW-T)_{st} x_{su}\delta_{iu}\delta_{jt}\\
  &=& \sum_s (XW-T)_{sj} x_{si}
- = \sum_s (\trans{X})_{is} (XW-T)_{sj}\\
- &=& \left(\trans{X}(XW-T)\right)_{ij}.
+ = \sum_s (\trans{X})_{is} (XW-T)_{sj}
+ = \left(\trans{X}(XW-T)\right)_{ij}.
 \end{eqnarray*}
 よって
 $$
@@ -439,8 +436,8 @@ $$
  &-& \half \tr\left(\sum_{n=1}^N\left(t_n A^{-1}(x_n -\mu_1)\trans{(x_n-\mu_1)}+(1-t_n)A^{-1}(x_n-\mu_2)\trans{(x_n-\mu_2)}\right)\right)\\
  &=& -\frac{N}{2}\log |A|\\
  &-&\half \tr\left(A^{-1}\left(\sum_{n\in C_1}(x_n-\mu_1)\trans{(x_n-\mu_1)}+\sum_{n\in C_2}(x_n-\mu_2)\trans{(x_n-\mu_2)}\right)\right)\\
- &=& -\frac{N}{2}\log |A| -\half \tr\left(A^{-1}(N_1 S_1 + N_2 S_2)\right)\\
- &=& -\frac{N}{2}\log |A| -\frac{N}{2} \tr(A^{-1}S)
+ &=& -\frac{N}{2}\log |A| -\half \tr\left(A^{-1}(N_1 S_1 + N_2 S_2)\right)
+ = -\frac{N}{2}\log |A| -\frac{N}{2} \tr(A^{-1}S)
 \end{eqnarray*}
 ここで最後の式変形に
 $$
@@ -499,10 +496,10 @@ $$
 よって
 \begin{eqnarray*}
 \dif{w}E &=&-\sum\left(t_n (1-y_n)\phi_n + (1-t_n)(-y_n)\phi_n\right)\\
- &=& \sum(-t_n+t_n y_n+y_n-y_n t_n)\phi\\
- &=& \sum(y_n-t_n)\phi_n.
+ &=& \sum(-t_n+t_n y_n+y_n-y_n t_n)\phi
+ = \sum(y_n-t_n)\phi_n.
 \end{eqnarray*}
-$y_n-t_n$は目的値とモデルの予測値の誤差なので, 線形回帰モデルのときと同じ形.
+$y_n-t_n$は目的値とモデルの予測値との誤差なので, 線形回帰モデルのときと同じ形.
 
 \section{反復再重み付け最小二乗}
 いわゆるニュートン・ラフラソン法は関数$f(x)$の零点を求める方法：
@@ -515,7 +512,6 @@ $$
 $$
 x_{n+1}=x_n - (f'(x_n))^{-1} f(x_n).
 $$
-
 関数$E(w)$を最小化するためのベクトル$w$を与える更新式を考えてみると, 最小化を与える$w$は$\dif{w}E(w)$の零点.
 $\dif{w}E(w)$の零点を求める問題にニュートン・ラフラソン法を適用する.
 $w$を古い値, $w'$を新しい値, $H(w)$を$E(w)$のヘッシアンとする.
@@ -523,7 +519,6 @@ $f \longleftrightarrow \dif{w}E(w)$, $f' \longleftrightarrow H(w)$という対応によ
 $$
 w'=w-H(w)^{-1}\dif{w}E(w).
 $$
-
 この式を線形回帰モデルに適用してみる.
 $$
 E(w)=\half\sum\left(t_n-\trans{w}\phi(x_n)\right)^2, \phi_n=\phi(x_n)
@@ -540,7 +535,6 @@ $$
 w'=w-(\PhiT \Phi)^{-1}(\PhiT \Phi w-\PhiT t)=(\PhiT \Phi)^{-1}\PhiT t.
 $$
 これは最小二乗解である. つまり1回の更新で厳密解に到達した. 線形回帰モデルは$w$に関して2次なので$\dif{w}E(w)$に関しては1次だからである.
-
 次にロジスティック回帰に適用してみる.
 $$
 E(w)=-\sum\left(t_n \log y_n + (1-t_n)\log (1-y_n)\right), y_n=\sigma(a_n)=\sigma(\trans{w}\phi_n).
@@ -563,10 +557,11 @@ $$
 
 $w$の更新式を見てみよう.
 \begin{eqnarray*}
-w' &=& w-(\PhiT R\Phi)^{-1}\PhiT(y-t)\\
- &=& (\PhiT R\Phi)^{-1}(\PhiT R\Phi w - \PhiT(y-t))\\
- &=& (\PhiT R\Phi)^{-1}\PhiT R(\Phi w - R^{-1}(y-t))\\
- &=& (\PhiT R\Phi)^{-1}\PhiT Rz.
+w'
+ &=& w-(\PhiT R\Phi)^{-1}\PhiT(y-t)
+ = (\PhiT R\Phi)^{-1}(\PhiT R\Phi w - \PhiT(y-t))\\
+ &=& (\PhiT R\Phi)^{-1}\PhiT R(\Phi w - R^{-1}(y-t))
+ = (\PhiT R\Phi)^{-1}\PhiT Rz.
 \end{eqnarray*}
 ここで$z=\Phi w - R^{-1}(y-t)$である.
 $R$は$y_n$つまり$w$に依存しているので正規方程式は更新式ごとに計算し直す必要がある.
@@ -627,8 +622,8 @@ $$
  &&{\text 帰納法の仮定を用いて}\\
  &\ge& q f\left(\sum_{i=1}^n (p_i/q) x_i\right) + p_{n+1} f(x_{n+1})\\
  &&f{\text が凸関数であることを用いて}\\
- &\ge& f\left(q \left(\sum_{i=1}^n (p_i/q) x_i\right) + p_{n+1}x_{n+1}\right)\\
- &=& f\left(\sum_{i=1}^{n+1} p_i x_i\right).
+ &\ge& f\left(q \left(\sum_{i=1}^n (p_i/q) x_i\right) + p_{n+1}x_{n+1}\right)
+ = f\left(\sum_{i=1}^{n+1} p_i x_i\right).
 \end{eqnarray*}
 
 \section{多クラスロジスティック回帰}
@@ -680,9 +675,10 @@ Hの正定値であることを示そう.\\
 任意の$M\times K$次元ベクトルを$u=\trans{(\trans{u_1}, \ldots, \trans{u_K})}$, $u_k$は$M$次元ベクトルとする.
 $v_{nk}=\trans{u_k}\phi_n$, $f(x)=x^2$とおく. $f(x)$は下に凸.
 \begin{eqnarray*}
-\trans{u}H u &=& \sum_{n,k,j} y_{nk}(\delta_{kj}-y_{nj})(\trans{u_k}\phi_n)(\trans{\phi_n}u_j)\\
+\trans{u}H u
+ &=& \sum_{n,k,j} y_{nk}(\delta_{kj}-y_{nj})(\trans{u_k}\phi_n)(\trans{\phi_n}u_j)\\
  &=& \sum_n\left(\sum_{k,j} y_{nk}\delta_{kj} v_{nk} v_{nj} - \sum_{k,j} y_{nk} y_{nj} v_{nk} v_{nj}\right)\\
- && {\text 一般に}\left(\sum_k x_k\right)^2=\left(\sum_k x_k\right)\left(\sum_j x_j\right) = \sum_{k,j} x_k x_j{\text より}\\
+ && （{\text 一般に}\left(\sum_k x_k\right)^2=\left(\sum_k x_k\right)\left(\sum_j x_j\right) = \sum_{k,j} x_k x_j{\text より}）\\
  &=& \sum_n \left(\sum_k y_{nk}v_{nk}^2 - \left(\sum_k y_{nk} v_{nk}\right)^2\right).
 \end{eqnarray*}
 ここで$\sum_k y_{nk}=1$, $0 < y_{nk} < 1$よりJensenの不等式を適用すると
@@ -692,7 +688,6 @@ $$
 
 \section{プロビット回帰}
 指数型分布族で表される条件付き確率分布に対して, クラスの事後確率はある線形関数とロジスティック（またはソフトマックス）関数の合成で表された.
-
 $a=\trans{w}\phi$, $f(a)$を活性化関数として
 $$
 p(t=1|a)=f(a).
@@ -707,13 +702,13 @@ $$
 \makeop{erf}(a)=\frac{2}{\sqrt{\pi}}\int_0^a \exp\left(-\theta^2\right)\,d\theta
 $$
 で定義する.
-
 $x=\theta/\sqrt{2}$とおくと$dx=d\theta/\sqrt{2}$.
 \begin{eqnarray*}
-\Phi(a) &=& \int_{-\infty}^a = \int_{-\infty}^0 + \int_0^a=\half+\int_0^a \frac{1}{\sqrt{2\pi}}\exp\left(-\frac{\theta^2}{2}\right)\,d\theta\\
+\Phi(a)
+ &=& \int_{-\infty}^a = \int_{-\infty}^0 + \int_0^a=\half+\int_0^a \frac{1}{\sqrt{2\pi}}\exp\left(-\frac{\theta^2}{2}\right)\,d\theta\\
  &=&\half+\int_0^{a/\sqrt{2}}\frac{1}{\sqrt{2\pi}}\exp\left(-x^2\right)\sqrt{2}\,dx\\
- &=&\half\left(1+\frac{2}{\sqrt{\pi}}\int_0^{a/\sqrt{2}} \exp\left(-x^2\right)\,dx\right)\\
- &=&\half\left(1+\makeop{erf}\left(\frac{a}{\sqrt{2}}\right)\right).
+ &=&\half\left(1+\frac{2}{\sqrt{\pi}}\int_0^{a/\sqrt{2}} \exp\left(-x^2\right)\,dx\right)
+ =\half\left(1+\makeop{erf}\left(\frac{a}{\sqrt{2}}\right)\right).
 \end{eqnarray*}
 プロビット活性化関数を用いた一般化線形モデルをプロビット回帰という.
 
@@ -723,7 +718,6 @@ $x\rightarrow\infty$でロジスティック回帰の微分は$\sigma'(x)=\exp(-x)/(1+\exp(-x)
 \section{正準連結関数}
 活性化関数として正準連結関数（canonical link function）と呼ばれるものを使い, 条件付き確率分布に指数型分布族を選んだときに誤差関数の微分が
 「誤差」$\times$「特徴ベクトル」という形でかけることを示そう.
-
 $$
 p(t|\eta,s)=\frac{1}{s}h(t/s)g(\eta)\exp\left(\frac{\eta t}{s}\right)
 $$
@@ -735,8 +729,8 @@ $$
 $\eta$で微分して
 \begin{eqnarray*}
 && \left(\dif{\eta}g(\eta)\right) \int h(t/s)\exp\left(\frac{\eta t}{s}\right)\,dt+g(\eta)\int (t/s) h(t/s) \exp\left(\frac{\eta t}{s}\right)\,dt\\
-&=& \left(\dif{\eta}g(\eta)\right)\left(\frac{s}{g(\eta)}\right)+\int t p(t|\eta,s)\,dt\\
-&=& s\dif{\eta}\log g(\eta) + E[t] = 0.
+&=& \left(\dif{\eta}g(\eta)\right)\left(\frac{s}{g(\eta)}\right)+\int t p(t|\eta,s)\,dt
+= s\dif{\eta}\log g(\eta) + E[t] = 0.
 \end{eqnarray*}
 よって
 $$
@@ -744,7 +738,6 @@ y=E[t]=-s\dif{\eta} \log g(\eta).
 $$
 $y$が$\eta$の関数として表せた.
 この逆関数が存在するとしてそれを$\eta=\psi(y)$と書くことにする.
-
 $y$を連結関数$f(a)$と$w$の線形関数の合成,
 $$
 y=f(\trans{w}\phi)
@@ -907,9 +900,9 @@ $$
 実数値関数$f(x)$に対して部分積分を適用すると
 \begin{eqnarray*}
 \int_{-\infty}^\infty f(x) \delta(x)\,dx &=& \Bigl[H(x)f(x)\Bigr]_{-\infty}^\infty - \int_{-\infty}^\infty H(x) f'(x)\,dx\\
- &=& f(\infty) - \int_0^\infty f'(x)\,dx\\
- &=& f(\infty) - (f(\infty) - f(0))\\
- &=& f(0).
+ &=& f(\infty) - \int_0^\infty f'(x)\,dx
+ = f(\infty) - (f(\infty) - f(0))
+ = f(0).
 \end{eqnarray*}
 
 \section{ロジスティックシグモイド関数とプロビット関数の逆関数}
@@ -965,9 +958,10 @@ $$
 \dif{\mu}L=\int_{-\infty}^\infty \lambda f(\lambda \mu + \lambda \sigma x)f(x)\,dx=\lambda \int_{-\infty}^\infty \left(\frac{1}{\sqrt{2\pi}}\right)^2\exp\left(-\half(\lambda\mu+\lambda \sigma x)^2-\half x^2\right)\,dx.
 $$
 $\exp()$の内側を$x$について平方完成しよう：
-$$
--\half\left((\lambda\sigma)^2+1\right)x^2+2\lambda^2\mu \sigma x + \lambda^2 \mu^2)=-\half\left(\left(\sqrt{1+\lambda^2\sigma^2}x+\frac{\lambda^2\mu \sigma}{\sqrt{1+\lambda^2\sigma^2}}\right)^2+\lambda^2 \mu^2-\frac{\lambda^4 \mu^2 \sigma^2}{1+\lambda^2 \sigma^2} \right).
-$$
+\begin{eqnarray*}
+&&-\half\left((\lambda\sigma)^2+1\right)x^2+2\lambda^2\mu \sigma x + \lambda^2 \mu^2)\\
+&=&-\half\left(\left(\sqrt{1+\lambda^2\sigma^2}x+\frac{\lambda^2\mu \sigma}{\sqrt{1+\lambda^2\sigma^2}}\right)^2+\lambda^2 \mu^2-\frac{\lambda^4 \mu^2 \sigma^2}{1+\lambda^2 \sigma^2} \right).
+\end{eqnarray*}
 定数項は
 $$
 \lambda^2\mu^2-\frac{\lambda^4 \mu^2 \sigma^2}{1+\lambda^2 \sigma^2}=\frac{\lambda^2\mu^2+\lambda^4\mu^2\sigma^2-\lambda^4\mu^2\sigma^2}{1+\lambda^2 \sigma^2}=\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2}.
@@ -981,10 +975,11 @@ I:=\int_{-\infty}^\infty \exp\left(-\half\left(\sqrt{1+\lambda^2\sigma^2}x+\frac
 $$
 よって
 \begin{eqnarray*}
-\dif{\mu}L &=& \frac{\lambda}{2\pi} \exp\left(-\half\left(\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2}\right)\right) I\\
- &=& \frac{\lambda}{2\pi} \exp\left(-\half\left(\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2}\right)\right) \frac{\sqrt{2\pi}}{\sqrt{1+\lambda^2\sigma^2}}\\
- &=& \frac{\lambda}{\sqrt{1+\lambda^2\sigma^2}}f\left(\frac{\lambda\mu}{\sqrt{1+\lambda^2\sigma^2}}\right)\\
- &=& \dif{\mu}R.
+\dif{\mu}L
+ &=& \frac{\lambda}{2\pi} \exp\left(-\half\left(\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2}\right)\right) I
+ = \frac{\lambda}{2\pi} \exp\left(-\half\left(\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2}\right)\right) \frac{\sqrt{2\pi}}{\   sqrt{1+\lambda^2\sigma^2}}\\
+ &=& \frac{\lambda}{\sqrt{1+\lambda^2\sigma^2}}f\left(\frac{\lambda\mu}{\sqrt{1+\lambda^2\sigma^2}}\right)
+ = \dif{\mu}R.
 \end{eqnarray*}
 つまり$L$と$R$は定数の差を除いて等しいことが分かった. 定数項が0であることを示す. $\mu \rightarrow \infty$で
 $$
@@ -1024,7 +1019,6 @@ $$
 $$
 q(w)=\calN(w|m_N, S_N).
 $$
-
 次に$C_1$についての予測分布を求める.
 $$
 p(C_1|\phi,t)=\int p(C_1|\phi,w)p(w|t)\,dw \approx \int \sigma(\trans{w}\phi)q(w)\,dw.
@@ -1035,19 +1029,21 @@ $$
 $$
 よって
 \begin{eqnarray*}
-p(C_1|\phi,t) &\approx& \int \left(\int \delta(a-\trans{w}\phi)\sigma(a)q(w)\,da\right) dw\\
- &=&\int \left(\int \delta(a-\trans{w}\phi)q(w)\,dw\right) \sigma(a)\,da\\
- &=&\int p(a)\sigma(a)\,da.
+p(C_1|\phi,t)
+ &\approx& \int \left(\int \delta(a-\trans{w}\phi)\sigma(a)q(w)\,da\right) dw\\
+ &=&\int \left(\int \delta(a-\trans{w}\phi)q(w)\,dw\right) \sigma(a)\,da
+ =\int p(a)\sigma(a)\,da.
 \end{eqnarray*}
 ただし
 $$
 p(a)=\int \delta(a-\trans{w}\phi)q(w)\,dw
 $$
 とおいた.
-
 $p(a)$の平均を求める. $q(w)$の平均が$m_N$であることに注意すると,
 \begin{eqnarray*}
-\mu_a &=& E[a]=\int p(a)a\,da=\int \int \delta(a-\trans{w}\phi)q(w)a\,dw da\\
+\mu_a
+ &=& E[a]
+  =\int p(a)a\,da=\int \int \delta(a-\trans{w}\phi)q(w)a\,dw da\\
  &=& \int \left(\int \delta(a-\trans{w}\phi)a\, da\right)q(w)\,dw = \int q(w)(\trans{w}\phi)\,dw\\
  &=& \trans{\left(\int q(w)w\,dw\right)}\phi = \trans{E[w]}\phi = \trans{m_N}\phi.
 \end{eqnarray*}
@@ -1055,8 +1051,8 @@ $p(a)$の平均を求める. $q(w)$の平均が$m_N$であることに注意すると,
 \begin{eqnarray*}
 \sigma(a)^2 &=& \int p(a)(a^2-E[a]^2)\,da \\
  &=& \int (\delta(a-\trans{w}\phi)a^2\,da)q(w)\,dw - \int (\delta(a-\trans{w}\phi)E[a]^2\,da)q(w)\,dw\\
- &=&\int q(w)(\trans{w}\phi)^2\,dw - \int q(w) (\trans{m_N}\phi)^2\,dw\\
- &=&\trans{\phi}\left( \int q(w)(w\trans{w}-m_N \trans{m_N})\,dw \right)\phi.
+ &=&\int q(w)(\trans{w}\phi)^2\,dw - \int q(w) (\trans{m_N}\phi)^2\,dw
+ = \trans{\phi}\left( \int q(w)(w\trans{w}-m_N \trans{m_N})\,dw \right)\phi.
 \end{eqnarray*}
 括弧内は
 $$
@@ -1066,19 +1062,16 @@ $$
 $$
 \sigma_a^2=\trans{\phi}S_N\phi.
 $$
-
 これは線形回帰モデルの予測分布の分散（PRML 式3.59）
 $$
 \sigma_N^2(x)=\frac{1}{\beta}+\trans{\phi(x)}S_N\phi(x)
 $$
 でノイズを消したもの（$(1/\beta) \rightarrow 0$）は$\sigma_a^2$に一致する.
-
 よって予測分布の近似は
 $$
 p(C_1|t)=\int \sigma(a)p(a)\,da=\int \sigma(a) \calN(a|\mu_a,\sigma_a^2)\,da.
 $$
-
-別の方法でも求めてみる：\\
+別の方法でも求めてみる：
 $w$の座標を座標変換して第一成分の単位基底ベクトル$e$が$\phi$と同じ向きになるようにとり, 残りは$\phi$と直交するようにとる.
 つまり
 $$
@@ -1094,7 +1087,7 @@ $q(w)=q(w_1,w_2)=q(w_2|w_1)q(w_1)$より
 \begin{eqnarray*}
 p &=& \int \sigma(\trans{w}\phi)q(w)\,dw=\int \sigma(w_1||\phi||) \int q(w_2|w_1)\,dw_2 dw_1\\
  &=& \int \sigma(w_1||\phi||) \left( \int q(w_2|w_1)\,dw_2 \right) q(w_1) dw_1\\
- && {\text 括弧内は}1{\text なので}\\
+ && （{\text 括弧内は}1{\text なので}）\\
  &=& \int \sigma(w_1||\phi||)q(w_1)\,dw_1.
 \end{eqnarray*}
 $q(w)\calN(w|m_N,S_N)$で$w=\trans{(w_1,w_2)}$と書いたときの$w_1$に関する周辺分布は$e$方向への射影化になる：
@@ -1105,14 +1098,12 @@ $a=w_1||\phi||$と書くと$a$に関しては平均は$||\phi||$倍, 分散は$||\phi||^2$倍され
 $$
 q(a)=\calN(a|\trans{(||\phi||e)}m_N,\trans{||\phi||e}S_N ||\phi||e) = \calN(a|\trans{\phi}m_N,\trans{\phi}S_N \phi).
 $$
-
 ロジスティックシグモイド関数でのガウス分布の畳み込み積分は解析的には難しい.
 ここではロジスティックシグモイド関数をプロビット関数の逆関数で近似することで畳み込み積分を解析的に扱おう.
-
 前節の結果から$\lambda = \sqrt{\pi/8}$として$\sigma(a) \approx \Phi(\lambda a)$と近似すると
 \begin{eqnarray}\label{ch4_probit}
 \int \sigma(a)\calN(a|\mu,\sigma^2)\,da &\approx& \sigma\left(\frac{\mu}{\sqrt{1+\lambda^2 \sigma^2}}\right) \nonumber \\
-&& \kappa(\sigma^2)=1/\sqrt{1+(\pi/8)\sigma^2}{\text とおくと}\nonumber \\
+&& （\kappa(\sigma^2)=1/\sqrt{1+(\pi/8)\sigma^2}{\text とおくと}）\nonumber \\
 &=&\sigma\left(\kappa(\sigma^2)\mu\right).
 \end{eqnarray}
 よって

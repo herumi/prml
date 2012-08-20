@@ -6,27 +6,38 @@
 この文章は『パターン認識と機械学習』（PRML）の3章を理解するために必要な数学をまとめてみたものです.
 \section{微分の復習}
 $\bm{x}$, $\bm{y}$を縦ベクトルとして
-$$\dif{\bm{x}} (\trans{\bm{x}}\bm{y}) = \bm{y}.$$
-$$\dif{\bm{y}} (\trans{\bm{x}}\bm{y}) = \bm{x}.$$
-
+$$
+\dif{\bm{x}} (\trans{\bm{x}}\bm{y}) = \bm{y}.
+$$
+$$
+\dif{\bm{y}} (\trans{\bm{x}}\bm{y}) = \bm{x}.
+$$
 ここで$\dif{\bm{x}}$は$\dif{x_i}$を縦に並べた縦ベクトルとする.
 2章でも述べたが$\dif{\bm{x}}$を$\nabla$と書くこともあるがPRMLでは場所によって縦ベクトル（3.22）だったり,
 横ベクトル（3.13）だったりする. 常に縦ベクトルとしたほうが混乱は少ない.
 
 \section{誤差関数の最小化}
 
-$$f(\bm{w})=\sum_{n=1}^N\left(t_n - \trans{\bm{w}}\phi(\bm{x}_n)\right)^2+\lambda \trans{\bm{w}}\bm{w}$$
+$$
+f(\bm{w})=\sum_{n=1}^N\left(t_n - \trans{\bm{w}}\phi(\bm{x}_n)\right)^2+\lambda \trans{\bm{w}}\bm{w}
+$$
 とする. ここで$\bm{w}$と$\phi(\bm{x}_n)$は$M$次元縦ベクトルである.
-$$\trans{\Phi}=(\phi(\bm{x}_1) \cdots \phi(\bm{x}_N))$$
+$$
+\trans{\Phi}=(\phi(\bm{x}_1) \cdots \phi(\bm{x}_N))
+$$
 とおく. $\Phi$は$N$行$M$列の行列である. $f(\bm{w})$を$w$で微分しよう.
-$$\dif{\bm{w}}f(\bm{w})
-= 2\sum_{n=1}^N\left(t_n - \trans{\bm{w}}\phi(\bm{x}_n)\right)(-\phi(\bm{x}_n)) +2\lambda \bm{w}.$$
+$$
+\dif{\bm{w}}f(\bm{w})
+ = 2\sum_{n=1}^N\left(t_n - \trans{\bm{w}}\phi(\bm{x}_n)\right)(-\phi(\bm{x}_n)) +2\lambda \bm{w}.
+$$
 一般に縦ベクトル$\bm{x}$, $\bm{y}$に対して
-$$(\trans{\bm{x}}\bm{y})\bm{y}
+$$
+(\trans{\bm{x}}\bm{y})\bm{y}
  =(\trans{\bm{y}}{\bm{x}})\bm{y}
  =\bm{y}(\trans{\bm{y}}\bm{x})
  =(\bm{y}\trans{\bm{y}})\bm{x}
-$$だから$\bm{t}=\trans{(t_1, \ldots, t_N)}$とおくと
+$$
+だから$\bm{t}=\trans{(t_1, \ldots, t_N)}$とおくと
 \begin{eqnarray*}
 \half\dif{\bm{w}}f(\bm{w})
  &=& -\sum_n t_n \phi(\bm{x}_n) + \sum_n \left(\phi(\bm{x}_n)\trans{\phi(\bm{x}_n)}\right)\bm{w} + \lambda \bm{w}\\
@@ -42,13 +53,13 @@ $$\bm{w}_{\text{ML}}=(\lambda I + \trans{\Phi}\Phi)^{-1}\trans{\Phi}\bm{t}$$
 前節で$\lambda = 0$のときを考える.
 $$\bm{y}=\Phi(\trans{\Phi}\Phi)^{-1}\trans{\Phi}\bm{t}$$
 となる. ここでこの式の幾何学的な解釈を考えてみよう.
-
 $\Phi=(a_1 \cdots a_M)$と縦ベクトルの集まりで表す.
 $N-M$個のベクトル$b_1$, $\ldots$, $b_{N-M}$を追加して,
 $\{a_1, \ldots, a_N, b_1, \ldots, b_{N-M}\}$全体で$N$次元ベクトル空間の基底であるようにとる.
 その際$b_i$を$a_j$と直交するようにとれる.
-$$\trans{a_i}b_j=0.$$
-
+$$
+\trans{a_i}b_j=0.
+$$
 さて$X=\Phi(\trans{\Phi}\Phi)^{-1}\trans{\Phi}$とおくと, $X\Phi = \Phi$.
 これは$Xa_i = a_i$を意味する.
 つまり$X$は$a_1, \ldots, a_M$で生成される部分空間$V$=$\langle a_1, \ldots, a_M \rangle$の点を動かさない.
@@ -57,9 +68,13 @@ $$\trans{a_i}b_j=0.$$
 
 二つ合わせると, $X$は任意の点を部分空間$V$方向につぶす写像, つまり$V$への正射影写像と解釈できる.
 式で書くと任意の点$\bm{t}$を$\bm{t} = \sum_i s_i a_i + \sum_i t_i b_j$と表したとすると,
-$$\bm{y}=X\bm{t}=\sum_i s_i a_i$$
+$$
+\bm{y}=X\bm{t}=\sum_i s_i a_i
+$$
 となる. $\bm{t}$から$\bm{y}$への変換を係数だけを使って書いてみると
-$$X:(s_1, \ldots, s_N, t_1, \ldots, t_{N-M}) \rightarrow (s_1, \ldots, s_N, 0, \ldots, 0).$$
+$$
+X:(s_1, \ldots, s_N, t_1, \ldots, t_{N-M}) \rightarrow (s_1, \ldots, s_N, 0, \ldots, 0).
+$$
 これを見ると正射影のニュアンスがより明確になる.
 
 \section{行列での微分}
@@ -70,15 +85,18 @@ $$f(A) = ||y||^2=\trans{\left(Ax\right)}Ax$$
 $$\trans{\left(Ax\right)}Ax=\sum_s \left(Ax\right)_s \left(Ax\right)_s = \sum_s \left(\sum_t a_{st}x_t\right) \left(\sum_u a_{su}x_u\right) = \sum_{s,t,u} x_t x_u a_{st}a_{su}.$$
 よって
 \begin{eqnarray*}
-\dif{a_{ij}}f(A) &=& \sum_{s,t,u} x_t x_u \left(\left(\dif{a_{ij}}a_{st}\right) a_{su} + a_{st} \dif{a_{ij}}a_{su}\right)\\
- &=& \sum_{s,t,u}x_t x_u\left(\delta_{is}\delta_{jt}a_{su} + a_{st} \delta_{is}\delta_{ju}\right)\\
- &=& \left(\sum_u x_j x_u a_{iu}\right) + \left(\sum_t x_t x_j a_{it}\right)\\
- &=& 2\sum_u x_j x_u a_{iu}\\
- &=& 2x_j \left(Ax\right)_i\\
- &=& 2\left(Ax\trans{x}\right)_{ij}.
+\dif{a_{ij}}f(A)
+ &=& \sum_{s,t,u} x_t x_u \left(\left(\dif{a_{ij}}a_{st}\right) a_{su} + a_{st} \dif{a_{ij}}a_{su}\right)\\
+ &=& \sum_{s,t,u}x_t x_u\left(\delta_{is}\delta_{jt}a_{su} + a_{st} \delta_{is}\delta_{ju}\right)
+ = \left(\sum_u x_j x_u a_{iu}\right) + \left(\sum_t x_t x_j a_{it}\right)\\
+ &=& 2\sum_u x_j x_u a_{iu}
+ = 2x_j \left(Ax\right)_i
+ = 2\left(Ax\trans{x}\right)_{ij}.
 \end{eqnarray*}
 よって
-$$\dif{A}||Ax||^2 = 2Ax\trans{x}.$$
+$$
+\dif{A}||Ax||^2 = 2Ax\trans{x}.
+$$
 
 \section{Woodburyの逆行列の公式}
 
@@ -269,10 +287,7 @@ $f=x^2-y^2$, $g=x^2+y^2$というグラフを見てみよう.
 図\ref{x2my2}は原点で鞍点, 図\ref{x2py2}は原点で極小である.
 それぞれヘッセ行列は
 $$
-H(f)=\matt{2}{0}{0}{-2},
-$$
-$$
-H(g)=\matt{2}{0}{0}{2}
+H(f)=\matt{2}{0}{0}{-2}, \quad H(g)=\matt{2}{0}{0}{2}
 $$
 となり, ヘッセ行列が原点での形に対応していることが分かる.
 \begin{figure}[h]
@@ -384,7 +399,6 @@ $$
 p(\alpha,\beta|\bm{t}) \propto p(\bm{t}|\alpha,\beta)p(\alpha,\beta)
 $$
 となる. ここで$p(\alpha,\beta)$はほぼ平坦, つまり$\alpha$, $\beta$の値はどれも同じぐらいの可能性があるという仮定を置く.
-
 そうすると事後分布を最大化する$\alpha$, $\beta$を求める最尤推定の問題は, 尤度関数を最大化する問題に近似できる.
 この尤度関数をエビデンスといい, この手法をエビデンス近似という.
 そして, $p(\bm{t}|\alpha,\beta)$を最大化するための$\alpha$, $\beta$の関係式を求めたのが前節であった.

@@ -45,10 +45,11 @@ g(x+h)&=&g(x)+g'(x)h + \epsilon_2
 \end{eqnarray*}
 を$s(x+h)$に代入して計算してみよう：
 \begin{eqnarray*}
-s(x+h) &=& f(x+h)g(x+h)\\
-       &=& \left(f(x)+f'(x)h+\epsilon_1\right)\left(g(x)+g'(x)h+\epsilon_2\right)\\
-       &=& f(x)g(x)+(f'(x)g(x)+f(x)g'(x))h + (h{\text より十分小さい})\\
-       &=& s(x)+(f'(x)g(x)+f(x)g'(x))h + \epsilon_3
+s(x+h)
+ &=& f(x+h)g(x+h)
+  = \left(f(x)+f'(x)h+\epsilon_1\right)\left(g(x)+g'(x)h+\epsilon_2\right)\\
+ &=& f(x)g(x)+(f'(x)g(x)+f(x)g'(x))h + (h{\text より十分小さい})\\
+ &=& s(x)+(f'(x)g(x)+f(x)g'(x))h + \epsilon_3
 \end{eqnarray*}
 となる. つまり
 $$
@@ -56,11 +57,13 @@ $$
 $$
 が成り立つ. これが積の微分である.
 
-もう一つ試してみよう. 今度は$y=f(x)$と$z=g(y)$という関数があったときにその合成関数$z=g(f(x))$の微分を考えてみる.
+もう一つ試してみよう.
+今度は$y=f(x)$と$z=g(y)$という関数があったときにその合成関数$z=g(f(x))$の微分を考えてみる.
 \begin{eqnarray*}
-g(f(x+h)) &=& g(f(x) + f'(x)h + \epsilon_1)\\
-          &=& g(f(x)) + g'(f(x))(f'(x)h + \epsilon_1) + \epsilon_2\\
-          &=& g(f(x)) + g'(f(x))f'(x)h + \epsilon_3.
+g(f(x+h))
+ &=& g(f(x) + f'(x)h + \epsilon_1)
+  = g(f(x)) + g'(f(x))(f'(x)h + \epsilon_1) + \epsilon_2\\
+ &=& g(f(x)) + g'(f(x))f'(x)h + \epsilon_3.
 \end{eqnarray*}
 つまり
 $$
@@ -125,9 +128,7 @@ $$I=\int_0^{\infty} \exp\left(-x^2\right) \,dx$$
 とおくと
 $$I^2=\int_0^{\infty} \int_0^{\infty} \exp\left(-(x^2 + y^2)\right) \,dxdy.$$
 ここで$x=r\cos(\theta)$, $y=r\sin(\theta)$と置くと$x^2+y^2=r^2$.
-
 ヤコビアンは
-
 \begin{equation*}
 \det\left(\frac{\partial (x, y)}{\partial (r, \theta)}\right) =
   \begin{vmatrix}
@@ -139,56 +140,60 @@ $$I^2=\int_0^{\infty} \int_0^{\infty} \exp\left(-(x^2 + y^2)\right) \,dxdy.$$
 
 積分範囲は$x$, $y$が$(x,y)$平面の第一象限全体なので$r$は0から$\infty$, $\theta$は0から$\pi/2$を渡る.
 よって
-
-$$I^2=\int_0^{\pi/2} \int_0^\infty \exp\left(-r^2\right)r \,drd\theta=\pi/2 \left[ -\half\exp\left(-r^2\right)\right] _0^\infty=\pi/4.$$
+$$
+I^2=\int_0^{\pi/2} \int_0^\infty \exp\left(-r^2\right)r \,drd\theta=\pi/2 \left[ -\half\exp\left(-r^2\right)\right] _0^\infty=\pi/4.
+$$
 よって$I=\sqrt{\pi}/2$. $x^2$は偶関数なので積分範囲を$-\infty$から$\infty$にすると2倍になって
-
-$$\int_{-\infty}^\infty \exp\left(-x^2\right) \,dx = \sqrt{\pi}.$$
-
+$$
+\int_{-\infty}^\infty \exp\left(-x^2\right) \,dx = \sqrt{\pi}.
+$$
 本当は積分の順序を交換したりしているところを気にしないといけないが, ここでは自由に交換できるものと思っておく.
-
 \subsection{ガウス分布の積分}
 
 前章の積分で$a>0$をとり$x=\sqrt{a}y$とすると$dx=\sqrt{a}dy$.
-
-$$\int_{-\infty}^\infty \exp\left(-x^2\right) \,dx =\int_{-\infty}^\infty \exp\left(-ay^2\right)\sqrt{a} \,dy =\sqrt{\pi}.$$
+$$
+\int_{-\infty}^\infty \exp\left(-x^2\right) \,dx =\int_{-\infty}^\infty \exp\left(-ay^2\right)\sqrt{a} \,dy =\sqrt{\pi}.
+$$
 よって
-$$\int_{-\infty}^\infty \exp\left(-ax^2\right) \,dx = \sqrt{\pi/a}.$$
-
-ここで両辺を$a$に関して微分する. 積分の中身は$\dif{a}\exp\left(-ax^2\right)=-x^2\exp\left(-ax^2\right)$.
-
+$$
+\int_{-\infty}^\infty \exp\left(-ax^2\right) \,dx = \sqrt{\pi/a}.
+$$
+ここで両辺を$a$に関して微分する.
+積分の中身は$\dif{a}\exp\left(-ax^2\right)=-x^2\exp\left(-ax^2\right)$.
 気にせず積分と微分を交換することで
-
-$$-\int_{-\infty}^\infty x^2\exp\left(-ax^2\right) \,dx = -1/2\sqrt{\pi}a^{-3/2}.$$
-
+$$
+-\int_{-\infty}^\infty x^2\exp\left(-ax^2\right) \,dx = -1/2\sqrt{\pi}a^{-3/2}.
+$$
 $a=1/(2\sigma^2)$と置き換えることで
-
 \begin{equation}\label{int_exp}
 \int_{-\infty}^\infty \exp\left(-\frac{1}{2\sigma^2}x^2\right) \,dx = \sqrt{2\pi}\sigma.
 \end{equation}
-
 \begin{equation}\label{int_xx}
 \int_{-\infty}^\infty x^2\exp\left(-\frac{1}{2\sigma^2}x^2\right) \,dx = \sqrt{2\pi}\sigma^3.
 \end{equation}
-
 式(\ref{int_exp})は正規化項が$\sqrt{2\pi}\sigma$であることを示している.
 つまりガウス分布を
-$$\calN\left(x|\mu, \sigma^2\right)=\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{1}{2\sigma^2}(x-\mu)^2\right)$$
+$$
+\calN\left(x|\mu, \sigma^2\right)=\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{1}{2\sigma^2}(x-\mu)^2\right)
+$$
 とすると
-$$\int_{-\infty}^\infty \calN\left(x|\mu, \sigma^2\right) \,dx=1.$$
-
+$$
+\int_{-\infty}^\infty \calN\left(x|\mu, \sigma^2\right) \,dx=1.
+$$
 平均は
-$$x \calN\left(x|\mu, \sigma^2\right) = (x-\mu) \calN\left(x|\mu, \sigma^2\right) + \mu \calN\left(x|\mu, \sigma^2\right)$$
-
+$$
+x \calN\left(x|\mu, \sigma^2\right) = (x-\mu) \calN\left(x|\mu, \sigma^2\right) + \mu \calN\left(x|\mu, \sigma^2\right)
+$$
 とわけると, 第1項は$(x-\mu)$に関して奇関数なので積分すると消えて
-$$\EE[x]=\int_{-\infty}^\infty x \calN\left(x|\mu, \sigma^2\right) \,dx=\mu.$$
-
+$$
+\EE[x]=\int_{-\infty}^\infty x \calN\left(x|\mu, \sigma^2\right) \,dx=\mu.
+$$
 分散は$x^2=(x-\mu)^2+2\mu(x-\mu)+\mu^2$なので積分すると第1項は式(\ref{int_xx})より$\sigma^2$.
 第2項は0. 第3項は$\mu^2$.
-
 よって
-$$\EE[x^2]=\int_{-\infty}^\infty x^2 \calN\left(x|\mu, \sigma^2\right) \,dx=\sigma^2 + \mu^2.$$
-
+$$
+\EE[x^2]=\int_{-\infty}^\infty x^2 \calN\left(x|\mu, \sigma^2\right) \,dx=\sigma^2 + \mu^2.
+$$
 \section{線形代数の復習}
 \subsection{行列の積}
 以下, 特に断らない限り行列の数値は複素数とする.
@@ -208,16 +213,21 @@ $A(BC)_{ij}=\sum_l a_{il} (BC)_{lj} = \sum_l a_{il} \left(\sum_k b_{lk}c_{kj}\ri
 \subsection{トレース}
 
 $A$が$n$次正方行列のとき$\tr(A) = \sum_{i=1}^n a_{ii}$と$A$のトレースと呼ぶ.
-
-$$\tr(A+B)=\tr(A) + \tr(B).$$
-
-$$\tr(AB)=\tr(BA).$$
-
+$$
+\tr(A+B)=\tr(A) + \tr(B).
+$$
+$$
+\tr(AB)=\tr(BA).
+$$
 なぜなら$\tr(AB)=\sum_i (AB)_{ii}=\sum_i \left(\sum_j a_{ij}b_{ji}\right)=\sum_j \left(\sum_i b_{ji}a_{ij}\right)=\sum_j (BA)_{jj}=\tr(BA).$
-
-3個の行列の積については$\tr(ABC)=\sum_i (ABC)_{ii} = \sum_i \left(\sum_{j,k} a_{ij} b_{jk} c_{ki}\right) = \sum_{i,j,k} a_{ij} b_{jk} c_{ki}$より
-$$\tr(ABC)=\tr(BCA)=\tr(CAB).$$
-
+3個の行列の積については
+$
+\tr(ABC)=\sum_i (ABC)_{ii} = \sum_i \left(\sum_{j,k} a_{ij} b_{jk} c_{ki}\right) = \sum_{i,j,k} a_{ij} b_{jk} c_{ki}
+$
+より
+$$
+\tr(ABC)=\tr(BCA)=\tr(CAB).
+$$
 $A = \matt{a}{b}{c}{d}$のときは$\tr(A)=a+d$.
 
 \subsection{行列式}
@@ -237,11 +247,10 @@ $$\det(A)=|A|=\sum_{\sigma \in S_n} \sgn(\sigma) a_{1 \sigma(1)} \cdots a_{n \si
 
 $A$が2次正方行列のときを見直してみる. $S_2$は2個の要素しかもたなかった. 一つは何も動かさない操作でそれに対して$\sgn$は1.
 もう一つは1と2を入れ換える操作で$\sgn$は$-1$となる. よって
-
-$$|A|= a_{1 1} a_{2 2} - a_{1 2} a_{2 1}.$$
-
+$$
+|A|= a_{1 1} a_{2 2} - a_{1 2} a_{2 1}.
+$$
 ここで二つの$n$次正方行列$A$, $B$に対して$|AB|=|A||B|$が成り立つ. 2次のときのみ確認しておこう.
-
 $$
   A = \matt{a}{b}{c}{d}
   \text{, }
@@ -249,26 +258,28 @@ $$
 $$
 とするとき,
 \begin{eqnarray*}
-  |AB| &=& \matt{ax+bz}{ay+bw}{cx+dz}{cy+dw}\\
-       &=& (ax+bz)(cy+dw)-(ay+bw)(cx+dz) \\
-       &=& (ad-bc)(xw-yz) \\
-       &=& \dett{a}{b}{c}{d} \dett{x}{y}{z}{w} \\
-       &=& |A||B|.
+|AB|
+ &=& \matt{ax+bz}{ay+bw}{cx+dz}{cy+dw}
+  = (ax+bz)(cy+dw)-(ay+bw)(cx+dz) \\
+ &=& (ad-bc)(xw-yz)
+  = \dett{a}{b}{c}{d} \dett{x}{y}{z}{w}
+  = |A||B|.
 \end{eqnarray*}
 一般のときの証明は省略する.
-
 $|A|$は負の数にもなることに注意する（絶対値の記号と間違えないように）.
 
 \subsection{行列の種類}
 
-$A$を$m$行$n$列の行列とする. $A$に対して$\trans{A} = (a_{ji})$を$A$の\textgt{転置行列}という. これは$n$行$m$列の行列である.
+$A$を$m$行$n$列の行列とする. $A$に対して$\trans{A} = (a_{ji})$を$A$の転置行列という.
+これは$n$行$m$列の行列である.
 $|\trans{A}|=|A|$, $\trans{(AB)}=\trans{B}\trans{A}$である.
 
-$\overline{A}=(\overline{a_{ij}})$を$A$の\textgt{複素共役行列}, $A^*=\overline{\trans{A}}$を\textgt{随伴行列}という.
+$\overline{A}=(\overline{a_{ij}})$を$A$の複素共役行列,
+$A^*=\overline{\trans{A}}$を随伴行列という.
 $|A^*|=\overline{|A|}$, $(AB)^*=B^* A^*$である.
 
-$a_{ii}$を\textgt{対角成分}という. 対角成分以外の項が0である行列を\textgt{対角行列}といい $\diag(a_0, \ldots, a_n)$と書く.
-
+$a_{ii}$を対角成分という.
+対角成分以外の項が0である行列を対角行列といい $\diag(a_0, \ldots, a_n)$と書く.
 $$
 \delta_{ij}=
 \begin{cases}
@@ -276,12 +287,12 @@ $$
 0 & (i \neq j)
 \end{cases}
 $$
-を\textgt{クロネッカーのδ}といい, $I_n=(\delta_{ij})$を\textgt{$n$次単位行列}という. $I$と略すこともあるし$E$と書くこともある.
+をクロネッカーの$\delta$といい,
+$I_n=(\delta_{ij})$を$n$次単位行列という. $I$と略すこともあるし$E$と書くこともある.
+$A$を$n$次正方行列とすると$AI_n=I_nA=A$.
 
-$A$を\textgt{$n$次正方行列}とすると$AI_n=I_nA=A$.
-
-$A$が$n$次正方行列で, $|A|\neq0$のとき$A$を\textgt{正則}といい, $AB=BA=I$となる行列$B$が存在する.
-$B$を\textgt{逆行列}といい, $A^{-1}$と書く.
+$A$が$n$次正方行列で, $|A|\neq0$のとき$A$を正則といい, $AB=BA=I$となる行列$B$が存在する.
+$B$を逆行列といい, $A^{-1}$と書く.
 
 \begin{enumerate}
 \item 逆行列は存在すればただ一つである. なぜなら$B$, $B'$を逆行列とすると$B=BI=B(AB')=(BA)B'=IB'=B'$.
@@ -305,19 +316,23 @@ $|A| \in \RR$なので$|A|=\pm 1$.
 \subsection{ブロック行列の逆行列}
 
 $A$, $D$を正方行列として（$B$, $D$は正方行列とは限らない）
-
-$$X=\matt{A}{B}{C}{D}$$
+$$
+X=\matt{A}{B}{C}{D}
+$$
 の逆行列を求めてみよう.
-
 逆行列を
-$$X^{-1}=\matt{M}{N}{L}{P}$$
+$$
+X^{-1}=\matt{M}{N}{L}{P}
+$$
 とおくと
-$$\matt{A}{B}{C}{D} \matt{M}{N}{L}{P}=\matt{AM+BL}{AN+BP}{CM+DL}{CN+DP}=\matt{I}{0}{0}{I}.$$
-
+$$
+\matt{A}{B}{C}{D} \matt{M}{N}{L}{P}=\matt{AM+BL}{AN+BP}{CM+DL}{CN+DP}=\matt{I}{0}{0}{I}.
+$$
 2-1ブロックに左から$D^{-1}$を掛けて$L=-D^{-1}CM$.
-
-これを1-1ブロックに代入して$AM+BL=AM-BD^{-1}CM=(A-BD^{-1}C)M=I$.
-
+これを1-1ブロックに代入して
+$$
+AM+BL=AM-BD^{-1}CM=(A-BD^{-1}C)M=I.
+$$
 よって$M=(A-BD^{-1}C)^{-1}$.
 今度は
 $$\matt{M}{N}{L}{P} \matt{A}{B}{C}{D}=\matt{MA+NC}{MB+ND}{LA+PC}{LB+PD}=\matt{I}{0}{0}{I}$$
@@ -327,21 +342,22 @@ $$\matt{M}{N}{L}{P} \matt{A}{B}{C}{D}=\matt{MA+NC}{MB+ND}{LA+PC}{LB+PD}=\matt{I}
 
 よって$M=(A-BD^{-1}C)^{-1}$として
 $$\matt{M}{N}{L}{P}^{-1}=\matt{M}{-MBD^{-1}}{-D^{-1}CM}{D^{-1}+D^{-1}CMBD^{-1}}.$$
-
 これが$X$の逆行列となることは容易に確認できる.
 
 （以下余談）
-
 $R=MB$, $S=D^{-1}C$とおくと
 $$X=\matt{M^{-1}}{0}{0}{D} \matt{I+MBD^{-1}C}{MB}{D^{-1}C}{I}=\matt{M^{-1}}{0}{0}{D}\matt{I+RS}{R}{S}{I}$$
 と変形できることはすぐ分かる.
-
-$$\matt{M^{-1}}{0}{0}{D}^{-1}=\matt{M}{0}{0}{D^{-1}},$$
-$$\matt{I+RS}{R}{S}{I}^{-1}=\matt{I}{-R}{-S}{I+SR}$$
+$$
+\matt{M^{-1}}{0}{0}{D}^{-1}=\matt{M}{0}{0}{D^{-1}},
+$$
+$$
+\matt{I+RS}{R}{S}{I}^{-1}=\matt{I}{-R}{-S}{I+SR}
+$$
 なので$X^{-1}$もすぐ求められる. 更にこの行列の行列式は1なので
-
-$$|X|=\dett{M^{-1}}{0}{0}{D} = |M|^{-1}|D|=|A-BD^{-1}C||D|.$$
-
+$$
+|X|=\dett{M^{-1}}{0}{0}{D} = |M|^{-1}|D|=|A-BD^{-1}C||D|.
+$$
 \subsection{三角化}
 
 $n$次正方行列$A$に対して$a_{ij} = 0 (i>j)$のとき（上半）三角行列という.
@@ -421,26 +437,23 @@ $A$を一般に$n$次正方行列とし, $\bm{x}$を$n$次元縦ベクトルとする.
 
 $A$が与えられたときに$S=(A+\trans{A})/2$, $T=(A-\trans{A})/2$とすると,
 $A=S+T$, $\trans{S}=S$, $\trans{T}=-T$となる.
-
 $\trans{T}=-T$ということは$t_{ij}=-t_{ji}$なので（標数2ではないから）$t_{ii}=0$.
 式(\ref{square_form})の和を$i=j$と$i\neq j$の二つに分けて$A=T$として適用すると
 $$\quadf{T}{x} = \sum_i t_{ii} x_i x_j + \sum_{i<j} (t_{ij} + t_{ji}) x_i x_y.$$
 
 第1項は$t_{ii}=0$より0. 第2項も$t_{ij}=-t_{ji}$より0.
 つまり$\trans{T}=-T$のとき2次形式の値は0となる.
-
 よって$\quadf{A}{x} = \quadf{S}{x} + \quadf{T}{x} = \quadf{S}{x}$.
 つまり2次形式を考えるときは一般性を失うことなく$A$を対称行列としてよい.
 
 2変数のときを見てみる. 行列の計算は分かりにくければとりあえず2次で書いてみること.
-
-$$\trans{\hvec{x}{y}}\matt{a}{b}{b}{c}\vvec{x}{y}
+$$
+\trans{\hvec{x}{y}}\matt{a}{b}{b}{c}\vvec{x}{y}
 =\trans{\hvec{x}{y}}\vvec{ax+by}{bx+cy}=ax^2+2bxy+cy^2.
 $$
-
 ブロック行列なら$A$, $C$を対称行列として
-
-$$\trans{\hvec{\bm{x}}{\bm{y}}}\matt{A}{B}{{\trans{B}}}{C}\vvec{\bm{x}}{\bm{y}}
+$$
+\trans{\hvec{\bm{x}}{\bm{y}}}\matt{A}{B}{{\trans{B}}}{C}\vvec{\bm{x}}{\bm{y}}
  =\trans{\hvec{\bm{x}}{\bm{y}}}\vvec{A\bm{x}+B\bm{y}}{\trans{B}\bm{x}+C\bm{y}}
  =\quadf{A}{x}+2\trans{\bm{x}}B\bm{y}+\quadf{C}{y}.
 $$
@@ -453,12 +466,12 @@ $$
 =\trans{\bm{y}}\trans{B}\bm{x}
 $$
 を用いた.
-
 対称行列は$SO(n)$の元$P$を用いて対角化できた（$P\trans{P}=I$）. $y=P^{-1}x$とおくと
-$$\quadf{A}{x}
+$$
+\quadf{A}{x}
 =\trans{\bm{y}}\trans{P}AP\bm{y}
-=\quadf{\diag(\lambda_1,\ldots,\lambda_n)}{y}=\sum_{i=1}^n \lambda_i y_i^2.$$
-
+=\quadf{\diag(\lambda_1,\ldots,\lambda_n)}{y}=\sum_{i=1}^n \lambda_i y_i^2.
+$$
 つまり2次形式は対角化すれば単なる成分ごとの直和になる.
 \section{多変量ガウス分布}
 
@@ -480,30 +493,39 @@ $$f(\bm{z})
 このとき$|A|=\prod_i \lambda_i>0$.
 
 積分値は式(\ref{int_exp})より
-$$\int f(\bm{z})\,d\bm{z}
-=\prod_{i=1}^n \sqrt{2\pi\lambda_i} = \sqrt{2\pi}^n \sqrt{|A|}.$$
+$$
+\int f(\bm{z})\,d\bm{z}
+=\prod_{i=1}^n \sqrt{2\pi\lambda_i} = \sqrt{2\pi}^n \sqrt{|A|}.
+$$
 よって
-$$\calN\left(\bm{x}|\bm{\mu}, A\right)
-  =\frac{1}{\sqrt{2\pi}^n} \frac{1}{\sqrt{|A|}}\exp\left(-\half\trans{(\bm{x-\mu})}A^{-1}(\bm{x-\mu})\right)$$
+$$
+\calN\left(\bm{x}|\bm{\mu}, A\right)
+  =\frac{1}{\sqrt{2\pi}^n} \frac{1}{\sqrt{|A|}}\exp\left(-\half\trans{(\bm{x-\mu})}A^{-1}(\bm{x-\mu})\right)
+$$
 とすると正規化されている.
 これが多変量版のガウス分布である.
 
 平均を求めよう:
-
-$$\bm{x}f(\bm{x}-\bm{\mu})
-=(\bm{x}-\bm{\mu})f(\bm{x}-\bm{\mu}) + \bm{\mu}f(\bm{x}-\bm{\mu})$$
-とすると第1項は$(\bm{x}-\bm{\mu})$に関して奇関数なので積分すると消える. 後者は$\bm{\mu}$が定数で外に出るので
-$$\EE[\bm{x}]=\bm{\mu}.$$
-
+$$
+\bm{x}f(\bm{x}-\bm{\mu})
+ =(\bm{x}-\bm{\mu})f(\bm{x}-\bm{\mu}) + \bm{\mu}f(\bm{x}-\bm{\mu})
+$$
+とすると第1項は$(\bm{x}-\bm{\mu})$に関して奇関数なので積分すると消える.
+後者は$\bm{\mu}$が定数で外に出るので
+$$
+\EE[\bm{x}]=\bm{\mu}.
+$$
 次に分散を考える. $\bm{x}-\bm{\mu}=P\bm{y}$とおくと
-$$\bm{x}\trans{\bm{x}}
+$$
+\bm{x}\trans{\bm{x}}
 =(P\bm{y}+\bm{\mu})\trans{(P\bm{y}+\bm{\mu})}
 =P\bm{y}\trans{\bm{y}}\trans{P}
  + P\bm{y}\trans{\bm{\mu}}
  +\bm{\mu}\trans{\bm{y}}\trans{P}
- +\bm{\mu}\trans{\bm{\mu}}.$$
-
-これに$\calN\left(\bm{x}|\bm{\mu}, A\right)$をかけた値を積分するわけだが, 第2項, 第3項は奇関数になるので0.
+ +\bm{\mu}\trans{\bm{\mu}}.
+$$
+これに$\calN\left(\bm{x}|\bm{\mu}, A\right)$をかけた値を積分するわけだが,
+第2項, 第3項は奇関数になるので0.
 第4項は$\bm{\mu}\trans{\bm{\mu}}$が定数に出る.
 
 第1項を考えよう: $P=(\bm{p_1}, \cdots, \bm{p_n})$とすると
@@ -565,7 +587,6 @@ $$\dif{y_i}\left(\trans{\bm{x}}\bm{y}\right)=\sum_j x_j \delta_{ij}=x_j.$$
 &=& \left(\sum_t a_{it} x_t\right) + \left(\sum_s a_{si} x_s\right)
 = (A\bm{x})_i + (\trans{A}\bm{x})_i = \left((A + \trans{A})\bm{x}\right)_i.
 \end{eqnarray*}
-
 特に$A$が対称行列のときは
 $$\dif{\bm{x}}\left(\quadf{A}{x}\right)=2A\bm{x}.$$
 \subsection{逆行列の微分}
@@ -595,42 +616,48 @@ $$A=P^{-1}\tri(\lambda_i)P$$
 $$A^{-1}=P^{-1}\tri(\lambda_i)^{-1}P$$
 となる.
 さて$|A|=\prod \lambda_i$なので証明すべき式の左辺は
-$$\dif{x}\left(\sum \log (\lambda_i)\right) = \sum \frac{\lambda_i'}{\lambda_i}.$$
-
+$$
+\dif{x}\left(\sum \log (\lambda_i)\right) = \sum \frac{\lambda_i'}{\lambda_i}.
+$$
 ここで$\diff{x}{\lambda_i}=\lambda_i'$と略記した.
 証明すべき右辺を考えよう.
-$$\diff{x}{A}=A'
+$$
+\diff{x}{A}
+ =A'
  =\left(P^{-1}\tri(\lambda_i)P\right)'
- =(P^{-1})'\tri(\lambda_i)P + P^{-1}\tri(\lambda_i')P + P^{-1}\tri(\lambda_i)P'.$$
-
+ =(P^{-1})'\tri(\lambda_i)P + P^{-1}\tri(\lambda_i')P + P^{-1}\tri(\lambda_i)P'.
+$$
 第1項に式(\ref{diff_inv})を使うと
-$$(P^{-1})'\tri(\lambda_i)P=-P^{-1}P'P^{-1}\tri(\lambda_i)P$$
+$$
+(P^{-1})'\tri(\lambda_i)P=-P^{-1}P'P^{-1}\tri(\lambda_i)P
+$$
 更に$\tr(A+B)=\tr(A)+\tr(B)$を使うと
 \begin{eqnarray*}
-\tr\left(A^{-1}A'\right)&=&-\tr\left(\left(P^{-1}\tri(\lambda_i)^{-1}P\right)P^{-1}P'P^{-1}\tri(\lambda_i)P\right)\\
- &+&\tr\left((P^{-1}\tri(\lambda_i)^{-1}P)P^{-1}\tri(\lambda_i')P\right)\\
- &+&\tr\left((P^{-1}\tri(\lambda_i)^{-1}P)P^{-1}\tri(\lambda_i)P'\right)\\
- &=&-\tr\left(P^{-1}\tri(\lambda_i)^{-1}P'P^{-1}\tri(\lambda_i)P\right)\\
- &+&\tr\left(P^{-1}\tri(\lambda_i)^{-1}\tri(\lambda_i')P\right)\\
- &+&\tr(P^{-1}P')
+\tr\left(A^{-1}A'\right)
+ &=& -\tr\left(\left(P^{-1}\tri(\lambda_i)^{-1}P\right)P^{-1}P'P^{-1}\tri(\lambda_i)P\right)\\
+ &+& \tr\left((P^{-1}\tri(\lambda_i)^{-1}P)P^{-1}\tri(\lambda_i')P\right)
+ +   \tr\left((P^{-1}\tri(\lambda_i)^{-1}P)P^{-1}\tri(\lambda_i)P'\right)\\
+ &=&-\tr\left(P^{-1}\tri(\lambda_i)^{-1}P'P^{-1}\tri(\lambda_i)P\right)
+  + \tr\left(P^{-1}\tri(\lambda_i)^{-1}\tri(\lambda_i')P\right)
+ + \tr(P^{-1}P')
 \end{eqnarray*}
-
 次に$\tr(AB)=\tr(BA)$を使ってトレースの中の積の順序を入れ換えて,
 行列と逆行列の積を消していくと
 \begin{eqnarray*}
-\tr(A^{-1}A')&=&
- -\tr\left(P'P^{-1}\tri(\lambda_i)PP^{-1}\tri(\lambda_i^{-1})\right)\\
- &+&\tr\left(\tri(\lambda_i)^{-1}\tri(\lambda_i')PP^{-1}\right)\\
- &+&\tr(P^{-1}P')\\
+\tr(A^{-1}A')
+ &=& -\tr\left(P'P^{-1}\tri(\lambda_i)PP^{-1}\tri(\lambda_i^{-1})\right)
+ +\tr\left(\tri(\lambda_i)^{-1}\tri(\lambda_i')PP^{-1}\right)
+ +\tr(P^{-1}P')\\
  &=&-\tr(P'P^{-1})+\tr(\tri(\lambda_i)^{-1}\tri(\lambda_i'))+\tr(P^{-1}P')\\
  &=&\tr\left(\tri(\lambda_i)^{-1}\tri(\lambda_i')\right).
 \end{eqnarray*}
-
 三角行列の逆行列はやはり三角行列であり,
 $*$の部分はもとの行列の部分とは異なる何かわからない値になる.
 しかし対角成分はもとの対角成分の逆数が並ぶ.
 つまり
-$$\tri(\lambda_i)^{-1}=\tri(\lambda_i^{-1}).$$
+$$
+\tri(\lambda_i)^{-1}=\tri(\lambda_i^{-1}).
+$$
 よって
 $$
 \tr(A^{-1}A')
@@ -647,12 +674,14 @@ $|A|>0$となる行列に対して
 行列に並べたものを意味する.
 今示した対数の微分の公式(1)より
 $$\dif{a_{ij}}\log|A|=\tr\left(A^{-1}\dif{a_{ij}}A\right).$$
-$\dif{a_{ij}}A$は$ij$成分のみが1でそれ以外は0の行列になる.
+$\partial A / \partial a_{ij}$は$ij$成分のみが1でそれ以外は0の行列になる.
 その行列を$I_{ij}$と書くと,
 \begin{eqnarray*}
-\tr(A^{-1}I_{ij})&=&\sum_s \left(A^{-1}I_{ij}\right)_{ss}\\
-&=&\sum_s \left(\sum_t (A^{-1})_{st} (I_{ij})_{ts}\right)\\
-&=&\sum_s \left(\sum_t (A^{-1})_{st} \delta_{it} \delta_{js}\right) = (A^{-1})_{ji}.
+\tr(A^{-1}I_{ij})
+ &=&\sum_s \left(A^{-1}I_{ij}\right)_{ss}
+ = \sum_s \left(\sum_t (A^{-1})_{st} (I_{ij})_{ts}\right)
+ = \sum_s \left(\sum_t (A^{-1})_{st} \delta_{it} \delta_{js}\right)\\
+ &=& (A^{-1})_{ji}.
 \end{eqnarray*}
 つまり$\log|A|$を$a_{ij}$成分で微分すると
 $A^{-1}$の$ji$成分になることが分かったので証明完了.
@@ -661,8 +690,9 @@ $A^{-1}$の$ji$成分になることが分かったので証明完了.
 2次正方行列で示してみよう.
 $A=\matt{a}{b}{c}{d}$とすると$|A|=ad-bc$.
 よって左辺は$\log|A|$を$a$, $b$, $c$, $d$でそれぞれ微分して
-$$\text{左辺}=\frac{1}{|A|}\matt{d}{-c}{-b}{a}=\text{右辺}.$$
-
+$$
+\text{左辺}=\frac{1}{|A|}\matt{d}{-c}{-b}{a}=\text{右辺}.
+$$
 一般のときは$|A|=\sum_{\sigma \in S_n} \sgn(\sigma) a_{1 \sigma(1)} \cdots a_{n \sigma(n)}$なので
 $$
 |A|(\text{左辺})_{ij}=\sum_{\sigma \in S_n} \sgn(\sigma) \dif{a_{ij}}\left(a_{1 \sigma(1)} \cdots a_{n \sigma(n)}\right).
@@ -692,21 +722,24 @@ $$\log p(\bm{X}|\bm{\mu}, A)
 &=&\half\left(A^{-1}+\trans{(A^{-1})}\right)\left(\left(\sum_{i=1}^N \bm{x_i}\right) - N\bm{\mu}\right).
 \end{eqnarray*}
 これが$\bm{0}$なので
-$$\bm{\mu}_{\text{ML}}=\frac{1}{N}\sum_i \bm{x_i}.$$
-
+$$
+\bm{\mu}_{\text{ML}}=\frac{1}{N}\sum_i \bm{x_i}.
+$$
 さて, 本題に戻る. 再び$A$が対称行列でないという仮定に注意して式を変形する.
-
 $\bm{y_i}=\bm{x_i}-\bm{\mu}$とおき
-$$F(A)=-N\log|A|-\sum_i \quadf{A^{-1}}{y_i}
-=-N\log|A|-\tr\left(A^{-1}\sum_i \bm{y_i}\trans{\bm{y_i}}\right)$$
+$$
+F(A)=-N\log|A|-\sum_i \quadf{A^{-1}}{y_i}
+=-N\log|A|-\tr\left(A^{-1}\sum_i \bm{y_i}\trans{\bm{y_i}}\right)
+$$
 とおく.
 第2項の式変形には式(\ref{quad})を用いた.
 $B=\sum_i \bm{y_i}\trans{\bm{y_i}}$と置いて$A$で微分しよう.
 第1項は式(\ref{diff_log_mat})を使って$-N\trans{{(A^{-1})}}$.
 第2項を求めるには式(\ref{diff_inv})を使って
 \begin{eqnarray*}
-\dif{a_{ij}}\tr\left(A^{-1}B\right)&=&\tr\left(\left(\dif{a_{ij}}A^{-1}\right)B\right)\\
-&=&-\tr\left(A^{-1}\left(\dif{a_{ij}}A\right)A^{-1}B\right)\\
+\dif{a_{ij}}\tr\left(A^{-1}B\right)
+ &=& \tr\left(\left(\dif{a_{ij}}A^{-1}\right)B\right)
+ = -\tr\left(A^{-1}\left(\dif{a_{ij}}A\right)A^{-1}B\right)\\
 &=&-\tr\left(\left(\dif{a_{ij}}A\right)A^{-1}BA^{-1}\right).
 \end{eqnarray*}
 最後の式変形では$\tr(XY)=\tr(YX)$を使った. $C=A^{-1}BA^{-1}$とおく.
@@ -724,13 +757,17 @@ $B=\sum_i \bm{y_i}\trans{\bm{y_i}}$と置いて$A$で微分しよう.
 $$\dif{A}F(A)=-N\trans{{(A^{-1})}}+\trans{(A^{-1}BA^{-1})}.$$
 これが0になるような$A$が$F(A)$の最大値を与える.
 転置をとって
-$$-NA^{-1}+A^{-1}BA^{-1}=0.$$
-$$A=\frac{1}{N}B
-=\frac{1}{N}\sum_i \bm{y_i}\trans{\bm{y_i}}
-=\frac{1}{N}\sum_i (\bm{x_i}-\bm{\mu})\trans{(\bm{x_i}-\bm{\mu})}.$$
+$$
+-NA^{-1}+A^{-1}BA^{-1}=0.
+$$
+$$
+A
+ =\frac{1}{N}B
+ =\frac{1}{N}\sum_i \bm{y_i}\trans{\bm{y_i}}
+ =\frac{1}{N}\sum_i (\bm{x_i}-\bm{\mu})\trans{(\bm{x_i}-\bm{\mu})}.
+$$
 この$A$は明らかに対称行列である.
 つまり$A$に関する対称性を仮定せずに最尤解を求めると$A$が対称行列となることが分かった.
-
 また, $\bm{\mu}$について特に条件も無いので,
 先に$\bm{\mu}$に関して最尤推定による解$\bm{\mu}_{\text{ML}}$を代入すれば
 $\bm{\mu}$と$A$を同時に最大化したものの解となることが分かる.
