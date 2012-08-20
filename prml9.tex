@@ -37,13 +37,10 @@ $$
 \calN = \calN(x|\mu,\Sigma)=\frac{1}{(2\pi)^{D/2}}|\Sigma|^{-1/2}\exp\left(-\half\quads{{\Sigma^{-1}}}{(x-\mu)}\right).
 $$
 期待値と分散について
-\begin{eqnarray*}
-&& E[x]=\mu, \\
-&& \cov[x]=\Sigma, \\
-&& E[\outp{x}]=\outp{\mu}+\Sigma, \\
-&& E[\inp{x}]=\inp{\mu}+\tr(\Sigma).
-\end{eqnarray*}
-
+$$
+E[x]=\mu, \quad \cov[x]=\Sigma, \quad
+ E[\outp{x}]=\outp{\mu}+\Sigma, \quad E[\inp{x}]=\inp{\mu}+\tr(\Sigma).
+$$
 最後の式は3番目から出る.
 $$
 E[x_i^2]=(\outp{\mu})_{ii}+\Sigma_{ii}=\mu_i^2+\Sigma_{ii}.
@@ -66,10 +63,7 @@ p(z_k=1)=\pi_k
 $$
 という確率分布を与える.
 $$
-p(z)=\prod_k \pi_k^{z_k}.
-$$
-$$
-p(x|z_k=1)=\calN(x|\mu_k,\Sigma_k)
+p(z)=\prod_k \pi_k^{z_k}, \quad p(x|z_k=1)=\calN(x|\mu_k,\Sigma_k)
 $$
 なので
 $$
@@ -79,7 +73,7 @@ $$
 \begin{eqnarray*}
 p(x) &=& \sum_z p(z)p(x|z) \\
  &=& \sum_z \prod_k \left(\pi_k \calN(x|\mu_k,\Sigma_k)\right)^{z_k}\\
- && \text{$z_k$はどれか一つのみが1（そのとき$\pi_k$）であとは0なので}\\
+ && （\text{$z_k$はどれか一つのみが1（そのとき$\pi_k$）であとは0なので}）\\
  &=& \sum_{k} \pi_k \calN(x|\mu_k,\Sigma_k).
 \end{eqnarray*}
 
@@ -115,10 +109,10 @@ $$
 さて$\calN_{nk}=\calN(x_n|\mu_k,\Sigma_k)$とおいて
 \begin{eqnarray*}
 \dif{\mu_k}F
- &=& \sum_n \frac{\pi_k \dif{\mu_k}\calN_{nk}}{\sum_j \pi_j \calN_{nj}} \\
- &=& \sum_n \left(\frac{\pi_k \calN_{nk}}{\sum_j \pi_j \calN_{nj}}\right)\dif{\mu_k}\log \calN_{nk} \\
- &=& \sum_n \gamma(z_{nk}) \dif{\mu_k}\log \calN_{nk} \\
- &=& \Sigma_k^{-1}\left(\sum_n \gamma(z_{nk})(x_n-\mu_k)\right)=0.
+ &=& \sum_n \frac{\pi_k \dif{\mu_k}\calN_{nk}}{\sum_j \pi_j \calN_{nj}} 
+ = \sum_n \left(\frac{\pi_k \calN_{nk}}{\sum_j \pi_j \calN_{nj}}\right)\dif{\mu_k}\log \calN_{nk} \\
+ &=& \sum_n \gamma(z_{nk}) \dif{\mu_k}\log \calN_{nk}
+ = \Sigma_k^{-1}\left(\sum_n \gamma(z_{nk})(x_n-\mu_k)\right)=0.
 \end{eqnarray*}
 よって
 $$
@@ -132,7 +126,6 @@ $$
 \mu_k=\frac{1}{N_k}\sum_n \gamma(z_{nk})x_n.
 $$
 これは$\mu_k$が$X$の重みつき平均であることを示している.
-
 次に$\Sigma_k$に関する微分を考える.
 $$
 \calN = \calN(x|\mu,\Sigma)
@@ -172,10 +165,7 @@ $$
 \dif{\pi_k}{G}
 =\sum_n \frac{\calN_{nk}}{\sum_j \pi_j\calN_{nj}}+\lambda=\sum_n \gamma(z_{nk})/\pi_k+\lambda=N_k/\pi_k+\lambda=0.
 $$
-つまり
-$$
-N_k = -\lambda \pi_k.
-$$
+つまり$N_k = -\lambda \pi_k$.
 よって
 $$
 N=\sum_k N_k=\sum_k (-\lambda \pi_k) = -\lambda.
@@ -186,15 +176,13 @@ $$
 $$
 \section{混合ガウス分布再訪}
 $$
-p(z)=\prod_k \pi_k^{z_{k}},
-$$
-$$
-p(x|z)=\prod_k \calN(x|\mu_k,\Sigma_k)^{z_k}
+p(z)=\prod_k \pi_k^{z_{k}}, \quad p(x|z)=\prod_k \calN(x|\mu_k,\Sigma_k)^{z_k}
 $$
 より
 \begin{eqnarray*}
-F=\log p(X,Z|\mu,\Sigma,\vpi)
- &=& \log \left(\prod_{n,k} \pi_k^{z_{nk}}\calN(x_n|\mu_k,\Sigma_k)^{z_{nk}}\right)\\
+F
+ &=& \log p(X,Z|\mu,\Sigma,\vpi)
+ = \log \left(\prod_{n,k} \pi_k^{z_{nk}}\calN(x_n|\mu_k,\Sigma_k)^{z_{nk}}\right)\\
  &=& \sum_{n,k} z_{nk}(\log \pi_k + \log \calN_{nk}).
 \end{eqnarray*}
 $z_n$は$(0, 0,\ldots, 1, 0, \ldots, 0)$の形で$\sum_k \pi_k=1$の制約条件を入れると上式の微分を考えると
@@ -278,12 +266,8 @@ $$
 $$
 $\epsilon \rightarrow 0$で
 $$
-\gamma(z_{nk}) \rightarrow r_{nk},
-$$
-$$
-\epsilon \log \pi_k \rightarrow 0,
-$$
-$$
+\gamma(z_{nk}) \rightarrow r_{nk}, \quad
+\epsilon \log \pi_k \rightarrow 0, \quad
 \epsilon \log (2\pi \epsilon) \rightarrow 0
 $$
 より
@@ -326,9 +310,10 @@ E_k[\outp{x}]=\cov_k[x]+\outp{\mu_k}=\Sigma_k+\outp{\mu_k}
 $$
 より
 \begin{eqnarray*}
-\cov[x]&=&E\left[\outp{(x-E[x])}\right]\\
-       &=&E\left[\outp{x}\right]-\outp{E[x]}\\
-       &=&\sum_k \pi_k\left(\Sigma_k+\outp{\mu_k}\right)-\outp{E[x]}.
+\cov[x]
+ &=& E\left[\outp{(x-E[x])}\right]
+  = E\left[\outp{x}\right]-\outp{E[x]}\\
+  &=&\sum_k \pi_k\left(\Sigma_k+\outp{\mu_k}\right)-\outp{E[x]}.
 \end{eqnarray*}
 データ集合$X=\{x_1, \ldots, x_N\}$が与えられたとき, 対数尤度関数は
 $$
@@ -375,17 +360,16 @@ $$
 \begin{eqnarray*}
 F
  &=& E_Z[\log p(X,Z|\mu,\vpi)]\\
- &=& \sum_k (\log \pi_k)\left(\sum_n \gamma(z_{nk})\right)+\sum_{k,i} \log \mu_{ki}\left(\sum_n \gamma(z_{nk})x_{ni}\right)
-   + \sum_{k,i} \log (1-\mu_{ki})\left(\sum_n \gamma(z_{nk})(1-x_{ni})\right)\\
+ &=& \sum_k (\log \pi_k)\left(\sum_n \gamma(z_{nk})\right)+\sum_{k,i} \log \mu_{ki}\left(\sum_n \gamma(z_{nk})x_{ni}\right)\\
+ &+& \sum_{k,i} \log (1-\mu_{ki})\left(\sum_n \gamma(z_{nk})(1-x_{ni})\right)\\
  &=& \sum_k N_k \log \pi_k + \sum_{k,i} N_k \bar{x}_{ki} \log \mu_{ki}
    + \sum_{k,i} \log (1-\mu_{ki}) N_k(1-\bar{x}_{ki}).
 \end{eqnarray*}
-
 $\mu_{ki}$に関する最大化.
 \begin{eqnarray*}
 \dif{\mu_{ki}}F
- &=& N_k \bar{x}_{ki} \frac{1}{\mu_{ki}}+\frac{-1}{1-\mu_{ki}} N_k (1-\bar{x}_{ki})\\
- &=& \frac{N_{k}}{\mu_{ki}(1-\mu_{ki})}(\bar{x}_{ki}(1-\mu_{ki})-(1-\bar{x}_{ki})\mu_{ki}) = 0.
+ &=& N_k \bar{x}_{ki} \frac{1}{\mu_{ki}}+\frac{-1}{1-\mu_{ki}} N_k (1-\bar{x}_{ki})
+ = \frac{N_{k}}{\mu_{ki}(1-\mu_{ki})}(\bar{x}_{ki}(1-\mu_{ki})-(1-\bar{x}_{ki})\mu_{ki}) = 0.
 \end{eqnarray*}
 よって
 $$
@@ -395,7 +379,6 @@ $$
 $$
 \mu_k = \bar{x}_k.
 $$
-
 $\pi_k$に関する最適化.
 $G=F+\lambda(\sum_k \pi_k-1)$とすると
 $$
@@ -409,7 +392,6 @@ $$
 $$
 \pi_k=\frac{N_k}{N}.
 $$
-
 $0 \le p(x_n|\mu_k) \le 1$より
 $$
 \log p(X|\mu,\vpi)=\sum_n \log \left(\sum_k \pi_k p(x_n|\mu_k)\right) \le \sum \log \left(\sum_k \pi_k\right)=0.
@@ -419,15 +401,12 @@ $$
 \section{ベイズ線形回帰に関するEMアルゴリズム}
 EMアルゴリズムに基づいてベイズ線形回帰を考えてみる.
 $w$を潜在関数と見なしてそれを最大化する方針を採る.
-
 $$
 p(w|t)=\calN(w|m_N,S_N)
 $$
 で$w$の事後分布が求まっているとする.
 $$
-p(t|w,\beta)=\prod_n \calN(t_n|\trans{w}\phi(x_n), \beta^{-1}),
-$$
-$$
+p(t|w,\beta)=\prod_n \calN(t_n|\trans{w}\phi(x_n), \beta^{-1}), \quad
 p(w|\alpha)=\calN(w|0, \alpha^{-1}I)
 $$
 であった.
@@ -453,7 +432,6 @@ $$
 $$
 \alpha=\frac{M}{E[\inp{w}]}=\frac{M}{\inp{m_N}+\tr(S_N)}.
 $$
-
 $\beta$に関する最大化
 $$
 \dif{\beta}F=\frac{N}{2}\frac{1}{\beta}-\half\sum_n E\left[(t_n-\trans{w}\phi_n)^2\right]=0.
@@ -474,28 +452,25 @@ $$
 p(X,Z|\theta)=p(Z|X,\theta)p(X|\theta).
 $$
 $$
-\calL(q,\theta)=\sum_Z q(Z) \log \frac{p(X,Z|\theta)}{q(Z)},
-$$
-$$
+\calL(q,\theta)=\sum_Z q(Z) \log \frac{p(X,Z|\theta)}{q(Z)}, \quad
 \KL(q||p)=-\sum_Z q(Z) \log \frac{p(Z|X,\theta)}{q(Z)}
 $$
 とおく.
 $\KL(q||p)$は$q(Z)$と事後分布$p(Z|X,\theta)$との距離なので常に0以上
 （3章のカルバック距離を参照）.
-\begin{eqnarray*}
+$$
 \calL(q,\theta)+\KL(q||p)
- &=& \sum_Z q(Z) \log \frac{p(X,Z|\theta)}{p(Z|X,\theta)}\\
- &=& \sum_Z q(Z) \log p(X|\theta)\\
- &=& \log p(X|\theta).
-\end{eqnarray*}
+ = \sum_Z q(Z) \log \frac{p(X,Z|\theta)}{p(Z|X,\theta)}
+ = \sum_Z q(Z) \log p(X|\theta)
+ = \log p(X|\theta).
+$$
 よって
-\begin{eqnarray*}
+$$
 \log p(X|\theta)
- &=& \calL(q,\theta)+\KL(q||p)\\
- &\ge& \calL(q,\theta).
-\end{eqnarray*}
+ = \calL(q,\theta)+\KL(q||p)
+ \ge \calL(q,\theta).
+$$
 したがって$\calL(q,\theta)$は$\log p(X|\theta)$の下界.
-
 パラメータの現在の値が$\theta^o$だったときに
 \begin{itemize}
 \item[] Eステップでは$\theta^o$を固定して$\calL(q,\theta)$を$q(Z)$について最大化する.
@@ -510,11 +485,10 @@ $$
 このときの$\KL(q||p)$は$\theta^o$を使って計算されていた（そして値は0）ので新しい$\theta^n$を使って計算し直すと通常正となる.
 \end{itemize}
 $q(Z)=p(Z|X,\theta^o)$より
-
 \begin{eqnarray*}
 q(Z) &=& \sum_ Z q(Z) \log \frac{p(X,Z|\theta)}{q(Z)}\\
      &=& \sum_Z p(Z|X,\theta^o) \log p(X,Z|\theta) - \sum_Z p(Z|X,\theta^o)\log p(Z|X,\theta^o)\\
-     && \calQ(\theta,\theta^o)=\sum_Z p(Z|X,\theta^o) \log p(X,Z|\theta){\text とおいて}\\
+     && （\calQ(\theta,\theta^o)=\sum_Z p(Z|X,\theta^o) \log p(X,Z|\theta){\text とおいて}）\\
      &=& \calQ(\theta,\theta^o) + \theta{\text {に非依存}}.
 \end{eqnarray*}
 つまり$\calL(q,\theta)$の最大化は$\calQ(\theta,\theta^o)$の最大化に等しい.
