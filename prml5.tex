@@ -16,7 +16,7 @@ PRML5Í‚Å‚Í, –{—ˆ•Ê‚Ì‹L†‚ðŠ„‚è“–‚Ä‚é‚×‚«‚Æ‚±‚ë‚É“¯‚¶‹L†‚ð—p‚¢‚é‚±‚Æ‚ª‚ ‚è, ‰“
 \section{ƒtƒB[ƒhƒtƒHƒ[ƒhƒlƒbƒgƒ[ƒNŠÖ”}
 3Í, 4Í‚Å‚â‚Á‚½ƒ‚ƒfƒ‹‚ÍŠî’êŠÖ”$\phi_j$‚Æƒpƒ‰ƒ[ƒ^$w_j$‚ÌüŒ`˜a‚ð”ñüŒ`Šˆ«‰»ŠÖ”‚É“ü‚ê‚½‚à‚Ì‚¾‚Á‚½.
 ‚±‚±‚Å‚Í‚»‚ê‚ðŠg’£‚·‚é.
-$x_1, \ldots, x_D$‚ð“ü—Í•Ï”‚Æ‚µ$x_0=1$‚ð’è”•Ï”, $w_{ji}^{(1)}$‚ðƒpƒ‰ƒ[ƒ^‚Æ‚µ‚Ä
+$x_1, \ldots, x_D$‚ð“ü—Í•Ï”‚Æ‚µ$x_0=1$‚ðƒoƒCƒAƒX€i’è”€j‚É‘Î‰ž‚·‚é•Ï”, $w_{ji}^{(1)}$‚ðƒpƒ‰ƒ[ƒ^‚Æ‚µ‚Ä
 $$
 \hat{a}_j = \sum_{i=0}^D \ww{ji}{1} x_i
 $$
@@ -29,7 +29,7 @@ $$
 z_j=h(\hat{a}_j).
 $$
 $h$‚Æ‚µ‚Ä‚ÍƒƒWƒXƒeƒBƒbƒNƒVƒOƒ‚ƒCƒh‚È‚Ç‚ÌƒVƒOƒ‚ƒCƒhŠÖ”‚ª—p‚¢‚ç‚ê‚é.
-‚±‚ê‚ç‚ÌüŒ`˜a‚ð‚Æ‚Á‚Äo—Íƒ†ƒjƒbƒgŠˆ«‚ð‹‚ß‚é. $z_0=1$‚ð’è”•Ï”‚Æ‚µ‚Ä
+‚±‚ê‚ç‚ÌüŒ`˜a‚ð‚Æ‚Á‚Äo—Íƒ†ƒjƒbƒgŠˆ«‚ð‹‚ß‚é. $z_0=1$‚ðƒoƒCƒAƒX€‚É‘Î‰ž‚·‚é•Ï”‚Æ‚µ‚Ä
 $$
 a_k=\sum_{j=0}^M \ww{kj}{2} z_j.
 $$
@@ -46,7 +46,8 @@ y_k=\sigma\left(\sum_{j=0}^M w_{kj}^{(2)} h \left(\sum_{i=0}^D w_{ji}^{(1)} x_i 
 $$
 ‚Æ‚È‚é.
 \section{ƒlƒbƒgƒ[ƒNŒP—û}
-‰ñ‹A–â‘è‚ðl‚¦‚é. “ü—ÍƒxƒNƒgƒ‹$x$‚Æ$K$ŽŸŒ³‚Ì–Ú•W•Ï”$t$‚ª‚ ‚è, $x$, $w$‚É‚Â‚¢‚Ä‚ÌðŒ•t‚«Šm—¦‚ª“Æ—§‚Å¸“x$\beta$‚ª‹¤’Ê‚ÌƒKƒEƒX•ª•z‚Æ‚·‚é.
+‰ñ‹A–â‘è‚ðl‚¦‚é. “ü—ÍƒxƒNƒgƒ‹$x$‚Æ$K$ŽŸŒ³‚Ì–Ú•W•Ï”$t$‚ª‚ ‚è,
+$x$, $w$‚É‚¨‚¯‚é$t$‚ÌðŒ•t‚«Šm—¦‚ª¸“x$\beta I$‚ÌƒKƒEƒX•ª•z‚Æ‚·‚é.
 $N$ŒÂ‚Ì“¯Žž“Æ—§•ª•z$x=\{x_1,\ldots,x_N\}$‚Æ$t=\{t_1,\ldots,t_N\}$‚ð—pˆÓ‚µ‚Äo—Íƒ†ƒjƒbƒg‚ÌŠˆ«‰»ŠÖ”‚ðP“™ŽÊ‘œ‚Æ‚µ‚Ä
 $y_n=y(x_n,w)$‚Æ‚·‚é.
 $$
@@ -113,7 +114,7 @@ $$
 \diff{a_{nj}}{E(w)}=-(t_{nj}(1-y_{nj})+(1-t_{nj})(-y_{nj}))=y_{nj}-t_{nj}.
 $$
 
-$K$ŒÂ‚ÌƒNƒ‰ƒX•ª—Þ–â‘è‚ðl‚¦‚é. “¯—l‚É$n$”Ô–Ú‚Ì“ü—Í$x_n$‚É‘Î‚·‚é–Ú•W•Ï”$t_{nk}$‚Å•\‚·.
+$K$ƒNƒ‰ƒX•ª—Þ–â‘è‚ðl‚¦‚é. “¯—l‚É$n$”Ô–Ú‚Ì“ü—Í$x_n$‚É‘Î‚·‚é–Ú•W•Ï”$t_{nk}$‚Å•\‚·.
 $y_k(x_n,w)$‚ð$t_{nk}$‚ª1‚Æ‚È‚éŠm—¦$p(t_{nk}=1|x_n)$‚Æ‚Ý‚È‚·.
 $$
 E(w) = -\log p(t|x,w)=-\sum_{n,k} t_{nk} \log y_k(x_n,w).
