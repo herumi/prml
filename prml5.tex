@@ -146,7 +146,8 @@ E(w)
  &\approx& E(\hat{w}) + \trans{(w-\hat{w})}\left(\dif{x_i}E\right) + \half \trans{(w-\hat{w})}\left(\ddiff{x_i}{x_j}{E}\right)(w-\hat{w})\\
  &=&       E(\hat{w}) + \trans{(w-\hat{w})} (\nabla E) + \half \quads{H(E)}{(w-\hat{w})}
 \end{eqnarray*}
-となる. $E(w)$が$w=w^*$の付近で極小となるとすると, そこでの勾配$\nabla E$は0なので
+となる.
+$E(w)$が$w=w^*$の付近で極小となるとすると, そこでの勾配$\nabla E$は0なので
 $$
 E(w) \approx E(w^*) + \half \quads{H(E)}{(w-w^*)}.
 $$
@@ -154,7 +155,7 @@ $H(E)$は対称行列なので\ref{pos_sym_matrix}節の議論より対角化することで
 $$
 E(w) \approx E(w^*) + \half \sum_i \lambda_i y_i^2.
 $$
-の形にできる. そして$E(w)$が$w=w^*$の付近で極小となるのは$H(E) > 0$であることがわかる.
+の形にできる. そして$E(w)$が$w=w^*$の付近で極小となるのは$H(E)>0$（正定値）であるときとわかる.
 
 なお, $H(f)=\nabla^2 f = \nabla(\nabla f)$という表記をすることがある. 微分作用素$\nabla$を2回するので2乗の形をしている.
 ただ$\nabla f$が縦ベクトルならもう一度$\nabla$をするときは結果が行列になるように,
@@ -311,19 +312,19 @@ $$
 $$
 
 \subsection{ヘッセ行列の積の高速な計算}
-応用例では最終的に必要なものはヘッセ行列$H$そのもではなくあるベクトル$v$と$H$の積であることが多い.
+応用例では最終的に必要なものはヘッセ行列$H$そのものではなくあるベクトル$v$と$H$の積であることが多い.
 直接$\trans{v}H=\trans{v}\nabla \nabla$を計算するための方法のために, 左半分だけを取り出して$\calRR{\cdot}=\trans{v}\nabla$という記法を導入する.
 \ref{ch5_loc}節の終わりに書いたようにこの$\nabla$は入力が縦ベクトルなら転置を取ってから作用するとみなす.
 なお, $v$に依存するものをあたかも依存しないかのように$\calRR{\cdot}$と書いてしまうのは筋がよいとは思わない.
 
-簡単な例を見てみよう. $y=f(x_1, x_2)$のとき
+簡単な例を見てみよう. 2変数関数$y=f(x_1, x_2)$について
 $$
-\calRR{\cdot}=\trans{(v_1,v_2)}\nabla = \trans{(v_1,v_2)}\vvec{\dif{x_1}}{\dif{x_2}}.
+\calRR{\cdot}=(v_1,v_2)\nabla = (v_1,v_2)\vvec{\dif{x_1}}{\dif{x_2}}.
 $$
 よって
 \begin{eqnarray*}
-\calRR{x_1}&=&\trans{(v_1,v_2)}\vvec{1}{0}=v_1,\\
-\calRR{x_2}&=&\trans{(v_1,v_2)}\vvec{0}{1}=v_2,
+\calRR{x_1}&=&(v_1,v_2)\vvec{1}{0}=v_1,\\
+\calRR{x_2}&=&(v_1,v_2)\vvec{0}{1}=v_2,
 \end{eqnarray*}
 これを, $\calRR{}$は入力値の$x_i$をその添え字に対応する$v_i$に置き換える作用と考えることにする.
 $\calRR{}$は$x_i$について明らかに線形, つまり
@@ -380,7 +381,7 @@ $$
 $$
 p(w)=\prod_i p(w_i), \quad p(w_i)=\sum_{k=1}^M \pi_k \calN(w_i|\mu_k,\sigma_k^2).
 $$
-正規化関数は
+正則化関数は
 $$
 \Omega(w)=-\log p(w)=-\sum_i\log\left(\sum_{k=1}^M \pi_k \calN(w_i|\mu_k,\sigma_k^2)\right).
 $$
@@ -437,7 +438,7 @@ $\pi_j$が事前分布であることから$\sum_j \pi_j=1$, $0 \le \pi_j \le 1$という制約が
 $$
 \pi_j=\frac{\exp(\eta_j)}{\sum_k \exp(\eta_k)}
 $$
-と補助変数$\eta_j$を用いて表すと式(\ref{ch4_mclass})より
+と補助変数$\eta_j$を用いて表すと\ref{takurasu}節式(\ref{ch4_mclass})より
 $$
 \diff{\eta_j}{\pi_k}=\pi_k(\delta_{kj}-\pi_j).
 $$
@@ -553,7 +554,7 @@ $$
 $$
 q(w|\calD)=\calN(w|\wmap,A^{-1}).
 $$
-正規化項を求める式(\ref{ch4_approx})を使って
+正規化項を求める\ref{ch4_bic}節式(\ref{ch4_approx})を使って
 \begin{eqnarray*}
 \log p(\calD|\alpha)
  &\approx& \log \left(p(\calD|\wmap)p(\wmap|\alpha)\sqrt{\frac{(2\pi)^W}{|A|}}\right)\\
@@ -589,7 +590,7 @@ E[a]
 $$
 \sigma_a^2(x)=\trans{b}A^{-1}b(x)
 $$
-予測分布は式(\ref{ch4_probit})の近似式を使って
+予測分布は\ref{ch4_bayes}節式(\ref{ch4_probit})の近似式を使って
 $$
 p(t=1|x,\calD)=\int \sigma(a)p(a|x,\calD)\,da
  \approx \sigma(\kappa(\sigma_a^2)\amap(x)).

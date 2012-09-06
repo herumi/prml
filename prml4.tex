@@ -626,7 +626,7 @@ $$
  = f\left(\sum_{i=1}^{n+1} p_i x_i\right).
 \end{eqnarray*}
 
-\section{多クラスロジスティック回帰}
+\section{多クラスロジスティック回帰}\label{takurasu}
 多クラス分類の事後確率を
 $$
 p(C_k|\phi)=y_k(\phi)=\frac{\exp(a_k)}{\sum_j \exp(a_j)}, a_k=\trans{w_k}\phi
@@ -818,7 +818,7 @@ $$
 山が複数ある多峰的なときはどのモードを選ぶかでラプラス近似は異なる.
 総的的にデータ数が多くなるとガウス分布に近づくので近似はよくなるが, ある点での近傍の情報しか利用していないため大域的な特徴がとらえられるとは限らない.
 
-\section{モデルの比較とBIC}
+\section{モデルの比較とBIC}\label{ch4_bic}
 前節のラプラス近似を行うと正規化係数$Z$の近似も分かる. ガウス分布の特性から
 \begin{eqnarray}\label{ch4_approx}
 Z&=&\int f(z)\,dx \approx \int f(z_0) \exp\left(-\half\trans{(z-z_0)}A(z-z_0)\right)\,dx \nonumber\\
@@ -990,7 +990,7 @@ R  \rightarrow \int_{-\infty}^\infty f(y)\,dy=1.
 $$
 よって$L=R$が示された.
 
-\section{ベイズロジスティック回帰}
+\section{ベイズロジスティック回帰}\label{ch4_bayes}
 ベイズロジスティック回帰にラプラス近似を行ってみよう.
 
 事前確率分布：$y_n=\sigma(\trans{w}\phi_n)$とおいて
