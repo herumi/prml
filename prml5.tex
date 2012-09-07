@@ -136,26 +136,27 @@ $$
 \diff{a_{nj}}{E}=-\sum_k t_{nk}(\delta_{kj}-y_{nj})=-t_{nj}+\left(\sum_k t_{nk}\right)y_{nj}=y_{nj}-t_{nj}.
 $$
 \section{局所二次近似}\label{ch5_loc}
-$w$に関する一変数関数$E(w)$の$w=\hat{w}$におけるテイラー展開を2次の項で打ち切った近似式は
+スカラー$x$についての関数$E(x)$の$x=a$におけるテイラー展開の2次の項までによる近似式は
 $$
-E(w) \approx E(\hat{w}) + E'(\hat{w})(w-\hat{w}) + \half E''(\hat{w}) (w-\hat{w})^2
+E(x) \approx E(a) + E'(a)(x-a) + \half E''(a) (x-a)^2
 $$
-であった. $w$を$w=\trans{(x_1, \ldots, x_n)}$と$n$次元縦ベクトルとしたときは
+であった. これを$n$変数関数$E(x_1, \ldots, x_n)$に拡張すると,
+$x=\trans{(x_1, \ldots, x_n)}$, $a=\trans{(a_1, \ldots, a_n)}$とおいて
 \begin{eqnarray*}
-E(w)
- &\approx& E(\hat{w}) + \trans{(w-\hat{w})}\left(\dif{x_i}E\right) + \half \trans{(w-\hat{w})}\left(\ddiff{x_i}{x_j}{E}\right)(w-\hat{w})\\
- &=&       E(\hat{w}) + \trans{(w-\hat{w})} (\nabla E) + \half \quads{H(E)}{(w-\hat{w})}
+E(x)
+ &\approx& E(a) + \trans{(x-a)}\left(\dif{x_i}E\right) + \half \trans{(x-a)}\left(\ddiff{x_i}{x_j}{E}\right)(x-a)\\
+ &=&       E(a) + \trans{(x-a)} (\nabla E) + \half \quads{H(E)}{(x-a)}
 \end{eqnarray*}
 となる.
-$E(w)$が$w=w^*$の付近で極小となるとすると, そこでの勾配$\nabla E$は0なので
+$E(x)$が$x=a$の付近で極小となるとすると, そこでの勾配$\nabla E$は0なので
 $$
-E(w) \approx E(w^*) + \half \quads{H(E)}{(w-w^*)}.
+E(x) \approx E(a) + \half \quads{H(E)}{(x-a)}.
 $$
 $H(E)$は対称行列なので\ref{pos_sym_matrix}節の議論より対角化することで
 $$
-E(w) \approx E(w^*) + \half \sum_i \lambda_i y_i^2.
+E(x) \approx E(a) + \half \sum_i \lambda_i y_i^2.
 $$
-の形にできる. そして$E(w)$が$w=w^*$の付近で極小となるのは$H(E)>0$（正定値）であるときとわかる.
+の形にできる. そして$E(x)$が$x=a$の付近で極小となるのは$H(E)>0$（正定値）であるときとわかる.
 
 なお, $H(f)=\nabla^2 f = \nabla(\nabla f)$という表記をすることがある. 微分作用素$\nabla$を2回するので2乗の形をしている.
 ただ$\nabla f$が縦ベクトルならもう一度$\nabla$をするときは結果が行列になるように,
@@ -377,19 +378,26 @@ $$
 \end{eqnarray*}
 
 \section{ソフト重み共有}
-ネットワークの重みが等しいという制約の元で混合ガウス分布の確率分布を考える.
+ネットワークに属する重みを等しくすることで複雑さを減らす手法があるがその制約は厳しい.
+ここではそれに代わるソフト重み共有という手法を考える.
+ソフト重み共有は重みが等しいという制約の代わりに$M$個の2乗ノルムを正則化項として誤差関数に追加することで,
+重みが$M$個のグループに分類されるようにする手法である.
+$\pi_k$を混合係数として確率密度関数は
 $$
 p(w)=\prod_i p(w_i), \quad p(w_i)=\sum_{k=1}^M \pi_k \calN(w_i|\mu_k,\sigma_k^2).
 $$
-正則化関数は
+$p(w_i)$が確率分布なので混合係数は$\sum_k \pi_k=1$, $0 \le \pi_k \le 1$を満たす.
+重みが複数のグループを構成するようにするために正則化項を考える.
+2乗ノルムの正規化項はガウス事前分布の負の対数尤度関数とみなせた.
+ここでは複数個を考えるため混合ガウス分布を用いる.
 $$
 \Omega(w)=-\log p(w)=-\sum_i\log\left(\sum_{k=1}^M \pi_k \calN(w_i|\mu_k,\sigma_k^2)\right).
 $$
-誤差関数は
+最小化したい目的関数は誤差関数と正則化項の和で
 $$
 \tilde{E}(w)=E(w)+\Omega(w).
 $$
-$\pi_j$を事前分布とみなして負担率を導入する.
+$p(j)=\pi_j$と置いて負担率を導入する.
 $$
 \gamma_j(w_i)
  =p(j|w_i)
@@ -434,11 +442,11 @@ $$
  &=&\sum_j \gamma_k(w_j)\left(\frac{1}{\sigma_k}-\frac{(w_j-\mu_k)^2}{\sigma_k^3}\right).
 \end{eqnarray*}
 
-$\pi_j$が事前分布であることから$\sum_j \pi_j=1$, $0 \le \pi_j \le 1$という制約があるので
+$\pi_j$に関する制約より補助変数$\eta_j$を用いて
 $$
 \pi_j=\frac{\exp(\eta_j)}{\sum_k \exp(\eta_k)}
 $$
-と補助変数$\eta_j$を用いて表すと\ref{takurasu}節式(\ref{ch4_mclass})より
+と表すと\ref{takurasu}節式(\ref{ch4_mclass})より
 $$
 \diff{\eta_j}{\pi_k}=\pi_k(\delta_{kj}-\pi_j).
 $$
@@ -458,11 +466,11 @@ $$
 p(t|x)=\sum_{k=1}^K \pi_k(x)\calN(t|\mu_k(x),\sigma_k^2(x)I)
 $$
 という分布のモデルを考える.
-前節と同様$\sum_k \pi_k(x)=1$, $0 \le \pi_k(x) \le 1$という制約があるので
+前節と同様$\sum_k \pi_k(x)=1$, $0 \le \pi_k(x) \le 1$という制約があるので変数$a_l^\pi$を導入し
 $$
 \pi_k(x)=\frac{\exp(a_k^\pi)}{\sum_l \exp(a_l^\pi)}
 $$
-とする. 分散は0以上という制約があるので
+とする. 分散は0以上という制約があるので変数$a_k^\sigma$を導入し
 $$
 \sigma_k(x)=\exp(a_k^\sigma)
 $$
@@ -474,11 +482,11 @@ $$
 $$
 \calN_{nk}=\calN(t_n|\mu_k(x_n), \sigma_k^2(x_n)I)
 $$
-とおくと誤差関数は
+とおくとデータが独立の場合, 誤差関数は
 $$
 E(w)=-\sum_n \log \left(\sum_k \pi_k(x_n) \calN_{nk} \right).
 $$
-前節と同様$\pi_k(x)$を$x$に関する事前分布として
+前節と同様$\pi_k(x)$を$x$に関する事前分布として対応する事後分布を
 $$
 \gamma_{nk}(t_n|x_n)=\frac{\pi_k \calN_{nk}}{\sum_l \pi_l \calN_{nl}}
 $$
