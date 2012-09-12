@@ -42,27 +42,26 @@ $$
 ここで$w$は$\{\ww{ji}{1}, \ww{kj}{2}\}$をまとめたベクトルである.
 これらの式を組み合わせると
 $$
-y_k=\sigma\left(\sum_{j=0}^M w_{kj}^{(2)} h \left(\sum_{i=0}^D w_{ji}^{(1)} x_i \right) \right)
+y_k=\sigma\left(\sum_{j=0}^M w_{kj}^{(2)} h \left(\sum_{i=0}^D w_{ji}^{(1)} x_i \right) \right).
 $$
-となる.
-\section{ネットワーク訓練}
+\section{ネットワーク訓練}\label{ch5_net}
 回帰問題を考える. 入力ベクトル$x$と$K$次元の目標変数$t$があり,
 $x$, $w$における$t$の条件付き確率が精度$\beta I$のガウス分布とする.
-$N$個の同時独立分布$x=\{x_1,\ldots,x_N\}$と$t=\{t_1,\ldots,t_N\}$を用意して出力ユニットの活性化関数を恒等写像として
+$N$個の同時独立分布$x=\{x_1,\ldots,x_N\}$と対応する目標値$t=\{t_1,\ldots,t_N\}$を用意し, 出力ユニットの活性化関数を恒等写像として
 $y_n=y(x_n,w)$とする.
 $$
 p(t|x,w)=\prod_{n=1}^N \calN(t_n|y(x_n,w),\beta^{-1}I).
 $$
 対数をとると
 \begin{eqnarray}\label{cp5_1}
-\log p(t|x,w) &=& -\sum_n \left(\frac{1}{2}\trans{(t_n-y_n)}(\beta I)(t_n-y_n)\right) - \sum_n \frac{D}{2}\log(2\pi) - \sum_n \frac{1}{2}\log|\beta^{-1}I| \nonumber \\
+\log p(t|x,w) &=& -\sum_n \left(\frac{1}{2}\trans{(t_n-y_n)}(\beta I)(t_n-y_n)\right) - \sum_n \frac{K}{2}\log(2\pi) - \sum_n \frac{1}{2}\log|\beta^{-1}I| \nonumber \\
 &=&-\frac{\beta}{2}\sum_n||t_n-y(x_n,w)||^2-\frac{DN}{2}\log(2\pi)+\frac{NK}{2}\log \beta.
 \end{eqnarray}
 そうするとこの関数の$w$についての最大化は最初の項の最小化, つまり
 $$
 E(w)=\frac{1}{2}\sum_n ||y(x_n,w)-t_n||^2
 $$
-の最小化と同等である. そうなる$w$をなんらかの方法で求めて$w_{\text ML}$とする.
+の最小化と同等である. 最小値を与える$w(=w_{\text ML})$をなんらかの方法で求める.
 その値を式(\ref{cp5_1})に代入して$\beta$で微分して0とおくと
 $$
 -\frac{1}{2}\sum_n||t_n-y(x_n,w_{\text ML})||^2+\frac{NK}{2}\frac{1}{\beta}=0.
@@ -88,9 +87,9 @@ $$
 この微分は$dy/da=\sigma(a)(1-\sigma(a))=y(1-y)$であった.
 $p(t=1|x)=y(x,w)$, $p(t=0|x)=1-y(x,w)$なので
 $$
-p(t|x,w)=y(x,w)^t \left(1-y(x,w)\right)^{1-t}
+p(t|x,w)=y(x,w)^t \left(1-y(x,w)\right)^{1-t}.
 $$
-となる. よって4章と同様にして交差エントロピー誤差関数は
+よって4章と同様にして交差エントロピー誤差関数は
 $$
 E(w)=-\sum_{n=1}^N \left(t_n \log y_n + (1-t_n) \log (1-y_n)\right).
 $$
@@ -114,7 +113,7 @@ $$
 \diff{a_{nj}}{E(w)}=-(t_{nj}(1-y_{nj})+(1-t_{nj})(-y_{nj}))=y_{nj}-t_{nj}.
 $$
 
-$K$クラス分類問題を考える. 同様に$n$番目の入力$x_n$に対する目標変数$t_{nk}$で表す.
+最後に$K$クラス分類問題を考える. 同様に$n$番目の入力$x_n$に対する目標変数$t_{nk}$で表す.
 $y_k(x_n,w)$を$t_{nk}$が1となる確率$p(t_{nk}=1|x_n)$とみなす.
 $$
 E(w) = -\log p(t|x,w)=-\sum_{n,k} t_{nk} \log y_k(x_n,w).
@@ -136,11 +135,11 @@ $$
 \diff{a_{nj}}{E}=-\sum_k t_{nk}(\delta_{kj}-y_{nj})=-t_{nj}+\left(\sum_k t_{nk}\right)y_{nj}=y_{nj}-t_{nj}.
 $$
 \section{局所二次近似}\label{ch5_loc}
-スカラー$x$についての関数$E(x)$の$x=a$におけるテイラー展開の2次の項までによる近似式は
+スカラー$x$についての関数$E(x)$の$x=a$におけるテイラー展開を2次の項で打ち切った近似式は
 $$
 E(x) \approx E(a) + E'(a)(x-a) + \half E''(a) (x-a)^2
 $$
-であった. これを$n$変数関数$E(x_1, \ldots, x_n)$に拡張すると,
+であった. これを$n$変数関数$E(x_1, \ldots, x_n)$に拡張する.
 $x=\trans{(x_1, \ldots, x_n)}$, $a=\trans{(a_1, \ldots, a_n)}$とおいて
 \begin{eqnarray*}
 E(x)
@@ -148,22 +147,22 @@ E(x)
  &=&       E(a) + \trans{(x-a)} (\nabla E) + \half \quads{H(E)}{(x-a)}
 \end{eqnarray*}
 となる.
-$E(x)$が$x=a$の付近で極小となるとすると, そこでの勾配$\nabla E$は0なので
+$E(x)$が$x=a$の付近で極小ならば, そこでの勾配$\nabla E$は0なので
 $$
 E(x) \approx E(a) + \half \quads{H(E)}{(x-a)}.
 $$
 $H(E)$は対称行列なので\ref{pos_sym_matrix}節の議論より対角化することで
 $$
-E(x) \approx E(a) + \half \sum_i \lambda_i y_i^2.
+E(x) \approx E(a) + \half \sum_i \lambda_i y_i^2
 $$
 の形にできる. そして$E(x)$が$x=a$の付近で極小となるのは$H(E)>0$（正定値）であるときとわかる.
 
 なお, $H(f)=\nabla^2 f = \nabla(\nabla f)$という表記をすることがある. 微分作用素$\nabla$を2回するので2乗の形をしている.
 ただ$\nabla f$が縦ベクトルならもう一度$\nabla$をするときは結果が行列になるように,
 入力ベクトルの転置を取って作用するとみなす.
-$\nabla$を2回するので$n^2$の長いベクトルになると勘違いしないように.
+$n^2$次元の長いベクトルになるわけではない.
 \section{誤差関数微分の評価}
-与えられたネットワークに対して, 誤差関数の変化の割合について調べる.
+与えられたネットワークに対して誤差関数の変化の割合を調べる.
 この節ではどの変数がどの変数に依存しているか気をつけて微分する必要がある.
 誤差関数が訓練集合の各データに対する誤差の和で表せると仮定する：
 $$
@@ -175,7 +174,7 @@ a_j=\sum_i w_{ji} z_i, \quad z_j=h(a_j)
 \end{eqnarray}
 とする. 入力$z_i$が出力ユニット$a_j$に影響を与え, その$a_j$が非線形活性化関数$h()$を通して$z_j$に影響を与える.
 ある特定のパターン$E_n$の重み$w_{ji}$に関する微分を考える.
-以下, パターンを固定することで添え字の$n$を省略する.
+以下, 特定のパターンを固定することで$E_n$以外の添え字の$n$を省略する.
 式(\ref{ch5_2})のように$E_n$は非線形活性化関数$h$の変数$a_j$を通して$w_{ji}$に依存している.
 $$
 \diff{w_{ji}}{E_n}=\diff{a_j}{E_n}\diff{w_{ji}}{a_j}.
@@ -188,13 +187,13 @@ $$
 $$
 \diff{w_{ji}}{E_n}=\delta_j z_i
 $$
-とかける. $h()$が正準連結関数の場合はネットワーク訓練の節での考察により
+とかける. $\delta_j$は$h()$が正準連結関数の場合は\ref{ch5_net}節での考察により
 $$
-\delta_j=\diff{a_j}{E_n}=y_j-t_j.
+\delta_j=\diff{a_j}{E_n}=y_j-t_j
 $$
+で計算できる.
 ユニット$j$につながっているユニット$k$を通して$E_n$への$a_j$の影響があると考えると
-\label{cp5_3}
-\begin{eqnarray}
+\begin{eqnarray}\label{cp5_3}
 \diff{a_j}{E_n}=\sum_k \diff{a_k}{E_n}\diff{a_j}{a_k}.
 \end{eqnarray}
 ここで$a_j$と$a_k$は$z$を経由して関係していると考えているので$\partial a_k / \partial a_j=\delta_{jk}$（クロネッカーのデルタ）にはならないことに注意する.
@@ -208,7 +207,7 @@ $$
 $$
 これを式(\ref{cp5_3})に代入して
 $$
-\delta_j=\diff{a_j}{E_n}=\sum_k \delta_k w_{kj} h'(a_j)=h'(a_J)\sum_k w_{kj} \delta_k.
+\delta_j=\diff{a_j}{E_n}=\sum_k \delta_k w_{kj} h'(a_j)=h'(a_j)\sum_k w_{kj} \delta_k.
 $$
 \section{外積による近似}
 $$
@@ -229,31 +228,31 @@ E=\half \iint (y(x,w)-t)^2p(x,t)\,dxdt
 $$
 のときのヘッセ行列を考えてみると
 $$
-\diff{w_s}{E}=\iint (y-t)\diff{w_s}{y} p(x,t)\,dxdt.
+\diff{w_i}{E}=\iint (y-t)\diff{w_i}{y} p(x,t)\,dxdt.
 $$
 \begin{eqnarray*}
-\ddiff{w_s}{w_r}{E}&=&\iint \left( \diff{w_r}{y}\diff{w_s}{y} + (y-t)\ddiff{w_s}{w_r}{y} \right)p(x,t)\,dxdt.\\
+\ddiff{w_i}{w_j}{E}&=&\iint \left( \diff{w_j}{y}\diff{w_i}{y} + (y-t)\ddiff{w_i}{w_j}{y} \right)p(x,t)\,dxdt.\\
  && （p(x,t)=p(t|x)p(x)より）\\
- &=&\int \diff{w_r}{y}\diff{w_s}{y}\left( \int p(t|x)\,dt\right) p(x)\,dx\\
- &+& \int \ddiff{w_s}{w_r}{y}\left(\int (y-t)p(t|x)\,dt\right)p(x)\,dx\\
+ &=&\int \diff{w_j}{y}\diff{w_i}{y}\left( \int p(t|x)\,dt\right) p(x)\,dx\\
+ &+& \int \ddiff{w_i}{w_j}{y}\left(\int (y-t)p(t|x)\,dt\right)p(x)\,dx\\
  && （第1項のカッコ内は1. \quad 第2項はy(x)=\int t p(t|x)\,dtを使うと0）\\
- &=&\int \diff{w_r}{y}\diff{w_s}{y}p(x)\,dx.
+ &=&\int \diff{w_j}{y}\diff{w_i}{y}p(x)\,dx.
 \end{eqnarray*}
 ロジスティックシグモイドのときは
 \begin{eqnarray*}
 \nabla E(w)&=&\sum_n \diff{a_n}{E} \nabla a_n=-\sum_n\left(\frac{t_n y_n(1-y_n)}{y_n}-\frac{(1-t_n)y_n (1-y_n)}{1-y_n}\right)\nabla a_n\\
 &=& \sum_n (y_n-t_n)\nabla a_n.
 \end{eqnarray*}
-よって
+よって$y_n \approx t_n$なら
 \begin{eqnarray*}
 \nabla^2 E(w) &=& \sum_n \diff{a_n}{y_n} \outp{\nabla a_n}+\sum_n (y_n-t_n)\nabla^2 a_n\\
  &\approx& \sum_n y_n(1-y_n) \outp{\nabla a_n}.
 \end{eqnarray*}
 
 \section{ヘッセ行列の厳密な評価}
-計算は難しくはないが, 記号がややこしいので書いてみる.
+この節は計算は難しくはないが, 記号がややこしいので書いてみる.
 変数の関係式は
-$a_j=\sum_i \ww{ji}{1}x_i$, $z_j=h(a_j)$, $a_k=\sum_j \ww{kj}{2} z_j$, $y_k=a_k$である.
+$\hat{a}_j=\sum_i \ww{ji}{1}x_i$, $z_j=h(\hat{a}_j)$, $a_k=\sum_j \ww{kj}{2} z_j$, $y_k=a_k$である.
 PRMLの$a_j$と$a_k$は違う対象であることに注意する. ここでは$a_j$の代わりに$\hat{a}_j$を使う.
 
 添え字の$i$, $i'$は入力, $j$, $j'$は隠れユニット, $k$, $k'$は出力である.
@@ -262,6 +261,7 @@ $$
 \delta_k=\diff{a_k}{E_n}, \quad M_{kk'}=\ddiff{a_k}{a_{k'}}{E_n}
 $$
 という記号を導入する.
+$E_n$以外の添え字$n$を省略する.
 \subsection{両方の重みが第2層にある}
 $$
 \diff{\ww{kj}{2}}{a_k}=z_j, \quad \diff{\ww{kj}{2}}{E_n}=\diff{\ww{kj}{2}}{a_k}\diff{a_k}{E_n}=z_j \delta_k.
@@ -312,9 +312,9 @@ $$
 \ddiff{\ww{ji}{1}}{\ww{kj'}{2}}{E_n}=x_i h'(\hat{a}_j)\left\{\delta_{jj'}\delta_k+z_{j'}\sum_{k'} \ww{k'j}{2}M_{kk'}\right\}.
 $$
 
-\subsection{ヘッセ行列の積の高速な計算}
-応用例では最終的に必要なものはヘッセ行列$H$そのものではなくあるベクトル$v$と$H$の積であることが多い.
-直接$\trans{v}H=\trans{v}\nabla \nabla$を計算するための方法のために, 左半分だけを取り出して$\calRR{\cdot}=\trans{v}\nabla$という記法を導入する.
+\section{ヘッセ行列の積の高速な計算}
+応用面を考えると最終的に必要なものはヘッセ行列$H$そのものではなくあるベクトル$v$と$H$の積であることが多い.
+$H$を計算せず直接$\trans{v}H=\trans{v}\nabla \nabla$を計算するために, 左半分だけを取り出して$\calRR{\cdot}=\trans{v}\nabla$という記法を導入する.
 \ref{ch5_loc}節の終わりに書いたようにこの$\nabla$は入力が縦ベクトルなら転置を取ってから作用するとみなす.
 なお, $v$に依存するものをあたかも依存しないかのように$\calRR{\cdot}$と書いてしまうのは筋がよいとは思わない.
 
@@ -378,18 +378,17 @@ $$
 \end{eqnarray*}
 
 \section{ソフト重み共有}
-ネットワークに属する重みを等しくすることで複雑さを減らす手法があるがその制約は厳しい.
-ここではそれに代わるソフト重み共有という手法を考える.
-ソフト重み共有は重みが等しいという制約の代わりに$M$個の2乗ノルムを正則化項として誤差関数に追加することで,
-重みが$M$個のグループに分類されるようにする手法である.
+ネットワークの, あるグループに属する重みを等しくすることで複雑さを減らす手法がある.
+しかし重みが等しいという制約は厳しい.
+ソフト重み共有はその制約を外し, 代わりに正則化項を追加することで,
+あるグループに属する重みが似た値をとれるようにする手法である.
 $\pi_k$を混合係数として確率密度関数は
 $$
 p(w)=\prod_i p(w_i), \quad p(w_i)=\sum_{k=1}^M \pi_k \calN(w_i|\mu_k,\sigma_k^2).
 $$
 $p(w_i)$が確率分布なので混合係数は$\sum_k \pi_k=1$, $0 \le \pi_k \le 1$を満たす.
-重みが複数のグループを構成するようにするために正則化項を考える.
-2乗ノルムの正規化項はガウス事前分布の負の対数尤度関数とみなせた.
-ここでは複数個を考えるため混合ガウス分布を用いる.
+2乗ノルムの正規化項は平均0のガウス事前分布の負の対数尤度関数とみなせた.
+ここでは複数個の重みに対応させるため混合ガウス分布を用いてみる.
 $$
 \Omega(w)=-\log p(w)=-\sum_i\log\left(\sum_{k=1}^M \pi_k \calN(w_i|\mu_k,\sigma_k^2)\right).
 $$
@@ -397,7 +396,7 @@ $$
 $$
 \tilde{E}(w)=E(w)+\Omega(w).
 $$
-$p(j)=\pi_j$と置いて負担率を導入する.
+$p(j)=\pi_j$とおいて負担率を導入する.
 $$
 \gamma_j(w_i)
  =p(j|w_i)
@@ -466,6 +465,7 @@ $$
 p(t|x)=\sum_{k=1}^K \pi_k(x)\calN(t|\mu_k(x),\sigma_k^2(x)I)
 $$
 という分布のモデルを考える.
+このモデルのパラメータを, $x$を入力としてえられるニューラルネットワークの出力となるようにとることで推論する.
 前節と同様$\sum_k \pi_k(x)=1$, $0 \le \pi_k(x) \le 1$という制約があるので変数$a_l^\pi$を導入し
 $$
 \pi_k(x)=\frac{\exp(a_k^\pi)}{\sum_l \exp(a_l^\pi)}
@@ -486,9 +486,9 @@ $$
 $$
 E(w)=-\sum_n \log \left(\sum_k \pi_k(x_n) \calN_{nk} \right).
 $$
-前節と同様$\pi_k(x)$を$x$に関する事前分布として対応する事後分布を
+前節と同様$p(k|x)=\pi_k(x)$とおいて負担率を
 $$
-\gamma_{nk}(t_n|x_n)=\frac{\pi_k \calN_{nk}}{\sum_l \pi_l \calN_{nl}}
+\gamma_{nk}(t_n|x_n)=p(k|t_n,x_n)=\frac{p(k|x_n)p(t_n|k)}{p(t_n|x_n)}=\frac{\pi_k \calN_{nk}}{\sum_l \pi_l \calN_{nl}}
 $$
 とする.
 $$
@@ -535,12 +535,13 @@ $$
 $$
 \diff{a_k^\sigma}{E_n}=\gamma_{nk}\left(L-\frac{||t_n-\mu_k||^2}{\sigma_k^2}\right).
 $$
+条件付き平均についての密度関数の分散は
 \begin{eqnarray*}
 s^2(x)
  &=& E\left[||t-E[t|x]||^2\bigl|x\right]\\
- &=& \sum_k \pi_k \int \left(||t||^2-2\trans{t}E[t|x]+||E[t|x]||^2)\right)\calN(t|\mu_k,\sigma_k^2 I)\,dt\\
+ &=& \sum_k \pi_k \int \left(||t||^2-2\trans{t}E[t|x]+||E[t|x]||^2\right)\calN(t|\mu_k,\sigma_k^2 I)\,dt\\
  &=& \sum_k \pi_k \left(\sigma_k^2+||\mu_k||^2-2\trans{\mu_k}E[t|x]+||E[t|x]||^2\right)\\
- &=& \sum_k \pi_k(x)\left(\sigma_k(x)^2+||\mu_k-\sum_l \pi_l(x)\mu_l(x)||^2\right).
+ &=& \sum_k \pi_k(x)\left(\sigma_k(x)^2+||\mu_k-\sum_j \pi_j(x)\mu_j(x)||^2\right).
 \end{eqnarray*}
 
 \section{クラス分類のためのベイズニューラルネットワーク}
@@ -557,7 +558,7 @@ $$
 $$
 E(w)=\log p(\calD|w)+\frac{\alpha}{2}\inp{w}
 $$
-の最小化で$\wmap$を求め, $H=-\nabla^2 \log p(w|\calD)$を何らかの方法で求める.
+の最小化で$\wmap$を求め, $A=-\nabla^2 \log p(w|\calD)\bigl|_{w=\wmap}$を何らかの方法で求める.
 ラプラス近似を使って事後分布をガウス近似すると
 $$
 q(w|\calD)=\calN(w|\wmap,A^{-1}).
