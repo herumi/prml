@@ -1,6 +1,7 @@
 
-main.pdf files is supplementary text for PRML(Pattern Recognition and Machine Learning)
+main.pdf is supplementary text for PRML(Pattern Recognition and Machine Learning)
 and give some answers for its exercises.
+# prml[2-9].pdf are obsolete.
 
 * chapter 2 : elementary text for matrix and integral calculus and Gauss distribution.
 * chapter 3 : Woodbury formula, symmetric matrix and KL divergence.
