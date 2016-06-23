@@ -100,25 +100,28 @@ $$
 
 \section{Woodburyの逆行列の公式}
 
-行列$A$, $B$, $C$, $D$について
+$n$次正則行列$A$, $n$行$m$列の行列$B$, $m$行$n$列の行列$C$, $m$次正則行列$D$について
 $$\left(A+BD^{-1}C\right)^{-1}=A^{-1}-A^{-1}B\left(D+CA^{-1}B\right)^{-1}CA^{-1}$$
 が成り立つ.
 
 （証明）
+$I$を$n$次単位行列として
+\[
+(I+BD^{-1}CA^{-1})B=B+BD^{-1}CA^{-1}B=BD^{-1}(D+CA^{-1}B).
+\]
+両辺に右から$(D+CA^{-1}B)^{-1}$, 左から$(I+BD^{-1}CA^{-1})^{-1}$を掛けて
 \begin{eqnarray*}
-A^{-1}B\left(D+CA^{-1}B\right)^{-1}CA^{-1} &=& A^{-1}B\left(\left(DB^{-1}A+C\right)A^{-1}B\right)^{-1}CA^{-1}\\
- &=&\left(DB^{-1}A+C\right)^{-1}CA^{-1}\\
- &=&\left(DB^{-1}\left(A+BD^{-1}C\right)\right)^{-1}CA^{-1}\\
- &=&\left(A+BD^{-1}C\right)^{-1}BD^{-1}CA^{-1}
+B(D+CA^{-1}B)^{-1}&=&(I+BD^{-1}CA^{-1})^{-1}BD^{-1}=((A+BD^{-1}C)A^{-1})^{-1}BD^{-1}\\
+&=& A(A+BD^{-1}C)^{-1}BD^{-1}.
 \end{eqnarray*}
 よって
 \begin{eqnarray*}
-\text{左辺} &=& \left(I-\left(A+BD^{-1}C\right)^{-1}BD^{-1}C\right)A^{-1}\\
- &=& \left(A+BD^{-1}C\right)^{-1}\left(\left(A+BD^{-1}C\right)-BD^{-1}C\right)A^{-1}\\
- &=& \text{右辺}.
+\text{右辺} &=& \left(I-A^{-1}B(D+CA^{-1}B)^{-1}C\right)A^{-1}\\
+ &=& \left(I-\left(A+BD^{-1}C\right)^{-1}BD^{-1}C\right)A^{-1}\\
+ &=& \left(A+BD^{-1}C\right)^{-1}\left(\left(A+BD^{-1}C\right)-BD^{-1}C\right)A^{-1}= \text{左辺}.
 \end{eqnarray*}
 
-特に, $A$が$n$次正方行列で$B$を$n$次縦ベクトル$\bm{x}$, $C=\trans{\bm{x}}$, $D$を$n$次単位行列とすると
+特に, $A$が$n$次正則行列で$B$を$n$次縦ベクトル$\bm{x}$, $C=\trans{\bm{x}}$, $D$を$1$次単位行列（$=1$）とすると
 \begin{equation}\label{inv_A_xx}
 \left(A+\bm{x}\trans{\bm{x}}\right)^{-1}=A^{-1}-\frac{\left(A^{-1}\bm{x}\right)\left(\trans{\bm{x}}A^{-1}\right)}{1+\trans{\bm{x}}A^{-1}\bm{x}}
 \end{equation}

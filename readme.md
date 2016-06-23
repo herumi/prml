@@ -13,10 +13,11 @@ logistic sigmoid function and inverse function of probit function.
 
 How to create pdf
 -------------
+```
 platex main.tex
 platex main.tex
 dvipdfmx main.dvi
-
+```
 License
 -------------
 CC BY 3.0(http://creativecommons.org/licenses/by/3.0/)
