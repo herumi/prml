@@ -1,0 +1,184 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% dark-adhoc.sty
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PassOptionsToPackage{dvipdfmx}{color}%
+\PassOptionsToPackage{dvipdfm}{geometry}% この dvipdfm は typo ではない
+\PassOptionsToPackage{dvipdfmx}{graphicx}%
+\PassOptionsToPackage{dvipdfmx}{hyperref}%
+\PassOptionsToPackage{setpagesize=false}{hyperref}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{exscale}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{geometry}
+\geometry{right=12mm}
+\geometry{left=15.5mm}
+\geometry{top=15mm,bottom=12mm}
+\geometry{headsep=2.5mm}
+%\geometry{includehead}
+%\geometry{includefoot}
+\setlength{\fullwidth}{\textwidth}% jsbookのヘッダの幅を\textwidthに合わせる
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\let\truenormalsize\normalsize
+\let\normalsize\small% 本文のフォントを \small にする
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% jsbook.cls の設定を書き換え
+%% デフォルト設定
+\newcommand{\chapterfont}{}
+\newcommand{\sectionfont}{}
+\newcommand{\subsectionfont}{}
+\newcommand{\subsubsectionfont}{}
+\newcommand{\paragraphfont}{}
+\newcommand{\subparagraphfont}{}
+\newcommand{\paragraphsymbol}{■}
+\newcommand{\subparagraphsymbol}{}
+%% 設定変更
+\iftrue
+\def\chapterfont{\normalfont\normalsize\headfont}
+\def\sectionfont{\normalfont\normalsize\headfont}
+\def\subsectionfont{\normalfont\normalsize\headfont}
+\def\subsubsectionfont{\normalfont\normalsize\headfont}
+\def\paragraphfont{\normalfont\normalsize\headfont}
+\def\subparagraphfont{\normalfont\normalsize\headfont}
+\Cvs0pt
+\Cdp0pt
+\Chs0pt
+\Cwd0pt
+\else
+\def\chapterfont{\ifx\truenormalsize\undefined\LARGE\else\Large\fi\headfont}
+\def\sectionfont{\normalfont\ifx\truenormalsize\undefined\Large\else\large\fi\headfont}
+\def\subsectionfont{\normalfont\ifx\truenormalsize\undefined\large\else\truenormalsize\fi\headfont}
+\def\subsubsectionfont{\normalfont\normalsize\headfont}
+\def\paragraphfont{\normalfont\normalsize\headfont}
+\def\subparagraphfont{\normalfont\normalsize\headfont}
+\fi
+
+%% 書き換え
+\renewcommand{\chapter}{%
+  \par%\if@openright\cleardoublepage\else\clearpage\fi
+  %\plainifnotempty % 元: \thispagestyle{plain}
+  \global\@topnum\z@
+  \if@english \@afterindentfalse \else \@afterindenttrue \fi
+  \secdef
+    {\@omit@numberfalse\@chapter}%
+    {\@omit@numbertrue\@schapter}}
+\def\@makechapterhead#1{%
+  %\vspace*{2\Cvs}% 欧文は50pt
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \huge\headfont\chapterfont \@chapapp\thechapter\@chappos
+        ~%\par\nobreak
+        %\vskip \Cvs % 欧文は20pt
+      \fi
+    \fi
+    %\interlinepenalty\@M
+    \Huge \headfont\chapterfont #1\par\nobreak
+    \vskip 3\Cvs}} % 欧文は40pt
+\def\@makeschapterhead#1{%
+  %\vspace*{2\Cvs}% 欧文は50pt
+  {\parindent \z@ \raggedright
+    \normalfont
+    \interlinepenalty\@M
+    \Huge \headfont\chapterfont #1\par\nobreak
+    \vskip 3\Cvs}} % 欧文は40pt
+\if@twocolumn
+  \renewcommand{\section}{%
+    \@startsection{section}{1}{\z@}%
+    %{0.6\Cvs}{0.4\Cvs}%
+    {\z@}{-1zw}% 改行せず 1zw のアキ
+    {\normalfont\large\headfont\raggedright\sectionfont}}
+\else
+  \renewcommand{\section}{%
+    \if@slide\clearpage\fi
+    \@startsection{section}{1}{\z@}%
+    %{\Cvs \@plus.5\Cdp \@minus.2\Cdp}% 前アキ
+    %{.5\Cvs \@plus.3\Cdp}% 後アキ
+    {0.5\Cvs \@plus.5\Cdp \@minus.2\Cdp}%
+    {-1zw}% 改行せず 1zw のアキ
+    {\normalfont\Large\headfont\raggedright\sectionfont}}
+\fi
+\if@twocolumn
+  \renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+    {\z@}{\z@}%
+    {\normalfont\normalsize\headfont\subsectionfont}}
+\else
+  \renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+    %{\Cvs \@plus.5\Cdp \@minus.2\Cdp}% 前アキ
+    %{.5\Cvs \@plus.3\Cdp}% 後アキ
+    {0.5\Cvs \@plus.5\Cdp \@minus.2\Cdp}%
+    {-1zw}% 改行せず 1zw のアキ
+    {\normalfont\large\headfont\subsectionfont}}
+\fi
+\if@twocolumn
+  \renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
+    {\z@}{\z@}%
+    {\normalfont\normalsize\headfont\subsubsectionfont}}
+\else
+  \renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
+    %{\Cvs \@plus.5\Cdp \@minus.2\Cdp}%
+    %{\z@}%
+    {0.5\Cvs \@plus.5\Cdp \@minus.2\Cdp}%
+    {-1zw}% 改行せず 1zw のアキ
+    {\normalfont\normalsize\headfont\subsubsectionfont}}
+\fi
+\if@twocolumn
+  \renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}%
+    {\z@}{-1zw}% 改行せず 1zw のアキ
+    {\normalfont\normalsize\headfont\paragraphfont\paragraphsymbol}}
+\else
+  \renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}%
+    {0.5\Cvs \@plus.5\Cdp \@minus.2\Cdp}%
+    {-1zw}% 改行せず 1zw のアキ
+    {\normalfont\normalsize\headfont\paragraphfont\paragraphsymbol}}
+\fi
+\renewcommand{\subparagraph}{\@startsection{subparagraph}{5}{\z@}%
+   {\z@}{-1zw}%
+   {\normalfont\normalsize\headfont\subparagraphfont\subparagraphsymbol}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ps@headings{%
+  \let\@oddfoot\@empty
+  \let\@evenfoot\@empty
+  \def\@evenhead{%
+    \if@mparswitch \hss \fi
+    \underline{\hbox to \fullwidth{\autoxspacing
+        \textbf{\thepage}\hfil\leftmark}}%
+    \if@mparswitch\else \hss \fi}%
+  \def\@oddhead{\underline{\hbox to \fullwidth{\autoxspacing
+        {\if@twoside\rightmark\else\leftmark\fi}\hfil\textbf{\thepage}}}\hss}%
+  \let\@mkboth\markboth
+  \def\chaptermark##1{\markboth{%
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \if@omit@number\else
+          \@chapapp\thechapter\@chappos\hskip1zw
+        \fi
+      \fi
+    \fi
+    ##1}{}}%
+  \def\sectionmark##1{\markright{%
+    \ifnum \c@secnumdepth >\z@ \thesection \hskip1zw\fi
+    ##1}}}%
+\pagestyle{headings}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\AtBeginDocument{%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ディスプレイ数式における改ページのしやすさ
+\allowdisplaybreaks[4]% 1～4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\iftrue%% '\iffalse'ではデフォルトのまま，'\iftrue' では無理やり詰め込む
+\topsep0pt\relax%
+\parsep0pt\relax%
+%% 行間の調整
+\advance\baselineskip-1pt\relax%
+%% ディスプレイ数式の前後のスペース
+\abovedisplayshortskip1pt% % jsarticle/jsbook が必要
+\belowdisplayshortskip1pt% % jsarticle/jsbook が必要
+\abovedisplayskip1pt%      % jsarticle/jsbook が必要
+\belowdisplayskip1pt%      % jsarticle/jsbook が必要
+%% 数式間のスペース
+\jot1pt%                   % amsmath が必要
+\fi
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\endinput

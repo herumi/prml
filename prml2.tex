@@ -13,7 +13,7 @@
 \subsection{微分の定義}
 微分の積の公式も忘れたなあという人のために, 微分について軽く復習しておこう.
 関数$y=f(x)$が与えられたとき, 点$x=a$における微分係数$f'(a)$とはその点でのグラフの接線の傾きのことであった.
-\begin{figure}[h]
+\begin{figure}[ht]
  \begin{minipage}{0.5\hsize}
   \begin{center}
    \includegraphics[bb=0 10 160 110,width=6cm]{../prml/f_x.pdf}
@@ -635,19 +635,19 @@ $$
 \begin{eqnarray*}
 \tr\left(A^{-1}A'\right)
  &=& -\tr\left(\left(P^{-1}\tri(\lambda_i)^{-1}P\right)P^{-1}P'P^{-1}\tri(\lambda_i)P\right)\\
- &+& \tr\left((P^{-1}\tri(\lambda_i)^{-1}P)P^{-1}\tri(\lambda_i')P\right)
- +   \tr\left((P^{-1}\tri(\lambda_i)^{-1}P)P^{-1}\tri(\lambda_i)P'\right)\\
- &=&-\tr\left(P^{-1}\tri(\lambda_i)^{-1}P'P^{-1}\tri(\lambda_i)P\right)
-  + \tr\left(P^{-1}\tri(\lambda_i)^{-1}\tri(\lambda_i')P\right)
- + \tr(P^{-1}P')
+ & & +\tr\left((P^{-1}\tri(\lambda_i)^{-1}P)P^{-1}\tri(\lambda_i')P\right)\\
+ & & +\tr\left((P^{-1}\tri(\lambda_i)^{-1}P)P^{-1}\tri(\lambda_i)P'\right)\\
+ &=& -\tr\left(P^{-1}\tri(\lambda_i)^{-1}P'P^{-1}\tri(\lambda_i)P\right)\\
+ & & +\tr\left(P^{-1}\tri(\lambda_i)^{-1}\tri(\lambda_i')P\right)\\
+ & & +\tr(P^{-1}P').
 \end{eqnarray*}
 次に$\tr(AB)=\tr(BA)$を使ってトレースの中の積の順序を入れ換えて,
 行列と逆行列の積を消していくと
 \begin{eqnarray*}
 \tr(A^{-1}A')
  &=& -\tr\left(P'P^{-1}\tri(\lambda_i)PP^{-1}\tri(\lambda_i^{-1})\right)
- +\tr\left(\tri(\lambda_i)^{-1}\tri(\lambda_i')PP^{-1}\right)
- +\tr(P^{-1}P')\\
+     +\tr\left(\tri(\lambda_i)^{-1}\tri(\lambda_i')PP^{-1}\right)\\
+ & & +\tr(P^{-1}P')\\
  &=&-\tr(P'P^{-1})+\tr(\tri(\lambda_i)^{-1}\tri(\lambda_i'))+\tr(P^{-1}P')\\
  &=&\tr\left(\tri(\lambda_i)^{-1}\tri(\lambda_i')\right).
 \end{eqnarray*}

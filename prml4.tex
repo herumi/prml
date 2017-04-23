@@ -951,20 +951,21 @@ $$
 L=\int_{-\infty}^\infty \Phi(\lambda \mu+\lambda\sigma x)\frac{f(x)}{\sigma}\sigma\,dx=\int_{-\infty}^\infty\Phi(\lambda \mu + \lambda \sigma x)f(x)\,dx.
 $$
 ‚Ü‚¸$L$‚Æ$R$‚Ì$\mu$‚ÉŠÖ‚·‚é”÷•ª‚ª“™‚µ‚¢‚±‚Æ‚ğ¦‚·. $\Phi'(x)=f(x)$‚È‚Ì‚Å
-$$
-\dif{\mu}R=f\left(\frac{\lambda \mu}{\sqrt{1+\lambda^2\sigma^2}}\right) \frac{\lambda}{\sqrt{1+\lambda^2\sigma^2}}.
-$$
-$$
-\dif{\mu}L=\int_{-\infty}^\infty \lambda f(\lambda \mu + \lambda \sigma x)f(x)\,dx=\lambda \int_{-\infty}^\infty \left(\frac{1}{\sqrt{2\pi}}\right)^2\exp\left(-\half(\lambda\mu+\lambda \sigma x)^2-\half x^2\right)\,dx.
-$$
+\begin{eqnarray*}
+\dif{\mu}R&=&f\left(\frac{\lambda \mu}{\sqrt{1+\lambda^2\sigma^2}}\right) \frac{\lambda}{\sqrt{1+\lambda^2\sigma^2}},
+\\
+\dif{\mu}L&=&\int_{-\infty}^\infty \lambda f(\lambda \mu + \lambda \sigma x)f(x)\,dx
+\\
+& & =\lambda \int_{-\infty}^\infty \left(\frac{1}{\sqrt{2\pi}}\right)^2\exp\left(-\half(\lambda\mu+\lambda \sigma x)^2-\half x^2\right)\,dx.
+\end{eqnarray*}
 $\exp()$‚Ì“à‘¤‚ğ$x$‚É‚Â‚¢‚Ä•½•ûŠ®¬‚µ‚æ‚¤F
 \begin{eqnarray*}
 &&-\half\left((\lambda\sigma)^2+1\right)x^2+2\lambda^2\mu \sigma x + \lambda^2 \mu^2)\\
-&=&-\half\left(\left(\sqrt{1+\lambda^2\sigma^2}x+\frac{\lambda^2\mu \sigma}{\sqrt{1+\lambda^2\sigma^2}}\right)^2+\lambda^2 \mu^2-\frac{\lambda^4 \mu^2 \sigma^2}{1+\lambda^2 \sigma^2} \right).
+&&=-\half\left(\left(\sqrt{1+\lambda^2\sigma^2}x+\frac{\lambda^2\mu \sigma}{\sqrt{1+\lambda^2\sigma^2}}\right)^2+\lambda^2 \mu^2-\frac{\lambda^4 \mu^2 \sigma^2}{1+\lambda^2 \sigma^2} \right).
 \end{eqnarray*}
 ’è”€‚Í
 $$
-\lambda^2\mu^2-\frac{\lambda^4 \mu^2 \sigma^2}{1+\lambda^2 \sigma^2}=\frac{\lambda^2\mu^2+\lambda^4\mu^2\sigma^2-\lambda^4\mu^2\sigma^2}{1+\lambda^2 \sigma^2}=\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2}.
+\lambda^2\mu^2-\frac{\lambda^4 \mu^2 \sigma^2}{1+\lambda^2 \sigma^2}=\frac{\lambda^2\mu^2+\lambda^4\mu^2\sigma^2-\lambda^4\mu^2\sigma^2}{1+\lambda^2 \sigma^2}=\frac{\lambda^2\mu^2}{1+\lambda^2 \sigma^2},
 $$
 $$
 \int_{-\infty}^\infty\exp\left(-\frac{1}{2\sigma^2}x^2\right)\,dx=\sqrt{2\pi}\sigma
@@ -1052,7 +1053,8 @@ $p(a)$‚Ì•½‹Ï‚ğ‹‚ß‚é. $q(w)$‚Ì•½‹Ï‚ª$m_N$‚Å‚ ‚é‚±‚Æ‚É’ˆÓ‚·‚é‚Æ,
 \sigma(a)^2 &=& \int p(a)(a^2-E[a]^2)\,da \\
  &=& \int (\delta(a-\trans{w}\phi)a^2\,da)q(w)\,dw - \int (\delta(a-\trans{w}\phi)E[a]^2\,da)q(w)\,dw\\
  &=&\int q(w)(\trans{w}\phi)^2\,dw - \int q(w) (\trans{m_N}\phi)^2\,dw
- = \trans{\phi}\left( \int q(w)(w\trans{w}-m_N \trans{m_N})\,dw \right)\phi.
+ \\
+ &=& \trans{\phi}\left( \int q(w)(w\trans{w}-m_N \trans{m_N})\,dw \right)\phi.
 \end{eqnarray*}
 Š‡ŒÊ“à‚Í
 $$

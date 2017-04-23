@@ -53,9 +53,12 @@ $$
 p(t|x,w)=\prod_{n=1}^N \calN(t_n|y(x_n,w),\beta^{-1}I).
 $$
 ‘Î”‚ğ‚Æ‚é‚Æ
-\begin{eqnarray}\label{cp5_1}
-\log p(t|x,w) &=& -\sum_n \left(\frac{1}{2}\trans{(t_n-y_n)}(\beta I)(t_n-y_n)\right) - \sum_n \frac{K}{2}\log(2\pi) - \sum_n \frac{1}{2}\log|\beta^{-1}I| \nonumber \\
+\begin{eqnarray}
+\log p(t|x,w) &=& -\sum_n \left(\frac{1}{2}\trans{(t_n-y_n)}(\beta I)(t_n-y_n)\right)
+\nonumber\\
+&& - \sum_n \frac{K}{2}\log(2\pi) - \sum_n \frac{1}{2}\log|\beta^{-1}I| \nonumber \\
 &=&-\frac{\beta}{2}\sum_n||t_n-y(x_n,w)||^2-\frac{DN}{2}\log(2\pi)+\frac{NK}{2}\log \beta.
+\label{cp5_1}
 \end{eqnarray}
 ‚»‚¤‚·‚é‚Æ‚±‚ÌŠÖ”‚Ì$w$‚É‚Â‚¢‚Ä‚ÌÅ‘å‰»‚ÍÅ‰‚Ì€‚ÌÅ¬‰», ‚Â‚Ü‚è
 $$
