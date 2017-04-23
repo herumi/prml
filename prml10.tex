@@ -661,20 +661,19 @@ p(\hat{x}|X)
  &=& \sum_{\hat{z}} \int p(\hat{x}|\hat{z},\mu,\Lambda)p(\hat{z}|\vpi)p(\vpi,\mu,\Lambda|X)\,d\vpi d\mu d\Lambda\\
  &=& \sum_k \pi_k \int \calN(\hat{x}|\mu_k,\Lambda_k^{-1})
      \underbrace{p(\vpi,\mu,\Lambda|X)}_{\simeq q(\vpi)q(\mu,\Lambda)}\,d\vpi d\Lambda d\mu
-\end{eqnarray*}
-\begin{eqnarray*}
-&& p(\hat{x}|X)\\
+\\
  &\simeq& \sum_k \int \pi_k \calN(\hat{x}|\mu_k,\Lambda_k^{-1})q(\vpi)\prod_j q(\mu_j,\Lambda_j)\,d\vpi d\Lambda d\mu\\
  &&\text{（$k\ne j$なら積分して$1$なので）}\\
- &&= \sum_k \int \pi_k \calN(\hat{x}|\mu_k,\Lambda_k^{-1})q(\vpi)q(\mu_k,\Lambda_k)\, d\vpi d\mu_k d\Lambda_k\\
- &&= \sum_k
+ &=& \sum_k \int \pi_k \calN(\hat{x}|\mu_k,\Lambda_k^{-1})q(\vpi)q(\mu_k,\Lambda_k)\, d\vpi d\mu_k d\Lambda_k\\
+ &=& \sum_k
      \left(\vphantom{\int}\smash{\underbrace{\int \pi_k q(\vpi)\, d\vpi}_{=:X}}\right.
      \vphantom{\underbrace{\int}_{X}}
- \\&&\hphantom{={}\sum_k}\quad
+ \\&&\hphantom{\sum_k}
    \times\left.
      \int \smash{\underbrace{\left(\int \calN(\hat{x}|\mu_k,\Lambda_k^{-1})
       \calN(\mu_k|m_k,(\beta_k \Lambda_k)^{-1})\,d\mu_k \right)}_{=:Y}}
       W(\Lambda_k|W_k,\nu_k) \, d\Lambda_k\right).
+    \vphantom{\underbrace{\left(\int\right)}_{=:Y}}
 \end{eqnarray*}
 $X$, $Y$をそれぞれ計算する：
 $$
@@ -683,25 +682,28 @@ $$
 \begin{eqnarray*}
 A
  &:=& \int \calN(x|\mu,\Lambda^{-1})\calN(\mu|m,(\beta \Lambda)^{-1})\,d\mu\\
- &=& \int \frac{1}{(2\pi)^D}|\Lambda|^{1/2}|\beta \Lambda|^{1/2}\exp\left(-\half \Lambda
+ &\phantom{:}=& \int \frac{1}{(2\pi)^D}|\Lambda|^{1/2}|\beta \Lambda|^{1/2}\exp\left(-\half \Lambda
  \smash{\underbrace{\left(\outp{(x-\mu)}+\beta \outp{(\mu-m)}\right)}_{=:B}}\right)\,d\mu
-\end{eqnarray*}
-\begin{eqnarray*}
+ \vphantom{\underbrace{\left(\outp{(x-\mu)}\right)}_{=:B}}
+ ,
+\\
 B
  &=& (\beta+1)\outp{\mu}-2\mu\trans{(x+\beta m)}+\outp{x}+\beta \outp{m}\\
  &=& (\beta+1)\outp{\left(\mu-\frac{1}{\beta+1}(x+\beta m)\right)}\\
- &+& \underbrace{\outp{x}+\beta \outp{m} - \frac{1}{\beta+1}\outp{(x+\beta m)}}_{=:C}
-\end{eqnarray*}
-$$
-C=\frac{\beta}{\beta+1}\outp{x}+\frac{\beta^2+\beta-\beta^2}{\beta+1}\outp{m}-\frac{2 \beta}{\beta+1}x\trans{m}
+ &&+ \underbrace{\outp{x}+\beta \outp{m} - \frac{1}{\beta+1}\outp{(x+\beta m)}}_{=:C}
+ ,
+\\
+C
+&=&\frac{\beta}{\beta+1}\outp{x}+\frac{\beta^2+\beta-\beta^2}{\beta+1}\outp{m}-\frac{2 \beta}{\beta+1}x\trans{m}
  = \frac{\beta}{\beta+1}\outp{(x-m)}.
-$$
+\end{eqnarray*}
 よって
 \begin{eqnarray*}
 A
  &=& \int \calN\left(\mu\Bigl|\frac{x+\beta m}{\beta + 1}, \left((\beta+1)\Lambda\right)^{-1}\right)\frac{1}{(2\pi)^{D/2}}
       \frac{|\beta \Lambda^2|^{1/2}}{|(\beta+1)\Lambda|^{1/2}}\\
- &\cdot& \exp\left(-\half \quads{\left(\frac{\beta}{\beta+1}\Lambda\right)}{(x-m)}\right)\,d\mu
+ &&\phantom{\int}
+   \times \exp\left(-\half \quads{\left(\frac{\beta}{\beta+1}\Lambda\right)}{(x-m)}\right)\,d\mu
   = \calN\left(x\Bigl|m,\left(\frac{\beta}{\beta+1}\Lambda\right)^{-1}\right).
 \end{eqnarray*}
 つまり
@@ -709,27 +711,34 @@ $$
 Y = \calN\left(\hat{x}\Bigl|m_k,\left(\frac{\beta_k}{\beta_k+1}\Lambda_k\right)^{-1}\right).
 $$
 \begin{eqnarray*}
-D
- &:=& \calN\left(x\Bigl|m,\left(\frac{\beta}{\beta+1}\Lambda\right)^{-1}\right)W(\Lambda|W,\nu)\\
- &=& \frac{1}{(2\pi)^{D/2}}\left|\frac{\beta}{\beta+1}\Lambda\right|^{1/2}
+&&D
+ := \calN\left(x\Bigl|m,\left(\frac{\beta}{\beta+1}\Lambda\right)^{-1}\right)W(\Lambda|W,\nu)\\
+&&\phantom{D{:}}=
+  \frac{1}{(2\pi)^{D/2}}\left|\frac{\beta}{\beta+1}\Lambda\right|^{1/2}
   \exp\left(-\half \tr\left(\Lambda \frac{\beta}{\beta+1}\outp{(x-m)}\right)\right)\\
-  &&   \cdot B(W,\nu)|\Lambda|^{\frac{\nu-D-1}{2}}\exp\left(-\half \tr(W^{-1}\Lambda)\right).
+&&\phantom{D:={}}
+    \times B(W,\nu)|\Lambda|^{\frac{\nu-D-1}{2}}\exp\left(-\half \tr(W^{-1}\Lambda)\right),
+\\
+&&W'^{-1}
+ := W^{-1}+\frac{\beta}{\beta+1}\outp{(x-m)}
 \end{eqnarray*}
-$$
-W'^{-1}:=W^{-1}+\frac{\beta}{\beta+1}\outp{(x-m)}
-$$
 とおく.
 $\left|I+a\trans{b}\right|=1+\trans{a}b$より$W=\trans{W}$のとき
 $$
 \left|W^{-1}+\outp{x}\right|=\left|W^{-1}\right|\left|I+W\outp{x}\right|=|W|^{-1}\left(1+\quads{W}{x}\right).
 $$
 よって
-$$
-|W'^{-1}|=|W|^{-1}\left(1+\underbrace{\frac{\beta}{\beta+1}\quads{W}{(x-m)}}_{=:\lambda}\right)=|W|^{-1}(1+\lambda).
-$$
-$$
+\begin{eqnarray*}&&
+|W'^{-1}|
+=|W|^{-1}
+  \left(1+\smash{\underbrace{\frac{\beta}{\beta+1}\quads{W}{(x-m)}}_{=:\lambda}}
+  \vphantom{\frac\beta\beta}
+  \right)
+  \vphantom{\underbrace{\frac\beta\beta}_{\lambda}}
+=|W|^{-1}(1+\lambda),
+\\&&
 |W'|=|W|\left(\frac{1}{1+\lambda}\right).
-$$
+\end{eqnarray*}
 よって
 \begin{eqnarray*}
 &&\int D\,d\Lambda\\
