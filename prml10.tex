@@ -39,12 +39,14 @@ $$
 p(y)=\calN(y|A\mu + b, L^{-1} + A\Lambda^{-1}\trans{A}).
 $$
 \subsection{スチューデントのt分布}
-$$
+\begin{eqnarray*}
+&&
 \St(x|\mu,\Lambda,\nu)
 =\frac{\Gamma\left(\frac{\nu+D}{2}\right)}{\Gamma\left(\frac{\nu}{2}\right)}
-\frac{|\Lambda|^{1/2}}{(\pi \nu)^{1/2}}\left(1+\frac{\triangle^2}{\nu}\right)^{-\frac{\nu+1}{2}}, \quad \triangle^2=\quads{\Lambda}{(x-\mu)}, \quad
-E[x]=\mu.
-$$
+\frac{|\Lambda|^{1/2}}{(\pi \nu)^{1/2}}\left(1+\frac{\triangle^2}{\nu}\right)^{-\frac{\nu+1}{2}},
+\\&& \triangle^2=\quads{\Lambda}{(x-\mu)},
+\quad E[x]=\mu.
+\end{eqnarray*}
 \subsection{ウィシャート分布}
 $$
 \calW(\Lambda,W,\nu)=B(W,\nu)|\Lambda|^{\frac{\nu-D-1}{2}}\exp\left(-\half\tr (W^{-1}\Lambda)\right).
@@ -132,7 +134,9 @@ $$
 を最小化する.
 \begin{eqnarray*}
 \dif{q_j}X &=& -\int F_j(Z_j) \log (q_j + \delta q_j)\,dZ_j + \lambda \left(\int (q_j + \delta q_j)\,dZ_j-1\right)\\
- &=&\left(-\int F_j(Z_j) \log q_j\,dZ_j + \lambda \left(\int q_j\,dZ_j - 1\right)\right)-\left(\int F_j(Z_j)/q_j\,dZ_j - \lambda\right)\delta q_j=0.
+ &=&\left(-\int F_j(Z_j) \log q_j\,dZ_j + \lambda \left(\int q_j\,dZ_j - 1\right)\right)-\left(\int F_j(Z_j)/q_j\,dZ_j - \lambda\right)\delta q_j
+\\
+ &=& 0.
 \end{eqnarray*}
 $F_j/q_j - \lambda = 0.$
 よって$F_j=\lambda q_j$. 積分して
@@ -180,7 +184,8 @@ $$
 まず$\mu$について
 \begin{eqnarray*}
 \log q_\mu^*(\mu)
- &=& E_\tau[\log p(D,\mu,\tau)]=E_\tau[\log p(D|\mu,\tau)+\log p(\mu|\tau)] + （\mu{\text に依存しない部分}C）\\
+ &=& E_\tau[\log p(D,\mu,\tau)]\\
+ &=& E_\tau[\log p(D|\mu,\tau)+\log p(\mu|\tau)] + \text{（$\mu$に依存しない部分$C$）}\\
  &=& \frac{E[\tau]}{2}\left(\sum_n (x_n-\mu)^2\right)+E_\tau\left[-\frac{\lambda_0 \tau}{2}(\mu-\mu_0)^2\right] + C\\
  &=&-\left(E[\tau]/2\right)\left(\lambda_0(\mu-\mu_0)^2+\sum_n (x_n-\mu)^2\right) + C.
 \end{eqnarray*}
@@ -200,9 +205,9 @@ $\tau$について
 \begin{eqnarray*}
 \log q_\tau^*(\tau)
  &=& E_\mu\left[\log p(D,\tau|\mu)\right]=E_\mu\left[\log p(D|\mu,\tau)+\log p(\mu|\tau)\right]+\log p(\tau)\\
- &=& E_\mu\left[(N/2)\log \tau - (\tau/2) \sum_n (x_n-\mu)^2\right]
- + E_\mu\left[(1/2)\log (\lambda_0 \tau) - (\lambda_0 \pi/2)(\mu-\mu_0)^2\right]\\
- &+& E_\mu\left[(a_0-1)\log \tau - b_0 \tau - \log \Gamma(a_0)+a_0 \log b_0\right] + C\\
+ &=& E_\mu\left[(N/2)\log \tau - (\tau/2) \sum_n (x_n-\mu)^2\right]\\
+ & & + E_\mu\left[(1/2)\log (\lambda_0 \tau) - (\lambda_0 \pi/2)(\mu-\mu_0)^2\right]\\
+ & & + E_\mu\left[(a_0-1)\log \tau - b_0 \tau - \log \Gamma(a_0)+a_0 \log b_0\right] + C\\
  &=& (a_0-1)\log \tau - b_0 \tau + (N+1)/2 \log \tau\\
  &-& (\tau/2)E_\mu\left[\sum_n (x_n-\mu)^2+\lambda_0(\mu-\mu_0)^2\right] + C.
 \end{eqnarray*}
@@ -276,12 +281,16 @@ $\sum_Z q(Z|m)=1$に注意して
 ガウス混合モデルに変分推論法を適用してみる.
 $x_n$に対応する潜在変数$z_n$. $z_n$は$K$個の要素$z_{nk}$からなる.
 $z_{nk}=0$または1で$\sum_k z_{nk}=1$.
-
-$X=\{x_1, \ldots, x_N\}$, $Z=\{z_1, \ldots, z_N\}$, 混合比は$\vpi=(\pi_1, \ldots, \pi_K)$.
-$$
-p(z_n)=\prod_k \pi_k^{z_{nk}}, \quad p(x_n|z_n)=\prod_k \calN(x_n|\mu_k, \Sigma_k)^{z_{nk}}, \quad
+\begin{eqnarray*}
+&&
+X=\{x_1, \ldots, x_N\},
+\quad Z=\{z_1, \ldots, z_N\},
+\quad \text{混合比は}\vpi=(\pi_1, \ldots, \pi_K),
+\\&&
+p(z_n)=\prod_k \pi_k^{z_{nk}}, \quad p(x_n|z_n)=\prod_k \calN(x_n|\mu_k, \Sigma_k)^{z_{nk}},
+\\&&
 p(X|Z,\mu,\Lambda)=\prod_{n,k} \calN(x_n|\mu_k, \Lambda_k^{-1})^{z_{nk}}.
-$$
+\end{eqnarray*}
 $\vpi$の事前分布はディリクレ分布とする.
 $$
 p(\vpi)=\Dir(\vpi|\alpha_0)=C(\alpha_0)\prod_k \pi_k^{\alpha_0-1}.
@@ -300,12 +309,24 @@ $q(Z,\vpi,\mu,\Lambda)=q(Z)q(\vpi,\mu,\Lambda)$という変分近似を考える.
 $Z$について（以後対象としている変数以外の項は無視する）
 \begin{eqnarray*}
 &&\log q^*(Z)\\
- &=& E_{\vpi,\mu,\Lambda}[\log p(X,Z,\vpi,\mu,\Lambda)]
+ &&= E_{\vpi,\mu,\Lambda}[\log p(X,Z,\vpi,\mu,\Lambda)]
  = E_{\vpi}[\log p(Z|\vpi)]+E_{\mu,\Lambda}[\log p(X|Z,\mu,\Lambda)]\\
- &=& \sum_{n,k} z_{nk} E_{\vpi}[\log \pi_k]+ \sum_{n,k} z_{nk} E_{\mu,\Lambda}\left[\half\log |\Lambda_k|-\half\quads{\Lambda_k}{(x_n-\mu_n)}-\frac{D}{2}\log (2\pi)\right]\\
- &=& \sum_{n,k} z_{nk} \underbrace{\left(E_\pi[\log \pi_k]+\half E[\log |\Lambda_k|]
- -\frac{D}{2}\log (2\pi)-\half E_{\mu_k,\Lambda_k}[\quads{\Lambda_k}{(x_n-\mu_k)}]\right)}_{=:\log \rho_{nk}}\\
- &=& \sum_{n,k} z_{nk} \log \rho_{nk}.
+ &&= \sum_{n,k} z_{nk} E_{\vpi}[\log \pi_k]
+ \\&&\hphantom{={}}\quad
+ + \sum_{n,k} z_{nk} E_{\mu,\Lambda}\left[\half\log |\Lambda_k|-\half\quads{\Lambda_k}{(x_n-\mu_n)}-\frac{D}{2}\log (2\pi)\right]\\
+ &&= \sum_{n,k} z_{nk}
+   \left(
+     E_\pi[\log \pi_k]
+     +\half E[\log |\Lambda_k|]
+     -\frac{D}{2}\log (2\pi)
+   \right.\\
+ &&\hphantom{= \sum_{n,k} z_{nk}}
+ \underbrace{\qquad\qquad
+   \left.
+   -\half E_{\mu_k,\Lambda_k}[\quads{\Lambda_k}{(x_n-\mu_k)}]
+   \right)}_{=:\log \rho_{nk}}
+ \\
+ &&= \sum_{n,k} z_{nk} \log \rho_{nk}.
 \end{eqnarray*}
 よって
 $$
@@ -354,7 +375,10 @@ $q^*(\mu_k,\Lambda_k)=q^*(\mu_k|\Lambda_k) q^*(\Lambda_k)$を考える.
 まず
 \begin{eqnarray*}
 \log q^*(\mu_k,\Lambda_k)
- &=& \log \calN(\mu_k|m_0, (\beta_0 \Lambda_k)^{-1})+\log \calW(\Lambda_k|W_0,\nu_0)+\sum_n r_{nk} \log \calN(x_n|\mu_k,\Lambda_k^{-1})\\
+ &=& \log \calN(\mu_k|m_0, (\beta_0 \Lambda_k)^{-1})
+    +\log \calW(\Lambda_k|W_0,\nu_0)
+ \\&&
+    +\sum_n r_{nk} \log \calN(x_n|\mu_k,\Lambda_k^{-1})\\
  && （\mu_k, \Lambda_k{\text の依存部分だけとりだして}）\\
  &=&\half\log |\beta_0 \Lambda_k|-\half\quads{\beta_0 \Lambda_k}{(\mu_k-m_0)}
       +\frac{\nu_0-D-1}{2}\log |\Lambda_k|\\
@@ -382,11 +406,12 @@ $$
      && - \half\log |\beta_0 \Lambda_k| + \half\quads{(\beta_0 \Lambda_k)}{(\mu_k-m_k)}\\
  &=& \frac{(\nu_0+N_k)-D-1}{2}\log |\Lambda_k|
       -\half\tr\Bigl((\beta_0 \Lambda_k)\outp{(\mu_k-m_0)}\\
-  &&  + \sum_n r_{nk} \Lambda_k \outp{(x_n-\mu_k)}-\beta_k \Lambda_k \outp{(\mu_k-m_k)}\Bigr)-\half(\Lambda_k W_0^{-1})\\
-  && （v_k:=v_0 + N_k{\text と置く}）\\
+  &&  + \sum_n r_{nk} \Lambda_k \outp{(x_n-\mu_k)}-\beta_k \Lambda_k \outp{(\mu_k-m_k)}\Bigr)\\
+  &&  - \half(\Lambda_k W_0^{-1})\\
+  && \text{（$\nu_k:=\nu_0 + N_k$と置く）}\\
  &=& \frac{\nu_k-D-1}{2}\log |\Lambda_k| - \half\tr\Bigl(\Lambda_k\bigl(W_0^{-1}+\beta_0\outp{(\mu_k-m_0)}\\
  && +\sum_n r_{nk}\outp{(x_n-\mu_k)}-\beta_k\outp{(\mu_k-m_k)}\bigr)\Bigr)\\
- &=& \frac{\nu_k-D-1}{2}\log |\Lambda_k| - \half\tr(\Lambda_k W_k^{-1}) {\text と置く}.
+ &=& \frac{\nu_k-D-1}{2}\log |\Lambda_k| - \half\tr(\Lambda_k W_k^{-1}) \text{と置く}.
 \end{eqnarray*}
 
 $W_k$を求めよう. まず
@@ -398,17 +423,22 @@ $W_k$を求めよう. まず
 \end{eqnarray}
 よって
 \begin{eqnarray*}
-W_k^{-1}
- &=& W_0^{-1}+\beta_0\left(\outp{\mu_k}-2\mu_k \trans{m_0}+\outp{m_0}\right)
+&&W_k^{-1}\\
+ &&= W_0^{-1}+\beta_0\left(\outp{\mu_k}-2\mu_k \trans{m_0}+\outp{m_0}\right)
       +N_k S_k + N_k \outp{\bar{x}_k}-2\sum_n r_{nk} x_n \trans{\mu_k}\\
- && + \sum_n r_{nk} \outp{\mu_k} -(\beta_0 + N_k)\Bigl(\outp{\mu_k}-2\mu_k \frac{1}{\beta_k}\trans{(\beta_0 m_0+N_k\bar{x}_k)}\\
- && + \frac{1}{\beta_k^2}\outp{(\beta_0 m_0 + N_k \bar{x}_k)}\Bigr)\\
- && （\sum_n r_{nk} = N_k {\text に注意して}）\\
- &=& W_0^{-1} + N_k S_k + \beta_0 \outp{m_0}+N_k \outp{\bar{x}_k}\\
- && - \frac{1}{\beta_k}\left(\beta_0^2 \outp{m_0}+2 \beta_0 N_k m_0 \trans{\bar{x}_k}+N_k^2 \outp{\bar{x}_k}\right)\\
- &=& W_0^{-1} + N_k S_k + \frac{(\beta_0 + N_k)\beta_0 - \beta_0^2}{\beta_k}\outp{m_0}
-    + \frac{(\beta_0 + N_k)N_k-N_k^2}{\beta_k}\outp{\bar{x}_k} - \frac{2\beta_0 N_k}{\beta_k}m_0 \trans{\bar{x}_k}\\
- &=& W_0^{-1} + N_k S_k + \frac{\beta_0 N_k}{\beta_k}\outp{(m_0-\bar{x}_k)}.
+ &&\hphantom{={}}
+    + \sum_n r_{nk} \outp{\mu_k} -(\beta_0 + N_k)\Bigl(\outp{\mu_k}-2\mu_k \frac{1}{\beta_k}\trans{(\beta_0 m_0+N_k\bar{x}_k)}\\
+ &&\hphantom{={}}
+    + \frac{1}{\beta_k^2}\outp{(\beta_0 m_0 + N_k \bar{x}_k)}\Bigr)\\
+ &&\hphantom{={}} \text{（$\sum_n r_{nk} = N_k$に注意して）}\\
+ &&= W_0^{-1} + N_k S_k + \beta_0 \outp{m_0}+N_k \outp{\bar{x}_k}\\
+ &&\hphantom{={}}
+   - \frac{1}{\beta_k}\left(\beta_0^2 \outp{m_0}+2 \beta_0 N_k m_0 \trans{\bar{x}_k}+N_k^2 \outp{\bar{x}_k}\right)\\
+ &&= W_0^{-1} + N_k S_k + \frac{(\beta_0 + N_k)\beta_0 - \beta_0^2}{\beta_k}\outp{m_0}
+    + \frac{(\beta_0 + N_k)N_k-N_k^2}{\beta_k}\outp{\bar{x}_k}
+ \\&&\hphantom{={}}
+    - \frac{2\beta_0 N_k}{\beta_k}m_0 \trans{\bar{x}_k}\\
+ &&= W_0^{-1} + N_k S_k + \frac{\beta_0 N_k}{\beta_k}\outp{(m_0-\bar{x}_k)}.
 \end{eqnarray*}
 よって
 $$
@@ -479,14 +509,14 @@ $\KL(q||p)$は一般に0ではない.
 \begin{eqnarray*}
 && E[\log p(X|Z,\mu,\Lambda)]
  = E\left[\sum_{n,k} z_{nk} \log \calN(x_n|\mu_k,\Lambda_k^{-1})\right]\\
- &=& \half E\left[\sum_{n,k} z_{nk}\left(-D \log (2\pi) + \log |\Lambda_k| - \quads{\Lambda_k}{(x_n-\mu_k)}\right)\right]\\
- &=& \half \sum_k E\left[-N_k D \log (2\pi)+N_k \log |\Lambda_k|-\sum_n z_{nk} \quads{\Lambda_k}{(x_n-\mu_k)}\right]\\
- &=& \half \sum_k N_k \left(\log \tilde{\Lambda}_k - D \log (2\pi)\right)
- - \half \underbrace{\sum_{n,k} r_{nk} \left(D\beta_k^{-1}+\nu_k \quads{W_k}{(x_n-m_k)}\right)}_{=:X}.
+ &&= \half E\left[\sum_{n,k} z_{nk}\left(-D \log (2\pi) + \log |\Lambda_k| - \quads{\Lambda_k}{(x_n-\mu_k)}\right)\right]\\
+ &&= \half \sum_k E\left[-N_k D \log (2\pi)+N_k \log |\Lambda_k|-\sum_n z_{nk} \quads{\Lambda_k}{(x_n-\mu_k)}\right]\\
+ &&= \half \sum_k N_k \left(\log \tilde{\Lambda}_k - D \log (2\pi)\right)
+ \\&&\hphantom{={}}
+ - \half \underbrace{\sum_{n,k} r_{nk} \left(D\beta_k^{-1}+\nu_k \quads{W_k}{(x_n-m_k)}\right)}_{=:X},
+ \\
+&&X = \sum_k N_k D\beta_k^{-1} + \sum_k \nu_k \underbrace{\left(\sum_n r_{nk} \quads{W_k}{(x_n-m_k)}\right)}_{=:Y}.
 \end{eqnarray*}
-$$
-X = \sum_k N_k D\beta_k^{-1} + \sum_k \nu_k \underbrace{\left(\sum_n r_{nk} \quads{W_k}{(x_n-m_k)}\right)}_{=:Y}.
-$$
 式（\ref{r_nk_outp_x_n}）より
 $$
 \sum_n r_{nk} \outp{x_n}=N_k S_k + N_k \outp{\bar{x}_k}.
@@ -558,9 +588,11 @@ B &=& E\left[\log B(W_0,\nu_0)+\frac{\nu_0-D-1}{2}\log |\Lambda_k|-\half \tr (W_
 \end{eqnarray*}
 よって
 \begin{eqnarray*}
-E[\log p(\mu,\Lambda)]
- &=&\half\sum_k \left(D\log \left(\frac{\beta_0}{2\pi}\right)+\log \tilde{\Lambda}_k-\frac{D\beta_0}{\beta_k}-\beta_0\nu_k\quads{W_k}{(m_k-m_0)}\right)\\
- && + K\log B(W_0,\nu_0)+\frac{\nu_0-D-1}{2}\sum_k \log \tilde{\Lambda}_k - \half \sum_k \nu_k \tr(W_0^{-1}W_k).
+&&E[\log p(\mu,\Lambda)]
+ \\&&
+ =\half\sum_k \left(D\log \left(\frac{\beta_0}{2\pi}\right)+\log \tilde{\Lambda}_k-\frac{D\beta_0}{\beta_k}-\beta_0\nu_k\quads{W_k}{(m_k-m_0)}\right)
+ \\&&\hphantom{={}}
+  + K\log B(W_0,\nu_0)+\frac{\nu_0-D-1}{2}\sum_k \log \tilde{\Lambda}_k - \half \sum_k \nu_k \tr(W_0^{-1}W_k).
 \end{eqnarray*}
 
 最後に$\calL$を求めよう.
@@ -574,25 +606,28 @@ $$
 \begin{eqnarray*}
 \calL
  &=& \half \sum_k N_k \log \tilde{\Lambda}_k-\half \sum_k N_k \frac{D}{\beta_k}-\half \sum_k N_k \nu_k \tr(S_k W_k)\\
- &-& \half \sum_k N_k \nu_k\quads{W_k}{(\bar{x}_k-m_k)}\\
- &-& \half\sum_k N_k D \log(2\pi)+\sum_k N_k \log \tilde{\pi}_k
-     + \log C(\alpha_0)+(\alpha_0-1)\sum_k \log \tilde{\pi}_k+\frac{DK}{2}\log \left(\frac{\beta_0}{2\pi}\right)\\
-  &+&  \half \sum_k \log \tilde{\Lambda}_k - \half \sum_k \frac{D\beta_0}{\beta_k}-\half\sum_k \beta_0 \nu_k \quads{W_k}{(m_k-m_0)}+ K \log B(W_0,\nu_0)\\
-  &+& \frac{\nu_0-D-1}{2}\sum_k \log \tilde{\Lambda}_k-\half \sum_k \nu_k\tr(W_0^{-1}W_k) - \sum_{n,k}r_{nk}\log r_{nk}\\
-  &-& \sum_k (\alpha_k-1)\log \tilde{\pi}_k -\log C(\alpha) - \half \sum_k \log \tilde{\Lambda}_k - \frac{D}{2}\sum_k \log \frac{\beta_k}{2\pi} +\frac{DK}{2}\\
-  &+&  \sum_k \left(-\log B(W_k,\nu_k)-\frac{\nu_k-D-1}{2}\log \tilde{\Lambda}_k+\frac{\nu_k D}{2}\right).
-\end{eqnarray*}
-\begin{eqnarray*}
-&&\calL\\
- &=& \log \frac{C(\alpha_0)}{C(\alpha)} - \sum_{n,k}r_{nk} \log r_{nk} + \half \sum_k \log \tilde{\Lambda}(N_k+1-\nu_0-D-1-1-\nu_k+D+1)\\
- &+&  \sum_k \log \tilde{\pi}_k(N_k+\alpha_0-1-\alpha_k+1)+K \log B(W_0,\nu_0)- \sum_k \log B(W_k,\nu_k)
-    -\frac{DN}{2}\log (2\pi)\\
- &+& \frac{D}{2}\underbrace{\sum_k\left(\frac{N_k}{\beta_k}+\frac{\beta_0}{\beta_k}\right)}_{=K}
+ &&- \half \sum_k N_k \nu_k\quads{W_k}{(\bar{x}_k-m_k)}\\
+ &&- \half\sum_k N_k D \log(2\pi)+\sum_k N_k \log \tilde{\pi}_k\\
+ &&+ \log C(\alpha_0)+(\alpha_0-1)\sum_k \log \tilde{\pi}_k+\frac{DK}{2}\log \left(\frac{\beta_0}{2\pi}\right)\\
+ &&+ \half \sum_k \log \tilde{\Lambda}_k - \half \sum_k \frac{D\beta_0}{\beta_k}-\half\sum_k \beta_0 \nu_k \quads{W_k}{(m_k-m_0)}\\
+ &&+ K \log B(W_0,\nu_0)\\
+ &&+ \frac{\nu_0-D-1}{2}\sum_k \log \tilde{\Lambda}_k-\half \sum_k \nu_k\tr(W_0^{-1}W_k) - \sum_{n,k}r_{nk}\log r_{nk}\\
+ &&- \sum_k (\alpha_k-1)\log \tilde{\pi}_k -\log C(\alpha) - \half \sum_k \log \tilde{\Lambda}_k - \frac{D}{2}\sum_k \log \frac{\beta_k}{2\pi} +\frac{DK}{2}\\
+ &&+ \sum_k \left(-\log B(W_k,\nu_k)-\frac{\nu_k-D-1}{2}\log \tilde{\Lambda}_k+\frac{\nu_k D}{2}\right).
+\\
+ &=& \log \frac{C(\alpha_0)}{C(\alpha)}\\
+ && - \sum_{n,k}r_{nk} \log r_{nk} + \half \sum_k \log \tilde{\Lambda}(N_k+1-\nu_0-D-1-1-\nu_k+D+1)\\
+ &&+  \sum_k \log \tilde{\pi}_k(N_k+\alpha_0-1-\alpha_k+1)+K \log B(W_0,\nu_0)- \sum_k \log B(W_k,\nu_k)\\
+ && -\frac{DN}{2}\log (2\pi)\\
+ &&+ \frac{D}{2}\underbrace{\sum_k\left(\frac{N_k}{\beta_k}+\frac{\beta_0}{\beta_k}\right)}_{=K}
     + \frac{DK}{2}\left(\log \beta_0-\log (2\pi)\right)-\frac{D}{2}\sum_k \log \beta_k+\frac{DK}{2}\log (2\pi)\\
- &+& \frac{DK}{2}+ \frac{D}{2}\sum_k \nu_k\\
- &-&   \half \sum_k \nu_k \tr\bigl(W_k\underbrace{(N_k S_k+N_k\outp{(\bar{x}_k-m_k)}+\beta_0\outp{(m_k-m_0)}+W_0^{-1})}_{=:X}\bigr)\\
+ &&+ \frac{DK}{2}+ \frac{D}{2}\sum_k \nu_k\\
+ &&-   \half \sum_k \nu_k \tr\bigl(W_k
+    (N_k S_k+N_k\outp{(\bar{x}_k-m_k)}\\
+ &&\hphantom{-   \half \sum_k \nu_k \tr\bigl(W_k}
+   \underbrace{\qquad+\beta_0\outp{(m_k-m_0)}+W_0^{-1})}_{=:X}\bigr)\\
  &=& \log \frac{C(\alpha_0)}{C(\alpha)}-\sum_{n,k}r_{nk}\log r_{nk}+K \log B(W_0,\nu_0)-\sum_k \log B(W_k,\nu_k)+\frac{DK}{2}\log \beta_0\\
- &-& \frac{D}{2}\sum_k \log \beta_k
+ &&- \frac{D}{2}\sum_k \log \beta_k
  - \frac{DN}{2}\log (2\pi) + \frac{D}{2}\sum_k \nu_k -\half \sum_k \nu_k \tr (W_k X).
 \end{eqnarray*}
 $$
@@ -630,12 +665,16 @@ p(\hat{x}|X)
 \begin{eqnarray*}
 && p(\hat{x}|X)\\
  &\simeq& \sum_k \int \pi_k \calN(\hat{x}|\mu_k,\Lambda_k^{-1})q(\vpi)\prod_j q(\mu_j,\Lambda_j)\,d\vpi d\Lambda d\mu\\
- &&（ k\ne j{\text なら積分して1なので}）\\
- &=& \sum_k \int \pi_k \calN(\hat{x}|\mu_k,\Lambda_k^{-1})q(\vpi)q(\mu_k,\Lambda_k)\, d\vpi d\mu_k d\Lambda_k\\
- &=& \sum_k (\underbrace{\int \pi_k q(\vpi)\, d\vpi}_{=:X})
-     \int \underbrace{\left(\int \calN(\hat{x}|\mu_k,\Lambda_k^{-1})
-      \calN(\mu_k|m_k,(\beta_k \Lambda_k)^{-1})\,d\mu_k \right)}_{=:Y}
-      W(\Lambda_k|W_k,\nu_k) \, d\Lambda_k
+ &&\text{（$k\ne j$なら積分して$1$なので）}\\
+ &&= \sum_k \int \pi_k \calN(\hat{x}|\mu_k,\Lambda_k^{-1})q(\vpi)q(\mu_k,\Lambda_k)\, d\vpi d\mu_k d\Lambda_k\\
+ &&= \sum_k
+     \left(\vphantom{\int}\smash{\underbrace{\int \pi_k q(\vpi)\, d\vpi}_{=:X}}\right.
+     \vphantom{\underbrace{\int}_{X}}
+ \\&&\hphantom{={}\sum_k}\quad
+   \times\left.
+     \int \smash{\underbrace{\left(\int \calN(\hat{x}|\mu_k,\Lambda_k^{-1})
+      \calN(\mu_k|m_k,(\beta_k \Lambda_k)^{-1})\,d\mu_k \right)}_{=:Y}}
+      W(\Lambda_k|W_k,\nu_k) \, d\Lambda_k\right).
 \end{eqnarray*}
 $X$, $Y$をそれぞれ計算する：
 $$
@@ -645,7 +684,7 @@ $$
 A
  &:=& \int \calN(x|\mu,\Lambda^{-1})\calN(\mu|m,(\beta \Lambda)^{-1})\,d\mu\\
  &=& \int \frac{1}{(2\pi)^D}|\Lambda|^{1/2}|\beta \Lambda|^{1/2}\exp\left(-\half \Lambda
- \underbrace{\left(\outp{(x-\mu)}+\beta \outp{(\mu-m)}\right)}_{=:B}\right)\,d\mu
+ \smash{\underbrace{\left(\outp{(x-\mu)}+\beta \outp{(\mu-m)}\right)}_{=:B}}\right)\,d\mu
 \end{eqnarray*}
 \begin{eqnarray*}
 B
@@ -694,18 +733,22 @@ $$
 よって
 \begin{eqnarray*}
 &&\int D\,d\Lambda\\
- &=& \left(\frac{\beta}{2\pi(\beta+1)}\right)^{D/2}\frac{B(W,\nu)}{B(W',\nu+1)}
+ &&= \left(\frac{\beta}{2\pi(\beta+1)}\right)^{D/2}\frac{B(W,\nu)}{B(W',\nu+1)}
+ \\&&\phantom{={}}\quad
+     \times
      \underbrace{\int B(W',\nu+1)|\Lambda|^{\frac{(\nu+1)-D-1}{2}}\exp\left(-\half \tr (W'^{-1}\Lambda)\right)\,d\Lambda}_{=1}\\
- &=& \left(\frac{\beta}{2\pi(\beta+1)}\right)^{D/2}
+ &&= \left(\frac{\beta}{2\pi(\beta+1)}\right)^{D/2}
       \frac{|W'|^{(\nu+1)/2}2^{(\nu+1)D/2}\pi^{D(D-1)/4}\prod_i \Gamma\left(\frac{\nu+2-i}{2}\right)}
            {|W|^{\nu/2} 2^{\nu D/2} \pi^{D(D-1)/4} \prod_i \Gamma\left(\frac{\nu+1-i}{2}\right)}\\
- &=& \left(\frac{\beta}{\pi(\beta+1)}\right)^{D/2}\frac{\Gamma\left((\nu+1)/2\right)}{\Gamma\left((\nu+1-D)/2\right)}\left(\frac{1}{1+\lambda}\right)^{\nu/2}
+ &&= \left(\frac{\beta}{\pi(\beta+1)}\right)^{D/2}\frac{\Gamma\left((\nu+1)/2\right)}{\Gamma\left((\nu+1-D)/2\right)}\left(\frac{1}{1+\lambda}\right)^{\nu/2}
       |W|^{1/2}\left(\frac{1}{1+\lambda}\right)^{1/2}\\
- &=& \frac{\Gamma\left((\nu+1)/2\right)}{\Gamma\left((\nu+1-D)/2\right)} \left(\frac{\beta}{\pi(1+\beta)}\right)^{D/2}|W|^{1/2}(1+\lambda)^{-(\nu+1)/2}\\
- &=& \frac{\Gamma(\frac{\nu+1}{2})}{\Gamma\left(\frac{\nu+1-D}{2}\right)} \frac{\left(\frac{\beta(\nu+1-D)}{1+\beta}\right)^{\frac{D}{2}}}
+ &&= \frac{\Gamma\left((\nu+1)/2\right)}{\Gamma\left((\nu+1-D)/2\right)} \left(\frac{\beta}{\pi(1+\beta)}\right)^{D/2}|W|^{1/2}(1+\lambda)^{-(\nu+1)/2}\\
+ &&= \frac{\Gamma(\frac{\nu+1}{2})}{\Gamma\left(\frac{\nu+1-D}{2}\right)} \frac{\left(\frac{\beta(\nu+1-D)}{1+\beta}\right)^{\frac{D}{2}}}
        {(\nu+1-D)^{\frac{D}{2}}\pi^{\frac{D}{2}}} |W|^{\frac{1}{2}}
+ \\&&\phantom{={}}\quad
+     \times
        \left(1+\frac{\quads{\left(\frac{\beta(\nu+1-D)}{1+\beta}W\right)}{(x-m)}}{\nu+1-D}\right)^{\frac{-(\nu+1)}{2}}\\
- &=& \St(x|m,L,\nu+1-D), \quad L:=\frac{\beta(\nu+1-D)}{1+\beta}W.
+ &&= \St(x|m,L,\nu+1-D), \quad L:=\frac{\beta(\nu+1-D)}{1+\beta}W.
 \end{eqnarray*}
 よって
 $$

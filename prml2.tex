@@ -635,19 +635,19 @@ $$
 \begin{eqnarray*}
 \tr\left(A^{-1}A'\right)
  &=& -\tr\left(\left(P^{-1}\tri(\lambda_i)^{-1}P\right)P^{-1}P'P^{-1}\tri(\lambda_i)P\right)\\
- &+& \tr\left((P^{-1}\tri(\lambda_i)^{-1}P)P^{-1}\tri(\lambda_i')P\right)
- +   \tr\left((P^{-1}\tri(\lambda_i)^{-1}P)P^{-1}\tri(\lambda_i)P'\right)\\
- &=&-\tr\left(P^{-1}\tri(\lambda_i)^{-1}P'P^{-1}\tri(\lambda_i)P\right)
-  + \tr\left(P^{-1}\tri(\lambda_i)^{-1}\tri(\lambda_i')P\right)
- + \tr(P^{-1}P')
+ & & +\tr\left((P^{-1}\tri(\lambda_i)^{-1}P)P^{-1}\tri(\lambda_i')P\right)\\
+ & & +\tr\left((P^{-1}\tri(\lambda_i)^{-1}P)P^{-1}\tri(\lambda_i)P'\right)\\
+ &=& -\tr\left(P^{-1}\tri(\lambda_i)^{-1}P'P^{-1}\tri(\lambda_i)P\right)\\
+ & & +\tr\left(P^{-1}\tri(\lambda_i)^{-1}\tri(\lambda_i')P\right)\\
+ & & +\tr(P^{-1}P').
 \end{eqnarray*}
 次に$\tr(AB)=\tr(BA)$を使ってトレースの中の積の順序を入れ換えて,
 行列と逆行列の積を消していくと
 \begin{eqnarray*}
 \tr(A^{-1}A')
  &=& -\tr\left(P'P^{-1}\tri(\lambda_i)PP^{-1}\tri(\lambda_i^{-1})\right)
- +\tr\left(\tri(\lambda_i)^{-1}\tri(\lambda_i')PP^{-1}\right)
- +\tr(P^{-1}P')\\
+     +\tr\left(\tri(\lambda_i)^{-1}\tri(\lambda_i')PP^{-1}\right)\\
+ & & +\tr(P^{-1}P')\\
  &=&-\tr(P'P^{-1})+\tr(\tri(\lambda_i)^{-1}\tri(\lambda_i'))+\tr(P^{-1}P')\\
  &=&\tr\left(\tri(\lambda_i)^{-1}\tri(\lambda_i')\right).
 \end{eqnarray*}

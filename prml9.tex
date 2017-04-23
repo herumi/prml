@@ -239,9 +239,12 @@ $$
 $$
 \pi_k=\frac{1}{N}\sum_n \gamma(z_{nk})=\frac{N_k}{N}.
 $$
-$$
-\dif{\mu_k}F=\sum_n\gamma(z_{nk})\left(-\Sigma_k^{-1}(x_n-\mu_k)\right)=\Sigma_k^{-1}\left(\sum_n \gamma(z_{nk})x_n-\left(\sum_n \gamma(z_{nk})\right)\mu_k\right)=0.
-$$
+\begin{eqnarray*}
+\dif{\mu_k}F
+&=&\sum_n\gamma(z_{nk})\left(-\Sigma_k^{-1}(x_n-\mu_k)\right)
+\\
+&=&\Sigma_k^{-1}\left(\sum_n \gamma(z_{nk})x_n-\left(\sum_n \gamma(z_{nk})\right)\mu_k\right)=0.
+\end{eqnarray*}
 ÇÊÇ¡Çƒ
 $$
 \mu_k=\frac{1}{N_k}\sum_n \gamma(z_{nk})x_n.
@@ -369,7 +372,8 @@ $\mu_{ki}$Ç…ä÷Ç∑ÇÈç≈ëÂâª.
 \begin{eqnarray*}
 \dif{\mu_{ki}}F
  &=& N_k \bar{x}_{ki} \frac{1}{\mu_{ki}}+\frac{-1}{1-\mu_{ki}} N_k (1-\bar{x}_{ki})
- = \frac{N_{k}}{\mu_{ki}(1-\mu_{ki})}(\bar{x}_{ki}(1-\mu_{ki})-(1-\bar{x}_{ki})\mu_{ki}) = 0.
+ \\
+ &=& \frac{N_{k}}{\mu_{ki}(1-\mu_{ki})}(\bar{x}_{ki}(1-\mu_{ki})-(1-\bar{x}_{ki})\mu_{ki}) = 0.
 \end{eqnarray*}
 ÇÊÇ¡Çƒ
 $$
@@ -532,24 +536,29 @@ $$
 x_n-\mu_k'=(x_n-\mu_k)-\frac{d}{N_k'}(x_m-\mu_k).
 $$
 $A:=\outp{(x_m-\mu_k)}$Ç∆Ç®Ç≠Ç∆
-$$
-\outp{(x_n-\mu_k')}=\outp{(x_n-\mu_k)}-2\frac{d}{N_k'}(x_n-\mu_k)\trans{(x_m-\mu_k)}+\frac{d^2}{N_k'^2}A.
-$$
-$$
-\sum_{n \ne m}\gamma(z_{nk})\outp{(x_n-\mu_k)}=N_k S - \gamma(z_{mk})\outp{(x_m-\mu_k)}=N_k S -\gamma(z_{mk})A.
-$$
 \begin{eqnarray*}
+&&\outp{(x_n-\mu_k')}=\outp{(x_n-\mu_k)}-2\frac{d}{N_k'}(x_n-\mu_k)\trans{(x_m-\mu_k)}+\frac{d^2}{N_k'^2}A,
+\\
+&&\sum_{n \ne m}\gamma(z_{nk})\outp{(x_n-\mu_k)}
+=N_k S - \gamma(z_{mk})\outp{(x_m-\mu_k)}
+\\
+&&\hphantom{\sum_{n \ne m}\gamma(z_{nk})\outp{(x_n-\mu_k)}}
+= N_k S -\gamma(z_{mk})A,
+\\&&
 \sum_{n \ne m}\gamma(z_{nk})(x_n-\mu_k)
- &=& \sum_{n \ne m}\gamma(z_{nk})x_n - \sum_{n \ne m}\gamma(z_{nk})\mu_k\\
- &=& N_k \mu_k - \gamma(z_{mk})x_m-(N_k-\gamma(z_{mk}))\mu_k\\
- &=& -\gamma(z_{mk})(x_m-\mu_k).
+ = \sum_{n \ne m}\gamma(z_{nk})x_n - \sum_{n \ne m}\gamma(z_{nk})\mu_k\\
+&&\hphantom{\sum_{n \ne m}\gamma(z_{nk})(x_n-\mu_k)}
+ = N_k \mu_k - \gamma(z_{mk})x_m-(N_k-\gamma(z_{mk}))\mu_k\\
+&&\hphantom{\sum_{n \ne m}\gamma(z_{nk})(x_n-\mu_k)}
+ = -\gamma(z_{mk})(x_m-\mu_k).
 \end{eqnarray*}
 ÇÊÇ¡Çƒ$\gamma:=\gamma(z_{mk})$Ç∆Ç®Ç≠Ç∆
 \begin{eqnarray*}
 N_k' S'
  &=& N_k S - \gamma A + 2\frac{d}{N_k'}\gamma A + (N_k-\gamma)\frac{d^2}{N_k'^2}A + (\gamma+d)A \frac{N_k^2}{N_k'^2}\\
  &=& N_k S + \frac{A}{N_k'^2}\left(-\gamma(N_k+d)^2+2d\gamma(N_k+d)+(N_k-\gamma)d^2+(\gamma+d)N_k^2\right)\\
- &=& N_k S + \frac{A}{N_k'^2}\left(-\gamma N_k^2-2d\gamma N_k - \gamma d^2 + 2d \gamma N_k + 2d^2 \gamma + N_k d^2-\gamma d^2 + \gamma N_k^2 + d N_k^2\right)\\
+ &=& N_k S + \frac{A}{N_k'^2}\left(-\gamma N_k^2-2d\gamma N_k - \gamma d^2 + 2d \gamma N_k  \right.\\
+ & & \hphantom{N_k S + \frac{A}{N_k'^2}}\quad \left. + 2d^2 \gamma + N_k d^2-\gamma d^2 + \gamma N_k^2 + d N_k^2\right)\\
  &=& N_k S + \frac{A}{N_k'^2}N_k d(N_k+d) = N_k S + \frac{A N_k d}{N_k'}.
 \end{eqnarray*}
 ÇÊÇ¡Çƒ
