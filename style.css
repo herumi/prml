@@ -1,0 +1,43 @@
+#left {
+ width:60%;
+ float:left;
+}
+#right {
+  width:40%;
+  float:left;
+}
+
+img {
+  border: 1px solid;
+}
+
+div.x {
+  margin: 1em;
+  padding: 1em;
+  background-color: #ffecec;
+  text-align: left;
+  line-height: 105%;
+}
+div.o {
+  margin: 1em;
+  padding: 1em;
+  background-color: #eaffea;
+  text-align: left;
+  line-height: 105%;
+}
+span.del {
+  background-color: #ffecec;
+}
+span.add {
+  background-color: #eaffea;
+}
+
+dd {
+  margin-bottom: 1em;
+}
+
+p.item {
+  margin: 0em;
+  padding: 0em;
+  line-height: 105%;
+}
