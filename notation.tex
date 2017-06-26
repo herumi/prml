@@ -1,6 +1,118 @@
-\newcommand{\trans}[1]{{#1}^{\bm{T}}}
+%% 日本語テキストの中で単位付きの量を書くとき，数と単位の間にいれるスペース
+%% 　日本語文のなかで「~」使うと，それは「\hskip\xkanjiskip」より広いので，
+%% 　数字と単位がだいぶ離れているように見えてしまうという問題が発生する．
+\newcommand{\xu}{\nolinebreak\hskip.9\xkanjiskip\relax}
+
+\def\－{--}%                %% 固有名詞を連結するときのハイフンを en dash にする
+\def\hseq{\quad}%           %% 横方向に数式を並べるときのスペース
+\newcommand{\GeneralBracket}[4]{%
+  \ifx#1*\left#2#4\right#3%
+  \else\ifx#1.\mathopen#2#4\mathclose#3%
+  \else\mathopen#1#2#4\mathclose#1#3\fi\fi}
+
+\makeatletter
+\newcommand{\GeneralPair}[6]{%
+  \ifx#1*\GeneralPair@v{#2}{#3}{#4}{#5}{#6}%
+  \else\ifx#1.\mathopen#2#5\!\!\;\mathbin#3\!\!\;#6\mathclose#4%
+  \else\mathopen#1#2#5\mathbin#1#3#6\mathclose#1#4\fi\fi}
+\newcommand{\GeneralPair@v}[5]{\mathchoice%
+  {\GeneralPair@vs{\displaystyle}{#1}{#2}{#3}{#4}{#5}}%
+  {\GeneralPair@vs{\textstyle}{#1}{#2}{#3}{#4}{#5}}%
+  {\GeneralPair@vs{\scriptstyle}{#1}{#2}{#3}{#4}{#5}}%
+  {\GeneralPair@vs{\scriptscriptstyle}{#1}{#2}{#3}{#4}{#5}}}
+\newcommand{\GeneralPair@vs}[6]{%
+  \setbox0=\hbox{$#1#5$}\setbox2=\null\ht2=\ht0\dp2=\dp0%
+  \setbox1=\hbox{$#1#6$}\setbox3=\null\ht3=\ht1\dp3=\dp1%
+  \left#2\box0\left#3\box2\box3\right.\kern-\nulldelimiterspace\box1\right#4}
+
+\newcommand{\pvPair}[3][*]{\GeneralPair{#1}(|){#2}{#3}}
+\newcommand{\pVPair}[3][*]{\GeneralPair{#1}(\|){#2}{#3}}
+\newcommand{\bvPair}[3][*]{\GeneralPair{#1}[|]{\!\:#2}{#3\!\:}}
+\newcommand{\BvPair}[3][*]{\GeneralPair{#1}\{|\}{#2}{#3}}
+\newcommand{\pvpair}[3][.]{\GeneralPair{#1}(|){#2}{#3}}
+\newcommand{\pVpair}[3][.]{\GeneralPair{#1}(\|){#2}{#3}}
+\newcommand{\bvpair}[3][.]{\GeneralPair{#1}[|]{\!\:#2}{#3\!\:}}
+\newcommand{\Bvpair}[3][.]{\GeneralPair{#1}\{|\}{#2}{#3}}
+
+\newcommand{\fvPair}[3][*]{\!\pvPair[#1]{#2}{#3}}% ( | ) 括弧が可変
+\newcommand{\fvpair}[3][.]{\pvpair[#1]{#2}{#3}}% ( | ) 括弧が固定
+
+%「FunctionName (左側|右側)」と出したいとき
+% \fnvPair{FunctionName}({左側}|{右側}) % ( | ) 括弧が可変（直前に関数名がくる）
+% \fnvpair{FunctionName}({左側}|{右側}) % ( | ) 括弧が固定（直前に関数名がくる）
+% \fnvPair[\big]{FunctionName}({左側}|{右側}) % とすると( | ) を \big にする
+% ↓引数のなかに(|)のいずれが入っているときは({}|{})のように囲むと安全．
+\newcommand{\fnvPair}[2][*]{\@ifnextchar({\fnvpPair@{#2}{#1}}{\@ifnextchar[{\fnvbPair@{#2}{#1}}{\GenerateWarning{\string\fnvPair failed}#2}}}
+\newcommand{\fnvpair}[2][.]{\@ifnextchar({\fnvppair@{#2}{#1}}{\@ifnextchar[{\fnvbpair@{#2}{#1}}{\GenerateWarning{\string\fnvpair failed}#2}}}
+\def\fnvpPair@#1#2(#3|#4){#1\!\pvPair[#2]{#3}{#4}}% ( | ) 括弧が可変（直前に関数名がくる）
+\def\fnvppair@#1#2(#3|#4){#1\pvpair[#2]{#3}{#4}}% ( | ) 括弧が可変（直前に関数名がくる）
+\def\fnvbPair@#1#2[#3|#4]{#1\!\bvPair[#2]{#3}{#4}}% [ | ] 括弧が可変（直前に関数名がくる）
+\def\fnvbpair@#1#2[#3|#4]{#1\bvpair[#2]{#3}{#4}}% [ | ] 括弧が可変（直前に関数名がくる）
+
+
+% % \ProbW({左側}|{右側}) は \fnvPair P({左側}|{右側}) のかわり
+% % \Probw({左側}|{右側}) は \fnvpair P({左側}|{右側}) のかわり
+% % \probW({左側}|{右側}) は \fnvPair p({左側}|{右側}) のかわり
+% % \probw({左側}|{右側}) は \fnvpair p({左側}|{右側}) のかわり
+
+%「P(左側|右側)」とか「p(左側|右側)」と出したいとき
+% \ProbW({左側}|{右側}) % ( | ) 括弧が可変（直前に関数名がくる）
+% \Probw({左側}|{右側}) % ( | ) 括弧が固定（直前に関数名がくる）
+% \ProbW[\big]{FunctionName}({左側}|{右側}) % とすると( | ) を \big にする
+% \probW, \probw では p は小文字になる
+% ↓引数のなかに(|)のいずれが入っているときは({}|{})のように囲むと安全．
+% w は when/where のイメージ
+\newcommand{\ProbW}[1][*]{\ProbW@{#1}}
+\newcommand{\Probw}[1][.]{\Probw@{#1}}
+\newcommand{\probW}[1][*]{\probW@{#1}}
+\newcommand{\probw}[1][.]{\probw@{#1}}
+\def\ProbW@#1(#2|#3){P\fvPair[#1]{#2}{#3}}% P ( | ) 括弧が可変
+\def\Probw@#1(#2|#3){P\fvpair[#1]{#2}{#3}}% P ( | ) 括弧が固定
+\def\probW@#1(#2|#3){p\fvPair[#1]{#2}{#3}}% p ( | ) 括弧が可変
+\def\probw@#1(#2|#3){p\fvpair[#1]{#2}{#3}}% p ( | ) 括弧が固定
+
+\newcommand{\setSeparation}[3][*]{\BvPair[#1]{#2}{#3}}% \{ | \} 括弧が可変
+\newcommand{\setseparation}[3][.]{\Bvpair[#1]{#2}{#3}}% \{ | \} 括弧が固定
+
+\newcommand{\pBracket}[2][*]{\GeneralBracket{#1}(){#2}}
+\newcommand{\bBracket}[2][*]{\GeneralBracket{#1}[]{#2}}
+\newcommand{\BBracket}[2][*]{\GeneralBracket{#1}\{\}{#2}}
+\newcommand{\vBracket}[2][*]{\GeneralBracket{#1}||{#2}}
+\newcommand{\VBracket}[2][*]{\GeneralBracket{#1}\|\|{#2}}
+\newcommand{\pbracket}[2][.]{\GeneralBracket{#1}(){#2}}
+\newcommand{\bbracket}[2][.]{\GeneralBracket{#1}[]{#2}}
+\newcommand{\Bbracket}[2][.]{\GeneralBracket{#1}\{\}{#2}}
+\newcommand{\vbracket}[2][.]{\GeneralBracket{#1}||{#2}}
+\newcommand{\Vbracket}[2][.]{\GeneralBracket{#1}\|\|{#2}}
+
+\newcommand{\fnBracket}[2][*]{\@ifnextchar({\fnpBracket@{#2}{#1}}{\@ifnextchar[{\fnbBracket@{#2}{#1}}{\GenerateWarning{\string\fnBracket failed}#2}}}
+\newcommand{\fnbracket}[2][.]{\@ifnextchar({\fnpbracket@{#2}{#1}}{\@ifnextchar[{\fnbbracket@{#2}{#1}}{\GenerateWarning{\string\fnbracket failed}#2}}}
+\def\fnpBracket@#1#2(#3){#1\!\pBracket[#2]{#3}}% ( ) 括弧が可変（直前に関数名がくる）
+\def\fnpbracket@#1#2(#3){#1\pbracket[#2]{#3}}% ( ) 括弧が可変（直前に関数名がくる）
+\def\fnbBracket@#1#2[#3]{#1\!\bBracket[#2]{#3}}% [ ] 括弧が可変（直前に関数名がくる）
+\def\fnbbracket@#1#2[#3]{#1\bbracket[#2]{#3}}% [ ] 括弧が可変（直前に関数名がくる）
+
+\newcommand{\fBracket}[2][*]{\!\pBracket[#1]{#2}}% ( ) 括弧が可変
+\newcommand{\fbracket}[2][.]{\pbracket[#1]{#2}}% ( ) 括弧が固定
+% m は measure のイメージ：あるいはwをひっくり返したものとか:)
+\def\ProbM@#1(#2){P\fBracket[#1]{#2}}% P ( ) 括弧が可変
+\def\Probm@#1(#2){P\fbracket[#1]{#2}}% P ( ) 括弧が固定
+\def\probM@#1(#2){p\fBracket[#1]{#2}}% p ( ) 括弧が可変
+\def\probm@#1(#2){p\fbracket[#1]{#2}}% p ( ) 括弧が固定
+
+\makeatother
+
+
+\newcommand{\Norm}[2][*]{\GeneralBracket{#1}\|\|{#2}}
+\newcommand{\norm}[2][.]{\GeneralBracket{#1}\|\|{#2}}
+
+\newcommand{\trans}[1]{#1^{\bm{T}}}% not PRML-style
+% 引数が既に上付き文字を伴っている場合は \trans{{A^{(2)}}} のようにする
 \newcommand{\dif}[1]{\frac{\partial}{\partial #1}}
 \newcommand{\diff}[2]{\frac{\partial #2}{\partial #1}}
+\newcommand{\sdif}[1]{\sfrac{\partial}{\partial #1}}
+\newcommand{\psdif}[2][*]{\GeneralBracket{#1}(){\sdif{#2}}}
+%\newcommand{\Proba}[2]{p(#1\,|\,#2)}
 
 \newcommand{\ddif}[2]{\frac{\partial^2}{\partial #1 \partial #2}}
 \newcommand{\ddiff}[3]{\frac{\partial^2 #3}{\partial #1 \partial #2}}
@@ -8,23 +120,26 @@
 \newcommand{\sgn}{\makeop{sgn}}
 \newcommand{\diag}{\makeop{diag}}
 \newcommand{\tri}{\makeop{tri}}
-\newcommand{\tr}{\makeop{tr}}
+\newcommand{\tr}{\makeop{tr}}% trace: not PRML-style
 \newcommand{\KL}{\makeop{KL}}
 \newcommand{\Dir}{\makeop{Dir}}
 \newcommand{\Gam}{\makeop{Gam}}
 \newcommand{\St}{\makeop{St}}
 \newcommand{\var}{\makeop{var}}
 \newcommand{\cov}{\makeop{cov}}
-\newcommand{\vecx}{\bm{x}}
-\newcommand{\outp}[1]{{{#1} \trans{{#1}}}}
-\newcommand{\inp}[1]{{\trans{{#1}}}{#1}}
+\newcommand{\outp}[1]{#1\trans{#1}}
+\newcommand{\inp}[1]{\trans{#1}#1}
+% 引数が既に上付き文字を伴っている場合は
+% \outp{{x^{(1)}}}, \inp{{x^{(1)}}} のようにする
 \newcommand{\vpi}{\bm{\pi}}
+\newcommand{\vmu}{\bm{\mu}}
+\newcommand{\vx}{\bm{x}}
 \newcommand{\vvec}[2]{\begin{pmatrix} #1 \\ #2 \end{pmatrix}}
 \newcommand{\hvec}[2]{\begin{pmatrix} #1 & #2 \end{pmatrix}}
 \newcommand{\matt}[4]{\begin{pmatrix} #1 & #2 \\ #3 & #4 \end{pmatrix}}
 \newcommand{\dett}[4]{\begin{vmatrix} #1 & #2 \\ #3 & #4 \end{vmatrix}}
 \newcommand{\lmatt}[4]{\begin{pmatrix} #1 & \ldots & #2 \\ \vdots & \ddots & \vdots \\ #3 & \ldots & #4 \end{pmatrix}}
-\newcommand{\quadf}[2]{\trans{\bm{#2}} #1 \bm{#2}}
+\newcommand{\quadf}[2]{\trans{\bm{#2}} #1 \bm{#2}}% not PRML-style
 \newcommand{\quads}[2]{\trans{#2} #1 {#2}}
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\RR}{\mathbb{R}}
@@ -35,6 +150,76 @@
 \newcommand{\calL}{{\cal L}}
 \newcommand{\calQ}{{\cal Q}}
 \newcommand{\calW}{{\cal W}}
+\newcommand{\calF}{{\mathcal F}}
 \newcommand{\half}{\frac{1}{2}}
 \newcommand{\ignore}[1]{}
+
+\newcommand{\od}{d}% \int dx の d: not PRML-style
+
+\newcommand{\bv}[1]{\bm{#1}}% 縦/列ベクトル: not PRML-style
+\newcommand{\bM}[1]{#1}% 行列: not PRML-style
+\newcommand{\oM}[1]{\bm{#1}}% 観測値データ行列: not PRML-style
+\DeclareMathAlphabet{\mathssbf}{OT1}{cmss}{bx}{n}
+\newcommand{\ov}[1]{\bm{#1}}% 観測値データベクトル(): not PRML-style
+
 \newcommand{\bmm}{\bm {m}}
+\newcommand{\bmLambda}{\bm{\Lambda}}
+\newcommand{\bmSigma}{\bm{\Sigma}}
+
+\newcommand{\≧}{\geqq}
+\newcommand{\≦}{\leqq}
+\newcommand{\⊂}{\subset}
+\newcommand{\⊃}{\supset}
+\newcommand{\sfrac}[2]{#1/#2}
+\newcommand{\psfrac}[3][*]{\GeneralBracket{#1}(){\sfrac{#2}{#3}}}
+\newcommand{\fnGamma}{\varGamma}
+
+\RequirePackage{amsthm}
+\makeatletter
+\newtheoremstyle{jdefinition}
+  %{\topsep}%   % ABOVESPACE
+  {0pt}%   % ABOVESPACE
+  %{\topsep}%   % BELOWSPACE
+  {0pt}%   % BELOWSPACE
+  {\normalfont}%  % BODYFONT
+  {0pt}%       % INDENT (empty value is the same as 0pt)
+  %{\bfseries}% % HEADFONT
+  {\sf}% % HEADFONT
+  {\@addpunct{.}}%         % HEADPUNCT
+  {5pt plus 1pt minus 1pt}% % HEADSPACE
+  {\thmname{#1}\thmnumber{\@ifnotempty{#1}{ }\@upn{#2}}%
+  \thmnote{{\the\thm@notefont（#3）．\hskip-.5zw\nopunct}}}%          % CUSTOM-HEAD-SPEC
+\newenvironment{jproof}[1][\jproofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+        %\itshape
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\providecommand{\jproofname}{証明．\nopunct}
+\makeatother
+
+\iffalse% PRML-compliant style
+\renewcommand{\trans}[1]{{#1}^{\!\mathrm{T}}}
+\renewcommand{\od}{\mathrm{d}}% \int dx の d
+\renewcommand{\bv}[1]{\mathbf{\boldsymbol{#1}}}% 縦/列ベクトル
+\renewcommand{\bM}[1]{\mathbf{\boldsymbol{#1}}}% 行列
+\renewcommand{\oM}[1]{\mathbf{\boldsymbol{#1}}}% 観測値データ行列
+\renewcommand{\ov}[1]{\mathssbf{#1}}% 観測値データベクトル()
+\renewcommand{\tr}{\makeop{Tr}}% trace
+\renewcommand{\quadf}[2]{\trans{\bv{#2}} \bM{#1} \bv{#2}}
+\fi
+
+\theoremstyle{jdefinition}
+\newtheorem{thm}{定理}
+\newtheorem{definition}[thm]{定義}
+\newtheorem{prop}[thm]{命題}
+\newtheorem{cor}[thm]{系}
+\newtheorem{lemma}[thm]{補題}
+\newtheorem{example}[thm]{例}
+\newtheorem{excercise}[thm]{問}
+\newtheorem*{rem}{注意}
+\newtheorem*{note}{ノート}

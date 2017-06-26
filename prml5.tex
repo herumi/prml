@@ -1,10 +1,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ‘æ5Í
+% ç¬¬5ç« 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{chapter}{4}
-\chapter{uƒjƒ…[ƒ‰ƒ‹ƒlƒbƒgƒ[ƒNv‚Ì•â‘«}
-PRML5Í‚Å‚Í, –{—ˆ•Ê‚Ì‹L†‚ğŠ„‚è“–‚Ä‚é‚×‚«‚Æ‚±‚ë‚É“¯‚¶‹L†‚ğ—p‚¢‚é‚±‚Æ‚ª‚ ‚è, ‰“Ç‚É‚Í¬—‚µ‚â‚·‚¢.
-Šµ‚ê‚Ä‚µ‚Ü‚¦‚Î“Ç‚Ş‚Ì‚Í“ï‚µ‚­‚È‚¢‚ª, ‚±‚±‚Å‚Ío—ˆ‚é‚¾‚¯‹æ•Ê‚µ‚Ä‚İ‚é.
+\chapter{ã€Œãƒ‹ãƒ¥ãƒ¼ãƒ©ãƒ«ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã€ã®è£œè¶³}
+PRMLã®5ç« ã§ã¯, æœ¬æ¥åˆ¥ã®è¨˜å·ã‚’å‰²ã‚Šå½“ã¦ã‚‹ã¹ãã¨ã“ã‚ã«åŒã˜è¨˜å·ã‚’ç”¨ã„ã‚‹ã“ã¨ãŒã‚ã‚Š, åˆèª­æ™‚ã«ã¯æ··ä¹±ã—ã‚„ã™ã„.
+æ…£ã‚Œã¦ã—ã¾ãˆã°èª­ã‚€ã®ã¯é›£ã—ããªã„ãŒ, ã“ã“ã§ã¯å‡ºæ¥ã‚‹ã ã‘åŒºåˆ¥ã—ã¦ã¿ã‚‹.
 
 \newcommand{\ww}[2]{w_{#1}^{(#2)}}
 \newcommand{\calRR}[1]{{\cal R}\left\{#1 \right\}}
@@ -13,594 +13,623 @@ PRML5Í‚Å‚Í, –{—ˆ•Ê‚Ì‹L†‚ğŠ„‚è“–‚Ä‚é‚×‚«‚Æ‚±‚ë‚É“¯‚¶‹L†‚ğ—p‚¢‚é‚±‚Æ‚ª‚ ‚è, ‰“
 \newcommand{\wmap}{w_{\rm MAP}}
 \newcommand{\amap}{a_{\rm MAP}}
 
-\section{ƒtƒB[ƒhƒtƒHƒ[ƒhƒlƒbƒgƒ[ƒNŠÖ”}
-3Í, 4Í‚Å‚â‚Á‚½ƒ‚ƒfƒ‹‚ÍŠî’êŠÖ”$\phi_j$‚Æƒpƒ‰ƒ[ƒ^$w_j$‚ÌüŒ`˜a‚ğ”ñüŒ`Šˆ«‰»ŠÖ”‚É“ü‚ê‚½‚à‚Ì‚¾‚Á‚½.
-‚±‚±‚Å‚Í‚»‚ê‚ğŠg’£‚·‚é.
-$x_1, \ldots, x_D$‚ğ“ü—Í•Ï”‚Æ‚µ$x_0=1$‚ğƒoƒCƒAƒX€i’è”€j‚É‘Î‰‚·‚é•Ï”, $w_{ji}^{(1)}$‚ğƒpƒ‰ƒ[ƒ^‚Æ‚µ‚Ä
-$$
+\section{ãƒ•ã‚£ãƒ¼ãƒ‰ãƒ•ã‚©ãƒ¯ãƒ¼ãƒ‰ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯é–¢æ•°}
+3ç« , 4ç« ã§ã‚„ã£ãŸãƒ¢ãƒ‡ãƒ«ã¯åŸºåº•é–¢æ•°$\phi_j$ã¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿$w_j$ã®ç·šå½¢å’Œã‚’éç·šå½¢æ´»æ€§åŒ–é–¢æ•°ã«å…¥ã‚ŒãŸã‚‚ã®ã ã£ãŸ.
+ã“ã“ã§ã¯ãã‚Œã‚’æ‹¡å¼µã™ã‚‹.
+$x_1, \ldots, x_D$ã‚’å…¥åŠ›å¤‰æ•°ã¨ã—$x_0=1$ã‚’ãƒã‚¤ã‚¢ã‚¹é …ï¼ˆå®šæ•°é …ï¼‰ã«å¯¾å¿œã™ã‚‹å¤‰æ•°, $w_{ji}^{(1)}$ã‚’ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨ã—ã¦
+\begin{equation}\label{hat_a}
 \hat{a}_j = \sum_{i=0}^D \ww{ji}{1} x_i
-$$
-‚Æ‚·‚é.
-PRML‚Å‚Íã‹L‚Ì$\hat{a}_j$‚ğ$a_j$‚Æ‘‚¢‚Ä‚¢‚é‚ª‚·‚®‚ ‚Æ‚Éo‚Ä‚­‚é$a_k$‚Æ‚Í–³ŠÖŒW‚Å‚ ‚é.
-‚±‚±‚Å‚ÍˆÙ‚È‚é‚±‚Æ‚ğ‹­’²‚·‚é‚½‚ß‚É$\hat{a}_j$‚Æ‚·‚é.
+\end{equation}
+ã¨ã™ã‚‹.
+PRML~(5.2)ã§ã¯ä¸Šè¨˜ã®æ´»æ€§$\hat{a}_j$ã‚’$a_j$ã¨æ›¸ã„ã¦ã„ã‚‹ãŒ,
+ã™ãã‚ã¨ã«å‡ºã¦ãã‚‹PRML~(5.3)ã®å‡ºåŠ›ãƒ¦ãƒ‹ãƒƒãƒˆæ´»æ€§$a_k$ã¨ã¯åˆ¥ã®ã‚‚ã®ã§ã‚ã‚‹.
+ã“ã“ã§ã¯ç•°ãªã‚‹ã“ã¨ã‚’å¼·èª¿ã™ã‚‹ãŸã‚ã«$\hat{a}_j$ã¨ã™ã‚‹.
 
-$\hat{a}_j$‚ğŠˆ«‰»ŠÖ”$h$‚Å•ÏŠ·‚·‚é.
+$\hat{a}_j$ã‚’æ´»æ€§åŒ–é–¢æ•°$h$ã§å¤‰æ›ã™ã‚‹.
 $$
 z_j=h(\hat{a}_j).
 $$
-$h$‚Æ‚µ‚Ä‚ÍƒƒWƒXƒeƒBƒbƒNƒVƒOƒ‚ƒCƒh‚È‚Ç‚ÌƒVƒOƒ‚ƒCƒhŠÖ”‚ª—p‚¢‚ç‚ê‚é.
-‚±‚ê‚ç‚ÌüŒ`˜a‚ğ‚Æ‚Á‚Äo—Íƒ†ƒjƒbƒgŠˆ«‚ğ‹‚ß‚é. $z_0=1$‚ğƒoƒCƒAƒX€‚É‘Î‰‚·‚é•Ï”‚Æ‚µ‚Ä
+$h$ã¨ã—ã¦ã¯ãƒ­ã‚¸ã‚¹ãƒ†ã‚£ãƒƒã‚¯ã‚·ã‚°ãƒ¢ã‚¤ãƒ‰ãªã©ã®ã‚·ã‚°ãƒ¢ã‚¤ãƒ‰é–¢æ•°ãŒç”¨ã„ã‚‰ã‚Œã‚‹.
+ã“ã‚Œã‚‰ã®ç·šå½¢å’Œã‚’ã¨ã£ã¦å‡ºåŠ›ãƒ¦ãƒ‹ãƒƒãƒˆæ´»æ€§ã‚’æ±‚ã‚ã‚‹.
+$z_0=1$ã‚’ãƒã‚¤ã‚¢ã‚¹é …ã«å¯¾å¿œã™ã‚‹å¤‰æ•°ã¨ã—ã¦
 $$
 a_k=\sum_{j=0}^M \ww{kj}{2} z_j.
 $$
 
-‚±‚Ìo—Íƒ†ƒjƒbƒgŠˆ«‚ğŠˆ«‰»ŠÖ”‚ğ’Ê‚µ‚Äƒlƒbƒgƒ[ƒN‚Ìo—Í$y_k$‚Æ‚·‚é.
-2ƒNƒ‰ƒX•ª—Ş–â‘è‚È‚çƒƒWƒXƒeƒBƒbƒNƒVƒOƒ‚ƒCƒhŠÖ”‚ğg‚¤.
+ã“ã®å‡ºåŠ›ãƒ¦ãƒ‹ãƒƒãƒˆæ´»æ€§ã‚’æ´»æ€§åŒ–é–¢æ•°ã‚’é€šã—ã¦ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã®å‡ºåŠ›$y_k$ã¨ã™ã‚‹.
+2ã‚¯ãƒ©ã‚¹åˆ†é¡å•é¡Œãªã‚‰ãƒ­ã‚¸ã‚¹ãƒ†ã‚£ãƒƒã‚¯ã‚·ã‚°ãƒ¢ã‚¤ãƒ‰é–¢æ•°ã‚’ä½¿ã†.
 $$
 y_k=y_k(x,w)=\sigma(a_k).
 $$
-‚±‚±‚Å$w$‚Í$\{\ww{ji}{1}, \ww{kj}{2}\}$‚ğ‚Ü‚Æ‚ß‚½ƒxƒNƒgƒ‹‚Å‚ ‚é.
-‚±‚ê‚ç‚Ì®‚ğ‘g‚İ‡‚í‚¹‚é‚Æ
+ã“ã“ã§$w$ã¯$\{\ww{ji}{1}, \ww{kj}{2}\}$ã‚’ã¾ã¨ã‚ãŸãƒ™ã‚¯ãƒˆãƒ«ã§ã‚ã‚‹.
+ã“ã‚Œã‚‰ã®å¼ã‚’çµ„ã¿åˆã‚ã›ã‚‹ã¨
 $$
 y_k=\sigma\left(\sum_{j=0}^M w_{kj}^{(2)} h \left(\sum_{i=0}^D w_{ji}^{(1)} x_i \right) \right).
 $$
-\section{ƒlƒbƒgƒ[ƒNŒP—û}\label{ch5_net}
-‰ñ‹A–â‘è‚ğl‚¦‚é. “ü—ÍƒxƒNƒgƒ‹$x$‚Æ$K$ŸŒ³‚Ì–Ú•W•Ï”$t$‚ª‚ ‚è,
-$x$, $w$‚É‚¨‚¯‚é$t$‚ÌğŒ•t‚«Šm—¦‚ª¸“x$\beta I$‚ÌƒKƒEƒX•ª•z‚Æ‚·‚é.
-$N$ŒÂ‚Ì“¯“Æ—§•ª•z$x=\{x_1,\ldots,x_N\}$‚Æ‘Î‰‚·‚é–Ú•W’l$t=\{t_1,\ldots,t_N\}$‚ğ—pˆÓ‚µ, o—Íƒ†ƒjƒbƒg‚ÌŠˆ«‰»ŠÖ”‚ğP“™Ê‘œ‚Æ‚µ‚Ä
-$y_n=y(x_n,w)$‚Æ‚·‚é.
-$$
-p(t|x,w)=\prod_{n=1}^N \calN(t_n|y(x_n,w),\beta^{-1}I).
-$$
-‘Î”‚ğ‚Æ‚é‚Æ
-\begin{eqnarray}\label{cp5_1}
-\log p(t|x,w) &=& -\sum_n \left(\frac{1}{2}\trans{(t_n-y_n)}(\beta I)(t_n-y_n)\right) - \sum_n \frac{K}{2}\log(2\pi) - \sum_n \frac{1}{2}\log|\beta^{-1}I| \nonumber \\
-&=&-\frac{\beta}{2}\sum_n||t_n-y(x_n,w)||^2-\frac{DN}{2}\log(2\pi)+\frac{NK}{2}\log \beta.
-\end{eqnarray}
-‚»‚¤‚·‚é‚Æ‚±‚ÌŠÖ”‚Ì$w$‚É‚Â‚¢‚Ä‚ÌÅ‘å‰»‚ÍÅ‰‚Ì€‚ÌÅ¬‰», ‚Â‚Ü‚è
-$$
-E(w)=\frac{1}{2}\sum_n ||y(x_n,w)-t_n||^2
-$$
-‚ÌÅ¬‰»‚Æ“¯“™‚Å‚ ‚é. Å¬’l‚ğ—^‚¦‚é$w(=w_{\text ML})$‚ğ‚È‚ñ‚ç‚©‚Ì•û–@‚Å‹‚ß‚é.
-‚»‚Ì’l‚ğ®(\ref{cp5_1})‚É‘ã“ü‚µ‚Ä$\beta$‚Å”÷•ª‚µ‚Ä0‚Æ‚¨‚­‚Æ
-$$
--\frac{1}{2}\sum_n||t_n-y(x_n,w_{\text ML})||^2+\frac{NK}{2}\frac{1}{\beta}=0.
-$$
-‚æ‚Á‚Ä
-$$
-\frac{1}{\beta_{\text ML}}=\frac{1}{NK}\sum_n||t_n-y(x_n,w_{\text ML})||^2.
-$$
+\vspace{0pt}
 
-\subsection{–â‘è‚É‰‚¶‚½ŠÖ”‚Ì‘I‘ğ}
-‰ñ‹A–â‘è‚ğl‚¦‚é. $a_k$‚ÌŠˆ«‰»ŠÖ”‚ğP“™Ê‘œ‚É‚Æ‚é.
-‚·‚é‚Æ“ñæ˜aŒë·ŠÖ”‚Ì”÷•ª‚Í
+\section{ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯è¨“ç·´}\label{ch5_net}
+å›å¸°å•é¡Œã‚’è€ƒãˆã‚‹. å…¥åŠ›ãƒ™ã‚¯ãƒˆãƒ«$x$ã¨$K$æ¬¡å…ƒã®ç›®æ¨™å¤‰æ•°$t$ãŒã‚ã‚Š,
+$x$, $w$ã«ãŠã‘ã‚‹$t$ã®æ¡ä»¶ä»˜ãç¢ºç‡ãŒç²¾åº¦$\beta I$ã®ã‚¬ã‚¦ã‚¹åˆ†å¸ƒã¨ã™ã‚‹.
+$N$å€‹ã®åŒæ™‚ç‹¬ç«‹åˆ†å¸ƒ$x=\{x_1,\ldots,x_N\}$ã¨å¯¾å¿œã™ã‚‹ç›®æ¨™å€¤$t=\{t_1,\ldots,t_N\}$ã‚’ç”¨æ„ã—, å‡ºåŠ›ãƒ¦ãƒ‹ãƒƒãƒˆã®æ´»æ€§åŒ–é–¢æ•°ã‚’æ’ç­‰å†™åƒã¨ã—ã¦
+$y_n=y(x_n,w)$ã¨ã™ã‚‹.
+$$
+p(t\,|\,x,w)=\prod_{n=1}^N \calN(t_n\,|\,y(x_n,w),\beta^{-1}I).
+$$
+å¯¾æ•°ã‚’ã¨ã‚‹ã¨
+\begin{eqnarray}
+\log p(t\,|\,x,w) &=& -\sum_n \left(\frac{1}{2}\trans{(t_n-y_n)}(\beta I)(t_n-y_n)\right)
+\nonumber\\
+&& - \sum_n \frac{K}{2}\log(2\pi) - \sum_n \frac{1}{2}\log|\beta^{-1}I| \nonumber \\
+&=&-\frac{\beta}{2}\sum_n\Norm{t_n-y(x_n,w)}^2-\frac{DN}{2}\log(2\pi)+\frac{NK}{2}\log \beta.
+\label{cp5_1}
+\end{eqnarray}
+ãã†ã™ã‚‹ã¨ã“ã®é–¢æ•°ã®$w$ã«ã¤ã„ã¦ã®æœ€å¤§åŒ–ã¯æœ€åˆã®é …ã®æœ€å°åŒ–, ã¤ã¾ã‚Š
+$$
+E(w)=\frac{1}{2}\sum_n \Norm{y(x_n,w)-t_n}^2
+$$
+ã®æœ€å°åŒ–ã¨åŒç­‰ã§ã‚ã‚‹. æœ€å°å€¤ã‚’ä¸ãˆã‚‹$w(=w_{\text ML})$ã‚’ãªã‚“ã‚‰ã‹ã®æ–¹æ³•ã§æ±‚ã‚ã‚‹.
+ãã®å€¤ã‚’å¼(\ref{cp5_1})ã«ä»£å…¥ã—ã¦$\beta$ã§å¾®åˆ†ã—ã¦0ã¨ãŠãã¨
+$$
+-\frac{1}{2}\sum_n\Norm{t_n-y(x_n,w_{\text ML})}^2+\frac{NK}{2}\frac{1}{\beta}=0.
+$$
+ã‚ˆã£ã¦
+$$
+\frac{1}{\beta_{\text ML}}=\frac{1}{NK}\sum_n\Norm{t_n-y(x_n,w_{\text ML})}^2.
+$$
+\vspace{0pt}
+
+\subsection{å•é¡Œã«å¿œã˜ãŸé–¢æ•°ã®é¸æŠ}
+å›å¸°å•é¡Œã‚’è€ƒãˆã‚‹. $a_k$ã®æ´»æ€§åŒ–é–¢æ•°ã‚’æ’ç­‰å†™åƒã«ã¨ã‚‹.
+ã™ã‚‹ã¨äºŒä¹—å’Œèª¤å·®é–¢æ•°ã®å¾®åˆ†ã¯
 $$
 \diff{a_k}{E}=y_k-t_k.
 $$
-ƒNƒ‰ƒX•ª—Ş–â‘è‚Å‚à“¯—l‚ÌŠÖŒW®‚ª¬‚è—§‚Â‚±‚Æ‚ğŠm”F‚µ‚æ‚¤.
+ã‚¯ãƒ©ã‚¹åˆ†é¡å•é¡Œã§ã‚‚åŒæ§˜ã®é–¢ä¿‚å¼ãŒæˆã‚Šç«‹ã¤ã“ã¨ã‚’ç¢ºèªã—ã‚ˆã†.
 
-–Ú•W•Ï”$t$‚ª$t=1$‚ÅƒNƒ‰ƒX$C_1$, $t=0$‚ÅƒNƒ‰ƒX$C_2$‚ğ•\‚·2ƒNƒ‰ƒX•ª—Ş–â‘è‚ğl‚¦‚é.
-Šˆ«‰»ŠÖ”‚ğƒƒWƒXƒeƒBƒbƒNƒVƒOƒ‚ƒCƒhŠÖ”‚É‘I‚Ô.
+ç›®æ¨™å¤‰æ•°$t$ãŒ$t=1$ã§ã‚¯ãƒ©ã‚¹$C_1$, $t=0$ã§ã‚¯ãƒ©ã‚¹$C_2$ã‚’è¡¨ã™2ã‚¯ãƒ©ã‚¹åˆ†é¡å•é¡Œã‚’è€ƒãˆã‚‹.
+æ´»æ€§åŒ–é–¢æ•°ã‚’ãƒ­ã‚¸ã‚¹ãƒ†ã‚£ãƒƒã‚¯ã‚·ã‚°ãƒ¢ã‚¤ãƒ‰é–¢æ•°ã«é¸ã¶.
 $$
 y=\sigma(a)=\frac{1}{1+\exp(-a)}.
 $$
-‚±‚Ì”÷•ª‚Í$dy/da=\sigma(a)(1-\sigma(a))=y(1-y)$‚Å‚ ‚Á‚½.
-$p(t=1|x)=y(x,w)$, $p(t=0|x)=1-y(x,w)$‚È‚Ì‚Å
+ã“ã®å¾®åˆ†ã¯$dy/da=\sigma(a)(1-\sigma(a))=y(1-y)$ã§ã‚ã£ãŸ.
+$p(t=1\,|\,x)=y(x,w)$, $p(t=0\,|\,x)=1-y(x,w)$ãªã®ã§
 $$
-p(t|x,w)=y(x,w)^t \left(1-y(x,w)\right)^{1-t}.
+p(t\,|\,x,w)=y(x,w)^t \left(1-y(x,w)\right)^{1-t}.
 $$
-‚æ‚Á‚Ä4Í‚Æ“¯—l‚É‚µ‚ÄŒğ·ƒGƒ“ƒgƒƒs[Œë·ŠÖ”‚Í
+ã‚ˆã£ã¦4ç« ã¨åŒæ§˜ã«ã—ã¦äº¤å·®ã‚¨ãƒ³ãƒˆãƒ­ãƒ”ãƒ¼èª¤å·®é–¢æ•°ã¯
 $$
 E(w)=-\sum_{n=1}^N \left(t_n \log y_n + (1-t_n) \log (1-y_n)\right).
 $$
-‚±‚ê‚ğ$a_k$‚Å”÷•ª‚·‚é‚Æ
+ã“ã‚Œã‚’$a_k$ã§å¾®åˆ†ã™ã‚‹ã¨
 \begin{eqnarray*}
 \diff{a_k}{E} &=& -\left(t_k\frac{y_k(1-y_k)}{y_k} + (1-t_k)\frac{-y_k(1-y_k)}{1-y_k}\right)\\
               &=& -(t_k - t_k y_k - y_k + y_k t_k)\\
               &=& y_k - t_k.
 \end{eqnarray*}
-$K$ŒÂ‚Ì2ƒNƒ‰ƒX•ª—Ş–â‘è‚ğl‚¦‚é. ‚»‚ê‚¼‚ê‚ÌŠˆ«‰»ŠÖ”‚ªƒƒWƒXƒeƒBƒbƒNƒVƒOƒ‚ƒCƒhŠÖ”‚Æ‚·‚é.
+$K$å€‹ã®2ã‚¯ãƒ©ã‚¹åˆ†é¡å•é¡Œã‚’è€ƒãˆã‚‹. ãã‚Œãã‚Œã®æ´»æ€§åŒ–é–¢æ•°ãŒãƒ­ã‚¸ã‚¹ãƒ†ã‚£ãƒƒã‚¯ã‚·ã‚°ãƒ¢ã‚¤ãƒ‰é–¢æ•°ã¨ã™ã‚‹.
 $$
-p(t|x,w)=\prod_{k=1}^K y_k(x,w)^{t_k} (1-y_k(x,w))^{1-t_k}.
+p(t\,|\,x,w)=\prod_{k=1}^K y_k(x,w)^{t_k} (1-y_k(x,w))^{1-t_k}.
 $$
-$y_{nk}=y_k(x_n,w)$‚Æ‚µ$n$”Ô–Ú‚Ì“ü—Í$x_n$‚É‘Î‚·‚é–Ú•W•Ï”‚ğ$t_{nk}$‚Å•\‚·.
-$t_{nk}\in\{0,1\}$‚Å‚ ‚è, $\sum_k t_{nk}=1$‚Å‚ ‚é.
+$y_{nk}=y_k(x_n,w)$ã¨ã—$n$ç•ªç›®ã®å…¥åŠ›$x_n$ã«å¯¾ã™ã‚‹ç›®æ¨™å¤‰æ•°ã‚’$t_{nk}$ã§è¡¨ã™.
+$t_{nk}\in\{0,1\}$ã§ã‚ã‚Š, $\sum_k t_{nk}=1$ã§ã‚ã‚‹.
 $$
 E(w)=-\prod_{n,k} (t_{nk} \log y_{nk}+(1-t_{nk})\log (1-y_{nk})).
 $$
-$y_{nj}$‚É‘Î‰‚·‚é$a$‚ğ$a_{nj}$‚Æ‚·‚é‚Æ
+$y_{nj}$ã«å¯¾å¿œã™ã‚‹$a$ã‚’$a_{nj}$ã¨ã™ã‚‹ã¨
 $$
 \diff{a_{nj}}{E(w)}=-(t_{nj}(1-y_{nj})+(1-t_{nj})(-y_{nj}))=y_{nj}-t_{nj}.
 $$
 
-ÅŒã‚É$K$ƒNƒ‰ƒX•ª—Ş–â‘è‚ğl‚¦‚é. “¯—l‚É$n$”Ô–Ú‚Ì“ü—Í$x_n$‚É‘Î‚·‚é–Ú•W•Ï”$t_{nk}$‚Å•\‚·.
-$y_k(x_n,w)$‚ğ$t_{nk}$‚ª1‚Æ‚È‚éŠm—¦$p(t_{nk}=1|x_n)$‚Æ‚İ‚È‚·.
+æœ€å¾Œã«$K$ã‚¯ãƒ©ã‚¹åˆ†é¡å•é¡Œã‚’è€ƒãˆã‚‹. åŒæ§˜ã«$n$ç•ªç›®ã®å…¥åŠ›$x_n$ã«å¯¾ã™ã‚‹ç›®æ¨™å¤‰æ•°$t_{nk}$ã§è¡¨ã™.
+$y_k(x_n,w)$ã‚’$t_{nk}$ãŒ$1$ã¨ãªã‚‹ç¢ºç‡$p(t_{nk}=1\,|\,x_n)$ã¨ã¿ãªã™.
 $$
-E(w) = -\log p(t|x,w)=-\sum_{n,k} t_{nk} \log y_k(x_n,w).
+E(w) = -\log p(t\,|\,x,w)=-\sum_{n,k} t_{nk} \log y_k(x_n,w).
 $$
-Šˆ«‰»ŠÖ”‚Íƒ\ƒtƒgƒ}ƒbƒNƒXŠÖ”‚Å
+æ´»æ€§åŒ–é–¢æ•°ã¯ã‚½ãƒ•ãƒˆãƒãƒƒã‚¯ã‚¹é–¢æ•°ã§
 $$
-y_k(x,w)=\frac{\exp a_k(x,w)}{\sum_j \exp(a_j(x,w))}
+y_k(x,w)=\frac{\exp(a_k(x,w))}{\sum_j \exp(a_j(x,w))}
 $$
-‚Ì‚Æ‚«
+ã®ã¨ã
 $$
 \diff{a_j}{y_k}=y_k(\delta_{kj}-y_j).
 $$
-‚æ‚Á‚Ä$a_{nj}=a_j(x_n,w)$‚Æ‚·‚é‚Æ
+ã‚ˆã£ã¦$a_{nj}=a_j(x_n,w)$ã¨ã™ã‚‹ã¨
 $$
 \dif{a_{nj}}\log y_k(x_n,w)=\frac{1}{y_{nk}}\diff{a_{nj}}{y_{nk}}=\delta_{kj}-y_{nj}.
 $$
-‚æ‚Á‚Ä
+ã‚ˆã£ã¦
 $$
 \diff{a_{nj}}{E}=-\sum_k t_{nk}(\delta_{kj}-y_{nj})=-t_{nj}+\left(\sum_k t_{nk}\right)y_{nj}=y_{nj}-t_{nj}.
 $$
-\section{‹ÇŠ“ñŸ‹ß—}\label{ch5_loc}
-ƒXƒJƒ‰[$x$‚É‚Â‚¢‚Ä‚ÌŠÖ”$E(x)$‚Ì$x=a$‚É‚¨‚¯‚éƒeƒCƒ‰[“WŠJ‚ğ2Ÿ‚Ì€‚Å‘Å‚¿Ø‚Á‚½‹ß—®‚Í
+\vspace{0pt}
+
+\section{å±€æ‰€äºŒæ¬¡è¿‘ä¼¼}\label{ch5_loc}
+ã‚¹ã‚«ãƒ©ãƒ¼$x$ã«ã¤ã„ã¦ã®é–¢æ•°$E(x)$ã®$x=a$ã«ãŠã‘ã‚‹ãƒ†ã‚¤ãƒ©ãƒ¼å±•é–‹ã‚’2æ¬¡ã®é …ã§æ‰“ã¡åˆ‡ã£ãŸè¿‘ä¼¼å¼ã¯
 $$
 E(x) \approx E(a) + E'(a)(x-a) + \half E''(a) (x-a)^2
 $$
-‚Å‚ ‚Á‚½. ‚±‚ê‚ğ$n$•Ï”ŠÖ”$E(x_1, \ldots, x_n)$‚ÉŠg’£‚·‚é.
-$x=\trans{(x_1, \ldots, x_n)}$, $a=\trans{(a_1, \ldots, a_n)}$‚Æ‚¨‚¢‚Ä
+ã§ã‚ã£ãŸ. ã“ã‚Œã‚’$n$å¤‰æ•°é–¢æ•°$E(x_1, \ldots, x_n)$ã«æ‹¡å¼µã™ã‚‹.
+$x=\trans{(x_1, \ldots, x_n)}$, $a=\trans{(a_1, \ldots, a_n)}$ã¨ãŠã„ã¦
 \begin{eqnarray*}
 E(x)
  &\approx& E(a) + \trans{(x-a)}\left(\dif{x_i}E\right) + \half \trans{(x-a)}\left(\ddiff{x_i}{x_j}{E}\right)(x-a)\\
  &=&       E(a) + \trans{(x-a)} (\nabla E) + \half \quads{H(E)}{(x-a)}
 \end{eqnarray*}
-‚Æ‚È‚é.
-$E(x)$‚ª$x=a$‚Ì•t‹ß‚Å‹É¬‚È‚ç‚Î, ‚»‚±‚Å‚ÌŒù”z$\nabla E$‚Í0‚È‚Ì‚Å
+ã¨ãªã‚‹.
+$E(x)$ãŒ$x=a$ã®ä»˜è¿‘ã§æ¥µå°ãªã‚‰ã°, ãã“ã§ã®å‹¾é…$\nabla E$ã¯$0$ãªã®ã§
 $$
 E(x) \approx E(a) + \half \quads{H(E)}{(x-a)}.
 $$
-$H(E)$‚Í‘ÎÌs—ñ‚È‚Ì‚Å\ref{pos_sym_matrix}ß‚Ì‹c˜_‚æ‚è‘ÎŠp‰»‚·‚é‚±‚Æ‚Å
+$H(E)$ã¯å¯¾ç§°è¡Œåˆ—ãªã®ã§\ref{pos_sym_matrix}ç¯€ã®è­°è«–ã‚ˆã‚Šå¯¾è§’åŒ–ã™ã‚‹ã“ã¨ã§
 $$
 E(x) \approx E(a) + \half \sum_i \lambda_i y_i^2
 $$
-‚ÌŒ`‚É‚Å‚«‚é. ‚»‚µ‚Ä$E(x)$‚ª$x=a$‚Ì•t‹ß‚Å‹É¬‚Æ‚È‚é‚Ì‚Í$H(E)>0$i³’è’lj‚Å‚ ‚é‚Æ‚«‚Æ‚í‚©‚é.
+ã®å½¢ã«ã§ãã‚‹. ãã—ã¦$E(x)$ãŒ$x=a$ã®ä»˜è¿‘ã§æ¥µå°ã¨ãªã‚‹ã®ã¯$H(E)>0$ï¼ˆæ­£å®šå€¤ï¼‰ã§ã‚ã‚‹ã¨ãã¨ã‚ã‹ã‚‹.
 
-‚È‚¨, $H(f)=\nabla^2 f = \nabla(\nabla f)$‚Æ‚¢‚¤•\‹L‚ğ‚·‚é‚±‚Æ‚ª‚ ‚é. ”÷•ªì—p‘f$\nabla$‚ğ2‰ñ‚·‚é‚Ì‚Å2æ‚ÌŒ`‚ğ‚µ‚Ä‚¢‚é.
-‚½‚¾$\nabla f$‚ªcƒxƒNƒgƒ‹‚È‚ç‚à‚¤ˆê“x$\nabla$‚ğ‚·‚é‚Æ‚«‚ÍŒ‹‰Ê‚ªs—ñ‚É‚È‚é‚æ‚¤‚É,
-“ü—ÍƒxƒNƒgƒ‹‚Ì“]’u‚ğæ‚Á‚Äì—p‚·‚é‚Æ‚İ‚È‚·.
-$n^2$ŸŒ³‚Ì’·‚¢ƒxƒNƒgƒ‹‚É‚È‚é‚í‚¯‚Å‚Í‚È‚¢.
-\section{Œë·ŠÖ””÷•ª‚Ì•]‰¿}
-—^‚¦‚ç‚ê‚½ƒlƒbƒgƒ[ƒN‚É‘Î‚µ‚ÄŒë·ŠÖ”‚Ì•Ï‰»‚ÌŠ„‡‚ğ’²‚×‚é.
-‚±‚Ìß‚Å‚Í‚Ç‚Ì•Ï”‚ª‚Ç‚Ì•Ï”‚ÉˆË‘¶‚µ‚Ä‚¢‚é‚©‹C‚ğ‚Â‚¯‚Ä”÷•ª‚·‚é•K—v‚ª‚ ‚é.
-Œë·ŠÖ”‚ªŒP—ûW‡‚ÌŠeƒf[ƒ^‚É‘Î‚·‚éŒë·‚Ì˜a‚Å•\‚¹‚é‚Æ‰¼’è‚·‚éF
+ãªãŠ, $H(f)=\nabla^2 f = \nabla(\nabla f)$ã¨ã„ã†è¡¨è¨˜ã‚’ã™ã‚‹ã“ã¨ãŒã‚ã‚‹. å¾®åˆ†ä½œç”¨ç´ $\nabla$ã‚’2å›ã™ã‚‹ã®ã§2ä¹—ã®å½¢ã‚’ã—ã¦ã„ã‚‹.
+ãŸã $\nabla f$ãŒç¸¦ãƒ™ã‚¯ãƒˆãƒ«ãªã‚‰ã‚‚ã†ä¸€åº¦$\nabla$ã‚’ã™ã‚‹ã¨ãã¯çµæœãŒè¡Œåˆ—ã«ãªã‚‹ã‚ˆã†ã«,
+å…¥åŠ›ãƒ™ã‚¯ãƒˆãƒ«ã®è»¢ç½®ã‚’å–ã£ã¦ä½œç”¨ã™ã‚‹ã¨ã¿ãªã™.
+$n^2$æ¬¡å…ƒã®é•·ã„ãƒ™ã‚¯ãƒˆãƒ«ã«ãªã‚‹ã‚ã‘ã§ã¯ãªã„.
+
+\section{èª¤å·®é–¢æ•°å¾®åˆ†ã®è©•ä¾¡}
+ä¸ãˆã‚‰ã‚ŒãŸãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã«å¯¾ã—ã¦èª¤å·®é–¢æ•°ã®å¤‰åŒ–ã®å‰²åˆã‚’èª¿ã¹ã‚‹.
+ã“ã®ç¯€ã§ã¯ã©ã®å¤‰æ•°ãŒã©ã®å¤‰æ•°ã«ä¾å­˜ã—ã¦ã„ã‚‹ã‹æ°—ã‚’ã¤ã‘ã¦å¾®åˆ†ã™ã‚‹å¿…è¦ãŒã‚ã‚‹.
+èª¤å·®é–¢æ•°ãŒè¨“ç·´é›†åˆã®å„ãƒ‡ãƒ¼ã‚¿ã«å¯¾ã™ã‚‹èª¤å·®ã®å’Œã§è¡¨ã›ã‚‹ã¨ä»®å®šã™ã‚‹ï¼š
 $$
 E(w)=\sum_{n=1}^N E_n(w).
 $$
-ˆê”Ê‚ÌƒtƒB[ƒhƒtƒHƒ[ƒhƒlƒbƒgƒ[ƒN‚Å
+ä¸€èˆ¬ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒ•ã‚©ãƒ¯ãƒ¼ãƒ‰ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã§
 \begin{eqnarray}\label{ch5_2}
 a_j=\sum_i w_{ji} z_i, \quad z_j=h(a_j)
 \end{eqnarray}
-‚Æ‚·‚é. “ü—Í$z_i$‚ªo—Íƒ†ƒjƒbƒg$a_j$‚É‰e‹¿‚ğ—^‚¦, ‚»‚Ì$a_j$‚ª”ñüŒ`Šˆ«‰»ŠÖ”$h()$‚ğ’Ê‚µ‚Ä$z_j$‚É‰e‹¿‚ğ—^‚¦‚é.
-‚ ‚é“Á’è‚Ìƒpƒ^[ƒ“$E_n$‚Ìd‚İ$w_{ji}$‚ÉŠÖ‚·‚é”÷•ª‚ğl‚¦‚é.
-ˆÈ‰º, “Á’è‚Ìƒpƒ^[ƒ“‚ğŒÅ’è‚·‚é‚±‚Æ‚Å$E_n$ˆÈŠO‚Ì“Y‚¦š‚Ì$n$‚ğÈ—ª‚·‚é.
-®(\ref{ch5_2})‚Ì‚æ‚¤‚É$E_n$‚Í”ñüŒ`Šˆ«‰»ŠÖ”$h$‚Ì•Ï”$a_j$‚ğ’Ê‚µ‚Ä$w_{ji}$‚ÉˆË‘¶‚µ‚Ä‚¢‚é.
+ã¨ã™ã‚‹. å…¥åŠ›$z_i$ãŒå‡ºåŠ›ãƒ¦ãƒ‹ãƒƒãƒˆ$a_j$ã«å½±éŸ¿ã‚’ä¸ãˆ, ãã®$a_j$ãŒéç·šå½¢æ´»æ€§åŒ–é–¢æ•°$h()$ã‚’é€šã—ã¦$z_j$ã«å½±éŸ¿ã‚’ä¸ãˆã‚‹.
+ã‚ã‚‹ç‰¹å®šã®ãƒ‘ã‚¿ãƒ¼ãƒ³$E_n$ã®é‡ã¿$w_{ji}$ã«é–¢ã™ã‚‹å¾®åˆ†ã‚’è€ƒãˆã‚‹.
+ä»¥ä¸‹, ç‰¹å®šã®ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’å›ºå®šã™ã‚‹ã“ã¨ã§$E_n$ä»¥å¤–ã®æ·»ãˆå­—ã®$n$ã‚’çœç•¥ã™ã‚‹.
+å¼(\ref{ch5_2})ã®ã‚ˆã†ã«$E_n$ã¯éç·šå½¢æ´»æ€§åŒ–é–¢æ•°$h$ã®å¤‰æ•°$a_j$ã‚’é€šã—ã¦$w_{ji}$ã«ä¾å­˜ã—ã¦ã„ã‚‹.
 $$
 \diff{w_{ji}}{E_n}=\diff{a_j}{E_n}\diff{w_{ji}}{a_j}.
 $$
-$a_j$‚Í$w_{ji}$‚ÉŠÖ‚µ‚Ä‚ÍüŒ`‚È‚Ì‚Å
+$a_j$ã¯$w_{ji}$ã«é–¢ã—ã¦ã¯ç·šå½¢ãªã®ã§
 $$
 \diff{w_{ji}}{a_j}=z_i.
 $$
-Œë·‚ÆŒÄ‚Î‚ê‚é‹L†$\delta_j = \partial E_n / \partial a_j$‚ğ“±“ü‚·‚é‚Æ
+èª¤å·®ã¨å‘¼ã°ã‚Œã‚‹è¨˜å·$\delta_j = \partial E_n / \partial a_j$ã‚’å°å…¥ã™ã‚‹ã¨
 $$
 \diff{w_{ji}}{E_n}=\delta_j z_i
 $$
-‚Æ‚©‚¯‚é. $\delta_j$‚Í$h()$‚ª³€˜AŒ‹ŠÖ”‚Ìê‡‚Í\ref{ch5_net}ß‚Å‚Ìl@‚É‚æ‚è
+ã¨æ›¸ã‘ã‚‹. $\delta_j$ã¯$h()$ãŒæ­£æº–é€£çµé–¢æ•°ã®å ´åˆã¯\ref{ch5_net}ç¯€ã§ã®è€ƒå¯Ÿã«ã‚ˆã‚Š
 $$
 \delta_j=\diff{a_j}{E_n}=y_j-t_j
 $$
-‚ÅŒvZ‚Å‚«‚é.
-ƒ†ƒjƒbƒg$j$‚É‚Â‚È‚ª‚Á‚Ä‚¢‚éƒ†ƒjƒbƒg$k$‚ğ’Ê‚µ‚Ä$E_n$‚Ö‚Ì$a_j$‚Ì‰e‹¿‚ª‚ ‚é‚Æl‚¦‚é‚Æ
+ã§è¨ˆç®—ã§ãã‚‹.
+ãƒ¦ãƒ‹ãƒƒãƒˆ$j$ã«ã¤ãªãŒã£ã¦ã„ã‚‹ãƒ¦ãƒ‹ãƒƒãƒˆ$k$ã‚’é€šã—ã¦$E_n$ã¸ã®$a_j$ã®å½±éŸ¿ãŒã‚ã‚‹ã¨è€ƒãˆã‚‹ã¨
 \begin{eqnarray}\label{cp5_3}
 \diff{a_j}{E_n}=\sum_k \diff{a_k}{E_n}\diff{a_j}{a_k}.
 \end{eqnarray}
-‚±‚±‚Å$a_j$‚Æ$a_k$‚Í$z$‚ğŒo—R‚µ‚ÄŠÖŒW‚µ‚Ä‚¢‚é‚Æl‚¦‚Ä‚¢‚é‚Ì‚Å$\partial a_k / \partial a_j=\delta_{jk}$iƒNƒƒlƒbƒJ[‚Ìƒfƒ‹ƒ^j‚É‚Í‚È‚ç‚È‚¢‚±‚Æ‚É’ˆÓ‚·‚é.
-ÀÛ,
+ã“ã“ã§$a_j$ã¨$a_k$ã¯$z$ã‚’çµŒç”±ã—ã¦é–¢ä¿‚ã—ã¦ã„ã‚‹ã¨è€ƒãˆã¦ã„ã‚‹ã®ã§$\partial a_k / \partial a_j=\delta_{jk}$ï¼ˆã‚¯ãƒ­ãƒãƒƒã‚«ãƒ¼ã®ãƒ‡ãƒ«ã‚¿ï¼‰ã«ã¯ãªã‚‰ãªã„ã“ã¨ã«æ³¨æ„ã™ã‚‹ï¼ˆ2å±¤ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã®å ´åˆ$a_j$ã¯å¼(\ref{hat_a})ã§å®šç¾©ã—ãŸ$\hat{a}_j$ã§ã‚ã‚‹ï¼‰ï¼
+å®Ÿéš›,
 $$
 a_k=\sum_i w_{ki} h(a_i)
 $$
-‚æ‚è
+ã‚ˆã‚Š
 $$
 \diff{a_j}{a_k}=w_{kj} h'(a_j).
 $$
-‚±‚ê‚ğ®(\ref{cp5_3})‚É‘ã“ü‚µ‚Ä
+ã“ã‚Œã‚’å¼(\ref{cp5_3})ã«ä»£å…¥ã—ã¦
 $$
 \delta_j=\diff{a_j}{E_n}=\sum_k \delta_k w_{kj} h'(a_j)=h'(a_j)\sum_k w_{kj} \delta_k.
 $$
-\section{ŠOÏ‚É‚æ‚é‹ß—}
+\vspace{0pt}
+
+\section{å¤–ç©ã«ã‚ˆã‚‹è¿‘ä¼¼}
 $$
 E(w)=\half \sum_{n=1}^N \left(y_n-t_n\right)^2
 $$
-‚Ì‚Æ‚«‚ÌƒwƒbƒZs—ñ‚Í
+ã®ã¨ãã®ãƒ˜ãƒƒã‚»è¡Œåˆ—ã¯
 $$
 H=H(E) = \sum_n \outp{(\nabla y_n)} + \sum_n (y_n-t_n)H(y_n).
 $$
-ˆê”Ê‚É‚Í¬—§‚µ‚È‚¢‚ª‚à‚µ‚æ‚­ŒP—û‚³‚ê‚½ó‘Ô‚Å$y_n$‚ª–Ú•W’l$t_n$‚É\•ª‹ß‚¯‚ê‚Î‘æ2€‚ğ–³‹‚Å‚«‚é.
-‚»‚Ìê‡$b_n=\nabla y_n=\nabla a_n$iŠˆ«‰»ŠÖ”‚ªP“™Ê‘œ‚È‚Ì‚Åj‚Æ‚¨‚­‚Æ
+ä¸€èˆ¬ã«ã¯æˆç«‹ã—ãªã„ãŒã‚‚ã—ã‚ˆãè¨“ç·´ã•ã‚ŒãŸçŠ¶æ…‹ã§$y_n$ãŒç›®æ¨™å€¤$t_n$ã«ååˆ†è¿‘ã‘ã‚Œã°ç¬¬2é …ã‚’ç„¡è¦–ã§ãã‚‹.
+ãã®å ´åˆ$b_n=\nabla y_n=\nabla a_n$ï¼ˆæ´»æ€§åŒ–é–¢æ•°ãŒæ’ç­‰å†™åƒãªã®ã§ï¼‰ã¨ãŠãã¨
 $$
 H \approx \sum_n \outp{b_n}.
 $$
-‚±‚ê‚ğLevenberg-Marquardt‹ß—‚Æ‚¢‚¤.
+ã“ã‚Œã‚’Levenberg\ï¼Marquardtè¿‘ä¼¼ã¨ã„ã†.
 $$
 E=\half \iint (y(x,w)-t)^2p(x,t)\,dxdt
 $$
-‚Ì‚Æ‚«‚ÌƒwƒbƒZs—ñ‚ğl‚¦‚Ä‚İ‚é‚Æ
+ã®ã¨ãã®ãƒ˜ãƒƒã‚»è¡Œåˆ—ã‚’è€ƒãˆã¦ã¿ã‚‹ã¨
 $$
 \diff{w_i}{E}=\iint (y-t)\diff{w_i}{y} p(x,t)\,dxdt.
 $$
 \begin{eqnarray*}
-\ddiff{w_i}{w_j}{E}&=&\iint \left( \diff{w_j}{y}\diff{w_i}{y} + (y-t)\ddiff{w_i}{w_j}{y} \right)p(x,t)\,dxdt.\\
- && ip(x,t)=p(t|x)p(x)‚æ‚èj\\
- &=&\int \diff{w_j}{y}\diff{w_i}{y}\left( \int p(t|x)\,dt\right) p(x)\,dx\\
- &+& \int \ddiff{w_i}{w_j}{y}\left(\int (y-t)p(t|x)\,dt\right)p(x)\,dx\\
- && i‘æ1€‚ÌƒJƒbƒR“à‚Í1. \quad ‘æ2€‚Íy(x)=\int t p(t|x)\,dt‚ğg‚¤‚Æ0j\\
+\ddiff{w_i}{w_j}{E}&=&\iint \left( \diff{w_j}{y}\diff{w_i}{y} + (y-t)\ddiff{w_i}{w_j}{y} \right) p(x,t)\,dxdt.\\
+ && ï¼ˆp(x,t)=p(t\,|\,x)\,p(x)ã‚ˆã‚Šï¼‰\\
+ &=&\int \diff{w_j}{y}\diff{w_i}{y}\left( \int p(t\,|\,x)\,dt\right) p(x)\,dx\\
+ &+& \int \ddiff{w_i}{w_j}{y}\left(\int (y-t)\,p(t\,|\,x)\,dt\right) p(x)\,dx\\
+ && ï¼ˆ\text{ç¬¬1é …ã®ã‚«ãƒƒã‚³å†…ã¯}1. \quad \text{ç¬¬2é …ã¯}y(x)=\int t\, p(t\,|\,x)\,dt \text{ã‚’ä½¿ã†ã¨}0ï¼‰\\
  &=&\int \diff{w_j}{y}\diff{w_i}{y}p(x)\,dx.
 \end{eqnarray*}
-ƒƒWƒXƒeƒBƒbƒNƒVƒOƒ‚ƒCƒh‚Ì‚Æ‚«‚Í
+ãƒ­ã‚¸ã‚¹ãƒ†ã‚£ãƒƒã‚¯ã‚·ã‚°ãƒ¢ã‚¤ãƒ‰ã®ã¨ãã¯
 \begin{eqnarray*}
 \nabla E(w)&=&\sum_n \diff{a_n}{E} \nabla a_n=-\sum_n\left(\frac{t_n y_n(1-y_n)}{y_n}-\frac{(1-t_n)y_n (1-y_n)}{1-y_n}\right)\nabla a_n\\
 &=& \sum_n (y_n-t_n)\nabla a_n.
 \end{eqnarray*}
-‚æ‚Á‚Ä$y_n \approx t_n$‚È‚ç
+ã‚ˆã£ã¦$y_n \approx t_n$ãªã‚‰
 \begin{eqnarray*}
 \nabla^2 E(w) &=& \sum_n \diff{a_n}{y_n} \outp{\nabla a_n}+\sum_n (y_n-t_n)\nabla^2 a_n\\
  &\approx& \sum_n y_n(1-y_n) \outp{\nabla a_n}.
 \end{eqnarray*}
+\vspace{0pt}
 
-\section{ƒwƒbƒZs—ñ‚ÌŒµ–§‚È•]‰¿}
-‚±‚Ìß‚ÍŒvZ‚Í“ï‚µ‚­‚Í‚È‚¢‚ª, ‹L†‚ª‚â‚â‚±‚µ‚¢‚Ì‚Å‘‚¢‚Ä‚İ‚é.
-•Ï”‚ÌŠÖŒW®‚Í
-$\hat{a}_j=\sum_i \ww{ji}{1}x_i$, $z_j=h(\hat{a}_j)$, $a_k=\sum_j \ww{kj}{2} z_j$, $y_k=a_k$‚Å‚ ‚é.
-PRML‚Ì$a_j$‚Æ$a_k$‚Íˆá‚¤‘ÎÛ‚Å‚ ‚é‚±‚Æ‚É’ˆÓ‚·‚é. ‚±‚±‚Å‚Í$a_j$‚Ì‘ã‚í‚è‚É$\hat{a}_j$‚ğg‚¤.
+\section{ãƒ˜ãƒƒã‚»è¡Œåˆ—ã®å³å¯†ãªè©•ä¾¡}
+ã“ã®ç¯€ã¯è¨ˆç®—ã¯é›£ã—ãã¯ãªã„ãŒ, è¨˜å·ãŒã‚„ã‚„ã“ã—ã„ã®ã§æ›¸ã„ã¦ã¿ã‚‹.
+å¤‰æ•°ã®é–¢ä¿‚å¼ã¯
+$\hat{a}_j=\sum_i \ww{ji}{1}x_i$, $z_j=h(\hat{a}_j)$, $a_k=\sum_j \ww{kj}{2} z_j$, $y_k=a_k$ã§ã‚ã‚‹.
+PRMLã®$a_j$ã¨$a_k$ã¯é•ã†å¯¾è±¡ã§ã‚ã‚‹ã“ã¨ã«æ³¨æ„ã™ã‚‹. ã“ã“ã§ã¯$a_j$ã®ä»£ã‚ã‚Šã«$\hat{a}_j$ã‚’ä½¿ã†.
 
-“Y‚¦š‚Ì$i$, $i'$‚Í“ü—Í, $j$, $j'$‚Í‰B‚êƒ†ƒjƒbƒg, $k$, $k'$‚Ío—Í‚Å‚ ‚é.
-‚Ü‚½
+æ·»ãˆå­—ã®$i$, $i'$ã¯å…¥åŠ›, $j$, $j'$ã¯éš ã‚Œãƒ¦ãƒ‹ãƒƒãƒˆ, $k$, $k'$ã¯å‡ºåŠ›ã§ã‚ã‚‹.
+ã¾ãŸ
 $$
 \delta_k=\diff{a_k}{E_n}, \quad M_{kk'}=\ddiff{a_k}{a_{k'}}{E_n}
 $$
-‚Æ‚¢‚¤‹L†‚ğ“±“ü‚·‚é.
-$E_n$ˆÈŠO‚Ì“Y‚¦š$n$‚ğÈ—ª‚·‚é.
-\subsection{—¼•û‚Ìd‚İ‚ª‘æ2‘w‚É‚ ‚é}
+ã¨ã„ã†è¨˜å·ã‚’å°å…¥ã™ã‚‹.
+$E_n$ä»¥å¤–ã®æ·»ãˆå­—$n$ã‚’çœç•¥ã™ã‚‹.
+
+\subsection{ä¸¡æ–¹ã®é‡ã¿ãŒç¬¬2å±¤ã«ã‚ã‚‹}
 $$
 \diff{\ww{kj}{2}}{a_k}=z_j, \quad \diff{\ww{kj}{2}}{E_n}=\diff{\ww{kj}{2}}{a_k}\diff{a_k}{E_n}=z_j \delta_k.
 $$
-‚æ‚Á‚Ä
+ã‚ˆã£ã¦
 $$
 \ddiff{\ww{kj}{2}}{\ww{k'j'}{2}}{E_n}=\diff{\ww{k'j'}{2}}{a_k'}\dif{a_{k'}}\left(\diff{\ww{kj}{2}}{E_n}\right)=z_{j'}z_j \diff{a_{k'}}{\delta_k}=z_j z_{j'} M_{kk'}.
 $$
-\subsection{—¼•û‚Ìd‚İ‚ª‘æ1‘w‚É‚ ‚é}
+\vspace{0pt}
+
+\subsection{ä¸¡æ–¹ã®é‡ã¿ãŒç¬¬1å±¤ã«ã‚ã‚‹}
 $$
 \diff{\hat{a}_j}{a_k}=\ww{kj}{2}h'(\hat{a}_j), \quad \diff{\ww{ji}{1}}{\hat{a}_j}=x_i
 $$
-‚æ‚è
-$$
-\diff{\ww{ji}{1}}{E_n}=\diff{\ww{ji}{1}}{\hat{a}_j}\diff{\hat{a}_j}{E_n}=x_i\sum_k \diff{\hat{a}_j}{a_k}\diff{a_k}{E_n}=x_i\sum_k \ww{kj}{2}h'(\hat{a}_j)\delta_k.
-$$
-$$
+ã‚ˆã‚Š
+\begin{eqnarray*}&&
+\diff{\ww{ji}{1}}{E_n}=\diff{\ww{ji}{1}}{\hat{a}_j}\diff{\hat{a}_j}{E_n}=x_i\sum_k \diff{\hat{a}_j}{a_k}\diff{a_k}{E_n}=x_i\sum_k \ww{kj}{2}h'(\hat{a}_j)\delta_k,
+\\&&
 \ddiff{\ww{ji}{1}}{\ww{j'i'}{1}}{E_n}=\diff{\ww{j'i'}{1}}{\hat{a}_{j'}}\dif{\hat{a}_{j'}}\left(\diff{\ww{ji}{1}}{E_n}\right)=x_i x_{i'}\underbrace{\dif{\hat{a}_{j'}}\left(h'(\hat{a}_j)\sum_k \ww{kj}{2}\delta_k \right)}_{=:A}.
-$$
-$j=j'$‚Ì‚Æ‚«
+\end{eqnarray*}
+$j=j'$ã®ã¨ã
 $$
 A=h''(\hat{a}_{j'})\sum_k \ww{kj}{2}\delta_k + B, \quad B:=h'(\hat{a}_j)\dif{\hat{a}_{j'}}\left(\sum_k \ww{kj}{2}\delta_k\right).
 $$
-$j\ne j'$‚Ì‚Æ‚«
+$j\ne j'$ã®ã¨ã
 $$
 B= h'(\hat{a}_j) \sum_{k'} \diff{\hat{a}_j}{a_{k'}}\dif{a_{k'}}\left(\sum_k \ww{kj}{2}\delta_k\right)
  = \sum_{k,k'} h'(\hat{a}_j)h'(\hat{a}_{j'})\ww{k'j'}{2}\ww{kj}{2}M_{kk'}.
 $$
-“ñ‚Â‚ğ‚Ü‚Æ‚ß‚Ä
+äºŒã¤ã‚’ã¾ã¨ã‚ã¦
 $$
 \ddiff{\ww{ji}{1}}{\ww{j'i'}{1}}{E_n}=x_i x_{i'}\left\{h''(\hat{a}_{j'})\delta_{jj'}\sum_k \ww{kj}{2}\delta_k+h'(\hat{a}_j)h'(\hat{a}_{j'})\sum_{k,k'}\ww{kj}{2}\ww{k'j'}{2}M_{kk'}\right\}.
 $$
-$\delta_{jj'}$‚ÍƒNƒƒlƒbƒJ[‚Ìƒfƒ‹ƒ^.
-\subsection{d‚İ‚ª•ÊX‚Ì‘w‚Éˆê‚Â‚¸‚Â‚ ‚é}
+$\delta_{jj'}$ã¯ã‚¯ãƒ­ãƒãƒƒã‚«ãƒ¼ã®ãƒ‡ãƒ«ã‚¿.
+
+\subsection{é‡ã¿ãŒåˆ¥ã€…ã®å±¤ã«ä¸€ã¤ãšã¤ã‚ã‚‹}
 $$
 \diff{\ww{kj'}{2}}{E_n}=z_{j'}\delta_k, \quad \ddiff{\ww{ji}{1}}{\ww{kj'}{2}}{E_n}=\diff{\ww{ji}{1}}{\hat{a}_j} \underbrace{\dif{\hat{a}_j}(z_{j'}\delta_k)}_{=:A}, \quad \diff{\ww{ji}{1}}{\hat{a}_j}=x_i.
 $$
-$j=j'$‚Ì‚Æ‚«
+$j=j'$ã®ã¨ã
 $$
 A=h'(\hat{a}_{j'})\delta_k+B, \quad B:=z_{j'}\diff{\hat{a}_j}{\delta_k}.
 $$
-$j\ne j'$‚Ì‚Æ‚«
+$j\ne j'$ã®ã¨ã
 $$
 B=z_{j'}\sum_{k'} \diff{\hat{a}_j}{a_{k'}}\diff{a_{k'}}{\delta_k}=z_{j'}\sum_{k'} \ww{k'j}{2}h'(\hat{a}_j)M_{kk'}.
 $$
-‚æ‚Á‚Ä
+ã‚ˆã£ã¦
 $$
 \ddiff{\ww{ji}{1}}{\ww{kj'}{2}}{E_n}=x_i h'(\hat{a}_j)\left\{\delta_{jj'}\delta_k+z_{j'}\sum_{k'} \ww{k'j}{2}M_{kk'}\right\}.
 $$
+\vspace{0pt}
 
-\section{ƒwƒbƒZs—ñ‚ÌÏ‚Ì‚‘¬‚ÈŒvZ}
-‰—p–Ê‚ğl‚¦‚é‚ÆÅI“I‚É•K—v‚È‚à‚Ì‚ÍƒwƒbƒZs—ñ$H$‚»‚Ì‚à‚Ì‚Å‚Í‚È‚­‚ ‚éƒxƒNƒgƒ‹$v$‚Æ$H$‚ÌÏ‚Å‚ ‚é‚±‚Æ‚ª‘½‚¢.
-$H$‚ğŒvZ‚¹‚¸’¼Ú$\trans{v}H=\trans{v}\nabla \nabla$‚ğŒvZ‚·‚é‚½‚ß‚É, ¶”¼•ª‚¾‚¯‚ğæ‚èo‚µ‚Ä$\calRR{\cdot}=\trans{v}\nabla$‚Æ‚¢‚¤‹L–@‚ğ“±“ü‚·‚é.
-\ref{ch5_loc}ß‚ÌI‚í‚è‚É‘‚¢‚½‚æ‚¤‚É‚±‚Ì$\nabla$‚Í“ü—Í‚ªcƒxƒNƒgƒ‹‚È‚ç“]’u‚ğæ‚Á‚Ä‚©‚çì—p‚·‚é‚Æ‚İ‚È‚·.
-‚È‚¨, $v$‚ÉˆË‘¶‚·‚é‚à‚Ì‚ğ‚ ‚½‚©‚àˆË‘¶‚µ‚È‚¢‚©‚Ì‚æ‚¤‚É$\calRR{\cdot}$‚Æ‘‚¢‚Ä‚µ‚Ü‚¤‚Ì‚Í‹Ø‚ª‚æ‚¢‚Æ‚Ív‚í‚È‚¢.
+\section{ãƒ˜ãƒƒã‚»è¡Œåˆ—ã®ç©ã®é«˜é€Ÿãªè¨ˆç®—}
+å¿œç”¨é¢ã‚’è€ƒãˆã‚‹ã¨æœ€çµ‚çš„ã«å¿…è¦ãªã‚‚ã®ã¯ãƒ˜ãƒƒã‚»è¡Œåˆ—$H$ãã®ã‚‚ã®ã§ã¯ãªãã‚ã‚‹ãƒ™ã‚¯ãƒˆãƒ«$v$ã¨$H$ã®ç©ã§ã‚ã‚‹ã“ã¨ãŒå¤šã„.
+$H$ã‚’è¨ˆç®—ã›ãšç›´æ¥$\trans{v}H=\trans{v}\nabla \nabla$ã‚’è¨ˆç®—ã™ã‚‹ãŸã‚ã«, å·¦åŠåˆ†ã ã‘ã‚’å–ã‚Šå‡ºã—ã¦$\calRR{\cdot}=\trans{v}\nabla$ã¨ã„ã†è¨˜æ³•ã‚’å°å…¥ã™ã‚‹.
+\ref{ch5_loc}ç¯€ã®çµ‚ã‚ã‚Šã«æ›¸ã„ãŸã‚ˆã†ã«ã“ã®$\nabla$ã¯å…¥åŠ›ãŒç¸¦ãƒ™ã‚¯ãƒˆãƒ«ãªã‚‰è»¢ç½®ã‚’å–ã£ã¦ã‹ã‚‰ä½œç”¨ã™ã‚‹ã¨ã¿ãªã™.
+ãªãŠ, $v$ã«ä¾å­˜ã™ã‚‹ã‚‚ã®ã‚’ã‚ãŸã‹ã‚‚ä¾å­˜ã—ãªã„ã‹ã®ã‚ˆã†ã«$\calRR{\cdot}$ã¨æ›¸ã„ã¦ã—ã¾ã†ã®ã¯ç­‹ãŒã‚ˆã„ã¨ã¯æ€ã‚ãªã„.
 
-ŠÈ’P‚È—á‚ğŒ©‚Ä‚İ‚æ‚¤. 2•Ï”ŠÖ”$y=f(x_1, x_2)$‚É‚Â‚¢‚Ä
+ç°¡å˜ãªä¾‹ã‚’è¦‹ã¦ã¿ã‚ˆã†. 2å¤‰æ•°é–¢æ•°$y=f(x_1, x_2)$ã«ã¤ã„ã¦
 $$
 \calRR{\cdot}=(v_1,v_2)\nabla = (v_1,v_2)\vvec{\dif{x_1}}{\dif{x_2}}.
 $$
-‚æ‚Á‚Ä
+ã‚ˆã£ã¦
 \begin{eqnarray*}
-\calRR{x_1}&=&(v_1,v_2)\vvec{1}{0}=v_1,\\
-\calRR{x_2}&=&(v_1,v_2)\vvec{0}{1}=v_2,
+\calRR{x_1}=(v_1,v_2)\vvec{1}{0}=v_1,\hseq
+\calRR{x_2}=(v_1,v_2)\vvec{0}{1}=v_2.
 \end{eqnarray*}
-‚±‚ê‚ğ, $\calRR{}$‚Í“ü—Í’l‚Ì$x_i$‚ğ‚»‚Ì“Y‚¦š‚É‘Î‰‚·‚é$v_i$‚É’u‚«Š·‚¦‚éì—p‚Æl‚¦‚é‚±‚Æ‚É‚·‚é.
-$\calRR{}$‚Í$x_i$‚É‚Â‚¢‚Ä–¾‚ç‚©‚ÉüŒ`, ‚Â‚Ü‚è
+ã“ã‚Œã‚’, $\calRR{}$ã¯å…¥åŠ›å€¤ã®$x_i$ã‚’ãã®æ·»ãˆå­—ã«å¯¾å¿œã™ã‚‹$v_i$ã«ç½®ãæ›ãˆã‚‹ä½œç”¨ã¨è€ƒãˆã‚‹ã“ã¨ã«ã™ã‚‹.
+$\calRR{}$ã¯$x_i$ã«ã¤ã„ã¦æ˜ã‚‰ã‹ã«ç·šå½¢, ã¤ã¾ã‚Š
 $$
 \calRR{ax_1+bx_2}=a v_1 + b v_2 = a\calRR{x_1}+b\calRR{x_2}.
 $$
 
-‘Oß‚Æ“¯‚¶2‘wƒlƒbƒgƒ[ƒN‚Ål‚¦‚Ä‚İ‚é.
-$a_j=\sum_i \ww{ji}{1}x_i$, $z_j=h(a_j)$, $y_k=\sum_j \ww{kj}{2} z_j$‚Å‚ ‚é.
-$a_k$‚Ì‘ã‚í‚è‚É$y_k$‚ğg‚¤‚Ì‚Å$\hat{a}_j$‚Å‚Í‚È‚­PRML‚Æ“¯‚¶$a_j$‚É‚·‚é.
-PRML‚Å‚Í$w_{ji}$‚ÌŒ¨‚Ì“Y‚¦š‚ğÈ—ª‚µ‚Ä‚¢‚é‚ª”O‚Ì‚½‚ß‚±‚±‚Å‚Í‚Â‚¯‚Ä‚¨‚­.
+å‰ç¯€ã¨åŒã˜2å±¤ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã§è€ƒãˆã¦ã¿ã‚‹.
+$a_j=\sum_i \ww{ji}{1}x_i$, $z_j=h(a_j)$, $y_k=\sum_j \ww{kj}{2} z_j$ã§ã‚ã‚‹.
+$a_k$ã®ä»£ã‚ã‚Šã«$y_k$ã‚’ä½¿ã†ã®ã§$\hat{a}_j$ã§ã¯ãªãPRMLã¨åŒã˜$a_j$ã«ã™ã‚‹.
+PRMLã§ã¯$w_{ji}$ã®è‚©ã®æ·»ãˆå­—ã‚’çœç•¥ã—ã¦ã„ã‚‹ãŒå¿µã®ãŸã‚ã“ã“ã§ã¯ã¤ã‘ã¦ãŠã.
 
-$\ww{ji}{1}$‚É‘Î‰‚·‚é’l‚ğ$v_{ji}$‚Æ‚·‚é‚Æ$\ww{ji}{1}$‚ÌüŒ`˜a‚Å‚ ‚é$a_j$‚É‚Â‚¢‚Ä
-$$
-\calRR{a_j} =\sum_i x_i \calRR{\ww{ji}{1}} 	= \sum_i v_{ji} x_i.
-$$
-$$
-\calRR{z_j}=\trans{v}\nabla \left(\sum_j \ww{ji}{1} h(a_j)\right)=\trans{v}\left(\diff{a_j}{h(a_j)} \nabla a_j\right)=h'(a_j)\calRR{a_j}.
-$$
-\begin{eqnarray*}
+$\ww{ji}{1}$ã«å¯¾å¿œã™ã‚‹å€¤ã‚’$v_{ji}$ã¨ã™ã‚‹ã¨$\ww{ji}{1}$ã®ç·šå½¢å’Œã§ã‚ã‚‹$a_j$ã«ã¤ã„ã¦
+\begin{eqnarray*}&&
+\calRR{a_j} = \sum_i x_i \calRR{\ww{ji}{1}} = \sum_i v_{ji} x_i,
+\\&&
+\calRR{z_j} = \trans{v}\nabla \left(\sum_j \ww{ji}{1} h(a_j)\right)
+ = \trans{v}\left(\diff{a_j}{h(a_j)} \nabla a_j\right)=h'(a_j)\calRR{a_j},
+\\&&
 \calRR{y_k}
- &=&\trans{v^{(2)}}\left(\nabla \left(\sum_j \ww{kj}{2}z_j\right)\right)=\trans{v^{(2)}}\left(\sum_j \left(\nabla \ww{kj}{2}\right)z_j+\sum_j \ww{kj}{2}\nabla z_j\right)\\
- &=&\sum_j v_{kj}^{(2)} z_j+\sum_j\ww{kj}{2}\calRR{z_j}.
+ = \trans{v^{(2)}{}}\left(\nabla \left(\sum_j \ww{kj}{2}z_j\right)\right)
+ = \trans{v^{(2)}{}}\left(\sum_j \left(
+     \nabla \ww{kj}{2}\right)z_j+\sum_j \ww{kj}{2}\nabla z_j
+   \right)
+\\&&\phantom{\calRR{y_k}}
+ = \sum_j v_{kj}^{(2)} z_j+\sum_j\ww{kj}{2}\calRR{z_j}.
 \end{eqnarray*}
-‚È‚ñ‚Æ‚È‚­ƒ‹[ƒ‹‚ªŒ©‚¦‚Ä‚«‚½‚Å‚ ‚ë‚¤.
-$\calRR{\cdot}$‚Í$\calRR{w}=v$‚Æ‚¢‚¤‹L†‚Ì’u‚«Š·‚¦ˆÈŠO‚ÍÏ‚â‡¬ŠÖ”‚Ì”÷•ª‚Ìƒ‹[ƒ‹‚ÌŒ`‚É]‚Á‚Ä‚¢‚éi‚à‚Æ‚à‚Æ”÷•ªì—p‘f‚ğ—p‚¢‚Ä’è‹`‚µ‚Ä‚¢‚é‚Ì‚Å“–‘R‚Å‚Í‚ ‚é‚ªj.
+ãªã‚“ã¨ãªããƒ«ãƒ¼ãƒ«ãŒè¦‹ãˆã¦ããŸã§ã‚ã‚ã†.
+$\calRR{\cdot}$ã¯$\calRR{w}=v$ã¨ã„ã†è¨˜å·ã®ç½®ãæ›ãˆä»¥å¤–ã¯ç©ã‚„åˆæˆé–¢æ•°ã®å¾®åˆ†ã®ãƒ«ãƒ¼ãƒ«ã®å½¢ã«å¾“ã£ã¦ã„ã‚‹ï¼ˆã‚‚ã¨ã‚‚ã¨å¾®åˆ†ä½œç”¨ç´ ã‚’ç”¨ã„ã¦å®šç¾©ã—ã¦ã„ã‚‹ã®ã§å½“ç„¶ã§ã¯ã‚ã‚‹ãŒï¼‰ï¼
 
-‹t“`”d‚Ì®F
-\begin{eqnarray*}
-\deltak&=&y_k-t_k,\\
-\deltaj&=&h'(a_j)\sum_k\ww{kj}{2}\deltak
+é€†ä¼æ’­ã®å¼ï¼š
+\begin{eqnarray*}&&
+\deltak = y_k-t_k,\hseq
+\deltaj = h'(a_j)\sum_k\ww{kj}{2}\deltak
 \end{eqnarray*}
-‚Ål‚¦‚Ä‚İ‚é‚Æ
-$$
-\calRR{\deltak}=\calRR{y_k}.
-$$
-$$
+%\pagebreak[1]%
+ã§è€ƒãˆã¦ã¿ã‚‹ã¨
+\begin{eqnarray*}&&
+\calRR{\deltak}=\calRR{y_k},
+\\&&
 \calRR{\deltaj}
- =h''(a_j)\calRR{a_j}\left(\sum_k \ww{kj}{2}\deltak \right)+h'(a_j)\left(\sum_k v_{kj}^{(2)} \deltak + \sum_k \ww{kj}{2} \calRR{\deltak}\right).
-$$
-Œë·‚Ì”÷•ª‚Ì®:
-\begin{eqnarray*}
-\diff{\ww{kj}{2}}{E}&=&\deltak z_j.\\
-\diff{\ww{jk}{1}}{E}&=&\deltaj x_i.
+ = h''(a_j)\calRR{a_j} \left( \sum_k \ww{kj}{2}\deltak \right)
+   + h'(a_j)\left(
+       \sum_k v_{kj}^{(2)} \deltak + \sum_k \ww{kj}{2} \calRR{\deltak}
+     \right)\!.
 \end{eqnarray*}
-‚æ‚è
-\begin{eqnarray*}
-\calRR{\diff{\ww{kj}{2}}{E}}&=&\calRR{\deltak}z_j+\deltak \calRR{z_j}.\\
-\calRR{\diff{\ww{jk}{1}}{E}}&=&x_i\calRR{\deltaj}.
+èª¤å·®ã®å¾®åˆ†ã®å¼:
+\begin{eqnarray*}&&
+\diff{\ww{kj}{2}}{E} = \deltak z_j,\hseq
+\diff{\ww{jk}{1}}{E} = \deltaj x_i.
 \end{eqnarray*}
+ã‚ˆã‚Š
+\begin{eqnarray*}&&
+\calRR{\diff{\ww{kj}{2}}{E}} = \calRR{\deltak}z_j+\deltak \calRR{z_j},\hseq
+\calRR{\diff{\ww{jk}{1}}{E}} = x_i\calRR{\deltaj}.
+\end{eqnarray*}
+\vspace{0pt}
 
-\section{ƒ\ƒtƒgd‚İ‹¤—L}
-ƒlƒbƒgƒ[ƒN‚Ì, ‚ ‚éƒOƒ‹[ƒv‚É‘®‚·‚éd‚İ‚ğ“™‚µ‚­‚·‚é‚±‚Æ‚Å•¡G‚³‚ğŒ¸‚ç‚·è–@‚ª‚ ‚é.
-‚µ‚©‚µd‚İ‚ª“™‚µ‚¢‚Æ‚¢‚¤§–ñ‚ÍŒµ‚µ‚¢.
-ƒ\ƒtƒgd‚İ‹¤—L‚Í‚»‚Ì§–ñ‚ğŠO‚µ, ‘ã‚í‚è‚É³‘¥‰»€‚ğ’Ç‰Á‚·‚é‚±‚Æ‚Å,
-‚ ‚éƒOƒ‹[ƒv‚É‘®‚·‚éd‚İ‚ª—‚½’l‚ğ‚Æ‚ê‚é‚æ‚¤‚É‚·‚éè–@‚Å‚ ‚é.
-$\pi_k$‚ğ¬‡ŒW”‚Æ‚µ‚ÄŠm—¦–§“xŠÖ”‚Í
+\section{ã‚½ãƒ•ãƒˆé‡ã¿å…±æœ‰}
+ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã®, ã‚ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã«å±ã™ã‚‹é‡ã¿ã‚’ç­‰ã—ãã™ã‚‹ã“ã¨ã§è¤‡é›‘ã•ã‚’æ¸›ã‚‰ã™æ‰‹æ³•ãŒã‚ã‚‹.
+ã—ã‹ã—é‡ã¿ãŒç­‰ã—ã„ã¨ã„ã†åˆ¶ç´„ã¯å³ã—ã„.
+ã‚½ãƒ•ãƒˆé‡ã¿å…±æœ‰ã¯ãã®åˆ¶ç´„ã‚’å¤–ã—, ä»£ã‚ã‚Šã«æ­£å‰‡åŒ–é …ã‚’è¿½åŠ ã™ã‚‹ã“ã¨ã§,
+ã‚ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã«å±ã™ã‚‹é‡ã¿ãŒä¼¼ãŸå€¤ã‚’ã¨ã‚Œã‚‹ã‚ˆã†ã«ã™ã‚‹æ‰‹æ³•ã§ã‚ã‚‹.
+$\pi_k$ã‚’æ··åˆä¿‚æ•°ã¨ã—ã¦ç¢ºç‡å¯†åº¦é–¢æ•°ã¯
 $$
-p(w)=\prod_i p(w_i), \quad p(w_i)=\sum_{k=1}^M \pi_k \calN(w_i|\mu_k,\sigma_k^2).
+p(w)=\prod_i p(w_i), \quad p(w_i)=\sum_{k=1}^M \pi_k\, \calN(w_i\,|\,\mu_k,\sigma_k^2).
 $$
-$p(w_i)$‚ªŠm—¦•ª•z‚È‚Ì‚Å¬‡ŒW”‚Í$\sum_k \pi_k=1$, $0 \le \pi_k \le 1$‚ğ–‚½‚·.
-2æƒmƒ‹ƒ€‚Ì³‹K‰»€‚Í•½‹Ï0‚ÌƒKƒEƒX–‘O•ª•z‚Ì•‰‚Ì‘Î”–Ş“xŠÖ”‚Æ‚İ‚È‚¹‚½.
-‚±‚±‚Å‚Í•¡”ŒÂ‚Ìd‚İ‚É‘Î‰‚³‚¹‚é‚½‚ß¬‡ƒKƒEƒX•ª•z‚ğ—p‚¢‚Ä‚İ‚é.
+$p(w_i)$ãŒç¢ºç‡åˆ†å¸ƒãªã®ã§æ··åˆä¿‚æ•°ã¯$\sum_k \pi_k=1$, $0 \le \pi_k \le 1$ã‚’æº€ãŸã™.
+2ä¹—ãƒãƒ«ãƒ ã®æ­£è¦åŒ–é …ã¯å¹³å‡$0$ã®ã‚¬ã‚¦ã‚¹äº‹å‰åˆ†å¸ƒã®è² ã®å¯¾æ•°å°¤åº¦é–¢æ•°ã¨ã¿ãªã›ãŸ.
+ã“ã“ã§ã¯è¤‡æ•°å€‹ã®é‡ã¿ã«å¯¾å¿œã•ã›ã‚‹ãŸã‚æ··åˆã‚¬ã‚¦ã‚¹åˆ†å¸ƒã‚’ç”¨ã„ã¦ã¿ã‚‹.
 $$
-\Omega(w)=-\log p(w)=-\sum_i\log\left(\sum_{k=1}^M \pi_k \calN(w_i|\mu_k,\sigma_k^2)\right).
+\Omega(w)=-\log p(w)=-\sum_i\log\left(\sum_{k=1}^M \pi_k\, \calN(w_i\,|\,\mu_k,\sigma_k^2)\right).
 $$
-Å¬‰»‚µ‚½‚¢–Ú“IŠÖ”‚ÍŒë·ŠÖ”‚Æ³‘¥‰»€‚Ì˜a‚Å
+æœ€å°åŒ–ã—ãŸã„ç›®çš„é–¢æ•°ã¯èª¤å·®é–¢æ•°ã¨æ­£å‰‡åŒ–é …ã®å’Œã§
 $$
 \tilde{E}(w)=E(w)+\Omega(w).
 $$
-$p(j)=\pi_j$‚Æ‚¨‚¢‚Ä•‰’S—¦‚ğ“±“ü‚·‚é.
+$p(j)=\pi_j$ã¨ãŠã„ã¦è² æ‹…ç‡ã‚’å°å…¥ã™ã‚‹.
 $$
 \gamma_j(w_i)
- =p(j|w_i)
- =\frac{p(j)p(w_i|j)}{p(w_i)}=
- \frac{\pi_j \calN(w_i|\mu_j,\sigma_j^2)}{p(w_i)}.
+ =p(j\,|\,w_i)
+ =\frac{p(j)\,p(w_i\,|\,j)}{p(w_i)}=
+ \frac{\pi_j\, \calN(w_i\,|\,\mu_j,\sigma_j^2)}{p(w_i)}.
 $$
-³‹K•ª•z‚Ì”÷•ª
+æ­£è¦åˆ†å¸ƒã®å¾®åˆ†
 \begin{eqnarray*}
-\dif{x}\calN(x|\mu,\sigma)&=&\calN(x|\mu,\sigma)\left(-\frac{x-\mu}{\sigma^2}\right),\\
-\dif{\mu}\calN(x|\mu,\sigma)&=&\calN(x|\mu,\sigma)\left(\frac{x-\mu}{\sigma^2}\right)\\
-\dif{\sigma}\calN(x|\mu,\sigma)&=&\calN(x|\mu,\sigma)\left(-\frac{1}{\sigma}+\frac{(x-\mu)^2}{\sigma^3}\right)
+\dif{x}\calN(x\,|\,\mu,\sigma)&=&\calN(x\,|\,\mu,\sigma)\left(-\frac{x-\mu}{\sigma^2}\right),\\
+\dif{\mu}\calN(x\,|\,\mu,\sigma)&=&\calN(x\,|\,\mu,\sigma)\left(\frac{x-\mu}{\sigma^2}\right),\\
+\dif{\sigma}\calN(x\,|\,\mu,\sigma)&=&\calN(x\,|\,\mu,\sigma)\left(-\frac{1}{\sigma}+\frac{(x-\mu)^2}{\sigma^3}\right)
 \end{eqnarray*}
-‚ğv‚¢o‚µ‚Ä‚¨‚­.
-$\log p(w_i)$‚ğ$w_i$‚Å”÷•ª‚·‚é‚Æ
+ã‚’æ€ã„å‡ºã—ã¦ãŠã.
+$\log p(w_i)$ã‚’$w_i$ã§å¾®åˆ†ã™ã‚‹ã¨
 \begin{eqnarray*}
 \dif{w_i}\log p(w_i)
- &=& \frac{1}{p(w_i)} \left(\sum_k \pi_k \dif{w_i} \calN(w_i|\mu_k,\sigma_k^2)\right)\\
- &=& \frac{1}{p(w_i)} \left(\sum_k \pi_k \calN(w_i|\mu_k,\sigma_k^2) \left(-\frac{w_i-\mu_k}{\sigma_k^2}\right)\right)\\
- &=&-\sum_k \frac{\pi_k \calN(w_i|\mu_k,\sigma_k)}{p(w_i)}\frac{w_i-\mu_k}{\sigma_k^2}\\
+ &=& \frac{1}{p(w_i)} \left(\sum_k \pi_k \dif{w_i} \calN(w_i\,|\,\mu_k,\sigma_k^2)\right)\\
+ &=& \frac{1}{p(w_i)} \left(\sum_k \pi_k\, \calN(w_i\,|\,\mu_k,\sigma_k^2) \left(-\frac{w_i-\mu_k}{\sigma_k^2}\right)\right)\\
+ &=&-\sum_k \frac{\pi_k\, \calN(w_i\,|\,\mu_k,\sigma_k)}{p(w_i)}\frac{w_i-\mu_k}{\sigma_k^2}\\
  &=&-\sum_k \gamma_k(w_i)\frac{w_i-\mu_k}{\sigma_k^2}.
 \end{eqnarray*}
-‚æ‚Á‚Ä
+ã‚ˆã£ã¦
 $$
 \diff{w_i}{\tilde{E}}=\diff{w_i}{E}+\sum_k \gamma_k(w_i)\frac{w_i-\mu_k}{\sigma_k^2}.
 $$
-“¯—l‚É
+åŒæ§˜ã«
 \begin{eqnarray*}
 \dif{\mu_k}\log p(w)
  &=&\sum_j \dif{\mu_k}\log p(w_j)
-  =\sum_j \frac{\pi_k \calN(w_j|\mu_k,\sigma_k^2)}{p(w_j)}\frac{w_j-\mu_k}{\sigma_k^2}\\
+  =\sum_j \frac{\pi_k\, \calN(w_j\,|\,\mu_k,\sigma_k^2)}{p(w_j)}\frac{w_j-\mu_k}{\sigma_k^2}\\
  &=&\sum_j \gamma_k(w_j)\frac{w_j-\mu_k}{\sigma_k^2}.
 \end{eqnarray*}
-‚æ‚Á‚Ä
+ã‚ˆã£ã¦
 $$
 \diff{\mu_k}{\tilde{E}}=\sum_j \gamma_k(w_j)\frac{\mu_k-w_j}{\sigma_k^2}.
 $$
 \begin{eqnarray*}
 \diff{\sigma_k}{\tilde{E}}
  &=&-\sum_j \dif{\sigma_k}\log p(w_j)
-  =-\sum_j \frac{\pi_k \calN(w_j|\mu_k,\sigma_k^2)}{p(w_j)}
+  =-\sum_j \frac{\pi_k\, \calN(w_j\,|\,\mu_k,\sigma_k^2)}{p(w_j)}
     \left(-\frac{1}{\sigma_k}+\frac{(w_j-\mu_k)^2}{\sigma_k^3}\right)\\
  &=&\sum_j \gamma_k(w_j)\left(\frac{1}{\sigma_k}-\frac{(w_j-\mu_k)^2}{\sigma_k^3}\right).
 \end{eqnarray*}
 
-$\pi_j$‚ÉŠÖ‚·‚é§–ñ‚æ‚è•â••Ï”$\eta_j$‚ğ—p‚¢‚Ä
+$\pi_j$ã«é–¢ã™ã‚‹åˆ¶ç´„ã‚ˆã‚Šè£œåŠ©å¤‰æ•°$\eta_j$ã‚’ç”¨ã„ã¦
 $$
 \pi_j=\frac{\exp(\eta_j)}{\sum_k \exp(\eta_k)}
 $$
-‚Æ•\‚·‚Æ\ref{takurasu}ß®(\ref{ch4_mclass})‚æ‚è
+ã¨è¡¨ã™ã¨\ref{takurasu}ç¯€å¼(\ref{ch4_mclass})ã‚ˆã‚Š
 $$
 \diff{\eta_j}{\pi_k}=\pi_k(\delta_{kj}-\pi_j).
 $$
-‚æ‚Á‚Ä
+ã‚ˆã£ã¦
 \begin{eqnarray*}
 \diff{\eta_j}{\tilde{E}}
- &=& -\sum_i \dif{\eta_j} \log p(w_i)=-\sum_i\dif{\eta_j} \log \left(\sum_k \pi_k \calN(w_i|\mu_k,\sigma_k^2)\right)\\
- &=& -\sum_{i,k} \frac{\calN(w_i|\mu_k,\sigma_k^2)}{p(w_i)}\diff{\eta_j}{\pi_k}\\
- &=& -\sum_{i,k} \frac{\calN(w_i|\mu_k,\sigma_k^2)}{p(w_i)}\pi_k(\delta_{kj}-\pi_j)\\
- &=& -\sum_i \left(\frac{\pi_j \calN(w_i|\mu_j,\sigma_j^2)}{p(w_i)}
-  - \frac{\pi_j \sum_k \pi_k \calN(w_i|\mu_k,\sigma_k^2)}{p(w_i)}\right)\\
+ &=& -\sum_i \dif{\eta_j} \log p(w_i)=-\sum_i\dif{\eta_j} \log \left(\sum_k \pi_k\, \calN(w_i\,|\,\mu_k,\sigma_k^2)\right)\\
+ &=& -\sum_{i,k} \frac{\calN(w_i\,|\,\mu_k,\sigma_k^2)}{p(w_i)}\diff{\eta_j}{\pi_k}
+  =  -\sum_{i,k} \frac{\calN(w_i\,|\,\mu_k,\sigma_k^2)}{p(w_i)}\pi_k(\delta_{kj}-\pi_j)\\
+ &=& -\sum_i \left(\frac{\pi_j\, \calN(w_i\,|\,\mu_j,\sigma_j^2)}{p(w_i)}
+     - \frac{\pi_j \sum_k \pi_k\, \calN(w_i\,|\,\mu_k,\sigma_k^2)}{p(w_i)}\right)\\
  &=& -\sum_i (\gamma_j(w_i) - \pi_j) = \sum_i (\pi_j - \gamma_j(w_i)).
 \end{eqnarray*}
+\vspace{0pt}
 
-\section{¬‡–§“xƒlƒbƒgƒ[ƒN}
+\section{æ··åˆå¯†åº¦ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯}
 $$
-p(t|x)=\sum_{k=1}^K \pi_k(x)\calN(t|\mu_k(x),\sigma_k^2(x)I)
+p(t\,|\,x)=\sum_{k=1}^K \pi_k(x)\,\calN(t\,|\,\mu_k(x),\sigma_k^2(x)\,I)
 $$
-‚Æ‚¢‚¤•ª•z‚Ìƒ‚ƒfƒ‹‚ğl‚¦‚é.
-‚±‚Ìƒ‚ƒfƒ‹‚Ìƒpƒ‰ƒ[ƒ^‚ğ, $x$‚ğ“ü—Í‚Æ‚µ‚Ä‚¦‚ç‚ê‚éƒjƒ…[ƒ‰ƒ‹ƒlƒbƒgƒ[ƒN‚Ìo—Í‚Æ‚È‚é‚æ‚¤‚É‚Æ‚é‚±‚Æ‚Å„˜_‚·‚é.
-‘Oß‚Æ“¯—l$\sum_k \pi_k(x)=1$, $0 \le \pi_k(x) \le 1$‚Æ‚¢‚¤§–ñ‚ª‚ ‚é‚Ì‚Å•Ï”$a_l^\pi$‚ğ“±“ü‚µ
+ã¨ã„ã†åˆ†å¸ƒã®ãƒ¢ãƒ‡ãƒ«ã‚’è€ƒãˆã‚‹.
+ã“ã®ãƒ¢ãƒ‡ãƒ«ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’, $x$ã‚’å…¥åŠ›ã¨ã—ã¦ãˆã‚‰ã‚Œã‚‹ãƒ‹ãƒ¥ãƒ¼ãƒ©ãƒ«ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã®å‡ºåŠ›ã¨ãªã‚‹ã‚ˆã†ã«ã¨ã‚‹ã“ã¨ã§æ¨è«–ã™ã‚‹.
+å‰ç¯€ã¨åŒæ§˜$\sum_k \pi_k(x)=1$, $0 \le \pi_k(x) \le 1$ã¨ã„ã†åˆ¶ç´„ãŒã‚ã‚‹ã®ã§å¤‰æ•°$a_l^\pi$ã‚’å°å…¥ã—
 $$
 \pi_k(x)=\frac{\exp(a_k^\pi)}{\sum_l \exp(a_l^\pi)}
 $$
-‚Æ‚·‚é. •ªU‚Í0ˆÈã‚Æ‚¢‚¤§–ñ‚ª‚ ‚é‚Ì‚Å•Ï”$a_k^\sigma$‚ğ“±“ü‚µ
+ã¨ã™ã‚‹. åˆ†æ•£ã¯$0$ä»¥ä¸Šã¨ã„ã†åˆ¶ç´„ãŒã‚ã‚‹ã®ã§å¤‰æ•°$a_k^\sigma$ã‚’å°å…¥ã—
 $$
 \sigma_k(x)=\exp(a_k^\sigma)
 $$
-‚Æ‚·‚é. •½‹Ï‚Í“Á‚É§–ñ‚ª‚È‚¢‚Ì‚Å
+ã¨ã™ã‚‹. å¹³å‡ã¯ç‰¹ã«åˆ¶ç´„ãŒãªã„ã®ã§
 $$
 \mu_{kj}(x)=a_{kj}^\mu
 $$
-‚Æ‚·‚é.
+ã¨ã™ã‚‹.
 $$
-\calN_{nk}=\calN(t_n|\mu_k(x_n), \sigma_k^2(x_n)I)
+\calN_{nk}=\calN(t_n\,|\,\mu_k(x_n), \sigma_k^2(x_n)I)
 $$
-‚Æ‚¨‚­‚Æƒf[ƒ^‚ª“Æ—§‚Ìê‡, Œë·ŠÖ”‚Í
+ã¨ãŠãã¨ãƒ‡ãƒ¼ã‚¿ãŒç‹¬ç«‹ã®å ´åˆ, èª¤å·®é–¢æ•°ã¯
 $$
-E(w)=-\sum_n \log \left(\sum_k \pi_k(x_n) \calN_{nk} \right).
+E(w)=-\sum_n \log \left(\sum_k \pi_k(x_n)\,\calN_{nk} \right).
 $$
-‘Oß‚Æ“¯—l$p(k|x)=\pi_k(x)$‚Æ‚¨‚¢‚Ä•‰’S—¦‚ğ
+å‰ç¯€ã¨åŒæ§˜$p(k\,|\,x)=\pi_k(x)$ã¨ãŠã„ã¦è² æ‹…ç‡ã‚’
 $$
-\gamma_{nk}(t_n|x_n)=p(k|t_n,x_n)=\frac{p(k|x_n)p(t_n|k)}{p(t_n|x_n)}=\frac{\pi_k \calN_{nk}}{\sum_l \pi_l \calN_{nl}}
+\gamma_{nk}(t_n\,|\,x_n)=p(k\,|\,t_n,x_n)=\frac{p(k\,|\,x_n)\,p(t_n\,|\,k)}{p(t_n\,|\,x_n)}=\frac{\pi_k\, \calN_{nk}}{\sum_l \pi_l\,\calN_{nl}}
 $$
-‚Æ‚·‚é.
+ã¨ã™ã‚‹.
 $$
 \diff{a_k^\pi}{\pi_j}=\pi_j(\delta_{kj}-\pi_k)
 $$
-‚æ‚è
+ã‚ˆã‚Š
 $$
 \diff{a_k^\pi}{E_n}
- =-\frac{\sum_j \pi_j(\delta_{kj}-\pi_k)\calN_{nj}}{\sum_j \pi_j \calN_{nj}}
+ =-\frac{\sum_j \pi_j(\delta_{kj}-\pi_k)\calN_{nj}}{\sum_j \pi_j\, \calN_{nj}}
  =-(\gamma_{nk}-\pi_k)
  =\pi_k - \gamma_{nk}.
 $$
 $$
-\calN(t|\mu,\sigma^2 I) =\frac{1}{(2\pi)^{L/2}}\frac{1}{\sigma^L}\exp\left(-\frac{1}{2\sigma^2}\sum_{l=1}^L(t_l-\mu_l)^2\right)
+\calN(t\,|\,\mu,\sigma^2 I) =\frac{1}{(2\pi)^{L/2}}\frac{1}{\sigma^L}\exp\left(-\frac{1}{2\sigma^2}\sum_{l=1}^L(t_l-\mu_l)^2\right)
 $$
-‚È‚Ì‚Å
+ãªã®ã§
 $$
-\dif{\mu_l}\calN(t|\mu,\sigma^2 I)
- = \calN(t|\mu,\sigma^2 I)\left(-\frac{t_l-\mu_l}{\sigma^2}\right).
+\dif{\mu_l}\calN(t\,|\,\mu,\sigma^2 I)
+ = \calN(t\,|\,\mu,\sigma^2 I)\left(-\frac{t_l-\mu_l}{\sigma^2}\right).
 $$
-‚æ‚Á‚Ä
+ã‚ˆã£ã¦
 $$
 \diff{a_{kl}^\mu}{E_n}
- =-\frac{\calN_{nk}}{\sum_j \pi_j \calN_{nj}}\frac{t_{nl}-\mu_{kl}}{\sigma_k^2}
+ =-\frac{\calN_{nk}}{\sum_j \pi_j\, \calN_{nj}}\frac{t_{nl}-\mu_{kl}}{\sigma_k^2}
  =\gamma_{nk}\left(\frac{\mu_{kl}-t_{nl}}{\sigma_k^2}\right).
 $$
-“¯—l‚É
+åŒæ§˜ã«
 $$
-\dif{\sigma}\calN(t|\mu,\sigma^2 I)
- = \calN(t|\mu,\sigma^2 I)\left(-\frac{L}{\sigma} + \frac{||t-\mu||^2}{\sigma^3}\right)
+\dif{\sigma}\calN(t\,|\,\mu,\sigma^2 I)
+ = \calN(t\,|\,\mu,\sigma^2 I)\left(-\frac{L}{\sigma} + \frac{\Norm{t-\mu}^2}{\sigma^3}\right)
 $$
-‚æ‚è
+ã‚ˆã‚Š
 $$
-\dif{a_{kl}^\mu}\calN_{nj}=\delta_{jk}\calN_{nj}\left(\frac{t_{nl}-\mu_{kl}}{\sigma_k^2}\right).
+\dif{a_{kl}^\mu}\calN_{nj}=\delta_{jk}\,\calN_{nj}\left(\frac{t_{nl}-\mu_{kl}}{\sigma_k^2}\right).
 $$
-‚æ‚Á‚Ä
+ã‚ˆã£ã¦
 $$
 \diff{a_k^\sigma}{\calN_{nk}}
  =\diff{a_k^\sigma}{\sigma_k}\diff{\sigma_k}{\calN_{nk}}
- =\sigma_k \calN_{nk}\left(-\frac{L}{\sigma_k} + \frac{||t_n-\mu_k||^2}{\sigma_k^3}\right)
- =\calN_{nk}\left(-L + \frac{||t_n-\mu_k||^2}{\sigma_k^2}\right).
+ =\sigma_k\, \calN_{nk}\left(-\frac{L}{\sigma_k} + \frac{\Norm{t_n-\mu_k}^2}{\sigma_k^3}\right)
+ =\calN_{nk}\left(-L + \frac{\Norm{t_n-\mu_k}^2}{\sigma_k^2}\right).
 $$
-‚æ‚Á‚Ä
+ã‚ˆã£ã¦
 $$
-\diff{a_k^\sigma}{E_n}=\gamma_{nk}\left(L-\frac{||t_n-\mu_k||^2}{\sigma_k^2}\right).
+\diff{a_k^\sigma}{E_n}=\gamma_{nk}\left(L-\frac{\Norm{t_n-\mu_k}^2}{\sigma_k^2}\right).
 $$
-ğŒ•t‚«•½‹Ï‚É‚Â‚¢‚Ä‚Ì–§“xŠÖ”‚Ì•ªU‚Í
+æ¡ä»¶ä»˜ãå¹³å‡ã«ã¤ã„ã¦ã®å¯†åº¦é–¢æ•°ã®åˆ†æ•£ã¯
 \begin{eqnarray*}
 s^2(x)
- &=& E\left[||t-E[t|x]||^2\bigl|x\right]\\
- &=& \sum_k \pi_k \int \left(||t||^2-2\trans{t}E[t|x]+||E[t|x]||^2\right)\calN(t|\mu_k,\sigma_k^2 I)\,dt\\
- &=& \sum_k \pi_k \left(\sigma_k^2+||\mu_k||^2-2\trans{\mu_k}E[t|x]+||E[t|x]||^2\right)\\
- &=& \sum_k \pi_k(x)\left(\sigma_k(x)^2+||\mu_k-\sum_j \pi_j(x)\mu_j(x)||^2\right).
+ &=& \EE\left[\Norm{t-\EE[t\,|\,x]}^2\,\big|\,x\right]\\
+ &=& \sum_k \pi_k \int \left(\Norm{t}^2-2\trans{t}\EE[t\,|\,x]+\Norm{\EE[t\,|\,x]}^2\right)\calN(t\,|\,\mu_k,\sigma_k^2 I)\,dt\\
+ &=& \sum_k \pi_k \left(\sigma_k^2+\Norm{\mu_k}^2-2\trans{\mu_k}\EE[t\,|\,x]+\Norm{\EE[t\,|\,x]}^2\right)\\
+ &=& \sum_k \pi_k(x)\left(\sigma_k(x)^2+\Norm{\mu_k-\sum_j \pi_j(x)\mu_j(x)}^2\right).
 \end{eqnarray*}
+\vspace{0pt}
 
-\section{ƒNƒ‰ƒX•ª—Ş‚Ì‚½‚ß‚ÌƒxƒCƒYƒjƒ…[ƒ‰ƒ‹ƒlƒbƒgƒ[ƒN}
-ƒƒWƒXƒeƒBƒbƒNƒVƒOƒ‚ƒCƒho—Í‚ğˆê‚Â‚Âƒlƒbƒgƒ[ƒN‚É‚æ‚é2ƒNƒ‰ƒX•ª—Ş–â‘è‚ğl‚¦‚é.
-‚»‚Ìƒ‚ƒfƒ‹‚Ì‘Î”–Ş“xŠÖ”‚Í$t_n \in \{0, 1\}$, $y_n=y(x_n,w)$‚Æ‚µ‚Ä
+\section{ã‚¯ãƒ©ã‚¹åˆ†é¡ã®ãŸã‚ã®ãƒ™ã‚¤ã‚ºãƒ‹ãƒ¥ãƒ¼ãƒ©ãƒ«ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯}
+ãƒ­ã‚¸ã‚¹ãƒ†ã‚£ãƒƒã‚¯ã‚·ã‚°ãƒ¢ã‚¤ãƒ‰å‡ºåŠ›ã‚’ä¸€ã¤æŒã¤ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã«ã‚ˆã‚‹2ã‚¯ãƒ©ã‚¹åˆ†é¡å•é¡Œã‚’è€ƒãˆã‚‹.
+ãã®ãƒ¢ãƒ‡ãƒ«ã®å¯¾æ•°å°¤åº¦é–¢æ•°ã¯$t_n \in \{0, 1\}$, $y_n=y(x_n,w)$ã¨ã—ã¦
 $$
-\log p(\calD|w)=\sum_n (t_n \log y_n + (1-t_n)\log (1-y_n)).
+\log p(\calD\,|\,w)=\sum_n (t_n \log y_n + (1-t_n)\log (1-y_n)).
 $$
-–‘O•ª•z‚ğ
+äº‹å‰åˆ†å¸ƒã‚’
 $$
-p(w|\alpha)=\calN(w|0,\alpha^{-1}I)=\frac{1}{\sqrt{2\pi}^W|\alpha^{-1}|^{W/2}}\exp\left(-\half \alpha \inp{w}\right)
+p(w\,|\,\alpha)=\calN(w\,|\,0,\alpha^{-1}I)
+= \frac{1}{(\sfrac{2\pi}{\alpha})^{W/2}}
+  \exp\left(-\half \alpha \inp{w}\right)
 $$
-‚Æ‚·‚éi$W$‚Í$w$‚ÉŠÜ‚Ü‚ê‚éƒpƒ‰ƒ[ƒ^‚Ì‘”j. ƒmƒCƒY‚ª‚È‚¢‚Ì‚Å$\beta$‚ğŠÜ‚Ü‚È‚¢.
+ã¨ã™ã‚‹ï¼ˆ$W$ã¯$w$ã«å«ã¾ã‚Œã‚‹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ç·æ•°ï¼‰ï¼ãƒã‚¤ã‚ºãŒãªã„ã®ã§$\beta$ã‚’å«ã¾ãªã„.
 $$
-E(w)=\log p(\calD|w)+\frac{\alpha}{2}\inp{w}
+E(w)=\log p(\calD\,|\,w)+\frac{\alpha}{2}\inp{w}
 $$
-‚ÌÅ¬‰»‚Å$\wmap$‚ğ‹‚ß, $A=-\nabla^2 \log p(w|\calD)\bigl|_{w=\wmap}$‚ğ‰½‚ç‚©‚Ì•û–@‚Å‹‚ß‚é.
-ƒ‰ƒvƒ‰ƒX‹ß—‚ğg‚Á‚Ä–Œã•ª•z‚ğƒKƒEƒX‹ß—‚·‚é‚Æ
+ã®æœ€å°åŒ–ã§$\wmap$ã‚’æ±‚ã‚, $A=-\nabla^2 \log p(w\,|\,\calD)\bigl|_{w=\wmap}$ã‚’ä½•ã‚‰ã‹ã®æ–¹æ³•ã§æ±‚ã‚ã‚‹.
+ãƒ©ãƒ—ãƒ©ã‚¹è¿‘ä¼¼ã‚’ä½¿ã£ã¦äº‹å¾Œåˆ†å¸ƒã‚’ã‚¬ã‚¦ã‚¹è¿‘ä¼¼ã™ã‚‹ã¨
 $$
-q(w|\calD)=\calN(w|\wmap,A^{-1}).
+q(w\,|\,\calD)=\calN(w\,|\,\wmap,A^{-1}).
 $$
-³‹K‰»€‚ğ‹‚ß‚é\ref{ch4_bic}ß®(\ref{ch4_approx})‚ğg‚Á‚Ä
+æ­£è¦åŒ–é …ã‚’æ±‚ã‚ã‚‹\ref{ch4_bic}ç¯€å¼(\ref{ch4_approx})ã‚’ä½¿ã£ã¦
 \begin{eqnarray*}
-\log p(\calD|\alpha)
- &\approx& \log \left(p(\calD|\wmap)p(\wmap|\alpha)\sqrt{\frac{(2\pi)^W}{|A|}}\right)\\
- &=& \log p(\calD|\wmap)-\frac{W}{2}\log (2\pi) +\frac{W}{2}\log \alpha
+\log p(\calD\,|\,\alpha)
+ &\approx& \log \left(p(\calD\,|\,\wmap)\,p(\wmap\,|\,\alpha)\sqrt{\frac{(2\pi)^W}{|A|}}\right)\\
+ &=& \log p(\calD\,|\,\wmap)-\frac{W}{2}\log (2\pi) +\frac{W}{2}\log \alpha
  - \half \alpha \inp{\wmap}\\
- &+& \frac{W}{2}\log(2\pi)-\half \log |A|\\
- &=&-E(\wmap)-\half \log |A| + \frac{W}{2}\log \alpha.
+ &&{}+ \frac{W}{2}\log(2\pi)-\half \log |A|\\
+ &=&{}-E(\wmap)-\half \log |A| + \frac{W}{2}\log \alpha.
 \end{eqnarray*}
 $$
 E(\wmap)=-\sum_n (t_n \log y_n + (1-t_n)\log (1-y_n))+\half \alpha \inp{\wmap}.
 $$
-—\‘ª•ª•z‚ğl‚¦‚é.
-o—Íƒ†ƒjƒbƒg‚ÌŠˆ«‰»ŠÖ”‚ğüŒ`‹ß—‚·‚é.
+äºˆæ¸¬åˆ†å¸ƒã‚’è€ƒãˆã‚‹.
+å‡ºåŠ›ãƒ¦ãƒ‹ãƒƒãƒˆã®æ´»æ€§åŒ–é–¢æ•°ã‚’ç·šå½¢è¿‘ä¼¼ã™ã‚‹.
 \begin{eqnarray*}
 a(x,w)
  &\approx& a(x,\wmap) + \nabla \trans{a(x,\wmap)}(w-\wmap)\\
- &&i\amap(x)=a(x,\wmap), \quad b = \nabla a(x,\wmap)‚Æ‚µ‚Äj\\
+ &&\quad\text{ï¼ˆ$\amap(x)=a(x,\wmap)$, $b = \nabla a(x,\wmap)$ã¨ã—ã¦ï¼‰}\\
  &=& \amap(x) + \trans{b}(w-\wmap).
 \end{eqnarray*}
 \begin{eqnarray*}
-p(a|x,\calD)
- &=& \int \delta(a-a(x,w))q(w|\calD)\,dw\\
- &=&\int \delta (a-\amap(x)-\trans{\wmap}b+\trans{w}b)q(w|\calD)\,dw.
+p(a\,|\,x,\calD)
+ &=& \int \delta(a-a(x,w))\,q(w\,|\,\calD)\,dw\\
+ &=&\int \delta (a-\amap(x)-\trans{\wmap}b+\trans{w}b)\,q(w\,|\,\calD)\,dw.
 \end{eqnarray*}
-•½‹Ï‚Í
+å¹³å‡ã¯
 \begin{eqnarray*}
-E[a]
- &=& \int ap(a|x,\calD)\,da = \int \delta(a-a(x,w))w(w)a\,dadw\\
- &=& \int a(x,w)q(w)\,dw=(\amap(x)-\trans{\wmap}b)+\int \trans{b}wq(w)\,dw\\
+\EE[a]
+ &=& \int a\, p(a\,|\,x,\calD)\,da = \int \delta(a-a(x,w))w(w)a\,dadw\\
+ &=& \int a(x,w)\,q(w)\,dw=(\amap(x)-\trans{\wmap}b)+\int \trans{b}wq(w)\,dw\\
  &=& \amap(x)-\trans{\wmap}b+\trans{b}\wmap=\amap(x).
 \end{eqnarray*}
-•ªU‚Í$\trans{w}b$‚ªŒø‚­‚Ì‚Å
+åˆ†æ•£ã¯$\trans{w}b$ãŒåŠ¹ãã®ã§
 $$
-\sigma_a^2(x)=\trans{b}A^{-1}b(x)
+\sigma_a^2(x)=\trans{b}A^{-1}b(x).
 $$
-—\‘ª•ª•z‚Í\ref{ch4_bayes}ß®(\ref{ch4_probit})‚Ì‹ß—®‚ğg‚Á‚Ä
+äºˆæ¸¬åˆ†å¸ƒã¯\ref{ch4_bayes}ç¯€å¼(\ref{ch4_probit})ã®è¿‘ä¼¼å¼ã‚’ä½¿ã£ã¦
 $$
-p(t=1|x,\calD)=\int \sigma(a)p(a|x,\calD)\,da
+p(t=1\,|\,x,\calD)=\int \sigma(a)\,p(a\,|\,x,\calD)\,da
  \approx \sigma(\kappa(\sigma_a^2)\amap(x)).
 $$
