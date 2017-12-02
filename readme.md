@@ -1,28 +1,16 @@
 
-main.pdf is supplementary text for PRML(Pattern Recognition and Machine Learning)
-and give some answers for its exercises.
-# prml[2-9].pdf are obsolete.
+## これは『パターン認識と機械学習の学習 普及版』のソースコードです。
 
-* chapter 2 : elementary text for matrix and integral calculus and Gauss distribution.
-* chapter 3 : Woodbury formula, symmetric matrix and KL divergence.
-* chapter 4 : Jensen's inequality, Dirac delta function and the relation between
-logistic sigmoid function and inverse function of probit function.
-* chapter 5 : neural network
-* chapter 9 : EM algprithm
-* chapter 10 : get L for mixing Guass distribution
+## PDFの入手先
+[PDF](https://github.com/herumi/prml/raw/gh-pages/main.pdf)
 
-How to create pdf
--------------
+## PDFの作り方
 ```
-platex main.tex
-platex main.tex
-dvipdfmx main.dvi
+mk public
 ```
-License
--------------
+
+## ライセンス
 CC BY 3.0(http://creativecommons.org/licenses/by/3.0/)
 
-Author
--------------
-
+## 著者
 MITSUNARI Shigeo(herumi at nifty dot com)

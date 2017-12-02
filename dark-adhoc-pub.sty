@@ -1,0 +1,352 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% dark-adhoc.sty
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PassOptionsToPackage{dvipdfmx}{color}%
+\PassOptionsToPackage{dvipdfm}{geometry}% この dvipdfm は typo ではない
+\PassOptionsToPackage{dvipdfmx}{graphicx}%
+\PassOptionsToPackage{dvipdfmx}{hyperref}%
+\PassOptionsToPackage{setpagesize=false}{hyperref}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{exscale}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{geometry}
+\geometry{right=12mm}
+\geometry{left=15.5mm}
+\geometry{top=15mm,bottom=12mm}
+\geometry{headsep=2.5mm}
+%\geometry{includehead}
+%\geometry{includefoot}
+\topskip9pt\relax% 新しいjsbook.clsでも組版がずれないようにする
+\setlength{\fullwidth}{\textwidth}% jsbookのヘッダの幅を\textwidthに合わせる
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\let\truenormalsize\normalsize
+\let\normalsize\small% 本文のフォントを \small にする
+%\narrowbaselinestrue
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% enumii のラベル設定を変更: 全角「（」「）」から半角「(」「)」に
+\renewcommand\labelenumii{(\theenumii)}
+\renewcommand\p@enumiii{\theenumi(\theenumii)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% jsbook.cls の設定を書き換え
+%% デフォルト設定
+\newcommand{\chapterfont}{}
+\newcommand{\sectionfont}{}
+\newcommand{\subsectionfont}{}
+\newcommand{\subsubsectionfont}{}
+\newcommand{\paragraphfont}{}
+\newcommand{\subparagraphfont}{}
+\newcommand{\paragraphsymbol}{■}
+\newcommand{\subparagraphsymbol}{}
+%% 設定変更
+\iftrue
+%\def\chapterfont{\normalfont\normalsize\headfont}
+%\def\chapterfont{\normalfont\truenormalsize\headfont}
+\def\chapterfont{\normalfont\large\headfont}
+%\def\chapterfont{\normalfont\Large\headfont}
+%\def\chapterfont{\normalfont\LARGE\headfont}
+\def\sectionfont{\normalfont\normalsize\headfont}
+\def\subsectionfont{\normalfont\normalsize\headfont}
+\def\subsubsectionfont{\normalfont\normalsize\headfont}
+\def\paragraphfont{\normalfont\normalsize\headfont}
+\def\subparagraphfont{\normalfont\normalsize\headfont}
+\Cvs0pt
+\Cdp0pt
+\Chs0pt
+\Cwd0pt
+\else
+\def\chapterfont{\ifx\truenormalsize\undefined\LARGE\else\Large\fi\headfont}
+\def\sectionfont{\normalfont\ifx\truenormalsize\undefined\Large\else\large\fi\headfont}
+\def\subsectionfont{\normalfont\ifx\truenormalsize\undefined\large\else\truenormalsize\fi\headfont}
+\def\subsubsectionfont{\normalfont\normalsize\headfont}
+\def\paragraphfont{\normalfont\normalsize\headfont}
+\def\subparagraphfont{\normalfont\normalsize\headfont}
+\fi
+
+%% 書き換え
+\renewcommand{\chapter}{%
+  \par%\if@openright\cleardoublepage\else\clearpage\fi
+  %\plainifnotempty % 元: \thispagestyle{plain}
+  \global\@topnum\z@
+  \if@english \@afterindentfalse \else \@afterindenttrue \fi
+  \secdef
+    {\@omit@numberfalse\@chapter}%
+    {\@omit@numbertrue\@schapter}}
+\newdimen\@dark@htz
+\newdimen\@dark@dpz
+\newdimen\@dark@wdz
+\newdimen\@dark@hdz
+\def\@dark@set@dimen@z{\setbox0\hbox{\char\euc"A1A1}%
+  \@dark@htz\ht0%
+  \@dark@dpz\dp0%
+  \@dark@wdz\wd0%
+  \@dark@hdz\ht0\advance\@dark@hdz\@dark@dpz%
+  \relax}
+\def\@dark@chapter@pre@chapapp{{%
+  \@dark@set@dimen@z%
+  \leavevmode%
+  %\rule[-\@dark@dpz]{3.5\@dark@wdz}{\@dark@hdz}%
+  %\rule[-.12zw]{2.5zw}{1zw}%
+  \rule[-.12zw]{2zw}{1zw}%
+  %\rule[-.12zw]{1.5zw}{1zw}%
+  \hspace*{.75\@dark@wdz}}}
+\def\@dark@chapter@post{{%
+  \@dark@set@dimen@z%
+  \hspace*{.75\@dark@wdz}%
+  %\leaders\hrule depth \@dark@dpz height \@dark@htz \hfill\kern0pt%
+  \leaders\hrule depth .12zw height .88zw \hfill\kern0pt%
+}}
+\def\@makechapterhead#1{%
+  %\vspace*{2\Cvs}% 欧文は50pt
+  \vspace{3mm}%
+  {\parindent \z@ \raggedright
+    \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        %\huge\headfont\chapterfont \@chapapp\thechapter\@chappos
+        \huge\headfont\chapterfont\@dark@chapter@pre@chapapp\@chapapp\thechapter\@chappos
+        ~%\par\nobreak
+        %\vskip \Cvs % 欧文は20pt
+      \fi
+    \fi
+    %\interlinepenalty\@M
+    %\Huge \headfont\chapterfont #1\par\nobreak
+    \Huge \headfont\chapterfont #1\@dark@chapter@post\par\nobreak
+    \vskip .1\baselineskip
+    \vskip 3\Cvs}} % 欧文は40pt
+\def\@makeschapterhead#1{%
+  %\vspace*{2\Cvs}% 欧文は50pt
+  \vspace{3mm}%
+  {\parindent \z@ \raggedright
+    \normalfont
+    \interlinepenalty\@M
+    \Huge \headfont\chapterfont #1\par\nobreak\nopagebreak
+    \vskip .1\baselineskip
+    \vskip 3\Cvs}} % 欧文は40pt
+\if@twocolumn
+  \renewcommand{\section}{%
+    \@startsection{section}{1}{\z@}%
+    %{0.6\Cvs}{0.4\Cvs}%
+    {\z@}{-1zw}% 改行せず 1zw のアキ
+    {\normalfont\large\headfont\raggedright\sectionfont}}
+\else
+  \renewcommand{\section}{%
+    \if@slide\clearpage\fi
+    \@startsection{section}{1}{\z@}%
+    %{\Cvs \@plus.5\Cdp \@minus.2\Cdp}% 前アキ
+    %{.5\Cvs \@plus.3\Cdp}% 後アキ
+    {.1\baselineskip}%
+    {-1zw}% 改行せず 1zw のアキ
+    {\normalfont\Large\headfont\raggedright\sectionfont}}
+\fi
+\if@twocolumn
+  \renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+    {\z@}{\z@}%
+    {\normalfont\normalsize\headfont\subsectionfont}}
+\else
+  \renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+    %{\Cvs \@plus.5\Cdp \@minus.2\Cdp}% 前アキ
+    %{.5\Cvs \@plus.3\Cdp}% 後アキ
+    {.1\baselineskip}%
+    {-1zw}% 改行せず 1zw のアキ
+    {\normalfont\large\headfont\subsectionfont}}
+\fi
+\if@twocolumn
+  \renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
+    {\z@}{\z@}%
+    {\normalfont\normalsize\headfont\subsubsectionfont}}
+\else
+  \renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
+    %{\Cvs \@plus.5\Cdp \@minus.2\Cdp}%
+    %{\z@}%
+    {.1\baselineskip}%
+    {-1zw}% 改行せず 1zw のアキ
+    {\normalfont\normalsize\headfont\subsubsectionfont}}
+\fi
+\if@twocolumn
+  \renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}%
+    {\z@}{-1zw}% 改行せず 1zw のアキ
+    {\normalfont\normalsize\headfont\paragraphfont\paragraphsymbol}}
+\else
+  \renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}%
+    {.1\baselineskip}%
+    {-1zw}% 改行せず 1zw のアキ
+    {\normalfont\normalsize\headfont\paragraphfont\paragraphsymbol}}
+\fi
+\renewcommand{\subparagraph}{\@startsection{subparagraph}{5}{\z@}%
+   {\z@}{-1zw}%
+   {\normalfont\normalsize\headfont\subparagraphfont\subparagraphsymbol}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 目次のスペースを詰める: jsbook.clsより書き換え
+\renewcommand*{\l@chapter}[2]{%
+  \ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}%
+    %\addvspace{1.0em \@plus\jsc@mpt}%%
+    \addvspace{0em \@plus1\p@}%% ここを修正 ※ \jsc@mpt は新しいjsbook.clsが必要
+    \begingroup
+      \parindent\z@
+      \rightskip\@tocrmarg
+      \parfillskip-\rightskip
+      \leavevmode\headfont
+      % \if@english\setlength\@lnumwidth{5.5em}\else\setlength\@lnumwidth{4.683zw}\fi
+      %\setlength\@lnumwidth{\jsc@tocl@width}\advance\@lnumwidth 2.683zw
+      \setlength\@lnumwidth{2zw}\advance\@lnumwidth 2.683zw% ※ \jsc@tocl@width は新しいjsbook.clsが必要
+      \advance\leftskip\@lnumwidth \hskip-\leftskip
+      #1\nobreak\hfil\nobreak\hbox to\@pnumwidth{\hss#2}\par
+      \penalty\@highpenalty
+    \endgroup
+  \fi}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 索引でのスペースを調整
+%\renewcommand{\indexspace}{\par \vskip 10\p@ \@plus5\p@ \@minus3\p@\relax}
+\renewcommand{\indexspace}{\par \vskip 5\p@ \@plus2.5\p@ \@minus1.5\p@\relax}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewenvironment{theindex}{% 索引を3段組で出力する環境
+    \if@twocolumn
+      \onecolumn\@restonecolfalse
+    \else
+      \clearpage\@restonecoltrue
+    \fi
+    \columnseprule.4pt \columnsep 2zw
+    \ifx\multicols\@undefined
+      \twocolumn[\@makeschapterhead{\indexname}%
+      \addcontentsline{toc}{chapter}{\indexname}]%
+    \else
+      \ifdim\textwidth<\fullwidth
+        \setlength{\evensidemargin}{\oddsidemargin}
+        \setlength{\textwidth}{\fullwidth}
+        \setlength{\linewidth}{\fullwidth}
+        %\begin{multicols}{3}[\chapter*{\indexname}%
+        %\addcontentsline{toc}{chapter}{\indexname}]%
+        \begin{multicols}{3}\chapter*{\indexname}%
+        \addcontentsline{toc}{chapter}{\indexname}%
+      \else
+        %\begin{multicols}{2}[\chapter*{\indexname}%
+        %\addcontentsline{toc}{chapter}{\indexname}]%
+        \begin{multicols}{2}\chapter*{\indexname}%
+        \addcontentsline{toc}{chapter}{\indexname}%
+      \fi
+    \fi
+    \@mkboth{\indexname}{}%
+    %\plainifnotempty % \thispagestyle{plain}
+    \parindent\z@
+    \parskip\z@ \@plus .3\p@\relax
+    \let\item\@idxitem
+    \raggedright
+    \footnotesize\narrowbaselines
+    \indexspace
+  }{
+    \ifx\multicols\@undefined
+      \if@restonecol\onecolumn\fi
+    \else
+      \end{multicols}
+    \fi
+    %\clearpage
+  }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ps@headings{%
+  \let\@oddfoot\@empty
+  \let\@evenfoot\@empty
+  \def\@evenhead{%
+    \if@mparswitch \hss \fi
+    \underline{\hbox to \fullwidth{\autoxspacing
+        \textbf{\thepage}\hfil\leftmark}}%
+    \if@mparswitch\else \hss \fi}%
+  \def\@oddhead{\underline{\hbox to \fullwidth{\autoxspacing
+        {\if@twoside\rightmark\else\leftmark\fi}\hfil\textbf{\thepage}}}\hss}%
+  \let\@mkboth\markboth
+  \def\chaptermark##1{\markboth{%
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \if@omit@number\else
+          \@chapapp\thechapter\@chappos\hskip1zw
+        \fi
+      \fi
+    \fi
+    ##1}{}}%
+  \def\sectionmark##1{\markright{%
+    \ifnum \c@secnumdepth >\z@ \thesection \hskip1zw\fi
+    ##1}}}%
+\pagestyle{headings}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{color}
+\RequirePackage{everypage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newif\if@draft@print@hashes@\@draft@print@hashes@false
+\def\GitHashLines{\GitHashLine{NO HASH}{LOADED}{.}}
+\InputIfFileExists{hashline1.aux}{\@draft@print@hashes@true}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 校正用にGit Hashを表示するためのマクロ
+\newcommand{\print@draft@hashes}[1]{% draftwatermark.sty より
+  \if@draft@print@hashes@%
+  \setbox\@tempboxa\vbox to \z@{%
+    \vskip -1in \moveleft 1in \vbox{%
+      \hbox to \z@{%
+        #1\hss}}\vss}
+  \dp\@tempboxa\z@
+  \box\@tempboxa
+  \fi}
+\def\GitHashLine#1#2#3{{\def\@e{}\def\@t{#2}%
+  \ifx\@e\@t{\tt #1 #3}\else{\tt #1 #2 #3}\fi\par}}
+\def\DraftHashes{\raisebox{-8mm}{\hspace{10mm}\parbox{\textwidth}{%
+    \color{red}\scriptsize\GitHashLines}}}
+\AddEverypageHook{\print@draft@hashes{\DraftHashes}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ロゴ用マクロの設定
+\DeclareMathVersion{traditional}
+\SetSymbolFont{operators}{traditional}{OT1}{cmr}{m}{n}
+\SetSymbolFont{letters}{traditional}{OML}{cmm}{m}{it}
+\SetSymbolFont{symbols}{traditional}{OMS}{cmsy}{m}{n}
+\SetSymbolFont{largesymbols}{traditional}{OMX}{cmex}{m}{n}
+
+\def\cons{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\AtBeginDocument{%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ディスプレイ数式における改ページのしやすさ
+\allowdisplaybreaks[4]% 1～4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\iftrue%% '\iffalse'ではデフォルトのまま，'\iftrue' では無理やり詰め込む
+\topsep0pt\relax%
+\parsep0pt\relax%
+\advance\parsep0pt plus 2pt\relax%
+%\footnotesep0pt\relax%
+\skip\footins3pt\relax%
+%% 行間の調整
+%\advance\baselineskip-1pt\relax%
+%\advance\baselineskip-.80pt plus 1.66pt\relax%
+\advance\baselineskip-.80pt plus 3pt\relax%
+%% ディスプレイ数式の前後のスペース
+\abovedisplayshortskip0pt% % jsarticle/jsbook が必要
+\belowdisplayshortskip0pt% % jsarticle/jsbook が必要
+\abovedisplayskip0pt%      % jsarticle/jsbook が必要
+\belowdisplayskip0pt%      % jsarticle/jsbook が必要
+\advance\abovedisplayshortskip1pt plus 3pt% % jsarticle/jsbook が必要
+\advance\belowdisplayshortskip1pt plus 3pt% % jsarticle/jsbook が必要
+\advance\abovedisplayskip1pt plus 3pt%      % jsarticle/jsbook が必要
+\advance\belowdisplayskip1pt plus 3pt%      % jsarticle/jsbook が必要
+%% 数式間のスペース
+\jot1pt%                   % amsmath が必要
+%% 図表テキスト間のスペース
+\textfloatsep 10.0pt plus 1.0pt minus 2.0pt
+\floatsep 6.0pt plus 1.0pt minus 1.0pt
+\intextsep 6.0pt plus 1.0pt minus 1.0pt
+%\dbltextfloatsep% distance between a float spanning both columns and the text
+%\dblfloatsep%diistance between two floats spanning both columns
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{0pt}
+\fi
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\AtEndDocument{%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% okuduke.tex があれば読み込む
+%\InputIfFileExists{./okuduke.tex}{}{}%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\endinput

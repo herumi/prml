@@ -1,89 +1,86 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ‘æ3Í
+% ç¬¬3ç« 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{chapter}{2}
-\chapter{uüŒ`‰ñ‹Aƒ‚ƒfƒ‹v‚Ì‚½‚ß‚Ì”Šw}
-‚±‚Ì•¶Í‚Íwƒpƒ^[ƒ“”FŽ¯‚Æ‹@ŠBŠwKxiPRMLj‚Ì3Í‚ð—‰ð‚·‚é‚½‚ß‚É•K—v‚È”Šw‚ð‚Ü‚Æ‚ß‚Ä‚Ý‚½‚à‚Ì‚Å‚·.
-\section{”÷•ª‚Ì•œK}
-$\bm{x}$, $\bm{y}$‚ðcƒxƒNƒgƒ‹‚Æ‚µ‚Ä
+\chapter{ã€Œç·šå½¢å›žå¸°ãƒ¢ãƒ‡ãƒ«ã€ã®ãŸã‚ã®æ•°å­¦}
+\section{å¾®åˆ†ã®å¾©ç¿’}
+$\bm{x}$, $\bm{y}$ã‚’ç¸¦ãƒ™ã‚¯ãƒˆãƒ«ã¨ã—ã¦
 $$
-\dif{\bm{x}} (\trans{\bm{x}}\bm{y}) = \bm{y}.
+\dif{\bm{x}} \left(\trans{\bm{x}}\bm{y}\right) = \bm{y},\hseq
+\dif{\bm{y}} \left(\trans{\bm{x}}\bm{y}\right) = \bm{x}.
 $$
-$$
-\dif{\bm{y}} (\trans{\bm{x}}\bm{y}) = \bm{x}.
-$$
-‚±‚±‚Å$\dif{\bm{x}}$‚Í$\dif{x_i}$‚ðc‚É•À‚×‚½cƒxƒNƒgƒ‹‚Æ‚·‚é.
-2Í‚Å‚àq‚×‚½‚ª$\dif{\bm{x}}$‚ð$\nabla$‚Æ‘‚­‚±‚Æ‚à‚ ‚é‚ªPRML‚Å‚ÍêŠ‚É‚æ‚Á‚ÄcƒxƒNƒgƒ‹i3.22j‚¾‚Á‚½‚è,
-‰¡ƒxƒNƒgƒ‹i3.13j‚¾‚Á‚½‚è‚·‚é. í‚ÉcƒxƒNƒgƒ‹‚Æ‚µ‚½‚Ù‚¤‚ª¬—‚Í­‚È‚¢.
+ã“ã“ã§$\sdif{\bm{x}}$ã¯$\sdif{x_i}$ã‚’ç¸¦ã«ä¸¦ã¹ãŸç¸¦ãƒ™ã‚¯ãƒˆãƒ«ã¨ã™ã‚‹.
+2ç« ã§ã‚‚è¿°ã¹ãŸãŒ$\sdif{\bm{x}}$ã‚’$\nabla$ã¨æ›¸ãã“ã¨ã‚‚ã‚ã‚‹ãŒPRMLã§ã¯å ´æ‰€ã«ã‚ˆã£ã¦ç¸¦ãƒ™ã‚¯ãƒˆãƒ«(3.22)ã ã£ãŸã‚Š,
+æ¨ªãƒ™ã‚¯ãƒˆãƒ«(3.13)ã ã£ãŸã‚Šã™ã‚‹. å¸¸ã«ç¸¦ãƒ™ã‚¯ãƒˆãƒ«ã¨ã—ãŸã»ã†ãŒæ··ä¹±ã¯å°‘ãªã„.
 
-\section{Œë·ŠÖ”‚ÌÅ¬‰»}
+\section{èª¤å·®é–¢æ•°ã®æœ€å°åŒ–}
 
 $$
-f(\bm{w})=\sum_{n=1}^N\left(t_n - \trans{\bm{w}}\phi(\bm{x}_n)\right)^2+\lambda \trans{\bm{w}}\bm{w}
+f(\bm{w}):=\sum_{n=1}^N\left(t_n - \trans{\bm{w}}\phi(\bm{x}_n)\right)^2+\lambda \trans{\bm{w}}\bm{w}
 $$
-‚Æ‚·‚é. ‚±‚±‚Å$\bm{w}$‚Æ$\phi(\bm{x}_n)$‚Í$M$ŽŸŒ³cƒxƒNƒgƒ‹‚Å‚ ‚é.
+ã¨ã™ã‚‹. ã“ã“ã§$\bm{w}$ã¨$\phi(\bm{x}_n)$ã¯$M$æ¬¡å…ƒç¸¦ãƒ™ã‚¯ãƒˆãƒ«ã§ã‚ã‚‹.
 $$
-\trans{\Phi}=(\phi(\bm{x}_1) \cdots \phi(\bm{x}_N))
+\Phi:=\trans{(\phi(\bm{x}_1), \ldots, \phi(\bm{x}_N))}
 $$
-‚Æ‚¨‚­. $\Phi$‚Í$N$s$M$—ñ‚Ìs—ñ‚Å‚ ‚é. $f(\bm{w})$‚ð$w$‚Å”÷•ª‚µ‚æ‚¤.
+ã¨ãŠã. $\Phi$ã¯$N$è¡Œ$M$åˆ—ã®è¡Œåˆ—ã§ã‚ã‚‹. $f(\bm{w})$ã‚’$w$ã§å¾®åˆ†ã—ã‚ˆã†.
 $$
 \dif{\bm{w}}f(\bm{w})
  = 2\sum_{n=1}^N\left(t_n - \trans{\bm{w}}\phi(\bm{x}_n)\right)(-\phi(\bm{x}_n)) +2\lambda \bm{w}.
 $$
-ˆê”Ê‚ÉcƒxƒNƒgƒ‹$\bm{x}$, $\bm{y}$‚É‘Î‚µ‚Ä
+ä¸€èˆ¬ã«ç¸¦ãƒ™ã‚¯ãƒˆãƒ«$\bm{x}$, $\bm{y}$ã«å¯¾ã—ã¦
 $$
 (\trans{\bm{x}}\bm{y})\bm{y}
  =(\trans{\bm{y}}{\bm{x}})\bm{y}
  =\bm{y}(\trans{\bm{y}}\bm{x})
  =(\bm{y}\trans{\bm{y}})\bm{x}
 $$
-‚¾‚©‚ç$\bm{t}=\trans{(t_1, \ldots, t_N)}$‚Æ‚¨‚­‚Æ
+ã ã‹ã‚‰$\bm{t}:=\trans{(t_1, \ldots, t_N)}$ã¨ãŠãã¨
 \begin{eqnarray*}
 \half\dif{\bm{w}}f(\bm{w})
  &=& -\sum_n t_n \phi(\bm{x}_n) + \sum_n \left(\phi(\bm{x}_n)\trans{\phi(\bm{x}_n)}\right)\bm{w} + \lambda \bm{w}\\
  &=& -\trans{\Phi} \bm{t} + \trans{\Phi}\Phi \bm{w} + \lambda \bm{w}\\
  &=& -\trans{\Phi} \bm{t} + (\trans{\Phi}\Phi + \lambda I)\bm{w}=0.
 \end{eqnarray*}
-‚æ‚Á‚Ä$\det(\lambda I + \trans{\Phi}\Phi)\ne0$‚Ì‚Æ‚«
-$$\bm{w}_{\text{ML}}=(\lambda I + \trans{\Phi}\Phi)^{-1}\trans{\Phi}\bm{t}$$
-‚ªÅ–Þ‰ð. $\bm{y}=\Phi \bm{w}$‚ª—\‘ª’l‚Å‚ ‚é.
+ã‚ˆã£ã¦$\det(\lambda I + \trans{\Phi}\Phi)\ne0$ã®ã¨ã
+$$\bm{w}_{\text{ML}}:=(\lambda I + \trans{\Phi}\Phi)^{-1}\trans{\Phi}\bm{t}$$
+ãŒæœ€å°¤è§£. $\bm{y}:=\Phi \bm{w}$ãŒäºˆæ¸¬å€¤ã§ã‚ã‚‹.
 
-\section{³ŽË‰e}
+\section{æ­£å°„å½±}
 
-‘Oß‚Å$\lambda = 0$‚Ì‚Æ‚«‚ðl‚¦‚é.
+å‰ç¯€ã§$\lambda = 0$ã®ã¨ãã‚’è€ƒãˆã‚‹.
 $$\bm{y}=\Phi(\trans{\Phi}\Phi)^{-1}\trans{\Phi}\bm{t}$$
-‚Æ‚È‚é. ‚±‚±‚Å‚±‚ÌŽ®‚ÌŠô‰½Šw“I‚È‰ðŽß‚ðl‚¦‚Ä‚Ý‚æ‚¤.
-$\Phi=(a_1 \cdots a_M)$‚ÆcƒxƒNƒgƒ‹‚ÌW‚Ü‚è‚Å•\‚·.
-$N-M$ŒÂ‚ÌƒxƒNƒgƒ‹$b_1$, $\ldots$, $b_{N-M}$‚ð’Ç‰Á‚µ‚Ä,
-$\{a_1, \ldots, a_N, b_1, \ldots, b_{N-M}\}$‘S‘Ì‚Å$N$ŽŸŒ³ƒxƒNƒgƒ‹‹óŠÔ‚ÌŠî’ê‚Å‚ ‚é‚æ‚¤‚É‚Æ‚é.
-‚»‚ÌÛ$b_i$‚ð$a_j$‚Æ’¼Œð‚·‚é‚æ‚¤‚É‚Æ‚ê‚é.
+ã¨ãªã‚‹. ã“ã“ã§ã“ã®å¼ã®å¹¾ä½•å­¦çš„ãªè§£é‡ˆã‚’è€ƒãˆã¦ã¿ã‚ˆã†.
+$\Phi$ã‚’$\Phi:=(a_1, \ldots, a_M)$ã¨ç¸¦ãƒ™ã‚¯ãƒˆãƒ«ã®é›†ã¾ã‚Šã§è¡¨ã™.
+$N-M$å€‹ã®ãƒ™ã‚¯ãƒˆãƒ«$b_1$, $\ldots$ , $b_{N-M}$ã‚’è¿½åŠ ã—ã¦,
+$\{a_1, \ldots, a_N, b_1, \ldots, b_{N-M}\}$å…¨ä½“ã§$N$æ¬¡å…ƒãƒ™ã‚¯ãƒˆãƒ«ç©ºé–“ã®åŸºåº•ã§ã‚ã‚‹ã‚ˆã†ã«ã¨ã‚‹.
+ãã®éš›$b_i$ã‚’$a_j$ã¨ç›´äº¤ã™ã‚‹ã‚ˆã†ã«ã¨ã‚Œã‚‹.
 $$
 \trans{a_i}b_j=0.
 $$
-‚³‚Ä$X=\Phi(\trans{\Phi}\Phi)^{-1}\trans{\Phi}$‚Æ‚¨‚­‚Æ, $X\Phi = \Phi$.
-‚±‚ê‚Í$Xa_i = a_i$‚ðˆÓ–¡‚·‚é.
-‚Â‚Ü‚è$X$‚Í$a_1, \ldots, a_M$‚Å¶¬‚³‚ê‚é•”•ª‹óŠÔ$V$=$\langle a_1, \ldots, a_M \rangle$‚Ì“_‚ð“®‚©‚³‚È‚¢.
-‚Ü‚½$b_j$‚Ì‚Æ‚è‚©‚½‚©‚ç$Xb_j=0$‚à¬‚è—§‚Â.
-‚Â‚Ü‚è$X$‚Í•”•ª‹óŠÔ$\langle b_1, \ldots, b_{N-M} \rangle$‚Ì“_‚ð0‚É‚Â‚Ô‚·.
+ã•ã¦$X:=\Phi(\trans{\Phi}\Phi)^{-1}\trans{\Phi}$ã¨ãŠãã¨, $X\Phi = \Phi$.
+ã“ã‚Œã¯$Xa_i = a_i$ã‚’æ„å‘³ã™ã‚‹.
+ã¤ã¾ã‚Š$X$ã¯$a_1, \ldots, a_M$ã§ç”Ÿæˆã•ã‚Œã‚‹éƒ¨åˆ†ç©ºé–“$V$=$\langle a_1, \ldots, a_M \rangle$ã®ç‚¹ã‚’å‹•ã‹ã•ãªã„.
+ã¾ãŸ$b_j$ã®ã¨ã‚Šã‹ãŸã‹ã‚‰$Xb_j=0$ã‚‚æˆã‚Šç«‹ã¤.
+ã¤ã¾ã‚Š$X$ã¯éƒ¨åˆ†ç©ºé–“$\langle b_1, \ldots, b_{N-M} \rangle$ã®ç‚¹ã‚’$0$ã«ã¤ã¶ã™.
 
-“ñ‚Â‡‚í‚¹‚é‚Æ, $X$‚Í”CˆÓ‚Ì“_‚ð•”•ª‹óŠÔ$V$•ûŒü‚É‚Â‚Ô‚·ŽÊ‘œ, ‚Â‚Ü‚è$V$‚Ö‚Ì³ŽË‰eŽÊ‘œ‚Æ‰ðŽß‚Å‚«‚é.
-Ž®‚Å‘‚­‚Æ”CˆÓ‚Ì“_$\bm{t}$‚ð$\bm{t} = \sum_i s_i a_i + \sum_i t_i b_j$‚Æ•\‚µ‚½‚Æ‚·‚é‚Æ,
+äºŒã¤åˆã‚ã›ã‚‹ã¨, $X$ã¯ä»»æ„ã®ç‚¹ã‚’éƒ¨åˆ†ç©ºé–“$V$æ–¹å‘ã«ã¤ã¶ã™å†™åƒ, ã¤ã¾ã‚Š$V$ã¸ã®æ­£å°„å½±å†™åƒã¨è§£é‡ˆã§ãã‚‹.
+å¼ã§æ›¸ãã¨ä»»æ„ã®ç‚¹$\bm{t}$ã‚’$\bm{t} := \sum_i s_i a_i + \sum_i t_i b_j$ã¨è¡¨ã—ãŸã¨ã™ã‚‹ã¨,
 $$
 \bm{y}=X\bm{t}=\sum_i s_i a_i
 $$
-‚Æ‚È‚é. $\bm{t}$‚©‚ç$\bm{y}$‚Ö‚Ì•ÏŠ·‚ðŒW”‚¾‚¯‚ðŽg‚Á‚Ä‘‚¢‚Ä‚Ý‚é‚Æ
+ã¨ãªã‚‹. $\bm{t}$ã‹ã‚‰$\bm{y}$ã¸ã®å¤‰æ›ã‚’ä¿‚æ•°ã ã‘ã‚’ä½¿ã£ã¦æ›¸ã„ã¦ã¿ã‚‹ã¨
 $$
-X:(s_1, \ldots, s_N, t_1, \ldots, t_{N-M}) \rightarrow (s_1, \ldots, s_N, 0, \ldots, 0).
+X\colon (s_1, \ldots, s_N, t_1, \ldots, t_{N-M}) \mapsto (s_1, \ldots, s_N, 0, \ldots, 0).
 $$
-‚±‚ê‚ðŒ©‚é‚Æ³ŽË‰e‚Ìƒjƒ…ƒAƒ“ƒX‚ª‚æ‚è–¾Šm‚É‚È‚é.
+ã“ã‚Œã‚’è¦‹ã‚‹ã¨æ­£å°„å½±ã®ãƒ‹ãƒ¥ã‚¢ãƒ³ã‚¹ãŒã‚ˆã‚Šæ˜Žç¢ºã«ãªã‚‹.
 
-\section{s—ñ‚Å‚Ì”÷•ª}
+\section{è¡Œåˆ—ã§ã®å¾®åˆ†}
 
-$x$‚ð$n$ŽŸŒ³ƒxƒNƒgƒ‹, $A$‚ð$m$s$n$—ñ‚Æ‚µ‚Ä$y=Ax$‚Æ‚¨‚­.
-$$f(A) = ||y||^2=\trans{\left(Ax\right)}Ax$$
-‚ð$A$‚Å”÷•ª‚µ‚Ä‚Ý‚æ‚¤.
+$x$ã‚’$n$æ¬¡å…ƒãƒ™ã‚¯ãƒˆãƒ«, $A$ã‚’$m$è¡Œ$n$åˆ—ã¨ã—ã¦$y=Ax$ã¨ãŠã.
+$$f(A) := \Norm{y}^2:=\trans{\left(Ax\right)}Ax$$
+ã‚’$A$ã§å¾®åˆ†ã—ã¦ã¿ã‚ˆã†.
 $$\trans{\left(Ax\right)}Ax=\sum_s \left(Ax\right)_s \left(Ax\right)_s = \sum_s \left(\sum_t a_{st}x_t\right) \left(\sum_u a_{su}x_u\right) = \sum_{s,t,u} x_t x_u a_{st}a_{su}.$$
-‚æ‚Á‚Ä
+ã‚ˆã£ã¦
 \begin{eqnarray*}
 \dif{a_{ij}}f(A)
  &=& \sum_{s,t,u} x_t x_u \left(\left(\dif{a_{ij}}a_{st}\right) a_{su} + a_{st} \dif{a_{ij}}a_{su}\right)\\
@@ -93,329 +90,352 @@ $$\trans{\left(Ax\right)}Ax=\sum_s \left(Ax\right)_s \left(Ax\right)_s = \sum_s 
  = 2x_j \left(Ax\right)_i
  = 2\left(Ax\trans{x}\right)_{ij}.
 \end{eqnarray*}
-‚æ‚Á‚Ä
+ã‚ˆã£ã¦
 $$
-\dif{A}||Ax||^2 = 2Ax\trans{x}.
+\dif{A}\Norm{Ax}^2 = 2Ax\trans{x}.
 $$
+\vspace{0pt}
 
-\section{Woodbury‚Ì‹ts—ñ‚ÌŒöŽ®}
+\section{Woodburyã®é€†è¡Œåˆ—ã®å…¬å¼}
 
-$n$ŽŸ³‘¥s—ñ$A$, $n$s$m$—ñ‚Ìs—ñ$B$, $m$s$n$—ñ‚Ìs—ñ$C$, $m$ŽŸ³‘¥s—ñ$D$‚É‚Â‚¢‚Ä
+$n$æ¬¡æ­£å‰‡è¡Œåˆ—$A$, $n$è¡Œ$m$åˆ—ã®è¡Œåˆ—$B$, $m$è¡Œ$n$åˆ—ã®è¡Œåˆ—$C$, $m$æ¬¡æ­£å‰‡è¡Œåˆ—$D$ã«ã¤ã„ã¦
 $$\left(A+BD^{-1}C\right)^{-1}=A^{-1}-A^{-1}B\left(D+CA^{-1}B\right)^{-1}CA^{-1}$$
-‚ª¬‚è—§‚Â.
+ãŒæˆã‚Šç«‹ã¤.
 
-iØ–¾j
-$I$‚ð$n$ŽŸ’PˆÊs—ñ‚Æ‚µ‚Ä
+ï¼ˆè¨¼æ˜Žï¼‰
+$I$ã‚’$n$æ¬¡å˜ä½è¡Œåˆ—ã¨ã—ã¦
 \[
 (I+BD^{-1}CA^{-1})B=B+BD^{-1}CA^{-1}B=BD^{-1}(D+CA^{-1}B).
 \]
-—¼•Ó‚É‰E‚©‚ç$(D+CA^{-1}B)^{-1}$, ¶‚©‚ç$(I+BD^{-1}CA^{-1})^{-1}$‚ðŠ|‚¯‚Ä
+\pagebreak
+ä¸¡è¾ºã«å³ã‹ã‚‰$(D+CA^{-1}B)^{-1}$, å·¦ã‹ã‚‰$(I+BD^{-1}CA^{-1})^{-1}$ã‚’æŽ›ã‘ã¦
 \begin{eqnarray*}
 B(D+CA^{-1}B)^{-1}&=&(I+BD^{-1}CA^{-1})^{-1}BD^{-1}=((A+BD^{-1}C)A^{-1})^{-1}BD^{-1}\\
 &=& A(A+BD^{-1}C)^{-1}BD^{-1}.
 \end{eqnarray*}
-‚æ‚Á‚Ä
+ã‚ˆã£ã¦
 \begin{eqnarray*}
-\text{‰E•Ó} &=& \left(I-A^{-1}B(D+CA^{-1}B)^{-1}C\right)A^{-1}\\
+\text{å³è¾º} &=& \left(I-A^{-1}B(D+CA^{-1}B)^{-1}C\right)A^{-1}\\
  &=& \left(I-\left(A+BD^{-1}C\right)^{-1}BD^{-1}C\right)A^{-1}\\
- &=& \left(A+BD^{-1}C\right)^{-1}\left(\left(A+BD^{-1}C\right)-BD^{-1}C\right)A^{-1}= \text{¶•Ó}.
+ &=& \left(A+BD^{-1}C\right)^{-1}\left(\left(A+BD^{-1}C\right)-BD^{-1}C\right)A^{-1}= \text{å·¦è¾º}.
 \end{eqnarray*}
 
-“Á‚É, $A$‚ª$n$ŽŸ³‘¥s—ñ‚Å$B$‚ð$n$ŽŸcƒxƒNƒgƒ‹$\bm{x}$, $C=\trans{\bm{x}}$, $D$‚ð$1$ŽŸ’PˆÊs—ñi$=1$j‚Æ‚·‚é‚Æ
+ç‰¹ã«, $A$ãŒ$n$æ¬¡æ­£å‰‡è¡Œåˆ—ã§$B$ã‚’$n$æ¬¡ç¸¦ãƒ™ã‚¯ãƒˆãƒ«$\bm{x}$, $C=\trans{\bm{x}}$, $D$ã‚’$1$æ¬¡å˜ä½è¡Œåˆ—ï¼ˆ$=1$ï¼‰ã¨ã™ã‚‹ã¨
 \begin{equation}\label{inv_A_xx}
 \left(A+\bm{x}\trans{\bm{x}}\right)^{-1}=A^{-1}-\frac{\left(A^{-1}\bm{x}\right)\left(\trans{\bm{x}}A^{-1}\right)}{1+\trans{\bm{x}}A^{-1}\bm{x}}
 \end{equation}
-‚ª¬‚è—§‚Â.
+ãŒæˆã‚Šç«‹ã¤.
 
-\section{³’è’l‘ÎÌs—ñ}\label{pos_sym_matrix}
-$n$ŽŸŒ³ŽÀ‘ÎÌs—ñ$A$‚Í‚ ‚é’¼ss—ñ$P$‚ð—p‚¢‚Äí‚É‘ÎŠp‰»‰Â”\‚Å‚ ‚Á‚½.
+\section{æ­£å®šå€¤å¯¾ç§°è¡Œåˆ—}\label{pos_sym_matrix}
+$n$æ¬¡å…ƒå®Ÿå¯¾ç§°è¡Œåˆ—$A$ã¯ã‚ã‚‹ç›´è¡Œè¡Œåˆ—$P$ã‚’ç”¨ã„ã¦å¸¸ã«å¯¾è§’åŒ–å¯èƒ½ã§ã‚ã£ãŸ.
 $$P^{-1}AP=\diag(\lambda_1, \cdots, \lambda_n).$$
-‘S‚Ä‚ÌŒÅ—L’l‚ª³‚Å‚ ‚é‚Æ‚«$A$‚ð³’è’l‚Æ‚¢‚¢, $A > 0$‚Æ‚©‚­.
-‘S‚Ä‚ÌŒÅ—L’l‚ª³‚Ü‚½‚Í0‚Å‚ ‚é‚Æ‚«, ”¼³’è’l‚Æ‚¢‚¢, $A \ge 0$‚Æ‚©‚­.
+å…¨ã¦ã®å›ºæœ‰å€¤ãŒæ­£ã§ã‚ã‚‹ã¨ã$A$ã‚’æ­£å®šå€¤ã¨ã„ã„, $A > 0$ã¨æ›¸ã.
+å…¨ã¦ã®å›ºæœ‰å€¤ãŒæ­£ã¾ãŸã¯$0$ã§ã‚ã‚‹ã¨ã, åŠæ­£å®šå€¤ã¨ã„ã„, $A \ge 0$ã¨æ›¸ã.
 
-”CˆÓ‚ÌŽÀƒxƒNƒgƒ‹$\bm{x}$‚É‚Â‚¢‚Ä$\bm{y}=P\bm{x}$‚Æ‚¨‚­‚Æ$\bm{x}$‚ª$\RR^n$‚Ì‘S‚Ä‚Ì“_‚ð‚Æ‚é‚Æ‚«$\bm{y}$‚à‘S‚Ä‚Ì“_‚ð“n‚é.
+ä»»æ„ã®å®Ÿãƒ™ã‚¯ãƒˆãƒ«$\bm{x}$ã«ã¤ã„ã¦$\bm{y}=P\bm{x}$ã¨ãŠãã¨$\bm{x}$ãŒ$\RR^n$ã®å…¨ã¦ã®ç‚¹ã‚’ã¨ã‚‹ã¨ã$\bm{y}$ã‚‚å…¨ã¦ã®ç‚¹ã‚’æ¸¡ã‚‹.
 $$\quadf{A}{x}=\sum_i \lambda_i y_i^2$$
-‚È‚Ì‚Å$A \ge 0$‚È‚ç‚Î$\quadf{A}{x} \ge 0$. $A>0$‚Ì‚Æ‚«‚Í“™†‚ª¬‚è—§‚Â‚Ì‚Í$\bm{x}=0$‚Ì‚Æ‚«‚Ì‚Ý‚Å‚ ‚é.
+ãªã®ã§$A \ge 0$ãªã‚‰ã°$\quadf{A}{x} \ge 0$. $A>0$ã®ã¨ãã¯ç­‰å·ãŒæˆã‚Šç«‹ã¤ã®ã¯$\bm{x}=0$ã®ã¨ãã®ã¿ã§ã‚ã‚‹.
 
-‹t‚É”CˆÓ‚Ì$\bm{x}$‚É‚Â‚¢‚Ä$\quadf{A}{x} \ge 0$‚Æ‚·‚é‚Æ,
-$\bm{y}$‚Æ‚µ‚Ä’PˆÊƒxƒNƒgƒ‹$\bm{e_i}$‚ðl‚¦‚ê‚Î$\lambda_i \ge 0$. ‚Â‚Ü‚è$A \ge 0$.
-X‚É“™†‚Í$\bm{x}=0$‚Ì‚Æ‚«‚ÉŒÀ‚é‚½‚ß‚É‚Í$\lambda_i > 0$. ‚Â‚Ü‚è$A>0$‚Å‚ ‚é‚±‚Æ‚ª•ª‚©‚é.
-‚Ü‚Æ‚ß‚é‚Æ
-$$ A \ge 0 \iff \lambda_i \ge 0 \mbox{ for } \forall i.$$
-$$ A>0 \iff \lambda_i > 0 \mbox{ for } \forall i.$$
+é€†ã«ä»»æ„ã®$\bm{x}$ã«ã¤ã„ã¦$\quadf{A}{x} \ge 0$ã¨ã™ã‚‹ã¨,
+$\bm{y}$ã¨ã—ã¦å˜ä½ãƒ™ã‚¯ãƒˆãƒ«$\bm{e_i}$ã‚’è€ƒãˆã‚Œã°$\lambda_i \ge 0$. ã¤ã¾ã‚Š$A \ge 0$.
+æ›´ã«ç­‰å·ã¯$\bm{x}=0$ã®ã¨ãã«é™ã‚‹ãŸã‚ã«ã¯$\lambda_i > 0$. ã¤ã¾ã‚Š$A>0$ã§ã‚ã‚‹ã“ã¨ãŒåˆ†ã‹ã‚‹.
+ã¾ã¨ã‚ã‚‹ã¨
+\begin{eqnarray*}
+ && A \ge 0 \iff \lambda_i \ge 0 \mbox{ for } \forall i,
+ \\
+ && A>0 \iff \lambda_i > 0 \mbox{ for } \forall i.
+\end{eqnarray*}
 
-‚±‚Ì“¯’l«‚©‚ç$A>0$‚Ì‚Æ‚«$A^{-1}>0$‚à•ª‚©‚é. ’è‹`‚©‚ç$A>0$, $B>0$‚È‚ç$A+B>0$‚à¬‚è—§‚Â.
+ã“ã®åŒå€¤æ€§ã‹ã‚‰$A>0$ã®ã¨ã$A^{-1}>0$ã‚‚åˆ†ã‹ã‚‹. å®šç¾©ã‹ã‚‰$A>0$, $B>0$ãªã‚‰$A+B>0$ã‚‚æˆã‚Šç«‹ã¤.
 
-‚Ü‚½ŽÀƒxƒNƒgƒ‹$\bm{v}$‚É‘Î‚µ‚Ä$A=\bm{v}\trans{\bm{v}}$‚Æ‚¨‚­‚Æ,
-$A$‚ÍŽÀ‘ÎÌ‚Å‚ ‚è, ”CˆÓ‚Ì$\bm{x}$‚É‘Î‚µ‚Ä
+ã¾ãŸå®Ÿãƒ™ã‚¯ãƒˆãƒ«$\bm{v}$ã«å¯¾ã—ã¦$A=\bm{v}\trans{\bm{v}}$ã¨ãŠãã¨,
+$A$ã¯å®Ÿå¯¾ç§°ã§ã‚ã‚Š, ä»»æ„ã®$\bm{x}$ã«å¯¾ã—ã¦
 $$\quadf{A}{x}=\left(\trans{\bm{v}}\bm{x}\right)^2 \ge 0$$
-‚È‚Ì‚Å$A \ge 0$.
+ãªã®ã§$A \ge 0$.
 
-\section{—\‘ª•ª•z‚Ì•ªŽU}
-$S_N^{-1}=S_0^{-1} + \beta \trans{\Phi_N}\Phi_N$‚Æ‚µ‚½‚Æ‚«‚Ì—\‘ª•ª•z‚Ì•ªŽU
-$$\sigma_N^2=\frac{1}{\beta}+\trans{\phi} S_N \phi$$
-‚ðl‚¦‚é. $\beta>0$‚Å‚ ‚è, $S_0$‚Í‹¤•ªŽUs—ñ‚È‚Ì‚ÅŽÀ³’è’l‚Å‚ ‚é‚±‚Æ‚É’ˆÓ‚·‚é.
-‚Ü‚¸Œv‰æs—ñ$\Phi_N$‚Í$N$‚ªˆê‚Â‘‚¦‚é–ˆ‚É1s‘‚¦‚é. $\bm{v}_N$i”ÏŽG‚È‚Ì‚Å$v$‚Æ—ª‹L‚·‚éj‚ð$M$ŽŸŒ³cƒxƒNƒgƒ‹‚Æ‚µ‚Ä
-$$\trans{\Phi_{N+1}}=\left(\trans{\Phi_N}\text{ } v\right)$$
-‚Æ‚µ‚æ‚¤.
-‚·‚é‚Æ
+\section{äºˆæ¸¬åˆ†å¸ƒã®åˆ†æ•£}
+$S_N:=\left(S_0^{-1} + \beta \trans{\Phi_N}\Phi_N\right)^{-1}$ã¨ã—ãŸã¨ãã®äºˆæ¸¬åˆ†å¸ƒã®åˆ†æ•£
+$$\sigma_N^2:=\frac{1}{\beta}+\trans{\phi} S_N \phi$$
+ã‚’è€ƒãˆã‚‹. $\beta>0$ã§ã‚ã‚Š, $S_0$ã¯å…±åˆ†æ•£è¡Œåˆ—ãªã®ã§å®Ÿæ­£å®šå€¤ã§ã‚ã‚‹ã“ã¨ã«æ³¨æ„ã™ã‚‹.
+ã¾ãšè¨ˆç”»è¡Œåˆ—$\Phi_N$ã¯$N$ãŒä¸€ã¤å¢—ãˆã‚‹æ¯Žã«1è¡Œå¢—ãˆã‚‹.
+$\bm{v}_{N+1}$ï¼ˆç…©é›‘ãªã®ã§$v$ã¨ç•¥è¨˜ã™ã‚‹ï¼‰ã‚’$M$æ¬¡å…ƒç¸¦ãƒ™ã‚¯ãƒˆãƒ«ã¨ã—ã¦
+$$\Phi_{N+1}:=\trans{\left(\trans{\Phi_N}, v\right)}$$
+ã¨ã—ã‚ˆã†. ã™ã‚‹ã¨
+\pagebreak
 $$
 S_{N+1}^{-1}
  =S_0^{-1} + \beta\left(\trans{\Phi_N}\Phi_N + v\trans{v}\right)
  = S_N^{-1} + \beta v\trans{v}.
 $$
-s—ñ$\beta v\trans{v}$‚Í³’è’l‚Å‚ ‚è, $S_N$‚ÉŠÖ‚µ‚Ä‹A”[–@‚ðŽg‚¤‚Æ‘S‚Ä‚Ì$S_N$‚Í³’è’l‚Å‚ ‚é‚±‚Æ‚ª•ª‚©‚é.
+è¡Œåˆ—$\beta v\trans{v}$ã¯æ­£å®šå€¤ã§ã‚ã‚Š, $S_N$ã«é–¢ã—ã¦å¸°ç´æ³•ã‚’ä½¿ã†ã¨å…¨ã¦ã®$S_N$ã¯æ­£å®šå€¤ã§ã‚ã‚‹ã“ã¨ãŒåˆ†ã‹ã‚‹.
 
-Ž®(\ref{inv_A_xx})‚ðŽg‚Á‚Ä
+å¼(\ref{inv_A_xx})ã‚’ä½¿ã£ã¦
 \begin{eqnarray*}
 \sigma_{N+1}^2&=&\frac{1}{\beta} + \trans{\phi}\left(S_N^{-1} + \beta v\trans{v}\right)^{-1}\phi\\
  &=& \frac{1}{\beta} + \trans{\phi}\left(S_N - \frac{\left(S_N v\right)\left(\trans{v} S_N\right)}{1+\trans{v}S_Nv}\right)\phi\\
  &=& \sigma_N^2 - z
 \end{eqnarray*}
-‚±‚±‚Å$S_N$‚Í‘ÎÌ‚È‚Ì‚Å
-\begin{eqnarray*}
-z &=& \trans{\phi}\frac{\left(S_N v\right)\left(\trans{v} S_N\right)}{1+\trans{v}S_Nv}\phi\\
-  &=& \frac{1}{1+\trans{v}S_Nv} \left(\trans{v}S_N\phi\right)^2.
-\end{eqnarray*}
-$S_N$‚Í³’è’l‚È‚Ì‚Å”CˆÓ‚Ì$v$‚É‘Î‚µ‚Ä$\trans{v}S_Nv \ge 0$.
-‚æ‚Á‚Ä $z \ge 0$‚Æ‚È‚è
+ã“ã“ã§
+$z := \trans{\phi}\frac{(S_N v)(\trans{v} S_N)}{1+\trans{v}S_Nv}\phi$ã¨ãŠã„ãŸ.
+$S_N$ã®å¯¾ç§°æ€§ã‹ã‚‰
+$$
+z = \frac{1}{1+\trans{v}S_Nv} \left(\trans{v}S_N\phi\right)^2.
+$$
+$S_N$ã¯æ­£å®šå€¤ãªã®ã§ä»»æ„ã®$v$ã«å¯¾ã—ã¦$\trans{v}S_Nv \ge 0$.
+ã‚ˆã£ã¦ $z \ge 0$ã¨ãªã‚Š
 $$\sigma_{N+1}^2 \le \sigma_N^2.$$
 
-‹A”[–@‚Ì—¬‚ê‚ðŒ©‚é‚Æ,
-$$
-\trans{\Phi_N} = \left(\bm{v}_1 \cdots \bm{v}_N \right)
-$$
-‚Æ‚¨‚­‚Æ
+$\trans{\Phi_N}$ã‚’$\left(\bm{v}_1 \cdots \bm{v}_N \right)$ã¨è¡¨ã›ã°
+å¸°ç´æ³•ã®æµã‚Œã‹ã‚‰
 $$
 S_N^{-1}=S_0^{-1}+\beta \sum_{i=1}^N \bm{v}_i\trans{\bm{v}_i}
 $$
-‚Æ‚È‚é‚±‚Æ‚ª‚í‚©‚é.
-$\bm{v}_i$‚ªŠî’êŠÖ”‚ÌƒxƒNƒgƒ‹‚ÉŒP—ûƒf[ƒ^‚Ì’l‚ð‘ã“ü‚µ‚½‚à‚Ì‚Å‚ ‚é‚±‚Æ‚ðl‚¦‚é‚Æ, 0ƒxƒNƒgƒ‹‚É‚È‚é‚±‚Æ‚Í–w‚Ç–³‚¢.
-‚Ü‚½$N \rightarrow \infty$‚Å0‚É‚È‚é‚í‚¯‚Å‚à‚È‚¢.
-‚Â‚Ü‚è‚»‚ê‚ç‚Ì˜a‚Í‚Ç‚ñ‚Ç‚ñ‘å‚«‚­‚È‚é. ‚»‚¤‚¢‚¤ó‹µ‚ÌŒ³‚Å‚Í$\trans{\phi}S_N\phi$‚Í0‚É‹ß‚Ã‚«,
+ã¨ãªã‚‹ã“ã¨ãŒã‚ã‹ã‚‹.
+$\bm{v}_i$ãŒåŸºåº•é–¢æ•°ã®ãƒ™ã‚¯ãƒˆãƒ«ã«è¨“ç·´ãƒ‡ãƒ¼ã‚¿ã®å€¤ã‚’ä»£å…¥ã—ãŸã‚‚ã®ã§ã‚ã‚‹ã“ã¨ã‚’è€ƒãˆã‚‹ã¨, $0$ãƒ™ã‚¯ãƒˆãƒ«ã«ãªã‚‹ã“ã¨ã¯æ®†ã©ç„¡ã„.
+ã¾ãŸ$N \rightarrow \infty$ã§$0$ã«ãªã‚‹ã‚ã‘ã§ã‚‚ãªã„.
+ã¤ã¾ã‚Šãã‚Œã‚‰ã®å’Œã¯ã©ã‚“ã©ã‚“å¤§ãããªã‚‹. ãã†ã„ã†çŠ¶æ³ã®ä¸‹ã§ã¯$\trans{\phi}S_N\phi$ã¯$0$ã«è¿‘ã¥ã,
 $$\sigma_N^2 \rightarrow \frac{1}{\beta}$$
-‚Æ‚È‚é.
+ã¨ãªã‚‹.
 
-\section{ƒJƒ‹ƒoƒbƒN‹——£}
+\section{ã‚«ãƒ«ãƒãƒƒã‚¯è·é›¢}
 
-$p(x)$, $q(x)$‚ðP“™“I‚É0‚Å‚Í‚È‚¢Šm—¦–§“xŠÖ”‚Æ‚·‚é. ‚Â‚Ü‚è$p(x)$, $q(x) \ge 0$.
+$p(x)$, $q(x)$ã‚’æ’ç­‰çš„ã«$0$ã§ã¯ãªã„ç¢ºçŽ‡å¯†åº¦é–¢æ•°ã¨ã™ã‚‹. ã¤ã¾ã‚Š$p(x)$, $q(x) \ge 0$.
 $$
-\KL(p||q)=\int p(x) \log \frac{p(x)}{q(x)}\,dx
+\KL(p\,\|\,q):=\int p(x) \log \frac{p(x)}{q(x)}\,dx
 $$
-‚ðƒJƒ‹ƒoƒbƒN‹——£iKullback-Leibler‹——£, ‘Š‘ÎƒGƒ“ƒgƒƒs[j‚Æ‚¢‚¤.
+ã‚’ã‚«ãƒ«ãƒãƒƒã‚¯è·é›¢ï¼ˆKullback\ï¼Leiblerè·é›¢, ç›¸å¯¾ã‚¨ãƒ³ãƒˆãƒ­ãƒ”ãƒ¼ï¼‰ã¨ã„ã†.
 
-‹——£‚Æ‚¢‚¢‚Â‚Â, $\KL(p||q)=\KL(q||p)$‚Æ‚ÍŒÀ‚ç‚È‚¢‚Ì‚Å‹——£‚ÌŒö—‚Í–ž‚½‚³‚È‚¢.
-‚µ‚©‚µ, $\KL(p||q) \ge 0$‚Å‚ ‚è, $\KL(p||q)=0 \iff p = q$‚Í‚¢‚¦‚é.
-‚±‚ê‚ðŽ¦‚»‚¤.
+è·é›¢ã¨ã„ã„ã¤ã¤, $\KL(p\,\|\,q)=\KL(q\,\|\,p)$ã¨ã¯é™ã‚‰ãªã„ã®ã§è·é›¢ã®å…¬ç†ã¯æº€ãŸã•ãªã„.
+ã—ã‹ã—, $\KL(p\,\|\,q) \ge 0$ã§ã‚ã‚Š, $\KL(p\,\|\,q)=0 \iff p = q$ã¯ã„ãˆã‚‹.
+ã“ã‚Œã‚’ç¤ºãã†.
 
-‚Ü‚¸$S(x)=e^{-x}+x-1$‚É‚Â‚¢‚Ä$S(x) \ge 0$‚Å‚ ‚è, $S(x)=0 \iff x = 0$‚Å‚ ‚é.
+ã¾ãš$S(x)=e^{-x}+x-1$ã«ã¤ã„ã¦$S(x) \ge 0$ã§ã‚ã‚Š, $S(x)=0 \iff x = 0$ã§ã‚ã‚‹.
 
-‚È‚º‚È‚ç$S'(x)=-e^{-x}+1$. $S''(x)=e^{-x} \ge 0$‚È‚Ì‚Å$S'(x)$‚Í’P’²‘‰Á. $S'(0) = 0$‚æ‚è$x > 0$‚È‚ç$S'(x) > 0$, $x<0$‚È‚ç$S'(x)<0$. ‚Â‚Ü‚è$S(x)$‚Í0‚ÅÅ¬’l0‚ð‚Æ‚é.
-
+ãªãœãªã‚‰$S'(x)=-e^{-x}+1$. $S''(x)=e^{-x} \ge 0$ãªã®ã§$S'(x)$ã¯å˜èª¿å¢—åŠ . $S'(0) = 0$ã‚ˆã‚Š$x > 0$ãªã‚‰$S'(x) > 0$, $x<0$ãªã‚‰$S'(x)<0$. ã¤ã¾ã‚Š$S(x)$ã¯$0$ã§æœ€å°å€¤$0$ã‚’ã¨ã‚‹.
 \begin{eqnarray*}
-\int p(x) S\left(\log \frac{p(x)}{q(x)}\right)\,dx &=& \int p(x) \left(\frac{q(x)}{p(x)} + \log \frac{p(x)}{q(x)} - 1\right)\,dx\\
- &=& \KL(p||q) + \int \left(q(x) - p(x)\right)\,dx\\
- &=& \KL(p||q).
+\int p(x)\, S\left(\log \frac{p(x)}{q(x)}\right) dx
+ &=& \int p(x) \left(\frac{q(x)}{p(x)} + \log \frac{p(x)}{q(x)} - 1\right) dx\\
+ &=& \KL(p\,\|\,q) + \int \left(q(x) - p(x)\right) dx\\
+ &=& \KL(p\,\|\,q).
 \end{eqnarray*}
-‚±‚±‚Å$p$, $q$‚ªŠm—¦–§“xŠÖ”‚È‚Ì‚Å$\int p(x)\,dx = 1$, $\int q(x)\,dx=1$‚Å‚ ‚é‚±‚Æ‚ðŽg‚Á‚½.
+ã“ã“ã§$p$, $q$ãŒç¢ºçŽ‡å¯†åº¦é–¢æ•°ãªã®ã§$\int p(x)\,dx = 1$, $\int q(x)\,dx=1$ã§ã‚ã‚‹ã“ã¨ã‚’ä½¿ã£ãŸ.
 
-‚±‚ÌŽ®‚Ì¶•Ó‚Ì”íÏ•ªŠÖ”‚Íí‚É0ˆÈã. ‚æ‚Á‚Ä$\KL(p||q) \ge 0$.
+ã“ã®å¼ã®å·¦è¾ºã®è¢«ç©åˆ†é–¢æ•°ã¯å¸¸ã«$0$ä»¥ä¸Š. ã‚ˆã£ã¦$\KL(p\,\|\,q) \ge 0$.
 
-$\KL(p||q) = 0$‚È‚ç‚Î–w‚Ç‘S‚Ä‚Ì$x$‚É‚Â‚¢‚Ä
+$\KL(p\,\|\,q) = 0$ãªã‚‰ã°æ®†ã©å…¨ã¦ã®$x$ã«ã¤ã„ã¦
 $$
-p(x) S\left(\log \frac{p(x)}{q(x)}\right)=0.
+p(x)\, S\left(\log \frac{p(x)}{q(x)}\right)=0.
 $$
-$p=0$‚Å‚Í‚È‚¢‚Ì‚Å–w‚Ç‘S‚Ä‚Ì$x$‚É‚Â‚¢‚Ä
+$p=0$ã§ã¯ãªã„ã®ã§æ®†ã©å…¨ã¦ã®$x$ã«ã¤ã„ã¦
 $$S\left(\log \frac{p(x)}{q(x)}\right)=0.$$
-$S(x)=0$‚Æ‚È‚é$x$‚Í0‚Ì‚Æ‚«‚¾‚¯‚¾‚©‚ç,
-–w‚Ç‘S‚Ä‚Ì$x$‚É‚Â‚¢‚Ä$p(x)=q(x)$.
+$S(x)=0$ã¨ãªã‚‹$x$ã¯$0$ã®ã¨ãã ã‘ã ã‹ã‚‰,
+æ®†ã©å…¨ã¦ã®$x$ã«ã¤ã„ã¦$p(x)=q(x)$.
 
-^‚Ìƒ‚ƒfƒ‹$p(D|M)$‚ª‚ ‚Á‚½‚Æ‚«‚É, ƒ‚ƒfƒ‹ƒGƒrƒfƒ“ƒX$p(D|M')$‚Æ‚Ì
-ƒJƒ‹ƒoƒbƒN‹——£$\KL(p(D|M)||p(D|M'))$‚Í,
-0‚É‹ß‚¢‚Ù‚Ç^‚Ìƒ‚ƒfƒ‹‚É‹ß‚»‚¤‚¾‚Æ‚¢‚¤‚±‚Æ‚É‚·‚é.
+çœŸã®ãƒ¢ãƒ‡ãƒ«$\fnvPair p(D|M)$ãŒã‚ã£ãŸã¨ãã«,
+ãƒ¢ãƒ‡ãƒ«ã‚¨ãƒ“ãƒ‡ãƒ³ã‚¹$\fnvPair p(D|M')$ã¨ã®
+ã‚«ãƒ«ãƒãƒƒã‚¯è·é›¢$\KL(p(D\,|\,M)\,\|\,p(D\,|\,M'))$ã¯,
+0ã«è¿‘ã„ã»ã©çœŸã®ãƒ¢ãƒ‡ãƒ«ã«è¿‘ãã†ã ã¨ã„ã†ã“ã¨ã«ã™ã‚‹.
 
-\section{ƒGƒrƒfƒ“ƒXŠÖ”‚Ì•]‰¿‚ÌŽ®•ÏŒ`}
-$A=\alpha I + \beta \trans{\Phi}\Phi$‚Æ‚¨‚­‚Æ
+\section{ã‚¨ãƒ“ãƒ‡ãƒ³ã‚¹é–¢æ•°ã®è©•ä¾¡ã®å¼å¤‰å½¢}
+$A:=\alpha I + \beta \trans{\Phi}\Phi$ã¨ãŠãã¨
 \begin{eqnarray*}
-E(w) &=& \frac{\beta}{2}||t-\Phi w||^2+\frac{\alpha}{2}\trans{w}w\\
-     &=& \half\trans{w}\left(\alpha I + \beta \trans{\Phi}\Phi\right)w-\beta \trans{t}\Phi w+\frac{\beta}{2}||t||^2\\
-     &=& \half\trans{w}Aw-\beta \trans{w}\trans{\Phi} t+\frac{\beta}{2}||t||^2.
+E(w) &:=& \frac{\beta}{2}\Norm{t-\Phi w}^2+\frac{\alpha}{2}\trans{w}w\\
+&=& \half\trans{w}\left(\alpha I + \beta \trans{\Phi}\Phi\right)w
+    -\beta \trans{t}\Phi w+\frac{\beta}{2}\Norm{t}^2\\
+&=& \half\trans{w}Aw
+    -\beta \trans{w}\trans{\Phi} t +\frac{\beta}{2}\Norm{t}^2.
 \end{eqnarray*}
-‚±‚±‚Åˆê”Ê‚É‘ÎÌs—ñ$A$‚ÆƒxƒNƒgƒ‹$w$, $m$‚É‚Â‚¢‚Ä
+ã“ã“ã§ä¸€èˆ¬ã«å¯¾ç§°è¡Œåˆ—$A$ã¨ãƒ™ã‚¯ãƒˆãƒ«$w$, $m$ã«ã¤ã„ã¦
 $$
 \half\trans{(w-m)}A(w-m)=\half\trans{w}Aw-\trans{w}Am+\half\trans{m}Am.
 $$
-‚±‚ÌŠÖ”‚Í$w=m$‚Ì‚Æ‚«Å¬’l0‚ð‚Æ‚é.
-“ñ‚Â‚ð”äŠr‚·‚é‚±‚Æ‚Å$E(w)$‚Í$\beta\trans{\Phi}t=Am$, ‚Â‚Ü‚è
+ã“ã®é–¢æ•°ã¯$w=m$ã®ã¨ãæœ€å°å€¤$0$ã‚’ã¨ã‚‹.
+äºŒã¤ã‚’æ¯”è¼ƒã™ã‚‹ã“ã¨ã§$E(w)$ã¯$\beta\trans{\Phi}t=Am$, ã¤ã¾ã‚Š
 $$
-w=m_N=\beta A^{-1}\trans{\Phi}t
+w=m_N:=\beta A^{-1}\trans{\Phi}t
 $$
-‚Ì‚Æ‚«Å¬‚Æ‚È‚é. Å¬’l‚ÍŒ³‚Ì$E(w)$‚ÌŽ®‚É$w=m_N$‚ð‘ã“ü‚·‚ê‚Î“¾‚ç‚ê,
+ã®ã¨ãæœ€å°ã¨ãªã‚‹. æœ€å°å€¤ã¯å…ƒã®$E(w)$ã®å¼ã«$w=m_N$ã‚’ä»£å…¥ã™ã‚Œã°å¾—ã‚‰ã‚Œ,
 $$
-E(m_N)=\frac{\beta}{2}||t-\Phi m_N||^2+\frac{\alpha}{2}\trans{m_N} m_N.
+E(m_N)=\frac{\beta}{2}\Norm{t-\Phi m_N}^2+\frac{\alpha}{2}\trans{m_N} m_N.
 $$
-‚Â‚Ü‚è
+ã¤ã¾ã‚Š
 $$
 E(w)=\half\trans{(w-m_N)}A{(w-m_N)} + E(m_N)
 $$
-‚Æ•½•ûŠ®¬‚Å‚«‚é.
+ã¨å¹³æ–¹å®Œæˆã§ãã‚‹.
 
-‚æ‚Á‚Ä
+ã‚ˆã£ã¦
 \begin{eqnarray*}
 E(w) &=& \int \exp\left(-E(w)\right)\,dw \\
      &=& \exp\left(-E(m_N)\right) \int \exp\left(-\half\trans{(w-m_N)}A{(w-m_N)}\right)\,dw\\
      &=& \exp\left(-E(m_N)\right) (2\pi)^{M/2} |A|^{-1/2}.
 \end{eqnarray*}
 
-]‚Á‚Ä
+å¾“ã£ã¦
 \begin{eqnarray}\label{log_evidence}
-\log p(\bm{t}|\alpha,\beta)\nonumber
- &=& (N/2) \log\left(\frac{\beta}{2\pi}\right) + (M/2) \log\left(\frac{\alpha}{2\pi}\right) \log \left(\int \exp\left(-E(w)\right)\,dw\right)\\
- &=& (M/2)\log \alpha + \frac{N}{2} \log \beta - E(m_N) - \half\log |A| - \frac{N}{2} \log(2\pi).
+\log p(\bm{t}\,|\,\alpha,\beta)\nonumber
+ &=& \frac{N}{2} \log\left(\frac{\beta}{2\pi}\right) + \frac{M}{2} \log\left(\frac{\alpha}{2\pi}\right) \log \left(\int \exp\left(-E(w)\right)\,dw\right)\\
+ &=& \frac{M}{2} \log \alpha + \frac{N}{2} \log \beta - E(m_N) - \half\log |A| - \frac{N}{2} \log(2\pi).
 \end{eqnarray}
+\vspace{0pt}
 
-\section{ƒwƒbƒZs—ñ}
-$x$‚ª$n$ŽŸcƒxƒNƒgƒ‹‚Ì‚Æ‚«, $y=f(x)$‚É‚¨‚¯‚é2ŠK”÷•ª‚Ì$n$ŽŸ³•ûs—ñ
+\section{ãƒ˜ãƒƒã‚»è¡Œåˆ—}
+$x$ãŒ$n$æ¬¡ç¸¦ãƒ™ã‚¯ãƒˆãƒ«ã®ã¨ã, $y=f(x)$ã«ãŠã‘ã‚‹2éšŽå¾®åˆ†ã®$n$æ¬¡æ­£æ–¹è¡Œåˆ—
 $$
-H(f)=\left(\ddif{x_i}{x_j}f(x)\right)
+H(f):=\left(\ddif{x_i}{x_j}f(x)\right)
 $$
-‚ðƒwƒbƒZs—ñ‚Æ‚¢‚¤.
-’Êí•Î”÷•ª‚Í‰ÂŠ·‚È‚Ì‚Å, ‚±‚ê‚Í‘ÎÌs—ñ‚Å‚ ‚é.
+ã‚’ãƒ˜ãƒƒã‚»è¡Œåˆ—ã¨ã„ã†.
+é€šå¸¸åå¾®åˆ†ã¯å¯æ›ãªã®ã§, ã“ã‚Œã¯å¯¾ç§°è¡Œåˆ—ã§ã‚ã‚‹.
+\pagebreak
 
-1ŠK”÷•ª‚Ìs—ñiƒ„ƒRƒrs—ñj‚Ìs—ñŽ®‚Í‚»‚Ì“_‚Ì•t‹ß‚ÌŠg‘å—¦‚ð•\‚µ‚Ä‚¢‚½.
-ƒwƒbƒZs—ñ‚Í‚»‚Ì“_‚Ì•t‹ß‚ÌŠÖ”‚ÌŒ`‚ð•\‚·.
-‚½‚Æ‚¦‚Î³’è’l‚Èê‡‚Í‹É¬, ŒÅ—L’l‚ª‘S‚Ä•‰‚Ìê‡‚Í‹É‘å, ŒÅ—L’l‚ª³‚Æ•‰‚Ì—¼•û‚Ìê‡‚ÍˆÆ“_‚Æ‚È‚é.
+1éšŽå¾®åˆ†ã®è¡Œåˆ—ï¼ˆãƒ¤ã‚³ãƒ“è¡Œåˆ—ï¼‰ã®è¡Œåˆ—å¼ã¯ãã®ç‚¹ã®ä»˜è¿‘ã®æ‹¡å¤§çŽ‡ã‚’è¡¨ã—ã¦ã„ãŸ.
+ãƒ˜ãƒƒã‚»è¡Œåˆ—ã¯ãã®ç‚¹ã®ä»˜è¿‘ã®é–¢æ•°ã®å½¢ã‚’è¡¨ã™.
+ãŸã¨ãˆã°æ­£å®šå€¤ãªå ´åˆã¯æ¥µå°, å›ºæœ‰å€¤ãŒå…¨ã¦è² ã®å ´åˆã¯æ¥µå¤§, å›ºæœ‰å€¤ãŒæ­£ã¨è² ã®ä¸¡æ–¹ã®å ´åˆã¯éžç‚¹ã¨ãªã‚‹.
 
-$f=x^2-y^2$, $g=x^2+y^2$‚Æ‚¢‚¤ƒOƒ‰ƒt‚ðŒ©‚Ä‚Ý‚æ‚¤.
-}\ref{x2my2}‚ÍŒ´“_‚ÅˆÆ“_, }\ref{x2py2}‚ÍŒ´“_‚Å‹É¬‚Å‚ ‚é.
-‚»‚ê‚¼‚êƒwƒbƒZs—ñ‚Í
+$f(x,y):=x^2-y^2$, $g(x,y):=x^2+y^2$ã¨ã„ã†ã‚°ãƒ©ãƒ•ã‚’è¦‹ã¦ã¿ã‚ˆã†.
+å›³\ref{x2my2}ã¯åŽŸç‚¹ã§éžç‚¹, å›³\ref{x2py2}ã¯åŽŸç‚¹ã§æ¥µå°ã§ã‚ã‚‹.
+ãã‚Œãžã‚Œãƒ˜ãƒƒã‚»è¡Œåˆ—ã¯
 $$
 H(f)=\matt{2}{0}{0}{-2}, \quad H(g)=\matt{2}{0}{0}{2}
 $$
-‚Æ‚È‚è, ƒwƒbƒZs—ñ‚ªŒ´“_‚Å‚ÌŒ`‚É‘Î‰ž‚µ‚Ä‚¢‚é‚±‚Æ‚ª•ª‚©‚é.
-\begin{figure}[h]
+ã¨ãªã‚Š, ãƒ˜ãƒƒã‚»è¡Œåˆ—ãŒåŽŸç‚¹ã§ã®å½¢ã«å¯¾å¿œã—ã¦ã„ã‚‹ã“ã¨ãŒåˆ†ã‹ã‚‹.
+\begin{figure}[ht]
  \begin{minipage}{0.48\hsize}
-  \begin{center}
-   \includegraphics[scale=0.28]{../prml/x2my2.ps}
-  \end{center}
+  \centering
+  \IfFileExists{2400dpi.aux}
+  {\includegraphics{./saddle-point-mono-for2400dpi.png}}
+  {\includegraphics[scale=0.25]{./saddle-point-mono.png}}
   \caption{$f=x^2-y^2$}
   \label{x2my2}
  \end{minipage}
  \begin{minipage}{0.48\hsize}
-  \begin{center}
-   \includegraphics[scale=0.28]{../prml/x2py2.ps}
-  \end{center}
+  \centering
+  \IfFileExists{2400dpi.aux}
+  {\includegraphics{./convex-mono-for2400dpi.png}}
+  {\includegraphics[scale=0.25]{./convex-mono.png}}
   \caption{$g=x^2+y^2$}
   \label{x2py2}
  \end{minipage}
 \end{figure}
+\vspace{0pt}
 
-\section{ƒGƒrƒfƒ“ƒXŠÖ”‚ÌÅ‘å‰»‚ÌŽ®•ÏŒ`}
-s—ñ$\beta\trans{\Phi}\Phi$‚ð‚ ‚és—ñ$P$‚Å‘ÎŠp‰»‚·‚é.
+\section{ã‚¨ãƒ“ãƒ‡ãƒ³ã‚¹é–¢æ•°ã®æœ€å¤§åŒ–ã®å¼å¤‰å½¢}
+è¡Œåˆ—$\beta\trans{\Phi}\Phi$ã‚’ã‚ã‚‹è¡Œåˆ—$P$ã§å¯¾è§’åŒ–ã™ã‚‹.
 $$
 P^{-1} \left(\beta\trans{\Phi}\Phi\right) P = \diag(\lambda_1, \ldots, \lambda_M).
 $$
-‚·‚é‚Æs—ñ$A=\alpha I + \beta\trans{\Phi}\Phi$‚à“¯‚¶$P$‚Å‘ÎŠp‰»‚Å‚«‚Ä
+ã™ã‚‹ã¨è¡Œåˆ—$A:=\alpha I + \beta\trans{\Phi}\Phi$ã‚‚åŒã˜$P$ã§å¯¾è§’åŒ–ã§ãã¦
 $$
 P^{-1} A P = \diag(\alpha + \lambda_1, \ldots, \alpha + \lambda_M).
 $$
-‚æ‚Á‚Ä
+ã‚ˆã£ã¦
 $$
 |A|=\prod_{i=1}^M\left(\lambda_i + \alpha\right)
 $$
-‚Æ‚È‚é. $\alpha$‚Å”÷•ª‚·‚é‚Æ
+ã¨ãªã‚‹. $\alpha$ã§å¾®åˆ†ã™ã‚‹ã¨
 $$
 \dif{\alpha}\log |A|=\sum_{i=1}^M \frac{1}{\lambda_i + \alpha}.
 $$
-Ž®(\ref{log_evidence})‚ð$\alpha$‚Å”÷•ª‚·‚é‚Æ
+å¼(\ref{log_evidence})ã‚’$\alpha$ã§å¾®åˆ†ã™ã‚‹ã¨
 $$
-\dif{\alpha} \log p\left(\bm{t}|\alpha,\beta\right)=\frac{M}{2\alpha}-\half\trans{m_N}m_N - \half\sum \frac{1}{\lambda_i + \alpha}=0.
+\dif{\alpha} \log p\left(\bm{t}\,|\,\alpha,\beta\right)=\frac{M}{2\alpha}-\half\trans{m_N}m_N - \half\sum \frac{1}{\lambda_i + \alpha}=0.
 $$
-‚æ‚Á‚Ä
+ã‚ˆã£ã¦
 $$
 \alpha \trans{m_N}m_N = M-\sum_{i=1}^M \frac{\alpha}{\lambda_i + \alpha}=\sum_{i=1}^M \frac{\lambda_i}{\lambda_i + \alpha}.
 $$
-‚±‚ê‚ð$\gamma$‚Æ‚¨‚­‚Æ
+ã“ã‚Œã‚’$\gamma$ã¨ãŠãã¨
 $$
 \alpha=\frac{\gamma}{\trans{m_N}m_N}.
 $$
-‚½‚¾‚µ, $m_N$‚Í‰A‚É$\alpha$‚ÉˆË‘¶‚µ‚Ä‚¢‚é‚Ì‚Å‚±‚ê‚ÍŽÀ‚Í$\alpha$‚ðŠÜ‚Þ•û’öŽ®‚Å‚ ‚é.
+ãŸã ã—, $m_N$ã¯é™°ã«$\alpha$ã«ä¾å­˜ã—ã¦ã„ã‚‹ã®ã§ã“ã‚Œã¯å®Ÿã¯$\alpha$ã‚’å«ã‚€æ–¹ç¨‹å¼ã§ã‚ã‚‹.
 
-$\beta$‚É‚Â‚¢‚Ä‚à“¯—l‚É‚µ‚Ä‚Ý‚é. $\beta\trans{\Phi}\Phi$‚ÌŒÅ—L’l‚ª$\lambda_i$‚¾‚©‚ç$\lambda_i$‚Í$\beta$‚É”ä—á‚·‚é.
-‚Â‚Ü‚è”÷•ª‚ª”ä—áŒW”‚É“™‚µ‚¢.
+$\beta$ã«ã¤ã„ã¦ã‚‚åŒæ§˜ã«ã—ã¦ã¿ã‚‹. $\beta\trans{\Phi}\Phi$ã®å›ºæœ‰å€¤ãŒ$\lambda_i$ã ã‹ã‚‰$\lambda_i$ã¯$\beta$ã«æ¯”ä¾‹ã™ã‚‹.
+ã¤ã¾ã‚Šå¾®åˆ†ãŒæ¯”ä¾‹ä¿‚æ•°ã«ç­‰ã—ã„.
 $$
-\dif{\beta} \lambda_i = \lambda_i/\beta.
+\dif{\beta} \lambda_i = \frac{\lambda_i}{\beta}.
 $$
-‚æ‚Á‚Ä
+ã‚ˆã£ã¦
 $$
 \dif{\beta} \log |A| = \sum \frac{\lambda_i/\beta}{\lambda_i + \alpha}=\frac{\gamma}{\beta}.
 $$
-Ž®(\ref{log_evidence})‚ð$\beta$‚Å”÷•ª‚·‚é‚Æ
+å¼(\ref{log_evidence})ã‚’$\beta$ã§å¾®åˆ†ã™ã‚‹ã¨
 $$
-\frac{N}{2\beta} - \half||\bm{t}-\Phi m_N||^2-\frac{\gamma}{2\beta}=0.
+\frac{N}{2\beta} - \half\Norm{\bm{t}-\Phi m_N}^2-\frac{\gamma}{2\beta}=0.
 $$
-‚æ‚Á‚Ä
+ã‚ˆã£ã¦
 $$
-\frac{1}{\beta}=\frac{1}{N-\gamma}||\bm{t}-\Phi m_N||^2.
+\frac{1}{\beta}=\frac{1}{N-\gamma}\Norm{\bm{t}-\Phi m_N}^2.
 $$
-\section{ƒpƒ‰ƒ[ƒ^‚ÌŠÖŒW}
-ƒpƒ‰ƒ[ƒ^‚ª‚½‚­‚³‚ñ‚Å‚Ä‚«‚½‚Ì‚Å‚»‚ê‚ç‚ÌŠÖŒW‚ðŒ©’¼‚µ‚Ä‚Ý‚æ‚¤.
-‚Ü‚¸üŒ`Šî’êƒ‚ƒfƒ‹‚ðl‚¦‚½. $\phi(x)$‚ð$M$ŒÂ‚ÌŠî’êŠÖ”‚©‚ç‚È‚éƒxƒNƒgƒ‹‚Æ‚·‚é.
-$x$‚ÍŠÏ‘ª’l‚Å‚ ‚è,
+\vspace{0pt}
+
+\section{ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®é–¢ä¿‚}
+ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒãŸãã•ã‚“ã§ã¦ããŸã®ã§ãã‚Œã‚‰ã®é–¢ä¿‚ã‚’è¦‹ç›´ã—ã¦ã¿ã‚ˆã†.
+ã¾ãšç·šå½¢åŸºåº•ãƒ¢ãƒ‡ãƒ«ã‚’è€ƒãˆãŸ. $\phi(x)$ã‚’$M$å€‹ã®åŸºåº•é–¢æ•°ã‹ã‚‰ãªã‚‹ãƒ™ã‚¯ãƒˆãƒ«ã¨ã™ã‚‹.
+$x$ã¯è¦³æ¸¬å€¤ã§ã‚ã‚Š,
 $$
 y(x,w)=\trans{w}\phi(x)
 $$
-‚Æ‚µ‚½. $\bm{t}$‚ðŠÏ‘ª’l‚É‘Î‚·‚é–Ú•W’l‚Å, ‚»‚ê‚Í$x$‚É‚æ‚ç‚¸‚É¸“xƒpƒ‰ƒ[ƒ^$\beta$‚É]‚¤ƒKƒEƒX•ª•z‚Æ‚µ‚½.
+ã¨ã—ãŸ. $\bm{t}$ã‚’è¦³æ¸¬å€¤ã«å¯¾ã™ã‚‹ç›®æ¨™å€¤ã§, ãã‚Œã¯$x$ã«ã‚ˆã‚‰ãšã«ç²¾åº¦ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿$\beta$ã«å¾“ã†ã‚¬ã‚¦ã‚¹åˆ†å¸ƒã¨ã—ãŸ.
 $$
-p(\bm{t}|w,\beta)=\calN\left(t|y(x,w),\beta^{-1}\right).
+\fnvPair p(\bm{t}|w,\beta)=\fnvPair\calN(t|y(x,w),\beta^{-1}).
 $$
-ƒxƒCƒY“I‚Éˆµ‚¤‚½‚ß‚É$w$‚ÉŠÖ‚µ‚ÄŽ–‘OŠm—¦•ª•z‚ð—^‚¦‚½‚¢. ãŽ®‚ª$w$‚ÉŠÖ‚·‚é2ŽŸŠÖ”‚È‚Ì‚Å,
-‹¤–ðŽ–‘O•ª•z‚Æ‚µ‚ÄƒnƒCƒp[ƒpƒ‰ƒ[ƒ^$\alpha$‚ð“±“ü‚µ,
+ãƒ™ã‚¤ã‚ºçš„ã«æ‰±ã†ãŸã‚ã«$w$ã«é–¢ã—ã¦äº‹å‰ç¢ºçŽ‡åˆ†å¸ƒã‚’ä¸ŽãˆãŸã„. ä¸Šå¼ãŒ$w$ã«é–¢ã™ã‚‹2æ¬¡é–¢æ•°ãªã®ã§,
+å…±å½¹äº‹å‰åˆ†å¸ƒã¨ã—ã¦ãƒã‚¤ãƒ‘ãƒ¼ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿$\alpha$ã‚’å°Žå…¥ã—,
 $$
-p(w|\alpha)=\calN(w|0, \alpha^{-1}I)
+\fnvPair p(w|\alpha)=\fnvPair\calN(w|0, \alpha^{-1}I)
 $$
-‚ð‰¼’è‚µ‚½. ‚»‚¤‚·‚é‚±‚Æ‚ÅŽ–Œã•ª•z‚Í
+ã‚’ä»®å®šã—ãŸ. ãã†ã™ã‚‹ã“ã¨ã§äº‹å¾Œåˆ†å¸ƒã¯
 $$
-p(w|t)=\calN(w|m_N,S_N)
+\fnvPair p(w|t)=\fnvPair\calN(w|m_N,S_N)
 $$
-‚ÌŒ`i‚½‚¾‚µ, $m_N=\beta S_N\trans{\Phi}t$, $S_N^{-1}=\alpha I + \beta \trans{\Phi}\Phi$j‚É‚È‚Á‚½.
+ã®å½¢ï¼ˆãŸã ã—, $m_N=\beta S_N\trans{\Phi}t$, $S_N^{-1}=\alpha I + \beta \trans{\Phi}\Phi$ï¼‰ã«ãªã£ãŸ.
 
-‚³‚Ä, ‚±‚±‚Å$\alpha$, $\beta$‚ÍƒnƒCƒp[ƒpƒ‰ƒ[ƒ^‚Å‚Í‚ ‚é‚ª, Ž–‘O•ª•z‚ð“ü‚ê‚ÄŠm—¦•Ï”“I‚Éˆµ‚¢‚½‚¢.
-‚»‚Ìã‚ÅÅ–Þ„’è‚ÌŽè–@‚ð—p‚¢‚ÄŽÀÛ‚Ìƒf[ƒ^‚©‚ç’l‚ðŒˆ‚ß‚é‚Æ‚¢‚¤˜g‘g‚Ý‚ðŒoŒ±ƒxƒCƒY‚Æ‚¢‚¤.
-‚»‚Ì‚Æ‚«$t$‚Ì—\‘ª•ª•z‚Í
+ã•ã¦, ã“ã“ã§$\alpha$, $\beta$ã¯ãƒã‚¤ãƒ‘ãƒ¼ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã§ã¯ã‚ã‚‹ãŒ, äº‹å‰åˆ†å¸ƒã‚’å…¥ã‚Œã¦ç¢ºçŽ‡å¤‰æ•°çš„ã«æ‰±ã„ãŸã„.
+ãã®ä¸Šã§æœ€å°¤æŽ¨å®šã®æ‰‹æ³•ã‚’ç”¨ã„ã¦å®Ÿéš›ã®ãƒ‡ãƒ¼ã‚¿ã‹ã‚‰å€¤ã‚’æ±ºã‚ã‚‹ã¨ã„ã†æž çµ„ã¿ã‚’çµŒé¨“ãƒ™ã‚¤ã‚ºã¨ã„ã†.
+ãã®ã¨ã$t$ã®äºˆæ¸¬åˆ†å¸ƒã¯
 $$
-p(t|\bm{t})=\int p(t|w,\beta)p(w|\bm{t},\alpha,\beta)p(\alpha,\beta|\bm{t})\,dwd\alpha d\beta
+\fnvPair p(t|\bm{t})
+= \int \fnvPair p(t|w,\beta)\,
+       \fnvPair p(w|\bm{t},\alpha,\beta)\,
+       \fnvPair p(\alpha,\beta|\bm{t})\,
+       dw d\alpha d\beta
 $$
-‚Æ‚È‚é. ‚Æ‚Í‚¢‚¦, ‚»‚Ì‚Ü‚Üˆµ‚¤‚Ì‚Í“ï‚µ‚¢‚Ì‚Å‚Ü‚¸ƒf[ƒ^‚ª\•ª‚½‚­‚³‚ñ‚ ‚é‚Æ‚«, $\alpha$, $\beta$‚Í–w‚ÇŒÅ’è’l,
-‚Â‚Ü‚è$\alpha$,$\beta$‚Ì•ª•z‚Í‚ ‚é“Á’è‚Ì’l$\hat{\alpha}$, $\hat{\beta}$‚Éƒfƒ‹ƒ^ŠÖ”“I‚É‹ß‚Ã‚­‚Æ‰¼’è‚µ‚æ‚¤.
+ã¨ãªã‚‹. ã¨ã¯ã„ãˆ, ãã®ã¾ã¾æ‰±ã†ã®ã¯é›£ã—ã„ã®ã§ã¾ãšãƒ‡ãƒ¼ã‚¿ãŒååˆ†ãŸãã•ã‚“ã‚ã‚‹ã¨ã, $\alpha$, $\beta$ã¯æ®†ã©å›ºå®šå€¤,
+ã¤ã¾ã‚Š$\alpha$, $\beta$ã®åˆ†å¸ƒã¯ã‚ã‚‹ç‰¹å®šã®å€¤$\hat{\alpha}$, $\hat{\beta}$ã«ãƒ‡ãƒ«ã‚¿é–¢æ•°çš„ã«è¿‘ã¥ãã¨ä»®å®šã—ã‚ˆã†.
 $$
-p(\alpha,\beta|\bm{t}) \approx \delta_{\alpha,\hat{\alpha}} \delta_{\beta,\hat{\beta}}.
+\fnvPair p(\alpha,\beta|\bm{t})
+\approx \delta_{\alpha,\hat{\alpha}} \delta_{\beta,\hat{\beta}}.
 $$
-‚»‚¤‚·‚é‚Æ
+ãã†ã™ã‚‹ã¨
 $$
-p(t|\bm{t}) \approx \int p(t|w,\hat{\beta})p(w|\bm{t},\hat{\alpha},\hat{\beta})\,dw
+\fnvPair p(t|\bm{t})
+\approx \int \fnvpair p(t|w,\hat{\beta})\,
+             \fnvpair p(w|\bm{t},\hat{\alpha},\hat{\beta})\,
+             dw
 $$
-‚Æ‚È‚è—\‘ª•ª•z‚Í$\hat{\alpha}$, $\hat{\beta}$‚ð‹‚ß‚ê‚Î‚æ‚¢‚Æ‚¢‚¤‚±‚Æ‚É‚È‚é.
+ã¨ãªã‚Šäºˆæ¸¬åˆ†å¸ƒã¯$\hat{\alpha}$, $\hat{\beta}$ã‚’æ±‚ã‚ã‚Œã°ã‚ˆã„ã¨ã„ã†ã“ã¨ã«ãªã‚‹.
 
-ŽŸ‚É$\alpha$, $\beta$‚ð‹‚ß‚é•û–@‚ðl‚¦‚é. ƒxƒCƒY‚Ì’è—‚©‚ç
+æ¬¡ã«$\alpha$, $\beta$ã‚’æ±‚ã‚ã‚‹æ–¹æ³•ã‚’è€ƒãˆã‚‹. ãƒ™ã‚¤ã‚ºã®å®šç†ã‹ã‚‰
 $$
-p(\alpha,\beta|\bm{t}) \propto p(\bm{t}|\alpha,\beta)p(\alpha,\beta)
+\fnvPair p(\alpha,\beta|\bm{t})
+\propto \fnvPair p(\bm{t}|\alpha,\beta)\,
+        p(\alpha,\beta)
 $$
-‚Æ‚È‚é. ‚±‚±‚Å$p(\alpha,\beta)$‚Í‚Ù‚Ú•½’R, ‚Â‚Ü‚è$\alpha$, $\beta$‚Ì’l‚Í‚Ç‚ê‚à“¯‚¶‚®‚ç‚¢‚Ì‰Â”\«‚ª‚ ‚é‚Æ‚¢‚¤‰¼’è‚ð’u‚­.
-‚»‚¤‚·‚é‚ÆŽ–Œã•ª•z‚ðÅ‘å‰»‚·‚é$\alpha$, $\beta$‚ð‹‚ß‚éÅ–Þ„’è‚Ì–â‘è‚Í, –Þ“xŠÖ”‚ðÅ‘å‰»‚·‚é–â‘è‚É‹ßŽ—‚Å‚«‚é.
-‚±‚Ì–Þ“xŠÖ”‚ðƒGƒrƒfƒ“ƒX‚Æ‚¢‚¢, ‚±‚ÌŽè–@‚ðƒGƒrƒfƒ“ƒX‹ßŽ—‚Æ‚¢‚¤.
-‚»‚µ‚Ä, $p(\bm{t}|\alpha,\beta)$‚ðÅ‘å‰»‚·‚é‚½‚ß‚Ì$\alpha$, $\beta$‚ÌŠÖŒWŽ®‚ð‹‚ß‚½‚Ì‚ª‘Oß‚Å‚ ‚Á‚½.
+ã¨ãªã‚‹. ã“ã“ã§$p(\alpha,\beta)$ã¯ã»ã¼å¹³å¦, ã¤ã¾ã‚Š$\alpha$, $\beta$ã®å€¤ã¯ã©ã‚Œã‚‚åŒã˜ãã‚‰ã„ã®å¯èƒ½æ€§ãŒã‚ã‚‹ã¨ã„ã†ä»®å®šã‚’ç½®ã.
+ãã†ã™ã‚‹ã¨äº‹å¾Œåˆ†å¸ƒã‚’æœ€å¤§åŒ–ã™ã‚‹$\alpha$, $\beta$ã‚’æ±‚ã‚ã‚‹æœ€å°¤æŽ¨å®šã®å•é¡Œã¯, å°¤åº¦é–¢æ•°ã‚’æœ€å¤§åŒ–ã™ã‚‹å•é¡Œã«è¿‘ä¼¼ã§ãã‚‹.
+ã“ã®å°¤åº¦é–¢æ•°ã‚’ã‚¨ãƒ“ãƒ‡ãƒ³ã‚¹ã¨ã„ã„, ã“ã®æ‰‹æ³•ã‚’ã‚¨ãƒ“ãƒ‡ãƒ³ã‚¹è¿‘ä¼¼ã¨ã„ã†.
+ãã—ã¦, $\fnvPair p(\bm{t}|\alpha,\beta)$ã‚’æœ€å¤§åŒ–ã™ã‚‹ãŸã‚ã®
+$\alpha$, $\beta$ã®é–¢ä¿‚å¼ã‚’æ±‚ã‚ãŸã®ãŒå‰ç¯€ã§ã‚ã£ãŸ.
 
-ˆÈã‚Ìƒpƒ‰ƒ[ƒ^‚ÌŠÖŒW‚ð}\ref{para-dep}‚ÉŽ¦‚µ‚½.
-ŽÀÛ‚É‚Í, ‰Šú’l$\alpha$, $\beta$‚ð“K“–‚ÉŒˆ‚ß, ‚±‚Ì}‚É]‚Á‚ÄŒvŽZ‚µ‚ÄV‚µ‚¢$\alpha$, $\beta$‚ð‹‚ß‚½‚ ‚ÆÄ“xŒJ‚è•Ô‚·.
-‚»‚ê‚ªŽû‘©‚·‚ê‚Î‚»‚Ì’l‚ðÌ—p‚·‚é. ‚±‚±‚Å‚Í‚»‚ÌŽû‘©«‚É‚Â‚¢‚Ä‚Í‹c˜_‚µ‚È‚¢.
+ä»¥ä¸Šã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®é–¢ä¿‚ã‚’å›³\ref{para-dep}ã«ç¤ºã—ãŸ.
+å®Ÿéš›ã«ã¯, åˆæœŸå€¤$\alpha$, $\beta$ã‚’é©å½“ã«æ±ºã‚, ã“ã®å›³ã«å¾“ã£ã¦è¨ˆç®—ã—ã¦æ–°ã—ã„$\alpha$, $\beta$ã‚’æ±‚ã‚ãŸã‚ã¨å†åº¦ç¹°ã‚Šè¿”ã™.
+ãã‚ŒãŒåŽæŸã™ã‚Œã°ãã®å€¤ã‚’æŽ¡ç”¨ã™ã‚‹. ã“ã“ã§ã¯ãã®åŽæŸæ€§ã«ã¤ã„ã¦ã¯è­°è«–ã—ãªã„.
 \begin{figure}[ht]
  \begin{minipage}{1\hsize}
-  \begin{center}
-%   \includegraphics[bb=0 0 360 270]{para-dep.pdf}
-   \includegraphics[bb=0 0 260 220]{../prml/para-dep.pdf}
-  \end{center}
-  \caption{$\alpha$,$x$,$\phi$,$t$,$\beta$‚ÌŠÖŒW}}
+  \centering
+  \includegraphics*[bb=0 0 260 220]{./para-dep.pdf}
+  \caption{$\alpha$, $x$, $\phi$, $t$, $\beta$ã®é–¢ä¿‚å›³}
   \label{para-dep}
  \end{minipage}
 \end{figure}
