@@ -216,7 +216,7 @@ $$
 $$
 \pi_k=\frac{1}{N}\sum_n z_{nk}.
 $$
-完全データ集合についての対数尤度関数の最大化は解けるが, 
+完全データ集合についての対数尤度関数の最大化は解けるが,
 潜在変数が分からない場合の不完全データに関する
 対数尤度関数の最大化は困難である.
 この場合は潜在変数の事後分布に関する完全データ尤度関数の期待値を考える.
@@ -244,7 +244,7 @@ $$
 $$
 より
 $$
-\sum_n \gamma(z_{nk})=\lambda \pi_k.
+\sum_n \gamma(z_{nk})=-\lambda \pi_k.
 $$
 $$
 \sum_{n,k}\gamma(z_{nk})=-\lambda\left(\sum_k \pi_k\right)=-\lambda=N
@@ -255,7 +255,7 @@ $$
 $$
 \begin{eqnarray*}
 \dif{\mu_k}F
-&=&\sum_n\gamma(z_{nk})\left(-\Sigma_k^{-1}(x_n-\mu_k)\right)
+&=&\sum_n\gamma(z_{nk})\left(\Sigma_k^{-1}(x_n-\mu_k)\right)
 \\
 &=&\Sigma_k^{-1}\left(\sum_n \gamma(z_{nk})x_n-\left(\sum_n \gamma(z_{nk})\right)\mu_k\right)=0.
 \end{eqnarray*}
@@ -522,7 +522,7 @@ $$
 \end{itemize}
 $q(Z)=p(Z\,|\,X,\theta^o)$より
 \begin{eqnarray*}
-q(Z) &=& \sum_ Z q(Z) \log \frac{p(X,Z\,|\,\theta)}{q(Z)}\\
+\calL(q,\theta) &=& \sum_ Z q(Z) \log \frac{p(X,Z\,|\,\theta)}{q(Z)}\\
      &=& \sum_Z p(Z\,|\,X,\theta^o) \log p(X,Z\,|\,\theta) - \sum_Z p(Z\,|\,X,\theta^o)\log p(Z\,|\,X,\theta^o)\\
      && （\calQ(\theta,\theta^o)=\sum_Z p(Z\,|\,X,\theta^o) \log p(X,Z\,|\,\theta){\text とおいて}）\\
      &=& \calQ(\theta,\theta^o) + \theta{\text {に非依存}}.
